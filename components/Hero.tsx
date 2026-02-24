@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, TrendingUp, Clock, Users, Zap, MessageSquare, FileSearch, FileText, Mail, Calendar, BarChart3 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, TrendingUp, Clock, Users, Zap, MessageSquare, FileSearch, FileText, Mail, Calendar, BarChart3, BrainCircuit, FileCheck } from 'lucide-react';
 import Button from './Button';
 
 interface HeroProps {
   onCtaClick: () => void;
   onRoiClick: () => void;
+  onNavigate: (view: string) => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick }) => {
+const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick, onNavigate }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -121,7 +123,7 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick }) => {
                     <Zap className="text-white" size={28} />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-xl leading-none">Asistente IA Hear-O</h3>
+                    <h3 className="text-white font-bold text-xl leading-none">Soluciones IA Hear-O</h3>
                     <div className="flex items-center gap-2 mt-2">
                       <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
                       <span className="text-green-400 text-sm font-medium uppercase tracking-wide">En acción</span>
@@ -132,43 +134,53 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick }) => {
                 {/* List Content */}
                 <div className="p-6 space-y-5 pb-20 md:pb-6"> {/* Added padding bottom on mobile to clear the floating tag */}
                   
-                  {/* Item 1 */}
-                  <motion.div 
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors"
-                  >
-                    <div className="shrink-0 mt-1">
-                       <div className="bg-green-500/20 p-2.5 rounded-lg">
-                         <MessageSquare size={20} className="text-green-400" />
-                       </div>
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold text-base mb-1.5">Ayudante Comercial</h4>
-                      <p className="text-slate-400 text-base leading-relaxed">Te guía y ofrece argumentos comerciales en cada pregunta de la anamnesis.</p>
-                    </div>
-                  </motion.div>
+                  {/* Item 1: Marketing Studio */}
+                  <Link to="/marketing-automatico-centros-auditivos">
+                    <motion.div 
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                      className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors cursor-pointer group mb-5 relative"
+                    >
+                      <div className="shrink-0 mt-1">
+                         <div className="bg-blue-500/20 p-2.5 rounded-lg group-hover:bg-blue-500/30 transition-colors">
+                           <Mail size={20} className="text-blue-400" />
+                         </div>
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold text-base mb-1.5 group-hover:text-blue-400 transition-colors">Marketing Studio</h4>
+                        <p className="text-slate-400 text-base leading-relaxed">Capta y Retiene. Automatiza tu comunicación.</p>
+                      </div>
+                      <div className="absolute bottom-2 right-4 text-xs text-blue-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                        ver <ArrowRight size={12} />
+                      </div>
+                    </motion.div>
+                  </Link>
 
-                  {/* Item 2 */}
-                  <motion.div 
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors"
-                  >
-                     <div className="shrink-0 mt-1">
-                       <div className="bg-blue-500/20 p-2.5 rounded-lg">
-                         <FileSearch size={20} className="text-blue-400" />
-                       </div>
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold text-base mb-1.5">Análisis de Soluciones</h4>
-                      <p className="text-slate-400 text-base leading-relaxed">Consulta tu Base de Datos y elige las 3 mejores opciones de audífonos.</p>
-                    </div>
-                  </motion.div>
+                  {/* Item 2: Anamnesis Assistant */}
+                  <Link to="/software-anamnesis-vender-mas-audifonos">
+                    <motion.div 
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors cursor-pointer group mb-5 relative"
+                    >
+                       <div className="shrink-0 mt-1">
+                         <div className="bg-orange-500/20 p-2.5 rounded-lg group-hover:bg-orange-500/30 transition-colors">
+                           <FileCheck size={20} className="text-brand-orange" />
+                         </div>
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold text-base mb-1.5 group-hover:text-brand-orange transition-colors">Anamnesis Assistant</h4>
+                        <p className="text-slate-400 text-base leading-relaxed">Convence y Vende. Transforma la consulta.</p>
+                      </div>
+                      <div className="absolute bottom-2 right-4 text-xs text-brand-orange font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                        ver <ArrowRight size={12} />
+                      </div>
+                    </motion.div>
+                  </Link>
 
-                  {/* Item 3 */}
+                  {/* Item 3: Expertos IA */}
                   <motion.div 
                     initial={{ x: 20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -177,16 +189,16 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick }) => {
                   >
                      <div className="shrink-0 mt-1">
                        <div className="bg-purple-500/20 p-2.5 rounded-lg">
-                         <FileText size={20} className="text-purple-400" />
+                         <BrainCircuit size={20} className="text-purple-400" />
                        </div>
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold text-base mb-1.5">Generación de Propuesta</h4>
-                      <p className="text-slate-400 text-base leading-relaxed">PDF automático con el Diagnóstico, propuesta económica y Road Map.</p>
+                      <h4 className="text-white font-semibold text-base mb-1.5">Expertos IA</h4>
+                      <p className="text-slate-400 text-base leading-relaxed">Optimiza y Resuelve. Tu consejo de sabios 24/7.</p>
                     </div>
                   </motion.div>
 
-                  {/* Item 4 */}
+                  {/* Item 4: Calendario */}
                   <motion.div 
                     initial={{ x: 20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -194,13 +206,13 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick }) => {
                     className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors"
                   >
                      <div className="shrink-0 mt-1">
-                       <div className="bg-pink-500/20 p-2.5 rounded-lg">
-                         <Mail size={20} className="text-pink-400" />
+                       <div className="bg-green-500/20 p-2.5 rounded-lg">
+                         <Calendar size={20} className="text-green-400" />
                        </div>
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold text-base mb-1.5">Email Marketing Completo</h4>
-                      <p className="text-slate-400 text-base leading-relaxed">Onboarding, recordatorios y reactivación de pacientes perdidos.</p>
+                      <h4 className="text-white font-semibold text-base mb-1.5">Calendario</h4>
+                      <p className="text-slate-400 text-base leading-relaxed">Organiza y Gestiona. Tu agenda bajo control.</p>
                     </div>
                   </motion.div>
 
