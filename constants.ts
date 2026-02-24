@@ -19,154 +19,148 @@ export const ESTIMATED_ANNUAL_INVESTMENT = 7300;
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
-    id: 'starter',
-    name: 'Hear-O Starter',
-    description: 'Quiero vender más con los pacientes que ya tengo.',
-    setupPrice: '1995€',
-    monthlyPrice: '143€',
-    annualMonthlyPrice: '119€', // 143 * 10 / 12 approx
+    id: 'expertos-ia',
+    name: 'Hear-O Expertos IA',
+    description: 'Tu consejo de sabios digital 24/7. Tres agentes especializados en Audiología Clínica, Adaptación Técnica y Estrategia de Marketing.',
+    setupPrice: '400€',
+    monthlyPrice: '59€',
+    annualMonthlyPrice: '47€', // 59 * 0.8 approx
     highlight: undefined,
     popular: false,
-    amortizationTime: "¡Amortizado en 2 meses!",
-    amortizationBenefit: "Beneficio Neto Anual estimado: 16.500€",
+    amortizationTime: "Amortizado en 1 mes",
+    amortizationBenefit: "Ahorra horas en consultas técnicas y mejora tus cierres",
     idealFor: [
-      "Tienes un centro pequeño (1-2 audiólogos)",
-      "Recibes pacientes pero te cuesta convertirlos en ventas",
-      "No tienes tiempo para crear dossieres profesionales",
-      "Te pierdes en el seguimiento y recordatorios manuales"
+      "Necesitas respuestas rápidas a dudas clínicas complejas",
+      "Buscas soporte técnico inmediato para tus equipos",
+      "Quieres mejorar tus argumentos de venta y cierre"
     ],
     dataBenefits: [
-      "🎯 **Mejora tus ventas de audífonos** con un potencial del 60% de conversiones gracias al Asistente Hear-O",
-      "⏱️ **Ahorra el 80% del tiempo** de gestión de recordatorios, citas y revisiones periódicas",
-      "📊 **Mejora la imagen del centro** con dossieres profesionales y personalizados",
-      "💡 **Ahorra un 60% de tu tiempo** en consultas a proveedores y dudas técnicas gracias al Experto IA"
+      "💡 **Respuestas al instante** 24/7 sin esperas telefónicas",
+      "🧠 **Conocimiento experto** en todas las marcas y patologías",
+      "📈 **Mejora tu tasa de cierre** con argumentos comerciales probados"
     ],
     features: [
-      { text: 'Asistente Hear-O (Anamnesis guiada+ Argumentación comercial)', included: true },
-      { text: 'Selección automática de audífonos (2-3 opciones)', included: true },
-      { text: 'Dossier personalizado (Diagnóstico + Propuesta + Road Map)', included: true },
-      { text: 'CRM con Pacientes y No pacientes', included: true },
-      { text: 'Recordatorios automáticos revisiones y fin de prueba', included: true },
-      { text: 'Sincronización Automática de Agenda', included: true },
-      { text: '1 Experto IA (Audiólogo o Equipos)', included: true },
-      { text: 'Marketing a Pacientes', included: false },
-      { text: 'Recuperación de Pacientes Perdidos', included: false },
-      { text: 'Atención WhatsApp IA 24/7', included: false },
+      { text: 'Consultoría Clínica Instantánea', included: true },
+      { text: 'Soporte en Equipos de Medición', included: true },
+      { text: 'Mentoría en Ventas y Cierre', included: true },
+      { text: 'Resuelve dudas complejas al instante', included: true },
+      { text: 'Disponible 24/7', included: true },
     ]
   },
   {
-    id: 'advance',
-    name: 'Hear-O Advance',
-    description: 'Quiero vender más y recuperar pacientes perdidos.',
-    setupPrice: '2.990€',
-    monthlyPrice: '180€',
-    annualMonthlyPrice: '150€', // 180 * 10 / 12
+    id: 'marketing-studio',
+    name: 'Hear-O Marketing Studio',
+    description: 'Marketing profesional "siempre encendido" sin dedicarle tiempo semanal. Fideliza, reactiva y capta automáticamente.',
+    setupPrice: '750€',
+    monthlyPrice: '99€',
+    annualMonthlyPrice: '79€', // 99 * 0.8 approx
     highlight: 'Popular',
     popular: true,
     amortizationTime: "Amortizado en 2 meses",
-    amortizationBenefit: "Beneficio neto anual estimado: 19.500€",
+    amortizationBenefit: "Reactiva pacientes dormidos automáticamente",
     idealFor: [
-      "Te cuesta Convertir pacientes en ventas",
-      "Tienes una base de pacientes sin explotar (antiguos, perdidos)",
-      "Quieres recuperar pacientes que no compraron en su día",
-      "Quieres mejorar tu gestión de agenda"
+      "No tienes tiempo para dedicarle al marketing semanalmente",
+      "Quieres profesionalizar la imagen de tu centro",
+      "Necesitas reactivar pacientes antiguos automáticamente"
     ],
     dataBenefits: [
-      "🎯 **Mejora tus ventas de audífonos** con un potencial del 60% de conversiones gracias al Asistente Hear-O",
-      "⏱️ **Ahorra el 80% del tiempo** de gestión de recordatorios, citas y revisiones periódicas",
-      "🔄 **Fideliza a tus pacientes** con comunicación automatizada y personalizada",
-      "📈 **Aumenta el ticket medio** con estrategias de cross-selling y up-selling automáticas",
-      "🎨 **Mejora la imagen del centro** con dossieres profesionales y comunicación omnicanal",
-      "📊 **Analiza los datos y toma decisiones estratégicas** con informes mensuales detallados",
-      "💡 **Ahorra un 60% de tu tiempo** en consultas a proveedores gracias al Experto IA"
+      "⏱️ **Ahorra el 100% del tiempo** de gestión de campañas",
+      "🔄 **Reactiva pacientes** dormidos sin esfuerzo manual",
+      "🚀 **Capta nuevos leads** con la Prueba Auditiva Online"
     ],
     features: [
-      { text: 'Todo lo incluido en Starter', included: true },
-      { text: 'Marketing Automatizado (Email/WhatsApp)', included: true },
-      { text: 'Secuencias de recuperación y fidelización de Pacientes', included: true },
-      { text: 'Marketing de Reseñas Google', included: true },
-      { text: 'Gestión de Agenda Avanzada con Auto-reserva', included: true },
-      { text: 'Análisis e Informe mensual de ventas', included: true },
-      { text: '2 Expertos IA (Audiólogo y Marketing)', included: true },
-      { text: 'Captación Activa de Leads', included: false },
-      { text: 'Atención WhatsApp IA 24/7', included: false },
+      { text: 'Generador de Campañas y Publicaciones (IA)', included: true },
+      { text: 'Panel de Acciones Automáticas (configurable)', included: true },
+      { text: 'Prueba Auditiva Online (captación de leads)', included: true },
+      { text: 'Actualización mensual de base de datos', included: true },
+      { text: 'Fideliza, Reactiva y Capta automáticamente', included: true },
+      { text: 'Histórico de acciones realizadas', included: true },
     ]
   },
   {
-    id: 'premium',
-    name: 'Hear-O Premium',
-    description: 'Quiero captar más, vender más y crecer sin tener que contratar más empleados',
-    setupPrice: '4.300€',
-    monthlyPrice: '260€',
-    annualMonthlyPrice: '217€', // 260 * 10 / 12 approx
-    // Premium Offer Logic
-    originalSetupPrice: '6.200€',
-    originalMonthlyPrice: '360€',
-    discountBadge: '¡Ahorra un 30%!',
-    promoText: 'Solo los 100 primeros clientes',
-    highlight: 'El más rentable',
+    id: 'anamnesis-assistant',
+    name: 'Hear-O Anamnesis Assistant',
+    description: 'Más que un CRM: Su Asistente Comercial Inteligente. Transforme la anamnesis en una conversación dirigida al cierre.',
+    setupPrice: '750€',
+    monthlyPrice: '99€',
+    annualMonthlyPrice: '79€', // 99 * 0.8 approx
+    highlight: 'Novedad',
     popular: false, 
-    amortizationTime: "Amortizado en 4 meses",
-    amortizationBenefit: "Beneficio neto anual estimado: 27.000€",
+    amortizationTime: "Amortizado en 3 meses",
+    amortizationBenefit: "Aumenta el ticket medio y la conversión",
     idealFor: [
-      "Quieres dominar tu mercado local y crecer agresivamente",
-      "Necesitas captar pacientes nuevos (Leads)",
-      "Recibes llamadas/WhatsApp fuera de horario",
-      "Buscas una solución completa para todo el funnel"
+      "Quieres estandarizar el proceso de venta en tu centro",
+      "Buscas diferenciarte con una experiencia visual para el paciente",
+      "Necesitas informes profesionales entregados al momento"
     ],
     dataBenefits: [
-      "🎯 **Mejora tus ventas de audífonos** con un potencial del 60% de conversiones gracias al Asistente Hear-O",
-      "🚀 **Capta un 40% más de pacientes potenciales** con el auto-test y marketing automatizado",
-      "⏱️ **Ahorra el 80% del tiempo** de gestión de recordatorios, citas y revisiones periódicas",
-      "🔄 **Fideliza a tus pacientes** con comunicación omnicanal automatizada",
-      "📈 **Aumenta el ticket medio** con estrategias de cross-selling y up-selling inteligentes",
-      "🎨 **Mejora la imagen del centro** como referente tecnológico en tu zona",
-      "📊 **Analiza los datos y toma decisiones estratégicas** con informes mensuales con IA",
-      "⏰ **Ahorra el 70% del tiempo** que dedicas a la atención al paciente gracias al WhatsApp IA",
-      "💡 **Ahorra un 75% de tu tiempo** en consultas a proveedores y dudas gracias a los 3 Expertos IA",
-      "🌐 **Trabaja 24/7** sin añadir personal: captación, atención y gestión nunca duermen"
+      "🎯 **Aumenta la conversión** guiando al paciente al cierre",
+      "📝 **Informes automáticos** sin dedicar tiempo extra a redactar",
+      "⭐ **Experiencia WOW** que justifica el valor de tus audífonos"
     ],
     features: [
-      { text: 'Todo lo incluido en Advance', included: true },
-      { text: 'Captación Activa de Leads (Auto-test para Centro, Web y RRSS)', included: true },
-      { text: 'Secuencias de mail marketing automáticas específicas por perfil del Lead', included: true },
-      { text: 'Campañas automáticas vía email y WhatsApp a toda la base', included: true },
-      { text: 'Atención al Cliente con IA 24/7 (WhatsApp)', included: true },
-      { text: 'Respuestas instantáneas y naturales', included: true },
-      { text: 'Experto IA Audiólogo: Consultas clínicas y protocolos', included: true },
-      { text: 'Experto IA en Equipos de Adaptación: Soporte técnico y Pruebas audiológicas', included: true },
-      { text: 'Experto IA en Marketing y Ventas: Estrategias, copy, análisis competencia', included: true },
-      { text: 'Análisis Avanzado Mensual & Estrategia', included: true },
-      { text: 'Registro automático de leads en CRM', included: true },
-      { text: 'Carga de contactos y pacientes de tu base de datos', included: true },
-      { text: 'Soporte Prioritario', included: true },
+      { text: 'Doble pantalla (Audiólogo + Paciente)', included: true },
+      { text: 'Guía de anamnesis estructurada', included: true },
+      { text: 'Generación de Informe y Argumentario de venta', included: true },
+      { text: 'Registro de pruebas audiológicas', included: true },
+      { text: 'Impacto visual inmediato para el paciente', included: true },
+      { text: 'Cierre de ventas asistido por IA', included: true },
+    ]
+  },
+  {
+    id: 'calendar-smart',
+    name: 'Hear-O Calendario',
+    description: 'Tu agenda bajo control. Reduce el absentismo y automatiza la gestión de citas.',
+    setupPrice: '600€',
+    monthlyPrice: '78€',
+    annualMonthlyPrice: '62€', // 78 * 0.8 approx
+    highlight: undefined,
+    popular: false,
+    amortizationTime: "Amortizado en 1 mes",
+    amortizationBenefit: "Recupera horas de gestión administrativa",
+    idealFor: [
+      "Pierdes tiempo confirmando citas por teléfono",
+      "Tienes huecos en la agenda por olvidos de pacientes",
+      "Quieres sincronización total con Google Calendar"
+    ],
+    dataBenefits: [
+      "⏱️ **Ahorra 15h/mes** en gestión de agenda",
+      "📉 **Reduce un 40%** el absentismo con recordatorios",
+      "🔄 **Sincronización total** sin duplicidades"
+    ],
+    features: [
+      { text: 'Recordatorios automáticos (WhatsApp/Email)', included: true },
+      { text: 'Avisos antes de cada cita', included: true },
+      { text: 'Gestión de revisiones periódicas', included: true },
+      { text: 'Sincronización Google Calendar', included: true },
+      { text: 'Gestión de renovaciones', included: true },
     ]
   }
 ];
 
 export const FAQS: FaqItem[] = [
   {
-    question: "¿Cómo funciona realmente el Asistente IA de Ventas Hear-O?",
-    answer: "El Asistente Hear-O te ayudará en la parte más complicada del proceso: La Venta. Escuchará al cliente, comprenderá sus respuestas y te propondrá la siguiente pregunta en el tono adecuado y las palabras correctas. Es un Experto “Técnico - Comercial”, es decir, Está entrenado como un Increíble Vendedor con grandes conocimientos de Audiología.\n\nTú sólo tendrás que Leer sus propuestas de preguntas. Cada vez te sentirás más cómodo. Irás aprendiendo con Hear-O.\n\nDespués, terminadas la anamnesis y las pruebas auditivas, conociendo toda la información, accederá a la base de datos de Audífonos y buscará las 3 opciones que mejor se adaptan a tu Paciente.\n\nEn pocos segundos, creará un dossier que incluirá el Diagnóstico, la propuesta elegida y una sencilla guía de los siguientes pasos para que el Paciente esté siempre informado."
+    question: "¿Puedo contratar solo una solución o tengo que comprar todo el paquete?",
+    answer: "Sí, cada solución (Marketing Studio, Anamnesis Assistant, Calendario, Expertos) es independiente y tiene su propia suscripción. Puedes empezar con la que más necesites.\n\nSin embargo, si contratas dos o más soluciones, las integramos en una única plataforma unificada para facilitarte la gestión y aplicamos un precio especial por paquete."
   },
   {
-    question: "¿Hear-O sustituye al Audioprotesista o Profesional?",
-    answer: "No. Hear-O no diagnostica ni decide por ti. Siempre tendrás que Validar y Revisar sus propuestas, él sólo hace el trabajo duro: Vender y presentarte la propuesta. Es un Empleado (incansable y experto) a tu cargo que tú tendrás que supervisar. Tú tendrás la última palabra."
+    question: "¿Realmente Marketing Studio funciona en automático o tengo que escribir yo los correos?",
+    answer: "Puedes configurarlo para que trabaje 100% en automático y olvidarte.\n\n• **Campañas Estándar (Fidelización):** Recordatorios de revisión, cumpleaños o fin de garantía se dejan programados en la implantación. El sistema los envía solos siempre.\n• **Promociones (Captación):** El sistema genera ideas proactivamente. Tú solo eliges la idea que te gusta, el público (ej: 'pacientes de más de 3 años') y el canal. Hear-O se encarga de redactar, diseñar y enviar."
   },
   {
-    question: "¿Puedo decidir qué Fabricantes de Audífonos quiero trabajar?",
-    answer: "Hear-O dispone de una Base de Datos inmensa con todos los fabricantes y modelos del Mercado, pero tú podrás decidir con qué marcas quieres trabajar. Antes del análisis de soluciones auditivas y antes de crear las propuestas, seleccionarás los Fabricantes con los que quieras trabajar o elegir para ese paciente."
+    question: "¿El Calendario se sincroniza con NOAH?",
+    answer: "El Calendario Inteligente es un sistema independiente diseñado para **eliminar el absentismo y ahorrarte horas de teléfono**.\n\n• Se sincroniza totalmente con **Google Calendar** para que tengas tu agenda en el móvil.\n• No se sincroniza con NOAH en tiempo real (aunque cargamos tus datos iniciales al arrancar).\n• Su objetivo no es sustituir a NOAH, sino gestionar **recordatorios automáticos por WhatsApp y Email** y confirmar citas para que no tengas huecos vacíos."
   },
   {
-    question: "¿Cuáles son las Mejoras Reales de Hear-O y cuándo las notaré?",
-    answer: "Lo primero que vas a notar y desde el primer paciente es que, gracias al Asistente IA Hear-O, tus anamnesis y argumentos comerciales mejorarán de forma increíble. Sabrás qué decir en cada momento, y lo más importante: cómo decirlo. El Asistente Hear-O no sólo te dicta preguntas, te dice cómo argumentarlas y cómo explicarlas para que tu Paciente comprenda su problema, no lo “dramatice” y quiera ponerle solución con la Adaptación de unos Audífonos.\n\nPero también lo notarás porque tus Citas tendrán menos ausencias, porque conseguirás “rescatar” pacientes dormidos, renovaciones y porque tendrás captación de clientes potenciales.\n\nPara ver cómo se reactivan tus contactos y pacientes, pueden pasar algún mes, pero la mejora de tu conversión mejorará desde la primera visita en la que uses el Asistente Hear-O."
+    question: "¿Qué son los Expertos IA y cómo accedo a ellos?",
+    answer: "Son Asistentes Virtuales Avanzados (GPTs personalizados) entrenados con conocimiento clínico, técnico y comercial específico del sector audiológico.\n\nEstán disponibles 24/7 para cuando tengas una duda clínica compleja, necesites soporte técnico sobre un equipo de medida o busques un argumento de venta. Si tienes otras soluciones Hear-O, accederás a ellos desde la misma plataforma."
   },
   {
-    question: "¿Es difícil el uso? ¿Hay Formación?",
-    answer: "Está pensado para que cualquier audioprotesista pueda usarlo sin ser “de informática”. La pantalla te va guiando paso a paso; no hay que escribir grandes textos.\n\nIncluimos formación inicial con casos reales y acompañamiento en el arranque. En pocos días el flujo se vuelve rutina y no estorba en la consulta."
+    question: "¿Hear-O Anamnesis Assistant sustituye al Audiólogo?",
+    answer: "Rotundamente no. Hear-O no diagnostica ni decide por ti. Es una herramienta de **apoyo a la venta**.\n\nTe guía durante la anamnesis para estructurar la consulta y te ofrece argumentos comerciales en tiempo real para rebatir objeciones. Tú tomas las decisiones clínicas; Hear-O te ayuda a comunicarlas para que el paciente entienda el valor y diga 'Sí'."
   },
   {
-    question: "¿Qué incluye el Soporte?",
-    answer: "Te ayudamos tanto con el uso diario (dudas, cambios, campañas) como con pequeños ajustes técnicos.\n\nIncluye acompañamiento tras la implantación, no solo la instalación y ya.\n\nLa idea es que el sistema se use y mejore contigo, no que se quede “apagado en un rincón”."
+    question: "¿Es difícil de usar? ¿Incluye formación?",
+    answer: "Todas las soluciones están diseñadas para ser usadas sin conocimientos técnicos. La pantalla te guía paso a paso.\n\nAdemás, la cuota de implantación incluye la configuración inicial completa (carga de datos, logos, precios) y una formación dedicada para ti y tu equipo. Te acompañamos en el arranque para asegurar que le sacas partido desde el primer día."
   }
 ];
