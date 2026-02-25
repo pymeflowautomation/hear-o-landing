@@ -1,0 +1,1 @@
+Sólo necesario si migramos a hosting tradicional
