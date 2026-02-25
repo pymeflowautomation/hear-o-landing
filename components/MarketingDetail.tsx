@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { 
   Mail, Megaphone, Users, Calendar, 
   BarChart3, Zap, Repeat, Heart, ChevronLeft, ChevronRight
@@ -47,6 +48,12 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-32 pb-0">
+      <Helmet>
+        <title>Marketing Automático para Centros Auditivos | Hear-O</title>
+        <meta name="description" content="Automatice el marketing de su centro auditivo con IA. Campañas, reactivación de pacientes y contenidos automáticos para captar y retener más." />
+        <meta name="keywords" content="Marketing para Centros Auditivos, Marketing para Audiología, Marketing Automático para Centros Auditivos, Automatizaciones para Centros Auditivos, IA para Centros Auditivos" />
+        <link rel="canonical" href="https://hear-o.pymeflow.es/marketing-automatico-centros-auditivos" />
+      </Helmet>
       
       <LandingHeader onContactClick={onContact} />
 

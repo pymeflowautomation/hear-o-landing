@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { 
   CheckCircle2, AlertCircle, BrainCircuit, 
@@ -35,6 +36,12 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-32 pb-0">
+      <Helmet>
+        <title>Software de Anamnesis para Centros Auditivos | Hear-O</title>
+        <meta name="description" content="Mejore la conversión en su centro auditivo con Anamnesis Asistida. Venda más audífonos profesionalizando el momento crítico de la consulta." />
+        <meta name="keywords" content="Mejorar la Conversión en Centros Auditivos, Vender más audífonos, ¿Cómo vender más audífonos?" />
+        <link rel="canonical" href="https://hear-o.pymeflow.es/software-anamnesis-vender-mas-audifonos" />
+      </Helmet>
       
       <LandingHeader onContactClick={onContact} />
 
@@ -57,13 +64,13 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
             </Button>
           </div>
           <div className="lg:w-7/12">
-            <div className="relative flex items-center justify-center group">
+            <div className="relative flex flex-col items-center justify-center group">
                <img 
                  src="https://pymeflow.es/wp-content/uploads/2026/02/protada-anamnesis-audiologia-para-vender-mas.png" 
                  alt="Software para vender más audífonos - Interfaz Hear-O" 
                  className="w-full h-auto object-contain relative z-10"
                />
-               <div className="absolute bottom-4 left-4 right-4 md:left-10 md:right-10 bg-slate-900/90 backdrop-blur p-4 rounded-xl border border-slate-700 z-20 shadow-2xl">
+               <div className="w-full mt-4 md:mt-0 md:absolute md:bottom-4 md:left-10 md:right-10 bg-slate-900/90 backdrop-blur p-4 rounded-xl border border-slate-700 z-20 shadow-2xl">
                   <div className="flex items-center gap-4">
                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                      <p className="text-sm font-mono text-green-400">Anamnesis Asistida y Argumentada para el Audiólogo. Presentación sincronizada para el Paciente</p>
