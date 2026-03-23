@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
                <img src={LOGO_SMALL} alt="Hear-O" className="h-8" />
-               <span className="text-xl font-bold text-white">Hear-O. Un sistema de <a href="https://pymeflow.es/" className="text-brand-orange hover:text-white transition-colors">Pymeflow.es</a></span>
+               <span className="text-xl font-bold text-white">Hear-O <span className="text-brand-orange hover:text-white transition-colors">Audiology</span></span>
             </div>
             <p className="text-slate-300 max-w-sm text-xl">
               La primera solución de automatización inteligente diseñada exclusivamente para centros auditivos que quieren crecer sin perder calidad humana.
