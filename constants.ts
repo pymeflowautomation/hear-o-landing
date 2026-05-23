@@ -2,8 +2,8 @@
 import { PricingPlan, FaqItem } from './types';
 
 // Logo URLs
-export const LOGO_SMALL = "https://pymeflow.es/wp-content/uploads/2025/11/logo-hear-o-pequeno2.png";
-export const LOGO_LARGE = "https://pymeflow.es/wp-content/uploads/2025/11/logo-hear-o-naranja.png";
+export const LOGO_SMALL = "/images/logo-hear-o-pequeno2.png";
+export const LOGO_LARGE = "/images/logo-hear-o-naranja.png";
 
 // Assumptions for Calculator
 export const MARGIN_PER_UNIT = 1000; // €
