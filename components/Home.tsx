@@ -34,7 +34,7 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
       <Helmet>
         <title>Hear-O | Software IA para Centros Auditivos</title>
         <meta name="description" content="Automatiza tu Centro Auditivo con IA y vende más audífonos. Aumenta tus ventas un 60% y ahorra 30h/mes en gestión. Marketing y Anamnesis con Inteligencia Artificial." />
-        <link rel="canonical" href="https://hear-o.pymeflow.es/" />
+        <link rel="canonical" href="https://hear-o.es/" />
       </Helmet>
       <Header onContactClick={onContactClick} />
       
