@@ -25,22 +25,22 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
 
   const carouselItems = [
     {
-      img: "https://pymeflow.es/wp-content/uploads/2026/02/automatizaciones-de-marketing-audiologia.jpg",
+      img: "/images/automatizaciones-de-marketing-audiologia.jpg",
       title: "Todo el Marketing que necesita tu centro",
       desc: "Más de 10 tipos de envíos predefinidos, diseñados para tu centro auditivo y tu base de datos."
     },
     {
-      img: "https://pymeflow.es/wp-content/uploads/2026/02/imagen-2-HMS.jpg",
+      img: "/images/imagen-2-HMS.jpg",
       title: "Configuración sencilla",
       desc: "Automático y programado al 100%, pero si quieres, toma el control: Activa o desactiva, configura frecuencia, canales..."
     },
     {
-      img: "https://pymeflow.es/wp-content/uploads/2026/02/marketing-con-IA-para-centros-audiologico.jpg",
+      img: "/images/marketing-con-IA-para-centros-audiologico.jpg",
       title: "Tus Promociones, Redes y Blog a coste cero",
       desc: "Pide a Hear-O que te ayude con publicaciones o promociones. Tendrás: ideas con textos e imágenes. Tu sólo elige, segmenta y programa."
     },
     {
-      img: "https://pymeflow.es/wp-content/uploads/2026/02/ejemplo-envio.jpg",
+      img: "/images/ejemplo-envio.jpg",
       title: "Contenidos generados con IA",
       desc: "Olvídate de escribir mails, de diseñar nada, deja que la IA trabaje por ti. Incansable: 24/7"
     }
@@ -52,7 +52,7 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
         <title>Marketing Automático para Centros Auditivos | Hear-O</title>
         <meta name="description" content="Automatice el marketing de su centro auditivo con IA. Campañas, reactivación de pacientes y contenidos automáticos para captar y retener más." />
         <meta name="keywords" content="Marketing para Centros Auditivos, Marketing para Audiología, Marketing Automático para Centros Auditivos, Automatizaciones para Centros Auditivos, IA para Centros Auditivos" />
-        <link rel="canonical" href="https://hear-o.pymeflow.es/marketing-automatico-centros-auditivos" />
+        <link rel="canonical" href="https://hear-o.es/marketing-automatico-centros-auditivos" />
       </Helmet>
       
       <LandingHeader onContactClick={onContact} />
@@ -77,7 +77,7 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
           <div className="lg:w-1/2">
              <div className="relative flex items-center justify-center group">
                 <img 
-                  src="https://pymeflow.es/wp-content/uploads/2026/02/marketing-automatico-para-centros-auditivos.png" 
+                  src="/images/marketing-automatico-para-centros-auditivos.png" 
                   alt="Software de Marketing para Centros Auditivos y Audiología" 
                   className="w-full h-auto object-contain relative z-10"
                 />
@@ -196,7 +196,7 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
                 {/* Image 1 (Front) */}
                 <div className="relative z-20 w-3/4 transform transition-transform duration-500 hover:scale-105 hover:z-30">
                    <img 
-                     src="https://pymeflow.es/wp-content/uploads/2026/02/automatizaciones-de-marketing-audiologia.jpg" 
+                     src="/images/automatizaciones-de-marketing-audiologia.jpg" 
                      alt="Automatizaciones de Marketing para Audiología" 
                      className="w-full h-auto rounded-2xl shadow-2xl border border-slate-800"
                    />
@@ -204,7 +204,7 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
                 {/* Image 2 (Back) */}
                 <div className="absolute top-10 right-4 w-3/4 z-10 transform translate-x-4 translate-y-4 transition-transform duration-500 hover:scale-105 hover:z-30 hover:-translate-x-2 hover:-translate-y-2">
                    <img 
-                     src="https://pymeflow.es/wp-content/uploads/2026/02/marketing-con-IA-para-centros-audiologico.jpg" 
+                     src="/images/marketing-con-IA-para-centros-audiologico.jpg" 
                      alt="Marketing con IA para Centros Auditivos" 
                      className="w-full h-auto rounded-2xl shadow-2xl border border-slate-800 opacity-90 hover:opacity-100"
                    />
