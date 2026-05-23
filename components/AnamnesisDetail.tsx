@@ -26,12 +26,12 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
   };
 
   const carouselImages = [
-    { src: "https://pymeflow.es/wp-content/uploads/2026/02/pantalla-inicio-Hear_o-AA.jpg", alt: "Pantalla de Inicio" },
-    { src: "https://pymeflow.es/wp-content/uploads/2026/02/ejemplo-anamnesis-audiolgia-1.jpg", alt: "Ejemplo Anamnesis" },
-    { src: "https://pymeflow.es/wp-content/uploads/2026/02/Seguimiento-resultados-gamas-notas-del-paciente.jpg", alt: "Seguimiento Resultados" },
-    { src: "https://pymeflow.es/wp-content/uploads/2026/02/ficha-completa-de-pacientes.jpg", alt: "Ficha de Pacientes" },
-    { src: "https://pymeflow.es/wp-content/uploads/2026/02/Informe-Audiologico-completo-automatico-para-el-paciente.jpg", alt: "Informe Audiológico" },
-    { src: "https://pymeflow.es/wp-content/uploads/2026/02/Argumentario-de-venta-para-el-audiologo.jpg", alt: "Argumentario de Venta" }
+    { src: "/images/pantalla-inicio-Hear_o-AA.jpg", alt: "Pantalla de Inicio" },
+    { src: "/images/ejemplo-anamnesis-audiolgia-1.jpg", alt: "Ejemplo Anamnesis" },
+    { src: "/images/Seguimiento-resultados-gamas-notas-del-paciente.jpg", alt: "Seguimiento Resultados" },
+    { src: "/images/ficha-completa-de-pacientes.jpg", alt: "Ficha de Pacientes" },
+    { src: "/images/Informe-Audiologico-completo-automatico-para-el-paciente.jpg", alt: "Informe Audiológico" },
+    { src: "/images/Argumentario-de-venta-para-el-audiologo.jpg", alt: "Argumentario de Venta" }
   ];
 
   return (
@@ -40,7 +40,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
         <title>Software de Anamnesis para Centros Auditivos | Hear-O</title>
         <meta name="description" content="Mejore la conversión en su centro auditivo con Anamnesis Asistida. Venda más audífonos profesionalizando el momento crítico de la consulta." />
         <meta name="keywords" content="Mejorar la Conversión en Centros Auditivos, Vender más audífonos, ¿Cómo vender más audífonos?" />
-        <link rel="canonical" href="https://hear-o.pymeflow.es/software-anamnesis-vender-mas-audifonos" />
+        <link rel="canonical" href="https://hear-o.es/software-anamnesis-vender-mas-audifonos" />
       </Helmet>
       
       <LandingHeader onContactClick={onContact} />
@@ -66,7 +66,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
           <div className="lg:w-7/12">
             <div className="relative flex flex-col items-center justify-center group">
                <img 
-                 src="https://pymeflow.es/wp-content/uploads/2026/02/protada-anamnesis-audiologia-para-vender-mas.png" 
+                 src="/images/protada-anamnesis-audiologia-para-vender-mas.png" 
                  alt="Software para vender más audífonos - Interfaz Hear-O" 
                  className="w-full h-auto object-contain relative z-10"
                />
@@ -132,7 +132,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://pymeflow.es/wp-content/uploads/2026/02/fondo-anamnesis2.png" 
+            src="/images/fondo-anamnesis2.png" 
             alt="Fondo tecnológico para centros auditivos" 
             className="w-full h-full object-cover"
           />
@@ -180,7 +180,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
              {/* Image 1 */}
              <div className="relative z-30 bg-slate-900 border border-slate-800 rounded-2xl p-2 shadow-2xl transform transition-transform duration-500 hover:scale-110 hover:z-40 origin-bottom-left">
                 <img 
-                  src="https://pymeflow.es/wp-content/uploads/2026/02/ejemplo-anamnesis-audiolgia.jpg" 
+                  src="/images/ejemplo-anamnesis-audiolgia.jpg" 
                   alt="Ejemplo Anamnesis" 
                   className="rounded-xl w-full h-auto object-cover" 
                 />
@@ -188,7 +188,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
              {/* Image 2 */}
              <div className="absolute -bottom-10 -right-10 w-3/4 z-10 bg-slate-900 border border-slate-800 rounded-2xl p-2 shadow-2xl transform translate-y-4 translate-x-4 transition-transform duration-500 hover:scale-110 hover:z-40 origin-bottom-right">
                 <img 
-                  src="https://pymeflow.es/wp-content/uploads/2026/02/ARGUMENTARIO-POST-PRUEBAS-AUDIOLOGICAS.jpg" 
+                  src="/images/ARGUMENTARIO-POST-PRUEBAS-AUDIOLOGICAS.jpg" 
                   alt="Argumentario" 
                   className="rounded-xl w-full h-auto object-cover" 
                 />
@@ -252,7 +252,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
           </div>
           <div className="lg:w-1/2">
              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-2 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
-                <img src="https://pymeflow.es/wp-content/uploads/2026/02/anamnesis-audiologia-con-sincronizacion-con-presentacion.png" alt="Consulta Visual" className="rounded-xl opacity-80" />
+                <img src="/images/anamnesis-audiologia-con-sincronizacion-con-presentacion.png" alt="Consulta Visual" className="rounded-xl opacity-80" />
              </div>
           </div>
         </div>
@@ -266,17 +266,17 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
              <div className="lg:w-1/2 relative min-h-[400px] md:min-h-[500px] flex items-center justify-center">
                 {/* Page 3 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform translate-x-12 -translate-y-8 rotate-6 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-10 bg-white p-1 border border-slate-200">
-                    <img src="https://pymeflow.es/wp-content/uploads/2026/02/informe-tras-prueba-audiologica-3.jpg" alt="Informe Pagina 3" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-3.jpg" alt="Informe Pagina 3" className="w-full h-auto rounded" />
                 </div>
                 
                 {/* Page 2 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform translate-x-6 -translate-y-4 rotate-3 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-20 bg-white p-1 border border-slate-200">
-                    <img src="https://pymeflow.es/wp-content/uploads/2026/02/informe-tras-prueba-audiologica-2.jpg" alt="Informe Pagina 2" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-2.jpg" alt="Informe Pagina 2" className="w-full h-auto rounded" />
                 </div>
 
                 {/* Page 1 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform -rotate-2 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-30 bg-white p-1 border border-slate-200">
-                    <img src="https://pymeflow.es/wp-content/uploads/2026/02/informe-tras-prueba-audiologica-1.jpg" alt="Informe Pagina 1" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-1.jpg" alt="Informe Pagina 1" className="w-full h-auto rounded" />
                 </div>
              </div>
              <div className="lg:w-1/2 space-y-8">
