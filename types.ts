@@ -53,6 +53,7 @@ export interface CalculatorResults {
   monthlyRecoveredBenefit: number;
   monthlyTimeSavings: number;
   recoveredHearingAids: number;
+  firstYearAnnualBenefit: number;
   secondYearAnnualBenefit: number;
   firstYearRoi: number;
   secondYearRoi: number;

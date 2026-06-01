@@ -34,6 +34,7 @@ const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onContactClick }) => {
     monthlyRecoveredBenefit: 0,
     monthlyTimeSavings: 0,
     recoveredHearingAids: 0,
+    firstYearAnnualBenefit: 0,
     secondYearAnnualBenefit: 0,
     firstYearRoi: 0,
     secondYearRoi: 0,
@@ -53,6 +54,7 @@ const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onContactClick }) => {
 
     const annualProfit = annualSalesBenefit + annualRecoveredBenefit + annualTimeSavings;
     const monthlyBenefit = annualProfit / 12;
+    const firstYearAnnualBenefit = annualProfit - ESTIMATED_ANNUAL_INVESTMENT;
     const secondYearAnnualBenefit = annualProfit - FULL_PACK_SECOND_YEAR_COST;
     const firstYearRoi = ESTIMATED_ANNUAL_INVESTMENT > 0
       ? ((annualProfit - ESTIMATED_ANNUAL_INVESTMENT) / ESTIMATED_ANNUAL_INVESTMENT) * 100
@@ -73,6 +75,7 @@ const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onContactClick }) => {
       monthlyRecoveredBenefit: Math.round(annualRecoveredBenefit / 12),
       monthlyTimeSavings: Math.round(monthlyTimeSavings),
       recoveredHearingAids: parseFloat(recoveredHearingAids.toFixed(1)),
+      firstYearAnnualBenefit: Math.round(firstYearAnnualBenefit),
       secondYearAnnualBenefit: Math.round(secondYearAnnualBenefit),
       firstYearRoi: Math.round(firstYearRoi),
       secondYearRoi: Math.round(secondYearRoi),
@@ -168,20 +171,20 @@ const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onContactClick }) => {
                     <p className="text-xs text-slate-400 mb-1">Beneficio mensual</p>
                     <p className="text-2xl font-bold text-white">{results.monthlyBenefit.toLocaleString('es-ES')}€</p>
                   </div>
-                  <div className="bg-slate-950/50 p-4 rounded-xl border border-green-500/30">
-                    <p className="text-xs text-slate-400 mb-1">Beneficio anual 2º año</p>
-                    <p className="text-2xl font-bold text-green-400">{results.secondYearAnnualBenefit.toLocaleString('es-ES')}€</p>
+                  <div className="bg-slate-950/50 p-4 rounded-xl border border-slate-700/50">
+                    <p className="text-xs text-slate-400 mb-1">Beneficio anual año 1</p>
+                    <p className="text-2xl font-bold text-white">{results.firstYearAnnualBenefit.toLocaleString('es-ES')}€</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3">
                   <div className="bg-brand-orange/10 p-4 rounded-xl border border-brand-orange/40">
-                    <p className="text-xs text-orange-200 mb-1">Ahorro anual total</p>
-                    <p className="text-2xl font-bold text-white">{results.annualProfit.toLocaleString('es-ES')}€</p>
+                    <p className="text-xs text-orange-200 mb-1">Ahorro anual año 2</p>
+                    <p className="text-2xl font-bold text-white">{results.secondYearAnnualBenefit.toLocaleString('es-ES')}€</p>
                   </div>
-                  <div className="bg-slate-950/50 p-4 rounded-xl border border-slate-700/50">
+                  <div className="bg-slate-950/50 p-4 rounded-xl border border-green-500/30">
                     <p className="text-xs text-slate-400 mb-1">ROI 1er año</p>
-                    <p className="text-2xl font-bold text-white">{results.firstYearRoi}%</p>
+                    <p className="text-2xl font-bold text-green-400">{results.firstYearRoi}%</p>
                   </div>
                   <div className="bg-slate-950/50 p-4 rounded-xl border border-green-500/30">
                     <p className="text-xs text-slate-400 mb-1">ROI 2º año</p>
@@ -191,7 +194,7 @@ const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onContactClick }) => {
 
                 <div className="bg-slate-800/50 p-4 rounded-xl text-sm text-slate-300 border border-slate-700/50 leading-relaxed">
                   <p>
-                    <strong>Resumen:</strong> Hear-O ayuda a vender mejor, recuperar contactos y liberar tiempo. Estimamos un 20% más de ventas, recuperación mínima del 15% de la base de datos y ahorro de {inputs.adminHoursPerMonth}h al mes ({results.monthlyTimeSavings.toLocaleString('es-ES')}€) en agenda y recordatorios.
+                    <strong>Resumen:</strong> el beneficio mensual combina ventas extra, recuperación de contactos y ahorro de horas. En el año 1 ya descontamos la implantación y 12 meses de mantenimiento; en el año 2 solo descontamos el mantenimiento anual.
                   </p>
                 </div>
 
