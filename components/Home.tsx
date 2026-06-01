@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Hero from './Hero';
 import PainPoints from './PainPoints';
@@ -7,12 +8,16 @@ import HowItWorks from './HowItWorks';
 import FeaturesDetail from './FeaturesDetail';
 import Solution from './Solution';
 import RoiCalculator from './RoiCalculator';
-import Pricing from './Pricing';
+import PricingSummary from './PricingSummary';
+import WhatIsHearO from './WhatIsHearO';
+import ResourcesSection from './ResourcesSection';
 import Onboarding from './Onboarding';
 import FAQ from './FAQ';
 import Footer from './Footer';
 import Button from './Button';
 import CookieNotice from './CookieNotice';
+import SeoJsonLd from './SeoJsonLd';
+import { FULL_PACK, guidePages, SITE_URL } from '../seoContent';
 
 interface HomeProps {
   onContactClick: () => void;
@@ -36,17 +41,73 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
         <meta name="description" content="Automatiza tu Centro Auditivo con IA y vende más audífonos. Aumenta tus ventas un 60% y ahorra 30h/mes en gestión. Marketing y Anamnesis con Inteligencia Artificial." />
         <link rel="canonical" href="https://hear-o.es/" />
       </Helmet>
+      <SeoJsonLd data={[
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'Hear-O',
+          url: SITE_URL,
+          logo: `${SITE_URL}/images/logo-hear-o-naranja.webp`,
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'sales',
+            email: 'info@pymeflow.es',
+            telephone: '+34 609 83 69 04',
+            areaServed: 'ES'
+          }
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Hear-O Full Pack',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Web',
+          url: `${SITE_URL}/software-centros-auditivos-hear-o`,
+          description: 'Aplicacion web modular con IA para centros auditivos.',
+          offers: {
+            '@type': 'Offer',
+            priceCurrency: 'EUR',
+            price: '215',
+            description: `${FULL_PACK.setupPrice} de implantacion y ${FULL_PACK.monthlyPrice}/mes con facturacion anual.`
+          }
+        }
+      ]} />
       <Header onContactClick={onContactClick} />
       
       <main>
         <Hero onCtaClick={onContactClick} onRoiClick={scrollToRoi} onNavigate={onNavigate} />
+        <WhatIsHearO />
         <PainPoints />
         <HowItWorks onNavigate={onNavigate} />
         <FeaturesDetail />
-        <Pricing onContactClick={onContactClick} onNavigate={onNavigate} />
+        <PricingSummary />
         <RoiCalculator onContactClick={onContactClick} />
         <Solution />
         <Onboarding />
+        <ResourcesSection />
+
+        <section className="py-24 bg-slate-900 px-4">
+          <div className="container mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+              <div>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Guias para centros auditivos</h2>
+                <p className="text-slate-400 text-xl max-w-3xl">
+                  Contenido practico para posicionar Hear-O en busquedas y respuestas de IA.
+                </p>
+              </div>
+              <Link to="/guias" className="text-brand-orange font-bold hover:text-white transition-colors">Ver todas las guias</Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {guidePages.slice(0, 4).map(guide => (
+                <Link key={guide.slug} to={`/guias/${guide.slug}`} className="bg-slate-950 border border-slate-800 rounded-2xl p-6 hover:border-brand-orange/50 hover:bg-slate-800 transition-colors">
+                  <div className="text-sm text-brand-orange font-bold mb-3">{guide.keyword}</div>
+                  <h3 className="text-xl font-bold text-white mb-3">{guide.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{guide.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
         
         {/* Final CTA Section */}
         <section className="py-24 bg-gradient-to-r from-brand-blue to-indigo-900 text-center px-4 relative overflow-hidden">

@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { LOGO_SMALL } from '../constants';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-black border-t border-slate-900 py-12 text-sm">
       <div className="container mx-auto px-6 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
                <img src={LOGO_SMALL} alt="Hear-O" className="h-8" />
@@ -16,6 +17,17 @@ const Footer: React.FC = () => {
             </p>
           </div>
           
+          <div>
+            <h4 className="text-white font-bold mb-4">Soluciones</h4>
+            <ul className="space-y-2 text-slate-500">
+              <li><Link to="/software-centros-auditivos-hear-o" className="hover:text-brand-orange transition-colors">Full Pack</Link></li>
+              <li><Link to="/marketing-automatico-centros-auditivos" className="hover:text-brand-orange transition-colors">Marketing Studio</Link></li>
+              <li><Link to="/crm-calendario-centros-auditivos" className="hover:text-brand-orange transition-colors">CRM & Calendario</Link></li>
+              <li><Link to="/expertos-ia-audiologia" className="hover:text-brand-orange transition-colors">Expertos IA</Link></li>
+              <li><Link to="/guias" className="hover:text-brand-orange transition-colors">Guias</Link></li>
+            </ul>
+          </div>
+
           <div>
             <h4 className="text-white font-bold mb-4">Legal</h4>
             <ul className="space-y-2 text-slate-500">

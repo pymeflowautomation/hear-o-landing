@@ -1,12 +1,17 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { 
   Mail, Megaphone, Users, Calendar, 
-  BarChart3, Zap, Repeat, Heart, ChevronLeft, ChevronRight
+  BarChart3, Zap, Repeat, Heart, ChevronLeft, ChevronRight, Headphones, ClipboardCheck
 } from 'lucide-react';
 import Button from './Button';
 import LandingHeader from './LandingHeader';
 import Footer from './Footer';
+import { modules } from '../seoContent';
+import Reveal from './Reveal';
+import ZoomableImage from './ZoomableImage';
+import ModulePricingBox from './ModulePricingBox';
 
 interface MarketingDetailProps {
   onContact: () => void;
@@ -25,22 +30,22 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
 
   const carouselItems = [
     {
-      img: "/images/automatizaciones-de-marketing-audiologia.jpg",
+      img: "/images/automatizaciones-de-marketing-audiologia.webp",
       title: "Todo el Marketing que necesita tu centro",
       desc: "Más de 10 tipos de envíos predefinidos, diseñados para tu centro auditivo y tu base de datos."
     },
     {
-      img: "/images/imagen-2-HMS.jpg",
+      img: "/images/imagen-2-HMS.webp",
       title: "Configuración sencilla",
       desc: "Automático y programado al 100%, pero si quieres, toma el control: Activa o desactiva, configura frecuencia, canales..."
     },
     {
-      img: "/images/marketing-con-IA-para-centros-audiologico.jpg",
+      img: "/images/marketing-con-IA-para-centros-audiologico.webp",
       title: "Tus Promociones, Redes y Blog a coste cero",
       desc: "Pide a Hear-O que te ayude con publicaciones o promociones. Tendrás: ideas con textos e imágenes. Tu sólo elige, segmenta y programa."
     },
     {
-      img: "/images/ejemplo-envio.jpg",
+      img: "/images/ejemplo-envio.webp",
       title: "Contenidos generados con IA",
       desc: "Olvídate de escribir mails, de diseñar nada, deja que la IA trabaje por ti. Incansable: 24/7"
     }
@@ -58,7 +63,7 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
       <LandingHeader onContactClick={onContact} />
 
       {/* Hero */}
-      <section className="container mx-auto px-6 lg:px-20 mb-24">
+      <Reveal className="container mx-auto px-6 lg:px-20 mb-24">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 space-y-6">
             <div className="inline-block bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full font-bold text-sm mb-2">
@@ -76,15 +81,16 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
           </div>
           <div className="lg:w-1/2">
              <div className="relative flex items-center justify-center group">
-                <img 
-                  src="/images/marketing-automatico-para-centros-auditivos.png" 
+                <ZoomableImage 
+                  src="/images/marketing-automatico-para-centros-auditivos.webp" 
                   alt="Software de Marketing para Centros Auditivos y Audiología" 
-                  className="w-full h-auto object-contain relative z-10"
+                  frameClassName="rounded-2xl"
+                  className="object-contain relative z-10"
                 />
              </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* Pain Points */}
       <section className="bg-slate-900 py-20 mb-24">
@@ -123,7 +129,7 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
       </section>
 
       {/* Carousel Section */}
-      <section className="container mx-auto px-6 lg:px-20 mb-24">
+      <Reveal className="container mx-auto px-6 lg:px-20 mb-24">
          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Potencia tu Marketing</h2>
          <div className="relative group">
             {/* Controls */}
@@ -161,7 +167,43 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
                ))}
             </div>
          </div>
-      </section>
+      </Reveal>
+
+      {/* Lead Magnet */}
+      <Reveal className="container mx-auto px-6 lg:px-20 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-slate-900 border border-blue-500/20 rounded-3xl p-8 lg:p-12">
+          <div>
+            <div className="inline-block bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full font-bold text-sm mb-5">
+              Lead magnet incluido
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Tu propia Prueba Auditiva Online para captar leads
+            </h2>
+            <p className="text-xl text-slate-300 leading-relaxed mb-8">
+              Cada centro puede tener una landing personalizada con su logo y su marca. Los contactos que completan la prueba entran en la base de datos para acciones posteriores de email, seguimiento y campañas.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5">
+                <Headphones className="text-blue-400 mb-4" size={32} />
+                <h3 className="text-xl font-bold text-white mb-2">Prueba sonora</h3>
+                <p className="text-slate-400">Frecuencias, entornos sonoros y palabras para generar una experiencia interactiva.</p>
+              </div>
+              <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5">
+                <ClipboardCheck className="text-green-400 mb-4" size={32} />
+                <h3 className="text-xl font-bold text-white mb-2">Autotest de preguntas</h3>
+                <p className="text-slate-400">Cuestionario sencillo para detectar interes y activar seguimiento comercial.</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-slate-950 border border-slate-800 rounded-3xl p-3 shadow-2xl">
+            <ZoomableImage
+              src="/images/mkt_leadmagnet hear-o.webp"
+              alt="Prueba Auditiva Online personalizada para centros auditivos"
+              frameClassName="rounded-2xl"
+            />
+          </div>
+        </div>
+      </Reveal>
 
       {/* Solution Definition */}
       <section className="container mx-auto px-6 lg:px-20 mb-24">
@@ -195,18 +237,18 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
             <div className="lg:w-1/2 relative min-h-[400px] flex items-center justify-center">
                 {/* Image 1 (Front) */}
                 <div className="relative z-20 w-3/4 transform transition-transform duration-500 hover:scale-105 hover:z-30">
-                   <img 
-                     src="/images/automatizaciones-de-marketing-audiologia.jpg" 
+                   <ZoomableImage 
+                     src="/images/automatizaciones-de-marketing-audiologia.webp" 
                      alt="Automatizaciones de Marketing para Audiología" 
-                     className="w-full h-auto rounded-2xl shadow-2xl border border-slate-800"
+                     frameClassName="rounded-2xl shadow-2xl border border-slate-800"
                    />
                 </div>
                 {/* Image 2 (Back) */}
                 <div className="absolute top-10 right-4 w-3/4 z-10 transform translate-x-4 translate-y-4 transition-transform duration-500 hover:scale-105 hover:z-30 hover:-translate-x-2 hover:-translate-y-2">
-                   <img 
-                     src="/images/marketing-con-IA-para-centros-audiologico.jpg" 
+                   <ZoomableImage 
+                     src="/images/marketing-con-IA-para-centros-audiologico.webp" 
                      alt="Marketing con IA para Centros Auditivos" 
-                     className="w-full h-auto rounded-2xl shadow-2xl border border-slate-800 opacity-90 hover:opacity-100"
+                     frameClassName="rounded-2xl shadow-2xl border border-slate-800 opacity-90 hover:opacity-100"
                    />
                 </div>
             </div>
@@ -366,6 +408,26 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
           </div>
         </div>
       </section>
+
+      <section className="container mx-auto px-6 lg:px-20 mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Marketing Studio forma parte del ecosistema Hear-O</h2>
+          <p className="text-slate-400 text-lg">Este modulo capta y reactiva pacientes. Conectado con CRM & Calendario, Anamnesis y Expertos IA, se convierte en un sistema completo de crecimiento.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {modules.map(module => (
+            <Link key={module.id} to={module.path} className={`bg-slate-900 border ${module.border} rounded-2xl p-5 hover:bg-slate-800 transition-colors`}>
+              <div className={`flex items-center gap-3 font-bold ${module.color} mb-2`}>
+                <module.icon size={20} />
+                {module.name}
+              </div>
+              <p className="text-sm text-slate-400 leading-relaxed">{module.summary}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <ModulePricingBox planId="marketing-studio" onContact={onContact} />
 
       {/* CTA */}
       <section className="container mx-auto px-6 lg:px-20 text-center pb-12">

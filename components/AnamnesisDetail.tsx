@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   CheckCircle2, AlertCircle, BrainCircuit, 
@@ -9,6 +10,10 @@ import {
 import Button from './Button';
 import LandingHeader from './LandingHeader';
 import Footer from './Footer';
+import { modules } from '../seoContent';
+import ZoomableImage from './ZoomableImage';
+import Reveal from './Reveal';
+import ModulePricingBox from './ModulePricingBox';
 
 interface AnamnesisDetailProps {
   onContact: () => void;
@@ -26,12 +31,12 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
   };
 
   const carouselImages = [
-    { src: "/images/pantalla-inicio-Hear_o-AA.jpg", alt: "Pantalla de Inicio" },
-    { src: "/images/ejemplo-anamnesis-audiolgia-1.jpg", alt: "Ejemplo Anamnesis" },
-    { src: "/images/Seguimiento-resultados-gamas-notas-del-paciente.jpg", alt: "Seguimiento Resultados" },
-    { src: "/images/ficha-completa-de-pacientes.jpg", alt: "Ficha de Pacientes" },
-    { src: "/images/Informe-Audiologico-completo-automatico-para-el-paciente.jpg", alt: "Informe Audiológico" },
-    { src: "/images/Argumentario-de-venta-para-el-audiologo.jpg", alt: "Argumentario de Venta" }
+    { src: "/images/pantalla-inicio-Hear_o-AA.webp", alt: "Pantalla de Inicio" },
+    { src: "/images/ejemplo-anamnesis-audiolgia-1.webp", alt: "Ejemplo Anamnesis" },
+    { src: "/images/Seguimiento-resultados-gamas-notas-del-paciente.webp", alt: "Seguimiento Resultados" },
+    { src: "/images/ficha-completa-de-pacientes.webp", alt: "Ficha de Pacientes" },
+    { src: "/images/Informe-Audiologico-completo-automatico-para-el-paciente.webp", alt: "Informe Audiológico" },
+    { src: "/images/Argumentario-de-venta-para-el-audiologo.webp", alt: "Argumentario de Venta" }
   ];
 
   return (
@@ -46,7 +51,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
       <LandingHeader onContactClick={onContact} />
 
       {/* Slide 1: Hero */}
-      <section className="container mx-auto px-6 lg:px-20 mb-24">
+      <Reveal className="container mx-auto px-6 lg:px-20 mb-24">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-5/12 space-y-6">
             <div className="inline-block bg-brand-orange/10 text-brand-orange px-4 py-1.5 rounded-full font-bold text-sm mb-2">
@@ -65,10 +70,11 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
           </div>
           <div className="lg:w-7/12">
             <div className="relative flex flex-col items-center justify-center group">
-               <img 
-                 src="/images/protada-anamnesis-audiologia-para-vender-mas.png" 
+               <ZoomableImage 
+                 src="/images/protada-anamnesis-audiologia-para-vender-mas.webp" 
                  alt="Software para vender más audífonos - Interfaz Hear-O" 
-                 className="w-full h-auto object-contain relative z-10"
+                 frameClassName="rounded-2xl"
+                 className="object-contain relative z-10"
                />
                <div className="w-full mt-4 md:mt-0 md:absolute md:bottom-4 md:left-10 md:right-10 bg-slate-900/90 backdrop-blur p-4 rounded-xl border border-slate-700 z-20 shadow-2xl">
                   <div className="flex items-center gap-4">
@@ -79,7 +85,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* Slide 2: El Dolor Silencioso */}
       <section className="bg-slate-900 py-20 mb-24">
@@ -132,7 +138,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/fondo-anamnesis2.png" 
+            src="/images/fondo-anamnesis2.webp" 
             alt="Fondo tecnológico para centros auditivos" 
             className="w-full h-full object-cover"
           />
@@ -179,18 +185,18 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
           <div className="lg:w-1/2 relative group">
              {/* Image 1 */}
              <div className="relative z-30 bg-slate-900 border border-slate-800 rounded-2xl p-2 shadow-2xl transform transition-transform duration-500 hover:scale-110 hover:z-40 origin-bottom-left">
-                <img 
-                  src="/images/ejemplo-anamnesis-audiolgia.jpg" 
+                <ZoomableImage 
+                  src="/images/ejemplo-anamnesis-audiolgia.webp" 
                   alt="Ejemplo Anamnesis" 
-                  className="rounded-xl w-full h-auto object-cover" 
+                  frameClassName="rounded-xl"
                 />
              </div>
              {/* Image 2 */}
              <div className="absolute -bottom-10 -right-10 w-3/4 z-10 bg-slate-900 border border-slate-800 rounded-2xl p-2 shadow-2xl transform translate-y-4 translate-x-4 transition-transform duration-500 hover:scale-110 hover:z-40 origin-bottom-right">
-                <img 
-                  src="/images/ARGUMENTARIO-POST-PRUEBAS-AUDIOLOGICAS.jpg" 
+                <ZoomableImage 
+                  src="/images/ARGUMENTARIO-POST-PRUEBAS-AUDIOLOGICAS.webp" 
                   alt="Argumentario" 
-                  className="rounded-xl w-full h-auto object-cover" 
+                  frameClassName="rounded-xl"
                 />
              </div>
           </div>
@@ -252,7 +258,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
           </div>
           <div className="lg:w-1/2">
              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-2 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
-                <img src="/images/anamnesis-audiologia-con-sincronizacion-con-presentacion.png" alt="Consulta Visual" className="rounded-xl opacity-80" />
+                <ZoomableImage src="/images/anamnesis-audiologia-con-sincronizacion-con-presentacion.webp" alt="Consulta Visual" frameClassName="rounded-xl" className="opacity-80" />
              </div>
           </div>
         </div>
@@ -266,17 +272,17 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
              <div className="lg:w-1/2 relative min-h-[400px] md:min-h-[500px] flex items-center justify-center">
                 {/* Page 3 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform translate-x-12 -translate-y-8 rotate-6 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-10 bg-white p-1 border border-slate-200">
-                    <img src="/images/informe-tras-prueba-audiologica-3.jpg" alt="Informe Pagina 3" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-3.webp" alt="Informe Pagina 3" className="w-full h-auto rounded" />
                 </div>
                 
                 {/* Page 2 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform translate-x-6 -translate-y-4 rotate-3 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-20 bg-white p-1 border border-slate-200">
-                    <img src="/images/informe-tras-prueba-audiologica-2.jpg" alt="Informe Pagina 2" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-2.webp" alt="Informe Pagina 2" className="w-full h-auto rounded" />
                 </div>
 
                 {/* Page 1 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform -rotate-2 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-30 bg-white p-1 border border-slate-200">
-                    <img src="/images/informe-tras-prueba-audiologica-1.jpg" alt="Informe Pagina 1" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-1.webp" alt="Informe Pagina 1" className="w-full h-auto rounded" />
                 </div>
              </div>
              <div className="lg:w-1/2 space-y-8">
@@ -448,6 +454,26 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
           </div>
         </div>
       </section>
+
+      <section className="container mx-auto px-6 lg:px-20 mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Anamnesis Assistant forma parte del ecosistema Hear-O</h2>
+          <p className="text-slate-400 text-lg">Este modulo mejora la consulta y el cierre. Conectado con Marketing, CRM & Calendario y Expertos IA, sostiene todo el recorrido del paciente.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {modules.map(module => (
+            <Link key={module.id} to={module.path} className={`bg-slate-900 border ${module.border} rounded-2xl p-5 hover:bg-slate-800 transition-colors`}>
+              <div className={`flex items-center gap-3 font-bold ${module.color} mb-2`}>
+                <module.icon size={20} />
+                {module.name}
+              </div>
+              <p className="text-sm text-slate-400 leading-relaxed">{module.summary}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <ModulePricingBox planId="anamnesis-assistant" onContact={onContact} />
 
       {/* Slide 10: CTA */}
       <section className="container mx-auto px-6 lg:px-20 text-center pb-12">

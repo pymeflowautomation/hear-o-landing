@@ -32,3 +32,549 @@
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+@layer components {
+  .bg-slate-900.border,
+  .bg-slate-900\/50.border,
+  .bg-slate-900\/70.border,
+  .bg-slate-900\/80.border,
+  .bg-slate-950.border,
+  .bg-slate-950\/50.border,
+  .bg-slate-950\/70.border,
+  .bg-slate-800\/30.border,
+  .bg-slate-800\/40.border,
+  .bg-slate-800\/50.border {
+    position: relative;
+    isolation: isolate;
+    --card-accent-rgb: 59, 130, 246;
+    --card-accent-rgb-2: 249, 115, 22;
+    border-color: rgba(203, 213, 225, 0.42) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 0 24px rgba(148, 163, 184, 0.045),
+      0 0 0 1px rgba(var(--card-accent-rgb), 0.08),
+      0 0 22px rgba(var(--card-accent-rgb), 0.08),
+      0 18px 42px rgba(2, 6, 23, 0.34);
+    transition: border-color 260ms ease, box-shadow 260ms ease, transform 260ms ease;
+  }
+
+  .bg-slate-900.border > *,
+  .bg-slate-900\/50.border > *,
+  .bg-slate-900\/70.border > *,
+  .bg-slate-900\/80.border > *,
+  .bg-slate-950.border > *,
+  .bg-slate-950\/50.border > *,
+  .bg-slate-950\/70.border > *,
+  .bg-slate-800\/30.border > *,
+  .bg-slate-800\/40.border > *,
+  .bg-slate-800\/50.border > *,
+  .featured-pack-glow > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .bg-slate-900.border::before,
+  .bg-slate-900\/50.border::before,
+  .bg-slate-900\/70.border::before,
+  .bg-slate-900\/80.border::before,
+  .bg-slate-950.border::before,
+  .bg-slate-950\/50.border::before,
+  .bg-slate-950\/70.border::before,
+  .bg-slate-800\/30.border::before,
+  .bg-slate-800\/40.border::before,
+  .bg-slate-800\/50.border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(var(--card-accent-rgb), 0.18) 36%,
+        rgba(var(--card-accent-rgb-2), 0.12) 62%,
+        rgba(255, 255, 255, 0.08) 100%
+      );
+    background-size: 260% 260%;
+    animation: borderLightSweep 8s ease-in-out infinite;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.7;
+    z-index: 0;
+  }
+
+  .bg-slate-900.border::after,
+  .bg-slate-900\/50.border::after,
+  .bg-slate-900\/70.border::after,
+  .bg-slate-900\/80.border::after,
+  .bg-slate-950.border::after,
+  .bg-slate-950\/50.border::after,
+  .bg-slate-950\/70.border::after,
+  .bg-slate-800\/30.border::after,
+  .bg-slate-800\/40.border::after,
+  .bg-slate-800\/50.border::after {
+    content: none;
+  }
+
+  .bg-slate-900.border:hover,
+  .bg-slate-900\/50.border:hover,
+  .bg-slate-900\/70.border:hover,
+  .bg-slate-900\/80.border:hover,
+  .bg-slate-950.border:hover,
+  .bg-slate-950\/50.border:hover,
+  .bg-slate-950\/70.border:hover,
+  .bg-slate-800\/30.border:hover,
+  .bg-slate-800\/40.border:hover,
+  .bg-slate-800\/50.border:hover {
+    border-color: rgba(255, 255, 255, 0.62) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 0 30px rgba(var(--card-accent-rgb), 0.09),
+      0 0 0 1px rgba(var(--card-accent-rgb), 0.32),
+      0 0 30px rgba(var(--card-accent-rgb), 0.22),
+      0 22px 52px rgba(2, 6, 23, 0.42);
+  }
+
+  .bg-slate-900.border:hover::after,
+  .bg-slate-900\/50.border:hover::after,
+  .bg-slate-900\/70.border:hover::after,
+  .bg-slate-900\/80.border:hover::after,
+  .bg-slate-950.border:hover::after,
+  .bg-slate-950\/50.border:hover::after,
+  .bg-slate-950\/70.border:hover::after,
+  .bg-slate-800\/30.border:hover::after,
+  .bg-slate-800\/40.border:hover::after,
+  .bg-slate-800\/50.border:hover::after {
+    content: none;
+  }
+
+  .card-accent-blue {
+    --card-accent-rgb: 59, 130, 246;
+    --card-accent-rgb-2: 14, 165, 233;
+  }
+
+  .card-accent-green {
+    --card-accent-rgb: 34, 197, 94;
+    --card-accent-rgb-2: 20, 184, 166;
+  }
+
+  .card-accent-orange {
+    --card-accent-rgb: 249, 115, 22;
+    --card-accent-rgb-2: 239, 68, 68;
+  }
+
+  .card-accent-purple {
+    --card-accent-rgb: 168, 85, 247;
+    --card-accent-rgb-2: 236, 72, 153;
+  }
+
+  .corner-l-glow.card-accent-blue,
+  .bg-slate-900.border.card-accent-blue,
+  .bg-slate-900\/50.border.card-accent-blue,
+  .bg-slate-950.border.card-accent-blue,
+  .bg-slate-950\/50.border.card-accent-blue,
+  .bg-slate-800\/40.border.card-accent-blue {
+    --card-accent-rgb: 59, 130, 246;
+    --card-accent-rgb-2: 14, 165, 233;
+  }
+
+  .corner-l-glow.card-accent-green,
+  .bg-slate-900.border.card-accent-green,
+  .bg-slate-900\/50.border.card-accent-green,
+  .bg-slate-950.border.card-accent-green,
+  .bg-slate-950\/50.border.card-accent-green,
+  .bg-slate-800\/40.border.card-accent-green {
+    --card-accent-rgb: 34, 197, 94;
+    --card-accent-rgb-2: 20, 184, 166;
+  }
+
+  .corner-l-glow.card-accent-orange,
+  .bg-slate-900.border.card-accent-orange,
+  .bg-slate-900\/50.border.card-accent-orange,
+  .bg-slate-950.border.card-accent-orange,
+  .bg-slate-950\/50.border.card-accent-orange,
+  .bg-slate-800\/40.border.card-accent-orange {
+    --card-accent-rgb: 249, 115, 22;
+    --card-accent-rgb-2: 239, 68, 68;
+  }
+
+  .corner-l-glow.card-accent-purple,
+  .bg-slate-900.border.card-accent-purple,
+  .bg-slate-900\/50.border.card-accent-purple,
+  .bg-slate-950.border.card-accent-purple,
+  .bg-slate-950\/50.border.card-accent-purple,
+  .bg-slate-800\/40.border.card-accent-purple {
+    --card-accent-rgb: 168, 85, 247;
+    --card-accent-rgb-2: 236, 72, 153;
+  }
+
+  .featured-pack-glow {
+    position: relative;
+    isolation: isolate;
+    --card-accent-rgb: 249, 115, 22;
+    --card-accent-rgb-2: 59, 130, 246;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 0 38px rgba(249, 115, 22, 0.08),
+      0 0 0 1px rgba(249, 115, 22, 0.34),
+      0 0 58px rgba(249, 115, 22, 0.24),
+      0 28px 70px rgba(2, 6, 23, 0.46);
+  }
+
+  .featured-pack-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.14),
+        rgba(249, 115, 22, 0.82),
+        rgba(59, 130, 246, 0.58),
+        rgba(255, 255, 255, 0.12)
+      );
+    background-size: 280% 280%;
+    animation: borderLightSweep 4.6s ease-in-out infinite;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 0;
+  }
+
+  .featured-pack-glow::after {
+    content: none;
+  }
+
+  .corner-l-glow {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .corner-l-glow::after {
+    content: "";
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    width: clamp(120px, 28%, 210px);
+    height: clamp(120px, 34%, 230px);
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      linear-gradient(to left, rgba(255, 245, 220, 1) 0%, rgba(var(--card-accent-rgb), 1) 9%, rgba(var(--card-accent-rgb), 0.7) 28%, rgba(var(--card-accent-rgb), 0.22) 58%, transparent 100%) bottom right / 100% 4px no-repeat,
+      linear-gradient(to top, rgba(255, 245, 220, 1) 0%, rgba(var(--card-accent-rgb), 1) 9%, rgba(var(--card-accent-rgb), 0.68) 30%, rgba(var(--card-accent-rgb), 0.2) 60%, transparent 100%) bottom right / 4px 100% no-repeat,
+      radial-gradient(circle at calc(100% - 2px) calc(100% - 2px), rgba(255, 238, 204, 0.95) 0%, rgba(var(--card-accent-rgb), 0.58) 14%, rgba(var(--card-accent-rgb), 0.24) 34%, transparent 70%);
+    filter:
+      drop-shadow(0 0 7px rgba(var(--card-accent-rgb), 0.95))
+      drop-shadow(0 0 18px rgba(var(--card-accent-rgb), 0.74))
+      drop-shadow(0 0 42px rgba(var(--card-accent-rgb), 0.44));
+    opacity: 0.92;
+    z-index: 2;
+  }
+
+  .corner-l-glow.bg-slate-900.border::after,
+  .corner-l-glow.bg-slate-900\/50.border::after,
+  .corner-l-glow.bg-slate-900\/70.border::after,
+  .corner-l-glow.bg-slate-900\/80.border::after,
+  .corner-l-glow.bg-slate-950.border::after,
+  .corner-l-glow.bg-slate-950\/50.border::after,
+  .corner-l-glow.bg-slate-950\/70.border::after,
+  .corner-l-glow.bg-slate-800\/30.border::after,
+  .corner-l-glow.bg-slate-800\/40.border::after,
+  .corner-l-glow.bg-slate-800\/50.border::after {
+    content: "";
+  }
+
+  .corner-l-glow:hover::after {
+    opacity: 1;
+    filter:
+      drop-shadow(0 0 7px rgba(var(--card-accent-rgb), 1))
+      drop-shadow(0 0 20px rgba(var(--card-accent-rgb), 0.84))
+      drop-shadow(0 0 42px rgba(var(--card-accent-rgb), 0.56));
+  }
+
+  .neon-corner,
+  .neon-corner-subtle {
+    position: relative;
+    isolation: isolate;
+    overflow: visible !important;
+  }
+
+  .neon-corner > *,
+  .neon-corner-subtle > * {
+    position: relative;
+    z-index: 3;
+  }
+
+  .neon-corner::before,
+  .neon-corner::after,
+  .neon-corner-subtle::before,
+  .neon-corner-subtle::after {
+    content: none !important;
+  }
+
+  .glow-border-wrapper {
+    position: absolute !important;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 2 !important;
+    filter:
+      drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.79))
+      drop-shadow(0px 0px 6px rgba(255, 255, 0, 0.79))
+      drop-shadow(0px 0px 19px rgba(255, 122, 0, 0.5925))
+      drop-shadow(0px 0px 42px rgba(255, 122, 0, 0.158));
+  }
+
+  .glow-border-wrapper-subtle {
+    filter:
+      drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.22))
+      drop-shadow(0px 0px 7px rgba(var(--card-accent-rgb), 0.24))
+      drop-shadow(0px 0px 18px rgba(var(--card-accent-rgb), 0.12));
+    opacity: 0.72;
+  }
+
+  .glow-border-line {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: inherit;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    padding-top: 0;
+    padding-left: 0;
+    background:
+      radial-gradient(circle at bottom right, #ffff00 0%, #ff7a00 25%, rgba(255, 122, 0, 0.1) 67%, transparent 96%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .glow-border-wrapper-subtle .glow-border-line {
+    padding-bottom: 2px;
+    padding-right: 2px;
+    background:
+      radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.68) 0%, rgba(var(--card-accent-rgb), 0.46) 24%, rgba(var(--card-accent-rgb), 0.08) 66%, transparent 94%);
+  }
+
+  .neon-corner::before,
+  .neon-corner-subtle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-sizing: border-box;
+    z-index: 2;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .neon-corner::before {
+    padding-bottom: 3px !important;
+    padding-right: 3px !important;
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    background:
+      radial-gradient(circle at bottom right, #ffff8a 0%, #ff7a00 25%, rgba(255, 122, 0, 0.18) 67%, transparent 96%) !important;
+    filter:
+      drop-shadow(0 0 2px rgba(255, 255, 255, 0.77))
+      drop-shadow(0 0 8px rgba(255, 255, 0, 0.77))
+      drop-shadow(0 0 26px rgba(255, 122, 0, 0.58))
+      drop-shadow(0 0 57px rgba(255, 122, 0, 0.22)) !important;
+  }
+
+  .neon-corner-subtle::before {
+    padding-bottom: 2px !important;
+    padding-right: 2px !important;
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    background:
+      radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.55) 0%, rgba(var(--card-accent-rgb), 0.42) 24%, rgba(var(--card-accent-rgb), 0.08) 64%, transparent 92%) !important;
+    filter:
+      drop-shadow(0 0 2px rgba(255, 255, 255, 0.22))
+      drop-shadow(0 0 10px rgba(var(--card-accent-rgb), 0.26))
+      drop-shadow(0 0 28px rgba(var(--card-accent-rgb), 0.13)) !important;
+    opacity: 0.78;
+  }
+
+  .neon-corner::after,
+  .neon-corner-subtle::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-sizing: border-box;
+    z-index: 4;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .neon-corner.bg-slate-900.border::before,
+  .neon-corner.bg-slate-900\/50.border::before,
+  .neon-corner.bg-slate-900\/70.border::before,
+  .neon-corner.bg-slate-900\/80.border::before,
+  .neon-corner.bg-slate-950.border::before,
+  .neon-corner.bg-slate-950\/50.border::before,
+  .neon-corner.bg-slate-950\/70.border::before,
+  .neon-corner.bg-slate-800\/30.border::before,
+  .neon-corner.bg-slate-800\/40.border::before,
+  .neon-corner.bg-slate-800\/50.border::before,
+  .neon-corner-subtle.bg-slate-900.border::before,
+  .neon-corner-subtle.bg-slate-900\/50.border::before,
+  .neon-corner-subtle.bg-slate-900\/70.border::before,
+  .neon-corner-subtle.bg-slate-900\/80.border::before,
+  .neon-corner-subtle.bg-slate-950.border::before,
+  .neon-corner-subtle.bg-slate-950\/50.border::before,
+  .neon-corner-subtle.bg-slate-950\/70.border::before,
+  .neon-corner-subtle.bg-slate-800\/30.border::before,
+  .neon-corner-subtle.bg-slate-800\/40.border::before,
+  .neon-corner-subtle.bg-slate-800\/50.border::before {
+    content: "" !important;
+    animation: none !important;
+  }
+
+  .neon-corner.bg-slate-900.border::after,
+  .neon-corner.bg-slate-900\/50.border::after,
+  .neon-corner.bg-slate-900\/70.border::after,
+  .neon-corner.bg-slate-900\/80.border::after,
+  .neon-corner.bg-slate-950.border::after,
+  .neon-corner.bg-slate-950\/50.border::after,
+  .neon-corner.bg-slate-950\/70.border::after,
+  .neon-corner.bg-slate-800\/30.border::after,
+  .neon-corner.bg-slate-800\/40.border::after,
+  .neon-corner.bg-slate-800\/50.border::after,
+  .neon-corner-subtle.bg-slate-900.border::after,
+  .neon-corner-subtle.bg-slate-900\/50.border::after,
+  .neon-corner-subtle.bg-slate-900\/70.border::after,
+  .neon-corner-subtle.bg-slate-900\/80.border::after,
+  .neon-corner-subtle.bg-slate-950.border::after,
+  .neon-corner-subtle.bg-slate-950\/50.border::after,
+  .neon-corner-subtle.bg-slate-950\/70.border::after,
+  .neon-corner-subtle.bg-slate-800\/30.border::after,
+  .neon-corner-subtle.bg-slate-800\/40.border::after,
+  .neon-corner-subtle.bg-slate-800\/50.border::after {
+    content: "" !important;
+  }
+
+  .neon-corner::after {
+    padding-bottom: 3px;
+    padding-right: 3px;
+    padding-top: 0;
+    padding-left: 0;
+    background:
+      radial-gradient(circle at bottom right, #ffffb8 0%, #ff9f1a 15%, #ff7a00 30%, rgba(255, 122, 0, 0.22) 58%, transparent 86%);
+    filter:
+      drop-shadow(0 0 1px rgba(255, 255, 255, 0.6));
+  }
+
+  .neon-corner-subtle::after {
+    padding-bottom: 2px;
+    padding-right: 2px;
+    padding-top: 0;
+    padding-left: 0;
+    background:
+      radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.8) 0%, rgba(var(--card-accent-rgb), 0.65) 20%, rgba(var(--card-accent-rgb), 0.18) 55%, transparent 86%);
+    filter:
+      drop-shadow(0 0 1px rgba(255, 255, 255, 0.22));
+    opacity: 0.72;
+  }
+
+  .neon-corner::before,
+  .neon-corner::after,
+  .neon-corner-subtle::before,
+  .neon-corner-subtle::after {
+    content: none !important;
+  }
+
+  .neon-corner.bg-slate-900.border::before,
+  .neon-corner.bg-slate-900\/50.border::before,
+  .neon-corner.bg-slate-900\/70.border::before,
+  .neon-corner.bg-slate-900\/80.border::before,
+  .neon-corner.bg-slate-950.border::before,
+  .neon-corner.bg-slate-950\/50.border::before,
+  .neon-corner.bg-slate-950\/70.border::before,
+  .neon-corner.bg-slate-800\/30.border::before,
+  .neon-corner.bg-slate-800\/40.border::before,
+  .neon-corner.bg-slate-800\/50.border::before,
+  .neon-corner.bg-slate-900.border::after,
+  .neon-corner.bg-slate-900\/50.border::after,
+  .neon-corner.bg-slate-900\/70.border::after,
+  .neon-corner.bg-slate-900\/80.border::after,
+  .neon-corner.bg-slate-950.border::after,
+  .neon-corner.bg-slate-950\/50.border::after,
+  .neon-corner.bg-slate-950\/70.border::after,
+  .neon-corner.bg-slate-800\/30.border::after,
+  .neon-corner.bg-slate-800\/40.border::after,
+  .neon-corner.bg-slate-800\/50.border::after,
+  .neon-corner-subtle.bg-slate-900.border::before,
+  .neon-corner-subtle.bg-slate-900\/50.border::before,
+  .neon-corner-subtle.bg-slate-900\/70.border::before,
+  .neon-corner-subtle.bg-slate-900\/80.border::before,
+  .neon-corner-subtle.bg-slate-950.border::before,
+  .neon-corner-subtle.bg-slate-950\/50.border::before,
+  .neon-corner-subtle.bg-slate-950\/70.border::before,
+  .neon-corner-subtle.bg-slate-800\/30.border::before,
+  .neon-corner-subtle.bg-slate-800\/40.border::before,
+  .neon-corner-subtle.bg-slate-800\/50.border::before,
+  .neon-corner-subtle.bg-slate-900.border::after,
+  .neon-corner-subtle.bg-slate-900\/50.border::after,
+  .neon-corner-subtle.bg-slate-900\/70.border::after,
+  .neon-corner-subtle.bg-slate-900\/80.border::after,
+  .neon-corner-subtle.bg-slate-950.border::after,
+  .neon-corner-subtle.bg-slate-950\/50.border::after,
+  .neon-corner-subtle.bg-slate-950\/70.border::after,
+  .neon-corner-subtle.bg-slate-800\/30.border::after,
+  .neon-corner-subtle.bg-slate-800\/40.border::after,
+  .neon-corner-subtle.bg-slate-800\/50.border::after {
+    content: none !important;
+  }
+
+  @keyframes borderLightSweep {
+    0% {
+      background-position: 0% 50%;
+      opacity: 0.62;
+    }
+    50% {
+      background-position: 100% 50%;
+      opacity: 1;
+    }
+    100% {
+      background-position: 0% 50%;
+      opacity: 0.62;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bg-slate-900.border::before,
+    .bg-slate-900\/50.border::before,
+    .bg-slate-900\/70.border::before,
+    .bg-slate-900\/80.border::before,
+    .bg-slate-950.border::before,
+    .bg-slate-950\/50.border::before,
+    .bg-slate-950\/70.border::before,
+    .bg-slate-800\/30.border::before,
+    .bg-slate-800\/40.border::before,
+    .bg-slate-800\/50.border::before {
+      animation: none;
+    }
+  }
+}

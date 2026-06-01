@@ -2,8 +2,8 @@
 import { PricingPlan, FaqItem } from './types';
 
 // Logo URLs
-export const LOGO_SMALL = "/images/logo-hear-o-pequeno2.png";
-export const LOGO_LARGE = "/images/logo-hear-o-naranja.png";
+export const LOGO_SMALL = "/images/logo-hear-o-pequeno2.webp";
+export const LOGO_LARGE = "/images/logo-hear-o-naranja.webp";
 
 // Assumptions for Calculator
 export const MARGIN_PER_UNIT = 1000; // €
@@ -14,8 +14,8 @@ export const TIME_SAVING = 0.8; // 80%
 export const RECOVERY_RATE = 0.2; // 20%
 // Conservative conversion on recovered patients
 export const RECOVERY_CONVERSION = 0.15; 
-// Investment cost for Amortization calc (Annual Premium: 4300 Setup + 3000 Monthly fees)
-export const ESTIMATED_ANNUAL_INVESTMENT = 7300; 
+// Full Pack first year: 1.990 setup + 12 x 215 monthly fee
+export const ESTIMATED_ANNUAL_INVESTMENT = 4570; 
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
@@ -24,7 +24,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     description: 'Tu consejo de sabios digital 24/7. Tres agentes especializados en Audiología Clínica, Adaptación Técnica y Estrategia de Marketing.',
     setupPrice: '400€',
     monthlyPrice: '59€',
-    annualMonthlyPrice: '47€', // 59 * 0.8 approx
+    annualMonthlyPrice: '49€',
     highlight: undefined,
     popular: false,
     amortizationTime: "Amortizado en 1 mes",

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, Clock, Users, Zap, MessageSquare, FileSearch, FileText, Mail, Calendar, BarChart3, BrainCircuit, FileCheck } from 'lucide-react';
 import Button from './Button';
+import GlowBorder from './GlowBorder';
 
 interface HeroProps {
   onCtaClick: () => void;
@@ -115,9 +116,10 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick, onNavigate }) => {
                initial={{ opacity: 0, rotateY: -10, scale: 0.9 }}
                animate={{ opacity: 1, rotateY: 0, scale: 1 }}
                transition={{ duration: 0.8, type: "spring" }}
-               className="relative w-full max-w-md bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl shadow-2xl overflow-hidden z-10"
-             >
-                {/* Header of the Card */}
+               className="neon-corner card-accent-orange relative w-full max-w-md bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl shadow-2xl overflow-visible z-10"
+            >
+               <GlowBorder />
+               {/* Header of the Card */}
                 <div className="bg-slate-800/50 p-6 border-b border-slate-700 flex items-center gap-4">
                   <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-blue to-indigo-600 flex items-center justify-center shadow-lg">
                     <Zap className="text-white" size={28} />
@@ -137,10 +139,10 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick, onNavigate }) => {
                   {/* Item 1: Marketing Studio */}
                   <Link to="/marketing-automatico-centros-auditivos">
                     <motion.div 
-                      initial={{ x: 20, opacity: 0 }}
+                      initial={{ x: 170, opacity: 0, scale: 0.96 }}
                       animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 0.2 }}
-                      className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors cursor-pointer group mb-5 relative"
+                      transition={{ delay: 0.15, duration: 0.72, type: "spring", stiffness: 82, damping: 16 }}
+                      className="hero-module-card card-accent-blue bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors cursor-pointer group mb-5 relative"
                     >
                       <div className="shrink-0 mt-1">
                          <div className="bg-blue-500/20 p-2.5 rounded-lg group-hover:bg-blue-500/30 transition-colors">
@@ -160,10 +162,10 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick, onNavigate }) => {
                   {/* Item 2: Anamnesis Assistant */}
                   <Link to="/software-anamnesis-vender-mas-audifonos">
                     <motion.div 
-                      initial={{ x: 20, opacity: 0 }}
+                      initial={{ x: 170, opacity: 0, scale: 0.96 }}
                       animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                      className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors cursor-pointer group mb-5 relative"
+                      transition={{ delay: 0.32, duration: 0.72, type: "spring", stiffness: 82, damping: 16 }}
+                      className="hero-module-card card-accent-orange bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors cursor-pointer group mb-5 relative"
                     >
                        <div className="shrink-0 mt-1">
                          <div className="bg-orange-500/20 p-2.5 rounded-lg group-hover:bg-orange-500/30 transition-colors">
@@ -181,40 +183,50 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onRoiClick, onNavigate }) => {
                   </Link>
 
                   {/* Item 3: Expertos IA */}
-                  <motion.div 
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors"
-                  >
-                     <div className="shrink-0 mt-1">
-                       <div className="bg-purple-500/20 p-2.5 rounded-lg">
-                         <BrainCircuit size={20} className="text-purple-400" />
-                       </div>
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold text-base mb-1.5">Expertos IA</h4>
-                      <p className="text-slate-400 text-base leading-relaxed">Optimiza y Resuelve. Tu consejo de sabios 24/7.</p>
-                    </div>
-                  </motion.div>
+                  <Link to="/expertos-ia-audiologia">
+                    <motion.div 
+                      initial={{ x: 170, opacity: 0, scale: 0.96 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.49, duration: 0.72, type: "spring", stiffness: 82, damping: 16 }}
+                      className="hero-module-card card-accent-purple bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors cursor-pointer group mb-5 relative"
+                    >
+                       <div className="shrink-0 mt-1">
+                         <div className="bg-purple-500/20 p-2.5 rounded-lg group-hover:bg-purple-500/30 transition-colors">
+                           <BrainCircuit size={20} className="text-purple-400" />
+                         </div>
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold text-base mb-1.5 group-hover:text-purple-400 transition-colors">Expertos IA</h4>
+                        <p className="text-slate-400 text-base leading-relaxed">Optimiza y Resuelve. Tu consejo de sabios 24/7.</p>
+                      </div>
+                      <div className="absolute bottom-2 right-4 text-xs text-purple-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                        ver <ArrowRight size={12} />
+                      </div>
+                    </motion.div>
+                  </Link>
 
                   {/* Item 4: Calendario */}
-                  <motion.div 
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors"
-                  >
-                     <div className="shrink-0 mt-1">
-                       <div className="bg-green-500/20 p-2.5 rounded-lg">
-                         <Calendar size={20} className="text-green-400" />
-                       </div>
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold text-base mb-1.5">Calendario</h4>
-                      <p className="text-slate-400 text-base leading-relaxed">Organiza y Gestiona. Tu agenda bajo control.</p>
-                    </div>
-                  </motion.div>
+                  <Link to="/crm-calendario-centros-auditivos">
+                    <motion.div 
+                      initial={{ x: 170, opacity: 0, scale: 0.96 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.66, duration: 0.72, type: "spring", stiffness: 82, damping: 16 }}
+                      className="hero-module-card card-accent-green bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 flex gap-4 hover:bg-slate-800/60 transition-colors cursor-pointer group relative"
+                    >
+                       <div className="shrink-0 mt-1">
+                         <div className="bg-green-500/20 p-2.5 rounded-lg group-hover:bg-green-500/30 transition-colors">
+                           <Calendar size={20} className="text-green-400" />
+                         </div>
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold text-base mb-1.5 group-hover:text-green-400 transition-colors">CRM & Calendario</h4>
+                        <p className="text-slate-400 text-base leading-relaxed">Organiza y Gestiona. Tu agenda bajo control.</p>
+                      </div>
+                      <div className="absolute bottom-2 right-4 text-xs text-green-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                        ver <ArrowRight size={12} />
+                      </div>
+                    </motion.div>
+                  </Link>
 
                 </div>
              </motion.div>

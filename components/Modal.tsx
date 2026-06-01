@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity"
@@ -31,8 +31,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       ></div>
 
       {/* Content */}
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl transform transition-all flex flex-col max-h-[90vh]">
-        <div className="flex items-center justify-between p-6 border-b border-slate-800">
+      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl transform transition-all flex flex-col max-h-[94vh]">
+        <div className="flex items-center justify-between p-5 sm:p-6 border-b border-slate-800 shrink-0">
           <h3 className="text-xl font-semibold text-white">{title}</h3>
           <button 
             onClick={onClose}
@@ -42,7 +42,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
           </button>
         </div>
         
-        <div className="p-0 overflow-y-auto flex-1 bg-slate-900">
+        <div className="p-0 overflow-y-auto flex-1 bg-slate-900 overscroll-contain">
           {children ? children : (
             <div className="h-64 flex items-center justify-center text-slate-500">
                Cargando formulario...

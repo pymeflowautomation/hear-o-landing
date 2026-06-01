@@ -14,7 +14,7 @@ const Solution: React.FC = () => {
               {/* Placeholder for Interface Screenshot */}
               <div className="aspect-video bg-slate-800 relative flex items-center justify-center group overflow-hidden">
                  <img 
-                   src="/images/imagen-hear-o.jpg" 
+                   src="/images/imagen-hear-o.webp" 
                    alt="Hear-O Dashboard Interface" 
                    className="object-cover w-full h-full opacity-50 group-hover:scale-105 transition-transform duration-700"
                  />

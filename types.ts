@@ -39,14 +39,21 @@ export interface FaqItem {
 }
 
 export interface CalculatorInputs {
-  studiesPerMonth: number;
-  salesPerMonth: number;
+  hearingAidsPerYear: number;
   adminHoursPerMonth: number;
-  oldPatients: number;
+  databaseContacts: number;
 }
 
 export interface CalculatorResults {
   annualProfit: number;
   monthsToAmortize: number;
   extraSales: number;
+  monthlyBenefit: number;
+  monthlySalesBenefit: number;
+  monthlyRecoveredBenefit: number;
+  monthlyTimeSavings: number;
+  recoveredHearingAids: number;
+  secondYearAnnualBenefit: number;
+  firstYearRoi: number;
+  secondYearRoi: number;
 }

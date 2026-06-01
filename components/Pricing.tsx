@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, X, ChevronDown, ChevronUp, Zap, BarChart3, Target, Building2 } from 'lucide-react';
 import { PRICING_PLANS } from '../constants';
+import { FULL_PACK } from '../seoContent';
 import Button from './Button';
 
 interface PricingProps {
@@ -48,6 +49,13 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
   const corePlans = PRICING_PLANS.filter(p => ['marketing-studio', 'anamnesis-assistant'].includes(p.id));
   const starterPlans = PRICING_PLANS.filter(p => ['expertos-ia', 'calendar-smart'].includes(p.id));
 
+  const getPlanPath = (planId: string) => {
+    if (planId === 'marketing-studio') return '/marketing-automatico-centros-auditivos';
+    if (planId === 'anamnesis-assistant') return '/software-anamnesis-vender-mas-audifonos';
+    if (planId === 'calendar-smart') return '/crm-calendario-centros-auditivos';
+    return '/expertos-ia-audiologia';
+  };
+
   const PlanCard = ({ plan }: { plan: typeof PRICING_PLANS[0] }) => {
     const isAnnual = annualBilling[plan.id] ?? true;
 
@@ -84,9 +92,9 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
             "{plan.description}"
           </p>
 
-          {(plan.id === 'marketing-studio' || plan.id === 'anamnesis-assistant') && (
+          {(plan.id === 'marketing-studio' || plan.id === 'anamnesis-assistant' || plan.id === 'calendar-smart' || plan.id === 'expertos-ia') && (
             <Link 
-                to={plan.id === 'marketing-studio' ? '/marketing-automatico-centros-auditivos' : '/software-anamnesis-vender-mas-audifonos'}
+                to={getPlanPath(plan.id)}
                 className="block mx-auto mb-4 text-sm font-bold text-brand-blue hover:text-white transition-colors underline decoration-brand-blue/50 hover:decoration-white text-center"
             >
                 Ver ficha completa del producto
@@ -146,7 +154,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
             </div>
           </div>
 
-          {(plan.id === 'marketing-studio' || plan.id === 'anamnesis-assistant') ? (
+          {(plan.id === 'marketing-studio' || plan.id === 'anamnesis-assistant' || plan.id === 'calendar-smart' || plan.id === 'expertos-ia') ? (
             <div className="flex gap-3">
               <Button 
                 variant={plan.popular || plan.id === 'anamnesis-assistant' ? 'primary' : 'outline'} 
@@ -156,7 +164,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
                 Me Interesa
               </Button>
               <Link 
-                to={plan.id === 'marketing-studio' ? '/marketing-automatico-centros-auditivos' : '/software-anamnesis-vender-mas-audifonos'}
+                to={getPlanPath(plan.id)}
                 className={`flex-1 flex items-center justify-center text-lg font-bold rounded-xl border transition-colors ${
                   plan.popular || plan.id === 'anamnesis-assistant' 
                     ? 'border-slate-600 text-slate-300 hover:text-white hover:border-white' 
@@ -308,8 +316,49 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Soluciones y Precios</h2>
           <p className="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto">
-            Elige la solución que tu centro necesita. Sin costes ocultos.
+            Elige un modulo o implanta todo el ecosistema Hear-O. Sin costes ocultos.
           </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="relative overflow-hidden rounded-3xl border border-brand-orange/40 bg-gradient-to-br from-brand-orange/20 via-slate-800 to-blue-500/10 p-8 lg:p-10 shadow-2xl">
+            <div className="absolute right-6 top-6 rounded-full bg-red-500 px-4 py-2 text-sm font-black text-white">Ahorra 20%</div>
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 items-center">
+              <div>
+                <div className="text-brand-orange text-sm font-bold uppercase tracking-wider mb-3">Oferta recomendada</div>
+                <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">{FULL_PACK.name}</h3>
+                <p className="text-slate-300 text-xl leading-relaxed mb-6">
+                  Los 4 modulos conectados: Marketing Studio, Asistente de Anamnesis, CRM & Calendario y Expertos IA.
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-slate-200">
+                  <span className="rounded-lg bg-slate-950/40 p-3">Marketing</span>
+                  <span className="rounded-lg bg-slate-950/40 p-3">Anamnesis</span>
+                  <span className="rounded-lg bg-slate-950/40 p-3">CRM & Calendario</span>
+                  <span className="rounded-lg bg-slate-950/40 p-3">Expertos IA</span>
+                </div>
+              </div>
+              <div className="bg-slate-950/70 rounded-2xl border border-slate-700 p-6">
+                <div className="flex justify-between border-b border-slate-800 pb-4 mb-4">
+                  <span className="text-slate-400">Implantacion</span>
+                  <div className="text-right">
+                    <span className="block text-red-400 line-through">{FULL_PACK.originalSetupPrice}</span>
+                    <span className="text-3xl font-bold text-white">{FULL_PACK.setupPrice}</span>
+                  </div>
+                </div>
+                <div className="flex justify-between mb-6">
+                  <span className="text-slate-400">Cuota</span>
+                  <div className="text-right">
+                    <span className="block text-red-400 line-through">{FULL_PACK.originalMonthlyPrice}</span>
+                    <span className="text-4xl font-bold text-green-400">{FULL_PACK.monthlyPrice}</span>
+                    <span className="block text-xs text-slate-500">/mes facturado anual</span>
+                  </div>
+                </div>
+                <Link to="/software-centros-auditivos-hear-o" className="flex w-full items-center justify-center rounded-xl bg-white px-5 py-4 font-bold text-slate-950 hover:bg-slate-200 transition-colors">
+                  Ver Full Pack
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Quick Links Summary */}
