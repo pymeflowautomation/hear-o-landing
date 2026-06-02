@@ -65,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
             Precios
           </Link>
           <Link to="/guias" className="text-slate-300 hover:text-white transition-colors text-lg font-semibold">
-            Guias
+            Guías
           </Link>
           <a href="#calculadora" onClick={(e) => handleNavClick(e, 'calculadora')} className="text-slate-300 hover:text-white transition-colors text-lg font-semibold">
             ROI
@@ -92,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
             Precios
           </Link>
           <Link to="/guias" onClick={closeMenu} className="text-slate-300 hover:text-white text-xl font-medium block">
-            Guias
+            Guías
           </Link>
           <a href="#calculadora" onClick={(e) => handleNavClick(e, 'calculadora')} className="text-slate-300 hover:text-white text-xl font-medium block">
             ROI

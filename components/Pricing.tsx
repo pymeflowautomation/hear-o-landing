@@ -316,7 +316,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Soluciones y Precios</h2>
           <p className="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto">
-            Elige un modulo o implanta todo el ecosistema Hear-O. Sin costes ocultos.
+            Elige un módulo o implanta todo el ecosistema Hear-O. Sin costes ocultos.
           </p>
         </div>
 

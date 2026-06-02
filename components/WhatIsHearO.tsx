@@ -10,17 +10,17 @@ const WhatIsHearO: React.FC = () => (
     <Reveal className="container mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
         <div className="lg:sticky lg:top-28">
-          <div className="text-brand-orange text-sm font-bold uppercase tracking-wider mb-4">Que es Hear-O</div>
+          <div className="text-brand-orange text-sm font-bold uppercase tracking-wider mb-4">Qué es Hear-O</div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Una aplicacion web modular para vender mas audifonos y ahorrar gestion
+            Una aplicación web modular para vender más audífonos y ahorrar gestión
           </h2>
           <p className="text-xl text-slate-400 leading-relaxed mb-8">
-            Hear-O conecta marketing, agenda, consulta y soporte IA. Puedes usar un modulo concreto o implantar el Full Pack con todo el ecosistema conectado.
+            Hear-O conecta marketing, agenda, consulta y soporte IA. Puedes usar un módulo concreto o implantar el Full Pack con todo el ecosistema conectado.
           </p>
           <div className="space-y-3 text-slate-300 mb-8">
             <p className="flex gap-3"><CheckCircle2 className="text-green-400 shrink-0" /> Capta y reactiva pacientes.</p>
             <p className="flex gap-3"><CheckCircle2 className="text-green-400 shrink-0" /> Ordena citas, revisiones y renovaciones.</p>
-            <p className="flex gap-3"><CheckCircle2 className="text-green-400 shrink-0" /> Mejora la anamnesis y la conversion.</p>
+            <p className="flex gap-3"><CheckCircle2 className="text-green-400 shrink-0" /> Mejora la anamnesis y la conversión.</p>
             <p className="flex gap-3"><CheckCircle2 className="text-green-400 shrink-0" /> Da soporte IA al equipo 24/7.</p>
           </div>
           <Link to="/software-centros-auditivos-hear-o" className="inline-flex items-center gap-2 rounded-xl bg-brand-orange px-6 py-4 font-bold text-white hover:bg-orange-600 transition-colors">
@@ -42,7 +42,7 @@ const WhatIsHearO: React.FC = () => (
               <div className={`text-sm font-bold ${module.color} mb-3`}>{module.eyebrow}</div>
               <p className="text-slate-400 leading-relaxed mb-5">{module.summary}</p>
               <span className="text-white font-bold underline decoration-slate-600 group-hover:decoration-white">
-                Ver pagina del modulo
+                Ver página del módulo
               </span>
             </Link>
           ))}

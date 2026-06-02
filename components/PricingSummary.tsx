@@ -20,7 +20,7 @@ const PricingSummary: React.FC = () => {
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Soluciones y Precios</h2>
           <p className="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto">
-            Empieza por un modulo o implanta todo Hear-O con el Full Pack recomendado.
+            Empieza por un módulo o implanta todo Hear-O con el Full Pack recomendado.
           </p>
         </div>
 

@@ -20,7 +20,7 @@ export const FULL_PACK = {
   originalSetupPrice: '2.500€',
   monthlyPrice: '215€',
   originalMonthlyPrice: '269€',
-  billingNote: 'al mes con facturacion anual',
+  billingNote: 'al mes con facturación anual',
   amortization: '3-4 meses',
   firstYearBenefit: '13.430€',
   secondYearBenefit: '15.420€',
@@ -74,7 +74,7 @@ export const modules = [
     bg: 'bg-purple-500/10',
     border: 'border-purple-500/30',
     icon: BrainCircuit,
-    summary: 'Asistentes IA especializados para resolver dudas de audiologia, equipos, adaptacion, marketing y venta en cualquier momento.',
+    summary: 'Asistentes IA especializados para resolver dudas de audiología, equipos, adaptación, marketing y venta en cualquier momento.',
     keywords: ['IA para audiologos', 'asistente IA audiologia', 'consultor IA audiologia']
   }
 ];
@@ -87,7 +87,7 @@ export const modulePages = {
     h1: 'CRM y Calendario para Centros Auditivos',
     lead: 'Hear-O CRM & Calendario organiza pacientes, citas, revisiones y renovaciones en un sistema pensado para centros auditivos que quieren ahorrar horas y reducir olvidos.',
     cta: 'Quiero automatizar mi agenda',
-    proof: 'Un centro con 30 horas mensuales de gestion puede liberar gran parte de ese tiempo automatizando avisos, revisiones y seguimientos.',
+    proof: 'Un centro con 30 horas mensuales de gestión puede liberar gran parte de ese tiempo automatizando avisos, revisiones y seguimientos.',
     image: '/images/visual_del_crm.webp',
     imageAlt: 'CRM para centros auditivos con ficha de paciente y seguimiento',
     sections: [
@@ -108,7 +108,7 @@ export const modulePages = {
       }
     ],
     faqs: [
-      ['¿Hear-O CRM sustituye a NOAH?', 'No. Hear-O se centra en gestion comercial, agenda, recordatorios y seguimiento. Puede partir de datos existentes, pero no sustituye la parte clinica.'],
+      ['¿Hear-O CRM sustituye a NOAH?', 'No. Hear-O se centra en gestión comercial, agenda, recordatorios y seguimiento. Puede partir de datos existentes, pero no sustituye la parte clínica.'],
       ['¿Puede enviar recordatorios automaticos?', 'Si. El objetivo es reducir llamadas manuales y avisar al paciente por canales como WhatsApp o email segun la configuracion del centro.'],
       ['¿Sirve para recuperar pacientes antiguos?', 'Si. Permite segmentar la base de datos y activar acciones de seguimiento para pacientes sin contacto reciente.']
     ]
@@ -120,19 +120,19 @@ export const modulePages = {
     h1: 'Expertos IA para Audiologia',
     lead: 'Hear-O Expertos IA es un equipo de asistentes especializados que ayuda al audiologo a resolver dudas clinicas, tecnicas y comerciales al instante.',
     cta: 'Quiero conocer Expertos IA',
-    proof: 'Pensado para decisiones del dia a dia: una duda sobre una prueba, un argumento de venta, una incidencia tecnica o una idea de marketing.',
+    proof: 'Pensado para decisiones del día a día: una duda sobre una prueba, un argumento de venta, una incidencia técnica o una idea de marketing.',
     image: '/images/expertos_ia_hear-o.webp',
     imageAlt: 'Asistente IA para audiologos y centros auditivos',
     sections: [
       {
         icon: BrainCircuit,
-        title: 'Audiologia clinica',
+        title: 'Audiología clínica',
         text: 'Apoyo para interpretar situaciones frecuentes y preparar una comunicacion clara con el paciente.'
       },
       {
         icon: Zap,
         title: 'Equipos y adaptacion',
-        text: 'Orientacion rapida cuando aparece una duda tecnica o necesitas revisar una decision de adaptacion.'
+        text: 'Orientación rápida cuando aparece una duda técnica o necesitas revisar una decisión de adaptación.'
       },
       {
         icon: MessageSquare,
@@ -141,7 +141,7 @@ export const modulePages = {
       }
     ],
     faqs: [
-      ['¿Expertos IA diagnostica?', 'No. Es una herramienta de apoyo. El audiologo mantiene siempre la decision profesional.'],
+      ['¿Expertos IA diagnostica?', 'No. Es una herramienta de apoyo. El audiólogo mantiene siempre la decisión profesional.'],
       ['¿Esta disponible todo el dia?', 'Si. Esta pensado para resolver dudas en el momento, sin esperar a una llamada o soporte externo.'],
       ['¿Puede ayudar en ventas?', 'Si. Puede proponer argumentos, respuestas a objeciones y explicaciones mas claras para el paciente.']
     ]
@@ -151,26 +151,26 @@ export const modulePages = {
 export const guidePages = [
   {
     slug: 'software-ia-centros-auditivos',
-    title: 'Que es un software IA para centros auditivos',
+    title: 'Qué es un software IA para centros auditivos',
     description: 'Guia clara sobre que es un software IA para centros auditivos, que tareas automatiza y cuando tiene sentido implantarlo.',
     keyword: 'software IA para centros auditivos',
-    answer: 'Un software IA para centros auditivos combina gestion, automatizaciones y asistentes inteligentes para ahorrar tiempo, mejorar seguimiento y ayudar al equipo a vender mejor sin perder trato humano.',
+    answer: 'Un software IA para centros auditivos combina gestión, automatizaciones y asistentes inteligentes para ahorrar tiempo, mejorar seguimiento y ayudar al equipo a vender mejor sin perder trato humano.',
     modulePath: '/software-centros-auditivos-hear-o',
     moduleLabel: 'Ver el sistema completo Hear-O'
   },
   {
     slug: 'como-vender-mas-audifonos-sin-ser-agresivo',
-    title: 'Como vender mas audifonos sin ser agresivo',
-    description: 'Claves para vender mas audifonos explicando mejor el problema, el valor y el seguimiento posterior.',
-    keyword: 'como vender mas audifonos',
-    answer: 'Para vender mas audifonos sin ser agresivo hay que mejorar la comprension del paciente, ordenar la anamnesis y acompañar la decision con argumentos visuales y seguimiento.',
+    title: 'Cómo vender más audífonos sin ser agresivo',
+    description: 'Claves para vender más audífonos explicando mejor el problema, el valor y el seguimiento posterior.',
+    keyword: 'cómo vender más audífonos',
+    answer: 'Para vender más audífonos sin ser agresivo hay que mejorar la comprensión del paciente, ordenar la anamnesis y acompañar la decisión con argumentos visuales y seguimiento.',
     modulePath: '/software-anamnesis-vender-mas-audifonos',
     moduleLabel: 'Ver Asistente de Anamnesis'
   },
   {
     slug: 'automatizar-citas-revisiones-centro-auditivo',
-    title: 'Como automatizar citas y revisiones en un centro auditivo',
-    description: 'Como reducir llamadas, olvidos y huecos en agenda con recordatorios automaticos para centros auditivos.',
+    title: 'Cómo automatizar citas y revisiones en un centro auditivo',
+    description: 'Cómo reducir llamadas, olvidos y huecos en agenda con recordatorios automáticos para centros auditivos.',
     keyword: 'automatizar citas centro auditivo',
     answer: 'Automatizar citas y revisiones consiste en programar avisos, confirmaciones y seguimientos para que el paciente reciba recordatorios sin llamadas manuales del equipo.',
     modulePath: '/crm-calendario-centros-auditivos',
@@ -187,7 +187,7 @@ export const guidePages = [
   },
   {
     slug: 'recuperar-pacientes-antiguos-audiologia',
-    title: 'Como recuperar pacientes antiguos en audiologia',
+    title: 'Cómo recuperar pacientes antiguos en audiología',
     description: 'Estrategia practica para reactivar pacientes antiguos y oportunidades dormidas en un centro auditivo.',
     keyword: 'recuperar pacientes centro auditivo',
     answer: 'Para recuperar pacientes antiguos hay que segmentar la base de datos, detectar motivos de contacto y activar campañas de revision, renovacion o seguimiento con mensajes utiles.',
@@ -214,10 +214,10 @@ export const guidePages = [
   },
   {
     slug: 'mejorar-conversion-prueba-auditiva',
-    title: 'Como mejorar la conversion despues de una prueba auditiva',
-    description: 'Como mejorar la conversion tras una prueba auditiva con anamnesis, explicacion visual, informe y seguimiento.',
-    keyword: 'mejorar conversion centro auditivo',
-    answer: 'La conversion mejora cuando el paciente entiende su perdida auditiva, visualiza el impacto en su vida diaria y recibe un informe claro que sostiene la decision despues de la consulta.',
+    title: 'Cómo mejorar la conversión después de una prueba auditiva',
+    description: 'Cómo mejorar la conversión tras una prueba auditiva con anamnesis, explicación visual, informe y seguimiento.',
+    keyword: 'mejorar conversión centro auditivo',
+    answer: 'La conversión mejora cuando el paciente entiende su pérdida auditiva, visualiza el impacto en su vida diaria y recibe un informe claro que sostiene la decisión después de la consulta.',
     modulePath: '/software-anamnesis-vender-mas-audifonos',
     moduleLabel: 'Ver Asistente de Anamnesis'
   }

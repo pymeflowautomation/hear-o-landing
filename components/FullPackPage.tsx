@@ -25,7 +25,7 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
       '@type': 'Offer',
       priceCurrency: 'EUR',
       price: '215',
-      description: 'Cuota mensual con facturacion anual. Implantacion 1.990 EUR.'
+      description: 'Cuota mensual con facturación anual. Implantación 1.990 EUR.'
     },
     provider: {
       '@type': 'Organization',
@@ -39,7 +39,7 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
       <Helmet>
         <title>Software para Centros Auditivos con IA | Hear-O Full Pack</title>
         <meta name="description" content="Hear-O Full Pack: software IA para centros auditivos con marketing, anamnesis, CRM, calendario y expertos IA conectados." />
-        <meta name="keywords" content="software para centros auditivos, programa para centros auditivos, aplicacion para centros auditivos, software IA para centros auditivos" />
+        <meta name="keywords" content="software para centros auditivos, programa para centros auditivos, aplicación para centros auditivos, software IA para centros auditivos" />
         <link rel="canonical" href="https://hear-o.es/software-centros-auditivos-hear-o" />
       </Helmet>
       <SeoJsonLd data={jsonLd} />
@@ -56,7 +56,7 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
                 Todo el ecosistema Hear-O conectado en un unico sistema
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
-                Hear-O Full Pack une los 4 modulos de la aplicacion web para captar pacientes, organizar citas, mejorar la consulta y apoyar al equipo con IA especializada.
+                Hear-O Full Pack une los 4 módulos de la aplicación web para captar pacientes, organizar citas, mejorar la consulta y apoyar al equipo con IA especializada.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button onClick={onContact} size="lg" className="text-lg px-8">
@@ -127,13 +127,13 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
               <Gauge className="text-brand-orange mb-5" size={42} />
               <h3 className="text-2xl font-bold mb-3">Amortizacion estimada</h3>
               <p className="text-5xl font-black text-white mb-2">{FULL_PACK.amortization}</p>
-              <p className="text-slate-400">Con una venta extra al mes y un ahorro moderado de gestion.</p>
+              <p className="text-slate-400">Con una venta extra al mes y un ahorro moderado de gestión.</p>
             </div>
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8">
               <TrendingUp className="text-green-400 mb-5" size={42} />
               <h3 className="text-2xl font-bold mb-3">ROI estimado</h3>
               <p className="text-5xl font-black text-green-400 mb-2">{FULL_PACK.firstYearRoi}</p>
-              <p className="text-slate-400">Primer año con implantacion y 12 cuotas incluidas.</p>
+              <p className="text-slate-400">Primer año con implantación y 12 cuotas incluidas.</p>
             </div>
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8">
               <Users className="text-blue-400 mb-5" size={42} />
@@ -148,10 +148,10 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Respuestas rapidas para Google e IA</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                ['¿Que es Hear-O?', 'Hear-O es una aplicacion web modular con IA para centros auditivos. Ayuda a captar, organizar, vender y dar soporte al equipo.'],
-                ['¿Que modulos incluye Hear-O?', 'Incluye Marketing Studio, Asistente de Anamnesis, CRM & Calendario y Expertos IA.'],
-                ['¿Cuanto cuesta el Full Pack?', 'El Full Pack Lanzamiento tiene una implantacion de 1.990€ y una cuota de 215€/mes con facturacion anual.'],
-                ['¿Para que tipo de centro sirve?', 'Para centros auditivos que quieren vender mas audifonos, ahorrar gestion, recuperar pacientes y profesionalizar su seguimiento.']
+                ['¿Qué es Hear-O?', 'Hear-O es una aplicación web modular con IA para centros auditivos. Ayuda a captar, organizar, vender y dar soporte al equipo.'],
+                ['¿Qué módulos incluye Hear-O?', 'Incluye Marketing Studio, Asistente de Anamnesis, CRM & Calendario y Expertos IA.'],
+                ['¿Cuánto cuesta el Full Pack?', 'El Full Pack Lanzamiento tiene una implantación de 1.990€ y una cuota de 215€/mes con facturación anual.'],
+                ['¿Para qué tipo de centro sirve?', 'Para centros auditivos que quieren vender más audífonos, ahorrar gestión, recuperar pacientes y profesionalizar su seguimiento.']
               ].map(([question, answer]) => (
                 <div key={question} className="bg-slate-950 border border-slate-800 rounded-2xl p-6">
                   <h3 className="text-xl font-bold mb-2">{question}</h3>

@@ -14,8 +14,8 @@ interface PricingPageProps {
 const PricingPage: React.FC<PricingPageProps> = ({ onContact, onNavigate }) => (
   <div className="min-h-screen bg-slate-950 text-white pt-24">
     <Helmet>
-      <title>Precios Hear-O | Modulos y Full Pack para Centros Auditivos</title>
-      <meta name="description" content="Precios de Hear-O: modulos individuales y Full Pack para centros auditivos con Marketing, Anamnesis, CRM, Calendario y Expertos IA." />
+      <title>Precios Hear-O | Módulos y Full Pack para Centros Auditivos</title>
+      <meta name="description" content="Precios de Hear-O: módulos individuales y Full Pack para centros auditivos con Marketing, Anamnesis, CRM, Calendario y Expertos IA." />
       <link rel="canonical" href="https://hear-o.es/precios" />
     </Helmet>
     <LandingHeader onContactClick={onContact} />
@@ -23,9 +23,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ onContact, onNavigate }) => (
       <section className="container mx-auto px-6 lg:px-20 pt-20 pb-10">
         <div className="text-center max-w-4xl mx-auto mb-12">
           <div className="text-brand-orange text-sm font-bold uppercase tracking-wider mb-4">Pricing Hear-O</div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Precios claros por modulo o Full Pack</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Precios claros por módulo o Full Pack</h1>
           <p className="text-xl text-slate-400 leading-relaxed">
-            Compara cada modulo y decide si prefieres empezar por una solucion concreta o implantar todo el ecosistema.
+            Compara cada módulo y decide si prefieres empezar por una solución concreta o implantar todo el ecosistema.
           </p>
         </div>
 

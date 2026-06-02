@@ -47,7 +47,7 @@ const LandingHeader: React.FC<LandingHeaderProps> = ({ onContactClick }) => {
             Precios
           </Link>
           <Link to="/guias" className="text-slate-300 hover:text-white font-semibold transition-colors">
-            Guias
+            Guías
           </Link>
         </nav>
 

@@ -412,7 +412,7 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
       <section className="container mx-auto px-6 lg:px-20 mb-24">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Marketing Studio forma parte del ecosistema Hear-O</h2>
-          <p className="text-slate-400 text-lg">Este modulo capta y reactiva pacientes. Conectado con CRM & Calendario, Anamnesis y Expertos IA, se convierte en un sistema completo de crecimiento.</p>
+          <p className="text-slate-400 text-lg">Este módulo capta y reactiva pacientes. Conectado con CRM & Calendario, Anamnesis y Expertos IA, se convierte en un sistema completo de crecimiento.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
           {modules.map(module => (

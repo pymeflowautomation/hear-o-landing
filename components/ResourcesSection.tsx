@@ -24,7 +24,7 @@ const ResourcesSection: React.FC = () => (
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
               <Presentation className="text-blue-400 mb-4" size={30} />
               <h3 className="text-xl font-bold text-white mb-2">Argumentario de gamas</h3>
-              <p className="text-slate-400">Landing de apoyo para explicar prestaciones, diferencias y valor de cada gama de audifonos.</p>
+              <p className="text-slate-400">Landing de apoyo para explicar prestaciones, diferencias y valor de cada gama de audífonos.</p>
             </div>
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
               <Newspaper className="text-green-400 mb-4" size={30} />

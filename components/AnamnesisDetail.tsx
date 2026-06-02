@@ -272,17 +272,17 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
              <div className="lg:w-1/2 relative min-h-[400px] md:min-h-[500px] flex items-center justify-center">
                 {/* Page 3 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform translate-x-12 -translate-y-8 rotate-6 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-10 bg-white p-1 border border-slate-200">
-                    <img src="/images/informe-tras-prueba-audiologica-3.webp" alt="Informe Pagina 3" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-3.webp" alt="Informe Página 3" className="w-full h-auto rounded" />
                 </div>
                 
                 {/* Page 2 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform translate-x-6 -translate-y-4 rotate-3 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-20 bg-white p-1 border border-slate-200">
-                    <img src="/images/informe-tras-prueba-audiologica-2.webp" alt="Informe Pagina 2" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-2.webp" alt="Informe Página 2" className="w-full h-auto rounded" />
                 </div>
 
                 {/* Page 1 */}
                 <div className="absolute w-64 md:w-80 shadow-2xl rounded-lg transform -rotate-2 transition-all duration-500 hover:z-40 hover:scale-110 hover:rotate-0 z-30 bg-white p-1 border border-slate-200">
-                    <img src="/images/informe-tras-prueba-audiologica-1.webp" alt="Informe Pagina 1" className="w-full h-auto rounded" />
+                    <img src="/images/informe-tras-prueba-audiologica-1.webp" alt="Informe Página 1" className="w-full h-auto rounded" />
                 </div>
              </div>
              <div className="lg:w-1/2 space-y-8">
@@ -458,7 +458,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
       <section className="container mx-auto px-6 lg:px-20 mb-24">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Anamnesis Assistant forma parte del ecosistema Hear-O</h2>
-          <p className="text-slate-400 text-lg">Este modulo mejora la consulta y el cierre. Conectado con Marketing, CRM & Calendario y Expertos IA, sostiene todo el recorrido del paciente.</p>
+          <p className="text-slate-400 text-lg">Este módulo mejora la consulta y el cierre. Conectado con Marketing, CRM & Calendario y Expertos IA, sostiene todo el recorrido del paciente.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
           {modules.map(module => (

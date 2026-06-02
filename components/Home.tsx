@@ -68,7 +68,7 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
             '@type': 'Offer',
             priceCurrency: 'EUR',
             price: '215',
-            description: `${FULL_PACK.setupPrice} de implantacion y ${FULL_PACK.monthlyPrice}/mes con facturacion anual.`
+            description: `${FULL_PACK.setupPrice} de implantación y ${FULL_PACK.monthlyPrice}/mes con facturación anual.`
           }
         }
       ]} />
@@ -90,7 +90,7 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
           <div className="container mx-auto">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
               <div>
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Guias para centros auditivos</h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Guías para centros auditivos</h2>
                 <p className="text-slate-400 text-xl max-w-3xl">
                   Contenido practico para posicionar Hear-O en busquedas y respuestas de IA.
                 </p>

@@ -39,7 +39,7 @@ const ModuleDetail: React.FC<ModuleDetailProps> = ({ moduleId, onContact }) => {
     : [
         {
           src: '/images/expertos_ia_hear-o.webp',
-          alt: 'Expertos IA de Hear-O para audiologia',
+          alt: 'Expertos IA de Hear-O para audiología',
           title: 'Soporte experto 24/7',
           text: 'Apoyo inmediato para dudas clinicas, tecnicas, comerciales y de marketing.'
         }
@@ -126,7 +126,7 @@ const ModuleDetail: React.FC<ModuleDetailProps> = ({ moduleId, onContact }) => {
         <Reveal className="bg-slate-900 py-20 mb-24">
           <div className="container mx-auto px-6 lg:px-20">
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <h2 className="text-3xl md:text-5xl font-bold mb-5">Que resuelve este modulo</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-5">Qué resuelve este módulo</h2>
               <p className="text-xl text-slate-400">{page.proof}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -160,9 +160,9 @@ const ModuleDetail: React.FC<ModuleDetailProps> = ({ moduleId, onContact }) => {
         <Reveal className="container mx-auto px-6 lg:px-20 mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-10 items-start">
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 lg:p-10">
-              <h2 className="text-3xl font-bold mb-6">Como encaja dentro de Hear-O</h2>
+              <h2 className="text-3xl font-bold mb-6">Cómo encaja dentro de Hear-O</h2>
               <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                {module.name} funciona como modulo independiente, pero gana valor cuando trabaja junto al resto del ecosistema Hear-O. Marketing activa la demanda, CRM & Calendario ordena el seguimiento, Anamnesis mejora el cierre y Expertos IA ayuda al equipo en el dia a dia.
+                {module.name} funciona como módulo independiente, pero gana valor cuando trabaja junto al resto del ecosistema Hear-O. Marketing activa la demanda, CRM & Calendario ordena el seguimiento, Anamnesis mejora el cierre y Expertos IA ayuda al equipo en el día a día.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {modules.map(item => (
@@ -180,7 +180,7 @@ const ModuleDetail: React.FC<ModuleDetailProps> = ({ moduleId, onContact }) => {
             <aside className="bg-gradient-to-br from-brand-orange/20 to-blue-500/10 border border-brand-orange/30 rounded-3xl p-8 sticky top-28">
               {plan && (
                 <div className="mb-8 rounded-2xl bg-slate-950/70 border border-slate-700 p-5">
-                  <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Precio del modulo</div>
+                  <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Precio del módulo</div>
                   <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between gap-4">
@@ -191,7 +191,7 @@ const ModuleDetail: React.FC<ModuleDetailProps> = ({ moduleId, onContact }) => {
                       <span className="text-slate-400">Mantenimiento</span>
                       <span className="font-bold text-green-400">{plan.annualMonthlyPrice}/mes</span>
                     </div>
-                    <p className="text-xs text-slate-500">Precio con facturacion anual. Tambien disponible contratacion mensual.</p>
+                    <p className="text-xs text-slate-500">Precio con facturación anual. También disponible contratación mensual.</p>
                   </div>
                 </div>
               )}
@@ -200,7 +200,7 @@ const ModuleDetail: React.FC<ModuleDetailProps> = ({ moduleId, onContact }) => {
               <ul className="space-y-3 text-slate-300 mb-6">
                 <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Los 4 modulos conectados</li>
                 <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Implantacion {FULL_PACK.setupPrice}</li>
-                <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> {FULL_PACK.monthlyPrice}/mes con facturacion anual</li>
+                <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> {FULL_PACK.monthlyPrice}/mes con facturación anual</li>
                 <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Amortizacion estimada: {FULL_PACK.amortization}</li>
               </ul>
               <Link to="/software-centros-auditivos-hear-o" className="inline-flex w-full items-center justify-center rounded-xl bg-white px-5 py-4 font-bold text-slate-950 hover:bg-slate-200 transition-colors">

@@ -15,7 +15,7 @@ export const GuidesIndex: React.FC<GuideProps> = ({ onContact }) => (
   <div className="min-h-screen bg-slate-950 text-white pt-32">
     <Helmet>
       <title>Guías para vender más audífonos con IA | Hear-O</title>
-      <meta name="description" content="Guias practicas sobre IA, CRM, marketing, automatizaciones y venta para centros auditivos." />
+      <meta name="description" content="Guías prácticas sobre IA, CRM, marketing, automatizaciones y venta para centros auditivos." />
       <link rel="canonical" href="https://hear-o.es/guias" />
     </Helmet>
     <LandingHeader onContactClick={onContact} />
@@ -25,7 +25,7 @@ export const GuidesIndex: React.FC<GuideProps> = ({ onContact }) => (
           <BookOpen size={18} />
           Centro de conocimiento Hear-O
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">Guias para crecer con IA en centros auditivos</h1>
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">Guías para crecer con IA en centros auditivos</h1>
         <p className="text-xl text-slate-400 leading-relaxed">
           Contenido pensado para resolver dudas reales y ayudar a Google e IA a entender mejor que hace Hear-O.
         </p>
@@ -37,7 +37,7 @@ export const GuidesIndex: React.FC<GuideProps> = ({ onContact }) => (
             <h2 className="text-2xl font-bold mb-3">{guide.title}</h2>
             <p className="text-slate-400 leading-relaxed mb-5">{guide.description}</p>
             <span className="inline-flex items-center gap-2 text-white font-bold">
-              Leer guia <ArrowRight size={18} />
+              Leer guía <ArrowRight size={18} />
             </span>
           </Link>
         ))}
@@ -91,7 +91,7 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
       <main className="container mx-auto px-6 lg:px-20 pb-24">
         <article className="max-w-4xl mx-auto">
           <Link to="/guias" className="text-brand-orange font-bold inline-flex items-center gap-2 mb-8">
-            Guias Hear-O
+            Guías Hear-O
           </Link>
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">{guide.title}</h1>
           <p className="text-xl text-slate-300 leading-relaxed mb-10">{guide.description}</p>
@@ -103,13 +103,13 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
 
           <section className="space-y-8 text-slate-300 text-lg leading-relaxed mb-12">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-4">Por que importa en un centro auditivo</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Por qué importa en un centro auditivo</h2>
               <p>
-                En audiologia, muchas oportunidades se pierden por falta de seguimiento, exceso de tareas manuales o una explicacion poco clara para el paciente. Hear-O ordena ese proceso con tecnologia sencilla y orientada al dia a dia del centro.
+                En audiología, muchas oportunidades se pierden por falta de seguimiento, exceso de tareas manuales o una explicación poco clara para el paciente. Hear-O ordena ese proceso con tecnología sencilla y orientada al día a día del centro.
               </p>
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-white mb-4">Como aplicarlo</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Cómo aplicarlo</h2>
               <ul className="space-y-3">
                 <li className="flex gap-3"><CheckCircle2 className="text-green-400 shrink-0 mt-1" /> Detectar el punto donde se pierden ventas, citas o pacientes.</li>
                 <li className="flex gap-3"><CheckCircle2 className="text-green-400 shrink-0 mt-1" /> Automatizar tareas repetitivas sin cambiar el trato humano.</li>
@@ -142,7 +142,7 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
           <section className="bg-gradient-to-br from-brand-orange/20 to-blue-500/10 border border-brand-orange/30 rounded-3xl p-8">
             <div className="text-sm text-brand-orange font-bold uppercase tracking-wider mb-2">Oferta recomendada</div>
             <h2 className="text-3xl font-bold mb-3">{FULL_PACK.name}</h2>
-            <p className="text-slate-300 mb-6">Los 4 modulos conectados por {FULL_PACK.setupPrice} de implantacion y {FULL_PACK.monthlyPrice}/mes con facturacion anual.</p>
+            <p className="text-slate-300 mb-6">Los 4 módulos conectados por {FULL_PACK.setupPrice} de implantación y {FULL_PACK.monthlyPrice}/mes con facturación anual.</p>
             <Link to={guide.modulePath} className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-4 font-bold text-slate-950 hover:bg-slate-200 transition-colors">
               {guide.moduleLabel} <ArrowRight size={18} />
             </Link>
