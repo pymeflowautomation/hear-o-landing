@@ -14,7 +14,7 @@ interface GuideProps {
 export const GuidesIndex: React.FC<GuideProps> = ({ onContact }) => (
   <div className="min-h-screen bg-slate-950 text-white pt-32">
     <Helmet>
-      <title>Guias SEO-GEO para Centros Auditivos | Hear-O</title>
+      <title>Guías para vender más audífonos con IA | Hear-O</title>
       <meta name="description" content="Guias practicas sobre IA, CRM, marketing, automatizaciones y venta para centros auditivos." />
       <link rel="canonical" href="https://hear-o.es/guias" />
     </Helmet>

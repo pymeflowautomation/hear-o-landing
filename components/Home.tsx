@@ -37,7 +37,7 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
   return (
     <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-brand-orange/30 selection:text-white">
       <Helmet>
-        <title>Hear-O | Software IA para Centros Auditivos</title>
+        <title>IA y Automatizaciones para Centros Auditivos | Hear-O</title>
         <meta name="description" content="Automatiza tu Centro Auditivo con IA y vende más audífonos. Aumenta tus ventas un 60% y ahorra 30h/mes en gestión. Marketing y Anamnesis con Inteligencia Artificial." />
         <link rel="canonical" href="https://hear-o.es/" />
       </Helmet>

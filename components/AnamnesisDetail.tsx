@@ -42,7 +42,7 @@ const AnamnesisDetail: React.FC<AnamnesisDetailProps> = ({ onContact }) => {
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-32 pb-0">
       <Helmet>
-        <title>Software de Anamnesis para Centros Auditivos | Hear-O</title>
+        <title>Asistente IA para vender más audífonos | Hear-O</title>
         <meta name="description" content="Mejore la conversión en su centro auditivo con Anamnesis Asistida. Venda más audífonos profesionalizando el momento crítico de la consulta." />
         <meta name="keywords" content="Mejorar la Conversión en Centros Auditivos, Vender más audífonos, ¿Cómo vender más audífonos?" />
         <link rel="canonical" href="https://hear-o.es/software-anamnesis-vender-mas-audifonos" />
