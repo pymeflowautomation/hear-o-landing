@@ -33,9 +33,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ onContact, onNavigate }) => (
           <table className="w-full min-w-[760px] text-left">
             <thead>
               <tr className="border-b border-slate-800">
-                <th className="p-5 text-white">Opcion</th>
+                <th className="p-5 text-white">Opción</th>
                 <th className="p-5 text-white">Incluye</th>
-                <th className="p-5 text-white">Implantacion</th>
+                <th className="p-5 text-white">Implantación</th>
                 <th className="p-5 text-white">Cuota anualizada</th>
                 <th className="p-5 text-white">Ideal para</th>
               </tr>
@@ -43,7 +43,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onContact, onNavigate }) => (
             <tbody>
               <tr className="border-b border-brand-orange/30 bg-brand-orange/10">
                 <td className="p-5 font-bold text-brand-orange">{FULL_PACK.name}</td>
-                <td className="p-5 text-slate-200">Los 4 modulos conectados</td>
+                <td className="p-5 text-slate-200">Los 4 módulos conectados</td>
                 <td className="p-5 text-white font-bold">{FULL_PACK.setupPrice}</td>
                 <td className="p-5 text-green-400 font-bold">{FULL_PACK.monthlyPrice}/mes</td>
                 <td className="p-5 text-slate-300">Centros que quieren sistema completo</td>
@@ -51,7 +51,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onContact, onNavigate }) => (
               {PRICING_PLANS.map(plan => (
                 <tr key={plan.id} className="border-b border-slate-800 last:border-b-0">
                   <td className="p-5 font-bold text-white">{plan.name}</td>
-                  <td className="p-5 text-slate-300">Modulo individual</td>
+                  <td className="p-5 text-slate-300">Módulo individual</td>
                   <td className="p-5 text-slate-300">{plan.setupPrice}</td>
                   <td className="p-5 text-slate-300">{plan.annualMonthlyPrice}/mes</td>
                   <td className="p-5 text-slate-400">{plan.idealFor[0]}</td>

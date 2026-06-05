@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/guias/organizar-revisiones-garantias-renovaciones-audifonos",
+      "destination": "/guias/ventas-renovacion-audifonos-centro-auditivo",
+      "permanent": true
+    },
+    {
+      "source": "/guias/alternativas-excel-agenda-manual-centros-auditivos",
+      "destination": "/guias/informe-auditivo-vender-mas-audifonos",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

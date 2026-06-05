@@ -11,6 +11,7 @@ import RoiCalculator from './RoiCalculator';
 import PricingSummary from './PricingSummary';
 import WhatIsHearO from './WhatIsHearO';
 import ResourcesSection from './ResourcesSection';
+import SuccessCases from './SuccessCases';
 import Onboarding from './Onboarding';
 import FAQ from './FAQ';
 import Footer from './Footer';
@@ -18,6 +19,7 @@ import Button from './Button';
 import CookieNotice from './CookieNotice';
 import SeoJsonLd from './SeoJsonLd';
 import { FULL_PACK, guidePages, SITE_URL } from '../seoContent';
+import { newGuidePages } from '../seoContentExtra';
 
 interface HomeProps {
   onContactClick: () => void;
@@ -37,8 +39,8 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
   return (
     <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-brand-orange/30 selection:text-white">
       <Helmet>
-        <title>IA y Automatizaciones para Centros Auditivos | Hear-O</title>
-        <meta name="description" content="Automatiza tu Centro Auditivo con IA y vende más audífonos. Aumenta tus ventas un 60% y ahorra 30h/mes en gestión. Marketing y Anamnesis con Inteligencia Artificial." />
+        <title>Sistema IA para Centros Auditivos | Hear-O</title>
+        <meta name="description" content="Hear-O es un Sistema IA para centros auditivos: CRM, marketing, calendario, anamnesis asistida y automatizaciones para vender más audífonos y ahorrar gestión." />
         <link rel="canonical" href="https://hear-o.es/" />
       </Helmet>
       <SeoJsonLd data={[
@@ -51,7 +53,7 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
           contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'sales',
-            email: 'info@pymeflow.es',
+            email: 'info@hear-o.es',
             telephone: '+34 609 83 69 04',
             areaServed: 'ES'
           }
@@ -63,7 +65,7 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
           url: `${SITE_URL}/software-centros-auditivos-hear-o`,
-          description: 'Aplicacion web modular con IA para centros auditivos.',
+          description: 'Sistema IA modular y personalizable para centros auditivos.',
           offers: {
             '@type': 'Offer',
             priceCurrency: 'EUR',
@@ -83,6 +85,7 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
         <PricingSummary />
         <RoiCalculator onContactClick={onContactClick} />
         <Solution />
+        <SuccessCases />
         <Onboarding />
         <ResourcesSection />
 
@@ -92,13 +95,13 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
               <div>
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Guías para centros auditivos</h2>
                 <p className="text-slate-400 text-xl max-w-3xl">
-                  Contenido practico para posicionar Hear-O en busquedas y respuestas de IA.
+                  Contenido práctico para posicionar Hear-O en búsquedas y respuestas de IA.
                 </p>
               </div>
-              <Link to="/guias" className="text-brand-orange font-bold hover:text-white transition-colors">Ver todas las guias</Link>
+              <Link to="/guias" className="text-brand-orange font-bold hover:text-white transition-colors">Ver todas las guías</Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-              {guidePages.slice(0, 4).map(guide => (
+              {[...newGuidePages.slice(0, 2), ...guidePages.slice(0, 2)].map(guide => (
                 <Link key={guide.slug} to={`/guias/${guide.slug}`} className="bg-slate-950 border border-slate-800 rounded-2xl p-6 hover:border-brand-orange/50 hover:bg-slate-800 transition-colors">
                   <div className="text-sm text-brand-orange font-bold mb-3">{guide.keyword}</div>
                   <h3 className="text-xl font-bold text-white mb-3">{guide.title}</h3>

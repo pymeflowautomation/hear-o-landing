@@ -8,6 +8,7 @@ import ModuleDetail from './components/ModuleDetail';
 import FullPackPage from './components/FullPackPage';
 import PricingPage from './components/PricingPage';
 import { GuideDetail, GuidesIndex } from './components/GuidePages';
+import AboutPage from './components/AboutPage';
 import NotFound from './components/NotFound';
 import Modal from './components/Modal';
 
@@ -114,6 +115,10 @@ const App: React.FC = () => {
         <Route 
           path="/precios" 
           element={<PricingPage onContact={openModal} onNavigate={handleNavigate} />} 
+        />
+        <Route 
+          path="/sobre-hear-o" 
+          element={<AboutPage onContact={openModal} />} 
         />
         <Route 
           path="/guias" 

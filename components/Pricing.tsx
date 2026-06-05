@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, X, ChevronDown, ChevronUp, Zap, BarChart3, Target, Building2 } from 'lucide-react';
 import { PRICING_PLANS } from '../constants';
@@ -123,7 +123,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
             </div>
 
             <div className="flex justify-between items-center border-b border-slate-800 pb-2">
-              <span className="text-slate-400 text-sm font-medium">Implantación <br/><span className="text-[10px] text-slate-500 font-normal">(Pago Único)</span></span>
+              <span className="text-slate-400 text-sm font-medium">Implantación <br/><span className="text-[10px] text-slate-500 font-normal">(Pago único)</span></span>
               <div className="text-right">
                  {plan.originalSetupPrice && (
                    <span className="block text-red-400 text-base line-through font-medium">{plan.originalSetupPrice}</span>
@@ -322,13 +322,15 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
 
         <div className="max-w-6xl mx-auto mb-16">
           <div className="relative overflow-hidden rounded-3xl border border-brand-orange/40 bg-gradient-to-br from-brand-orange/20 via-slate-800 to-blue-500/10 p-8 lg:p-10 shadow-2xl">
-            <div className="absolute right-6 top-6 rounded-full bg-red-500 px-4 py-2 text-sm font-black text-white">Ahorra 20%</div>
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 items-center">
               <div>
-                <div className="text-brand-orange text-sm font-bold uppercase tracking-wider mb-3">Oferta recomendada</div>
+                <div className="mb-3 flex flex-wrap items-center gap-3">
+                  <div className="text-brand-orange text-sm font-bold uppercase tracking-wider">Oferta recomendada</div>
+                  <div className="rounded-full bg-red-500 px-4 py-2 text-sm font-black text-white">Ahorra 20%</div>
+                </div>
                 <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">{FULL_PACK.name}</h3>
                 <p className="text-slate-300 text-xl leading-relaxed mb-6">
-                  Los 4 modulos conectados: Marketing Studio, Asistente de Anamnesis, CRM & Calendario y Expertos IA.
+                  Los 4 módulos conectados: Marketing Studio, Asistente de Anamnesis, CRM & Calendario y Expertos IA.
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-slate-200">
                   <span className="rounded-lg bg-slate-950/40 p-3">Marketing</span>
@@ -339,7 +341,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
               </div>
               <div className="bg-slate-950/70 rounded-2xl border border-slate-700 p-6">
                 <div className="flex justify-between border-b border-slate-800 pb-4 mb-4">
-                  <span className="text-slate-400">Implantacion</span>
+                  <span className="text-slate-400">Implantación</span>
                   <div className="text-right">
                     <span className="block text-red-400 line-through">{FULL_PACK.originalSetupPrice}</span>
                     <span className="text-3xl font-bold text-white">{FULL_PACK.setupPrice}</span>
@@ -414,7 +416,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
                  <Building2 className="text-slate-300" size={32} />
                </div>
                <div>
-                 <h3 className="text-2xl font-bold text-white mb-2">¿Tienes Varios Centros?</h3>
+                 <h3 className="text-2xl font-bold text-white mb-2">¿Tienes varios centros?</h3>
                  <p className="text-slate-400 text-lg">Contacta con nosotros y te informamos de nuestros planes para Grupos</p>
                </div>
              </div>
@@ -436,3 +438,5 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
 };
 
 export default Pricing;
+
+

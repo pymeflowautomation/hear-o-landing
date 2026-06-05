@@ -64,6 +64,9 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
           <Link to="/precios" className="text-slate-300 hover:text-white transition-colors text-lg font-semibold">
             Precios
           </Link>
+          <Link to="/sobre-hear-o" className="text-slate-300 hover:text-white transition-colors text-lg font-semibold">
+            Sobre Hear-O
+          </Link>
           <Link to="/guias" className="text-slate-300 hover:text-white transition-colors text-lg font-semibold">
             Guías
           </Link>
@@ -90,6 +93,9 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
           </Link>
           <Link to="/precios" onClick={closeMenu} className="text-slate-300 hover:text-white text-xl font-medium block">
             Precios
+          </Link>
+          <Link to="/sobre-hear-o" onClick={closeMenu} className="text-slate-300 hover:text-white text-xl font-medium block">
+            Sobre Hear-O
           </Link>
           <Link to="/guias" onClick={closeMenu} className="text-slate-300 hover:text-white text-xl font-medium block">
             Guías

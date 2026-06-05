@@ -33,7 +33,7 @@ const PricingSummary: React.FC = () => {
                 <div className="text-brand-orange text-sm font-bold uppercase tracking-wider mb-3">Oferta recomendada</div>
                 <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">{FULL_PACK.name}</h3>
                 <p className="text-slate-300 text-xl leading-relaxed mb-6">
-                  Los 4 modulos conectados: Marketing Studio, Asistente de Anamnesis, CRM & Calendario y Expertos IA.
+                  Los 4 módulos conectados: Marketing Studio, Asistente de Anamnesis, CRM & Calendario y Expertos IA.
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-200">
                   {['Captacion y marketing', 'Agenda y pacientes', 'Consulta y cierre', 'Soporte IA 24/7'].map(item => (
@@ -46,7 +46,7 @@ const PricingSummary: React.FC = () => {
               </div>
               <div className="card-accent-orange bg-slate-950/70 rounded-2xl border border-orange-400/40 p-6">
                 <div className="flex justify-between border-b border-slate-800 pb-4 mb-4">
-                  <span className="text-slate-400">Implantacion</span>
+                  <span className="text-slate-400">Implantación</span>
                   <div className="text-right">
                     <span className="block text-red-400 line-through">{FULL_PACK.originalSetupPrice}</span>
                     <span className="text-3xl font-bold text-white">{FULL_PACK.setupPrice}</span>

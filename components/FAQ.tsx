@@ -11,6 +11,18 @@ const FAQ: React.FC = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const renderMarkdownText = (text: string) => {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={index} className="font-bold text-white">{part.slice(2, -2)}</strong>;
+      }
+
+      return part;
+    });
+  };
+
   return (
     <section className="py-24 bg-slate-950">
       {/* Increased max-width to accomodate longer text */}
@@ -47,7 +59,7 @@ const FAQ: React.FC = () => {
                 <div className="space-y-4">
                   {faq.answer.split('\n\n').map((paragraph, pIndex) => (
                     <p key={pIndex}>
-                      {paragraph}
+                      {renderMarkdownText(paragraph)}
                     </p>
                   ))}
                 </div>

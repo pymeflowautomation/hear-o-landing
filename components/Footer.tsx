@@ -9,14 +9,14 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-               <img src={LOGO_SMALL} alt="Hear-O" className="h-8" />
-               <span className="text-xl font-bold text-white">Hear-O <span className="text-brand-orange hover:text-white transition-colors">Audiology</span></span>
+              <img src={LOGO_SMALL} alt="Hear-O" className="h-8" />
+              <span className="text-xl font-bold text-white">Hear-O <span className="text-brand-orange hover:text-white transition-colors">Audiology</span></span>
             </div>
             <p className="text-slate-300 max-w-sm text-xl">
               La primera solución de automatización inteligente diseñada exclusivamente para centros auditivos que quieren crecer sin perder calidad humana.
             </p>
           </div>
-          
+
           <div>
             <h4 className="text-white font-bold mb-4">Soluciones</h4>
             <ul className="space-y-2 text-slate-500">
@@ -24,6 +24,7 @@ const Footer: React.FC = () => {
               <li><Link to="/marketing-automatico-centros-auditivos" className="hover:text-brand-orange transition-colors">Marketing Studio</Link></li>
               <li><Link to="/crm-calendario-centros-auditivos" className="hover:text-brand-orange transition-colors">CRM & Calendario</Link></li>
               <li><Link to="/expertos-ia-audiologia" className="hover:text-brand-orange transition-colors">Expertos IA</Link></li>
+              <li><Link to="/sobre-hear-o" className="hover:text-brand-orange transition-colors">Sobre Hear-O</Link></li>
               <li><Link to="/guias" className="hover:text-brand-orange transition-colors">Guías</Link></li>
             </ul>
           </div>
@@ -40,16 +41,16 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold mb-4">Contacto</h4>
             <ul className="space-y-2 text-slate-500">
-              <li>info@pymeflow.es</li>
+              <li>info@hear-o.es</li>
               <li>+34 609 83 69 04</li>
               <li>Madrid, España</li>
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-600">
           <p>© {new Date().getFullYear()} Hear-O. Todos los derechos reservados.</p>
-          <p>Hecho por Pymeflow y ❤️ para el sector auditivo.</p>
+          <p>Hecho por Pymeflow para el sector auditivo.</p>
         </div>
       </div>
     </footer>

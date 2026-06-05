@@ -32,14 +32,14 @@ export const modules = [
   {
     id: 'marketing-studio',
     name: 'Marketing Studio',
-    eyebrow: 'Captacion, fidelizacion y reactivacion',
+    eyebrow: 'Captación, fidelización y reactivación',
     path: '/marketing-automatico-centros-auditivos',
     color: 'text-blue-400',
     bg: 'bg-blue-500/10',
     border: 'border-blue-500/30',
     icon: Mail,
     summary: 'Automatiza campañas, contenidos, promociones y seguimiento comercial para que el centro mantenga contacto constante con pacientes y leads.',
-    keywords: ['marketing automatico para centros auditivos', 'marketing para audiologia', 'reactivar pacientes centro auditivo']
+    keywords: ['marketing automático para centros auditivos', 'marketing para audiología', 'reactivar pacientes centro auditivo']
   },
   {
     id: 'anamnesis-assistant',
@@ -50,8 +50,8 @@ export const modules = [
     bg: 'bg-brand-orange/10',
     border: 'border-brand-orange/30',
     icon: FileCheck,
-    summary: 'Guia la anamnesis, convierte datos clinicos en argumentos comprensibles y genera informes que ayudan al paciente a decidir.',
-    keywords: ['software de anamnesis para centros auditivos', 'como vender mas audifonos', 'mejorar conversion centro auditivo']
+    summary: 'Guía la anamnesis, convierte datos clínicos en argumentos comprensibles y genera informes que ayudan al paciente a decidir.',
+    keywords: ['software de anamnesis para centros auditivos', 'cómo vender más audífonos', 'mejorar conversión centro auditivo']
   },
   {
     id: 'crm-calendario',
@@ -62,27 +62,27 @@ export const modules = [
     bg: 'bg-green-500/10',
     border: 'border-green-500/30',
     icon: CalendarCheck,
-    summary: 'Centraliza pacientes, citas, revisiones y renovaciones con recordatorios automaticos por WhatsApp y email.',
+    summary: 'Centraliza pacientes, citas, revisiones y renovaciones con recordatorios automáticos por WhatsApp y email.',
     keywords: ['crm para centros auditivos', 'calendario para centros auditivos', 'automatizar citas centro auditivo']
   },
   {
     id: 'expertos-ia',
     name: 'Expertos IA',
-    eyebrow: 'Soporte clinico, tecnico y comercial',
+    eyebrow: 'Soporte clínico, técnico y comercial',
     path: '/expertos-ia-audiologia',
     color: 'text-purple-400',
     bg: 'bg-purple-500/10',
     border: 'border-purple-500/30',
     icon: BrainCircuit,
     summary: 'Asistentes IA especializados para resolver dudas de audiología, equipos, adaptación, marketing y venta en cualquier momento.',
-    keywords: ['IA para audiologos', 'asistente IA audiologia', 'consultor IA audiologia']
+    keywords: ['IA para audiólogos', 'asistente IA audiología', 'consultor IA audiología']
   }
 ];
 
 export const modulePages = {
   'crm-calendario': {
     title: 'CRM y Calendario para Centros Auditivos | Hear-O',
-    description: 'CRM y calendario para centros auditivos. Organiza pacientes, citas, revisiones, renovaciones y recordatorios automaticos con Hear-O.',
+    description: 'CRM y calendario para centros auditivos. Organiza pacientes, citas, revisiones, renovaciones y recordatorios automáticos con Hear-O.',
     canonical: `${SITE_URL}/crm-calendario-centros-auditivos`,
     h1: 'CRM y Calendario para Centros Auditivos',
     lead: 'Hear-O CRM & Calendario organiza pacientes, citas, revisiones y renovaciones en un sistema pensado para centros auditivos que quieren ahorrar horas y reducir olvidos.',
@@ -99,30 +99,30 @@ export const modulePages = {
       {
         icon: CalendarCheck,
         title: 'Citas bajo control',
-        text: 'Recordatorios automaticos antes de cada visita para reducir huecos en agenda y llamadas manuales.'
+        text: 'Recordatorios automáticos antes de cada visita para reducir huecos en agenda y llamadas manuales.'
       },
       {
         icon: Repeat,
         title: 'Seguimiento continuo',
-        text: 'Revisiones periodicas, periodos de prueba, renovaciones y pacientes antiguos se gestionan sin depender de memoria o hojas sueltas.'
+        text: 'Revisiones periódicas, periodos de prueba, renovaciones y pacientes antiguos se gestionan sin depender de memoria o hojas sueltas.'
       }
     ],
     faqs: [
       ['¿Hear-O CRM sustituye a NOAH?', 'No. Hear-O se centra en gestión comercial, agenda, recordatorios y seguimiento. Puede partir de datos existentes, pero no sustituye la parte clínica.'],
-      ['¿Puede enviar recordatorios automaticos?', 'Si. El objetivo es reducir llamadas manuales y avisar al paciente por canales como WhatsApp o email segun la configuracion del centro.'],
-      ['¿Sirve para recuperar pacientes antiguos?', 'Si. Permite segmentar la base de datos y activar acciones de seguimiento para pacientes sin contacto reciente.']
+      ['¿Puede enviar recordatorios automáticos?', 'Sí. El objetivo es reducir llamadas manuales y avisar al paciente por canales como WhatsApp o email según la configuración del centro.'],
+      ['¿Sirve para recuperar pacientes antiguos?', 'Sí. Permite segmentar la base de datos y activar acciones de seguimiento para pacientes sin contacto reciente.']
     ]
   },
   'expertos-ia': {
     title: 'Expertos IA para Audiologia y Centros Auditivos | Hear-O',
-    description: 'Expertos IA para audiologos: apoyo 24/7 en dudas clinicas, equipos, adaptacion, marketing y venta sin sustituir al profesional.',
+    description: 'Expertos IA para audiólogos: apoyo 24/7 en dudas clínicas, equipos, adaptación, marketing y venta sin sustituir al profesional.',
     canonical: `${SITE_URL}/expertos-ia-audiologia`,
     h1: 'Expertos IA para Audiologia',
     lead: 'Hear-O Expertos IA es un equipo de asistentes especializados que ayuda al audiologo a resolver dudas clinicas, tecnicas y comerciales al instante.',
     cta: 'Quiero conocer Expertos IA',
     proof: 'Pensado para decisiones del día a día: una duda sobre una prueba, un argumento de venta, una incidencia técnica o una idea de marketing.',
     image: '/images/expertos_ia_hear-o.webp',
-    imageAlt: 'Asistente IA para audiologos y centros auditivos',
+    imageAlt: 'Asistente IA para audiólogos y centros auditivos',
     sections: [
       {
         icon: BrainCircuit,
@@ -142,8 +142,8 @@ export const modulePages = {
     ],
     faqs: [
       ['¿Expertos IA diagnostica?', 'No. Es una herramienta de apoyo. El audiólogo mantiene siempre la decisión profesional.'],
-      ['¿Esta disponible todo el dia?', 'Si. Esta pensado para resolver dudas en el momento, sin esperar a una llamada o soporte externo.'],
-      ['¿Puede ayudar en ventas?', 'Si. Puede proponer argumentos, respuestas a objeciones y explicaciones mas claras para el paciente.']
+      ['¿Está disponible todo el día?', 'Sí. Está pensado para resolver dudas en el momento, sin esperar a una llamada o soporte externo.'],
+      ['¿Puede ayudar en ventas?', 'Sí. Puede proponer argumentos, respuestas a objeciones y explicaciones más claras para el paciente.']
     ]
   }
 };
@@ -151,10 +151,10 @@ export const modulePages = {
 export const guidePages = [
   {
     slug: 'software-ia-centros-auditivos',
-    title: 'Qué es un software IA para centros auditivos',
-    description: 'Guia clara sobre que es un software IA para centros auditivos, que tareas automatiza y cuando tiene sentido implantarlo.',
+    title: 'Qué es un Sistema IA para centros auditivos',
+    description: 'Guía clara sobre qué es un Sistema IA para centros auditivos, qué tareas automatiza y cuándo tiene sentido implantarlo.',
     keyword: 'software IA para centros auditivos',
-    answer: 'Un software IA para centros auditivos combina gestión, automatizaciones y asistentes inteligentes para ahorrar tiempo, mejorar seguimiento y ayudar al equipo a vender mejor sin perder trato humano.',
+    answer: 'Un Sistema IA para centros auditivos combina gestión, automatizaciones y asistentes inteligentes para ahorrar tiempo, mejorar seguimiento y ayudar al equipo a vender mejor sin perder trato humano.',
     modulePath: '/software-centros-auditivos-hear-o',
     moduleLabel: 'Ver el sistema completo Hear-O'
   },
@@ -178,7 +178,7 @@ export const guidePages = [
   },
   {
     slug: 'crm-para-centros-auditivos-que-debe-incluir',
-    title: 'CRM para centros auditivos: que debe incluir',
+    title: 'CRM para centros auditivos: qué debe incluir',
     description: 'Elementos clave de un CRM para centros auditivos: pacientes, citas, revisiones, renovaciones y oportunidades.',
     keyword: 'CRM para centros auditivos',
     answer: 'Un CRM para centros auditivos debe controlar pacientes, citas, revisiones, periodos de prueba, renovaciones y acciones comerciales, no solo guardar datos de contacto.',
@@ -188,27 +188,27 @@ export const guidePages = [
   {
     slug: 'recuperar-pacientes-antiguos-audiologia',
     title: 'Cómo recuperar pacientes antiguos en audiología',
-    description: 'Estrategia practica para reactivar pacientes antiguos y oportunidades dormidas en un centro auditivo.',
+    description: 'Estrategia práctica para reactivar pacientes antiguos y oportunidades dormidas en un centro auditivo.',
     keyword: 'recuperar pacientes centro auditivo',
-    answer: 'Para recuperar pacientes antiguos hay que segmentar la base de datos, detectar motivos de contacto y activar campañas de revision, renovacion o seguimiento con mensajes utiles.',
+    answer: 'Para recuperar pacientes antiguos hay que segmentar la base de datos, detectar motivos de contacto y activar campañas de revisión, renovación o seguimiento con mensajes útiles.',
     modulePath: '/marketing-automatico-centros-auditivos',
     moduleLabel: 'Ver Marketing Studio'
   },
   {
     slug: 'ia-para-audiologos-usos-reales',
-    title: 'IA para audiologos: usos reales en consulta',
-    description: 'Usos reales de la IA para audiologos en consulta, soporte tecnico, comunicacion y venta.',
-    keyword: 'IA para audiologos',
-    answer: 'La IA para audiologos puede apoyar dudas clinicas, explicar conceptos al paciente, preparar argumentos comerciales y ahorrar tiempo en tareas repetitivas.',
+    title: 'IA para audiólogos: usos reales en consulta',
+    description: 'Usos reales de la IA para audiólogos en consulta, soporte técnico, comunicación y venta.',
+    keyword: 'IA para audiólogos',
+    answer: 'La IA para audiólogos puede apoyar dudas clínicas, explicar conceptos al paciente, preparar argumentos comerciales y ahorrar tiempo en tareas repetitivas.',
     modulePath: '/expertos-ia-audiologia',
     moduleLabel: 'Ver Expertos IA'
   },
   {
     slug: 'marketing-automatico-centros-auditivos-guia',
-    title: 'Marketing automatico para centros auditivos',
-    description: 'Guia de marketing automatico para centros auditivos: fidelizacion, reactivacion, captacion y contenidos.',
-    keyword: 'marketing automatico para centros auditivos',
-    answer: 'El marketing automatico para centros auditivos permite mantener contacto constante con pacientes y leads mediante campañas, recordatorios, contenidos y acciones programadas.',
+    title: 'Marketing automático para centros auditivos',
+    description: 'Guía de marketing automático para centros auditivos: fidelización, reactivación, captación y contenidos.',
+    keyword: 'marketing automático para centros auditivos',
+    answer: 'El marketing automático para centros auditivos permite mantener contacto constante con pacientes y leads mediante campañas, recordatorios, contenidos y acciones programadas.',
     modulePath: '/marketing-automatico-centros-auditivos',
     moduleLabel: 'Ver Marketing Studio'
   },

@@ -12,10 +12,10 @@ const WhatIsHearO: React.FC = () => (
         <div className="lg:sticky lg:top-28">
           <div className="text-brand-orange text-sm font-bold uppercase tracking-wider mb-4">Qué es Hear-O</div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Una aplicación web modular para vender más audífonos y ahorrar gestión
+            Un Sistema IA personalizado para vender más audífonos y ahorrar gestión
           </h2>
           <p className="text-xl text-slate-400 leading-relaxed mb-8">
-            Hear-O conecta marketing, agenda, consulta y soporte IA. Puedes usar un módulo concreto o implantar el Full Pack con todo el ecosistema conectado.
+            Hear-O conecta CRM, automatizaciones, marketing, calendario, anamnesis asistida y expertos IA. Puedes usar un módulo concreto o implantar el Full Pack con todo el ecosistema conectado.
           </p>
           <div className="space-y-3 text-slate-300 mb-8">
             <p className="flex gap-3"><CheckCircle2 className="text-green-400 shrink-0" /> Capta y reactiva pacientes.</p>

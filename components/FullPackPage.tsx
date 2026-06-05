@@ -53,7 +53,7 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
                 Software IA para centros auditivos
               </div>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                Todo el ecosistema Hear-O conectado en un unico sistema
+                Todo el ecosistema Hear-O conectado en un único sistema
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
                 Hear-O Full Pack une los 4 módulos de la aplicación web para captar pacientes, organizar citas, mejorar la consulta y apoyar al equipo con IA especializada.
@@ -76,7 +76,7 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
               </div>
               <div className="space-y-5 mb-8">
                 <div className="flex justify-between border-b border-white/10 pb-4">
-                  <span className="text-slate-300">Implantacion</span>
+                  <span className="text-slate-300">Implantación</span>
                   <div className="text-right">
                     <span className="block text-slate-500 line-through">{FULL_PACK.originalSetupPrice}</span>
                     <span className="text-3xl font-bold">{FULL_PACK.setupPrice}</span>
@@ -91,12 +91,18 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
                   </div>
                 </div>
               </div>
-              <ul className="space-y-3 text-slate-200">
-                <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Marketing Studio</li>
-                <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Asistente de Anamnesis</li>
-                <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> CRM & Calendario</li>
-                <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Expertos IA</li>
-              </ul>
+              <div className="grid gap-5 sm:grid-cols-[1fr_160px] sm:items-center">
+                <ul className="space-y-3 text-slate-200">
+                  <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Marketing Studio</li>
+                  <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Asistente de Anamnesis</li>
+                  <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> CRM & Calendario</li>
+                  <li className="flex gap-2"><CheckCircle2 className="text-green-400 shrink-0" /> Expertos IA</li>
+                </ul>
+                <div className="rounded-2xl border border-green-400/40 bg-green-400/10 p-4 text-center">
+                  <div className="text-xs font-bold uppercase tracking-wider text-green-300">Plazo medio de amortización</div>
+                  <div className="mt-2 text-3xl font-black text-white">4 meses</div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -104,8 +110,8 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
         <section className="bg-slate-900 py-20 mb-24">
           <div className="container mx-auto px-6 lg:px-20">
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <h2 className="text-3xl md:text-5xl font-bold mb-5">Los 4 modulos del sistema</h2>
-              <p className="text-xl text-slate-400">Puedes contratar modulos sueltos, pero el mayor valor aparece cuando trabajan conectados.</p>
+              <h2 className="text-3xl md:text-5xl font-bold mb-5">Los 4 módulos del sistema</h2>
+              <p className="text-xl text-slate-400">Puedes contratar módulos sueltos, pero el mayor valor aparece cuando trabajan conectados.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
               {modules.map(module => (
@@ -125,7 +131,7 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8">
               <Gauge className="text-brand-orange mb-5" size={42} />
-              <h3 className="text-2xl font-bold mb-3">Amortizacion estimada</h3>
+              <h3 className="text-2xl font-bold mb-3">Amortización estimada</h3>
               <p className="text-5xl font-black text-white mb-2">{FULL_PACK.amortization}</p>
               <p className="text-slate-400">Con una venta extra al mes y un ahorro moderado de gestión.</p>
             </div>
@@ -138,14 +144,14 @@ const FullPackPage: React.FC<FullPackPageProps> = ({ onContact }) => {
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8">
               <Users className="text-blue-400 mb-5" size={42} />
               <h3 className="text-2xl font-bold mb-3">Caso semi-real</h3>
-              <p className="text-slate-300 leading-relaxed">Centro independiente con base de datos antigua, agenda manual y baja comunicacion post-visita: el sistema recupera seguimiento, reduce llamadas y aumenta oportunidades.</p>
+              <p className="text-slate-300 leading-relaxed">Centro independiente con base de datos antigua, agenda manual y baja comunicación post-visita: el sistema recupera seguimiento, reduce llamadas y aumenta oportunidades.</p>
             </div>
           </div>
         </section>
 
         <section className="bg-slate-900 py-20 mb-24">
           <div className="container mx-auto px-6 lg:px-20 max-w-5xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Respuestas rapidas para Google e IA</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Respuestas rápidas para Google e IA</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 ['¿Qué es Hear-O?', 'Hear-O es una aplicación web modular con IA para centros auditivos. Ayuda a captar, organizar, vender y dar soporte al equipo.'],
