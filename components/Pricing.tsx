@@ -1,7 +1,7 @@
 ﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, X, ChevronDown, ChevronUp, Zap, BarChart3, Target, Building2 } from 'lucide-react';
-import { PRICING_PLANS } from '../constants';
+import { MARKETING_ENTRY_OFFER, PRICING_PLANS } from '../constants';
 import { FULL_PACK } from '../seoContent';
 import Button from './Button';
 
@@ -58,6 +58,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
 
   const PlanCard = ({ plan }: { plan: typeof PRICING_PLANS[0] }) => {
     const isAnnual = annualBilling[plan.id] ?? true;
+    const isMarketingEntry = plan.id === 'marketing-studio';
 
     return (
     <div 
@@ -104,26 +105,27 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
           {/* PRICING BLOCK */}
           <div className="bg-slate-950/50 rounded-xl p-4 space-y-3 mb-4 border border-slate-800/50 relative overflow-hidden">
             
-            {/* Toggle Inside Box */}
-            <div className="flex justify-center mb-4">
-              <div className="flex items-center gap-3 bg-slate-900/80 p-1 rounded-full border border-slate-700">
-                <button 
-                  onClick={() => isAnnual && toggleAnnual(plan.id)}
-                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${!isAnnual ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
-                >
-                  Mensual
-                </button>
-                <button 
-                  onClick={() => !isAnnual && toggleAnnual(plan.id)}
-                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all flex items-center gap-1 ${isAnnual ? 'bg-brand-blue text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
-                >
-                  Anual <span className="text-[10px] bg-white/20 px-1 rounded text-white">-20%</span>
-                </button>
+            {!isMarketingEntry && (
+              <div className="flex justify-center mb-4">
+                <div className="flex items-center gap-3 bg-slate-900/80 p-1 rounded-full border border-slate-700">
+                  <button
+                    onClick={() => isAnnual && toggleAnnual(plan.id)}
+                    className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${!isAnnual ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+                  >
+                    Mensual
+                  </button>
+                  <button
+                    onClick={() => !isAnnual && toggleAnnual(plan.id)}
+                    className={`px-3 py-1 rounded-full text-xs font-bold transition-all flex items-center gap-1 ${isAnnual ? 'bg-brand-blue text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+                  >
+                    Anual <span className="text-[10px] bg-white/20 px-1 rounded text-white">-20%</span>
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="flex justify-between items-center border-b border-slate-800 pb-2">
-              <span className="text-slate-400 text-sm font-medium">Implantación <br/><span className="text-[10px] text-slate-500 font-normal">(Pago único)</span></span>
+              <span className="text-slate-400 text-sm font-medium">{isMarketingEntry ? 'Activación' : 'Implantación'} <br/><span className="text-[10px] text-slate-500 font-normal">(Pago único)</span></span>
               <div className="text-right">
                  {plan.originalSetupPrice && (
                    <span className="block text-red-400 text-base line-through font-medium">{plan.originalSetupPrice}</span>
@@ -132,7 +134,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
               </div>
             </div>
             <div className="flex justify-between items-center pt-2">
-              <span className="text-slate-400 text-sm font-medium">Cuota <br/>Mantenimiento</span>
+              <span className="text-slate-400 text-sm font-medium">Cuota <br/>{isMarketingEntry ? 'Mensual' : 'Mantenimiento'}</span>
               <div className="text-right">
                  {plan.originalMonthlyPrice && (
                    <span className="block text-red-400 text-base line-through font-medium">{plan.originalMonthlyPrice}</span>
@@ -141,7 +143,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
                    {isAnnual ? plan.annualMonthlyPrice : plan.monthlyPrice}
                  </span>
                  <span className="text-slate-500 text-xs block">
-                   /mes {isAnnual && '(facturado anual)'}
+                   /mes {isAnnual && !isMarketingEntry && '(facturado anual)'}{isMarketingEntry && 'mínimo 3 meses'}
                  </span>
               </div>
             </div>
@@ -161,7 +163,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
                 className="flex-1 text-lg py-3 font-bold"
                 onClick={onContactClick}
               >
-                Me Interesa
+                {isMarketingEntry ? 'Probar 90 días' : 'Me Interesa'}
               </Button>
               <Link 
                 to={getPlanPath(plan.id)}
@@ -316,51 +318,60 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, onNavigate }) => {
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Soluciones y Precios</h2>
           <p className="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto">
-            Elige un módulo o implanta todo el ecosistema Hear-O. Sin costes ocultos.
+            Empieza por Marketing Studio para activar pacientes y leads. El Full Pack queda disponible cuando quieras conectar todo el ecosistema.
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto mb-16">
-          <div className="relative overflow-hidden rounded-3xl border border-brand-orange/40 bg-gradient-to-br from-brand-orange/20 via-slate-800 to-blue-500/10 p-8 lg:p-10 shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl border border-blue-400/40 bg-gradient-to-br from-blue-500/20 via-slate-800 to-brand-orange/10 p-8 lg:p-10 shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 items-center">
               <div>
                 <div className="mb-3 flex flex-wrap items-center gap-3">
-                  <div className="text-brand-orange text-sm font-bold uppercase tracking-wider">Oferta recomendada</div>
-                  <div className="rounded-full bg-red-500 px-4 py-2 text-sm font-black text-white">Ahorra 20%</div>
+                  <div className="text-blue-400 text-sm font-bold uppercase tracking-wider">Puerta de entrada recomendada</div>
+                  <div className="rounded-full bg-blue-500 px-4 py-2 text-sm font-black text-white">Plan 90 días</div>
                 </div>
-                <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">{FULL_PACK.name}</h3>
+                <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">{MARKETING_ENTRY_OFFER.name}</h3>
                 <p className="text-slate-300 text-xl leading-relaxed mb-6">
-                  Los 4 módulos conectados: Marketing Studio, Asistente de Anamnesis, CRM & Calendario y Expertos IA.
+                  Tu CRM guarda contactos. Hear-O Marketing Studio los activa con marketing automático, reactivación y captación.
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-slate-200">
-                  <span className="rounded-lg bg-slate-950/40 p-3">Marketing</span>
-                  <span className="rounded-lg bg-slate-950/40 p-3">Anamnesis</span>
-                  <span className="rounded-lg bg-slate-950/40 p-3">CRM & Calendario</span>
-                  <span className="rounded-lg bg-slate-950/40 p-3">Expertos IA</span>
+                  <span className="rounded-lg bg-slate-950/40 p-3">Reactivación</span>
+                  <span className="rounded-lg bg-slate-950/40 p-3">Fidelización</span>
+                  <span className="rounded-lg bg-slate-950/40 p-3">Captación</span>
+                  <span className="rounded-lg bg-slate-950/40 p-3">Sin permanencia</span>
                 </div>
               </div>
               <div className="bg-slate-950/70 rounded-2xl border border-slate-700 p-6">
                 <div className="flex justify-between border-b border-slate-800 pb-4 mb-4">
-                  <span className="text-slate-400">Implantación</span>
+                  <span className="text-slate-400">{MARKETING_ENTRY_OFFER.setupLabel}</span>
                   <div className="text-right">
-                    <span className="block text-red-400 line-through">{FULL_PACK.originalSetupPrice}</span>
-                    <span className="text-3xl font-bold text-white">{FULL_PACK.setupPrice}</span>
+                    <span className="text-3xl font-bold text-white">{MARKETING_ENTRY_OFFER.setupPrice}</span>
                   </div>
                 </div>
                 <div className="flex justify-between mb-6">
                   <span className="text-slate-400">Cuota</span>
                   <div className="text-right">
-                    <span className="block text-red-400 line-through">{FULL_PACK.originalMonthlyPrice}</span>
-                    <span className="text-4xl font-bold text-green-400">{FULL_PACK.monthlyPrice}</span>
-                    <span className="block text-xs text-slate-500">/mes facturado anual</span>
+                    <span className="text-4xl font-bold text-green-400">{MARKETING_ENTRY_OFFER.monthlyPrice}</span>
+                    <span className="block text-xs text-slate-500">{MARKETING_ENTRY_OFFER.billingNote}</span>
                   </div>
                 </div>
-                <Link to="/software-centros-auditivos-hear-o" className="flex w-full items-center justify-center rounded-xl bg-white px-5 py-4 font-bold text-slate-950 hover:bg-slate-200 transition-colors">
-                  Ver Full Pack
+                <Link to="/marketing-automatico-centros-auditivos" className="flex w-full items-center justify-center rounded-xl bg-white px-5 py-4 font-bold text-slate-950 hover:bg-slate-200 transition-colors">
+                  {MARKETING_ENTRY_OFFER.cta}
                 </Link>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto mb-16 rounded-2xl border border-slate-700 bg-slate-950 p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div>
+            <div className="text-sm font-bold uppercase tracking-wider text-brand-orange mb-2">Plan avanzado</div>
+            <h3 className="text-2xl font-bold text-white mb-2">{FULL_PACK.name}</h3>
+            <p className="text-slate-400">Para centros que ya quieren conectar Marketing Studio, Anamnesis, CRM & Calendario y Expertos IA.</p>
+          </div>
+          <Link to="/software-centros-auditivos-hear-o" className="inline-flex justify-center rounded-xl border border-slate-600 px-6 py-3 font-bold text-slate-200 hover:border-white hover:text-white transition-colors">
+            Ver Full Pack
+          </Link>
         </div>
 
         {/* Quick Links Summary */}

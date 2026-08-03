@@ -18,8 +18,9 @@ import Footer from './Footer';
 import Button from './Button';
 import CookieNotice from './CookieNotice';
 import SeoJsonLd from './SeoJsonLd';
-import { FULL_PACK, guidePages, SITE_URL } from '../seoContent';
+import { guidePages, SITE_URL } from '../seoContent';
 import { newGuidePages } from '../seoContentExtra';
+import { MARKETING_ENTRY_OFFER } from '../constants';
 
 interface HomeProps {
   onContactClick: () => void;
@@ -61,16 +62,16 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
         {
           '@context': 'https://schema.org',
           '@type': 'SoftwareApplication',
-          name: 'Hear-O Full Pack',
+          name: 'Hear-O Marketing Studio',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
-          url: `${SITE_URL}/software-centros-auditivos-hear-o`,
-          description: 'Sistema IA modular y personalizable para centros auditivos.',
+          url: `${SITE_URL}/marketing-automatico-centros-auditivos`,
+          description: 'Marketing automático para centros auditivos: reactivación de pacientes, comunicación constante y captación de leads.',
           offers: {
             '@type': 'Offer',
             priceCurrency: 'EUR',
-            price: '215',
-            description: `${FULL_PACK.setupPrice} de implantación y ${FULL_PACK.monthlyPrice}/mes con facturación anual.`
+            price: '79',
+            description: `${MARKETING_ENTRY_OFFER.setupPrice} de activación y ${MARKETING_ENTRY_OFFER.monthlyPrice}/mes con compromiso mínimo de 3 meses.`
           }
         }
       ]} />
@@ -117,10 +118,10 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
           <div className="max-w-4xl mx-auto relative z-10">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Activa la versión IA de tu Centro Auditivo Hoy
+              Activa el marketing de tu centro auditivo en 90 días
             </h2>
             <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-              Deja de perder tiempo y dinero. Agenda una demo de 15 minutos y te mostramos cómo Hear-O garantiza resultados.
+              Empieza por Marketing Studio: campañas, reactivación de pacientes y captación sin cambiar tu CRM actual.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <Button onClick={openCalendar} size="lg" className="bg-white text-blue-900 hover:bg-slate-100 hover:text-blue-950 shadow-xl w-full sm:w-auto font-bold">
@@ -133,9 +134,9 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
             <div className="flex flex-wrap justify-center gap-4 text-sm font-medium text-blue-200">
               <span className="flex items-center gap-1">✅ Amortizado en 4 meses</span>
               <span className="hidden sm:inline text-blue-400/50">|</span>
-              <span className="flex items-center gap-1">✅ Setup en 30 días</span>
+              <span className="flex items-center gap-1">✅ Activación 290€</span>
               <span className="hidden sm:inline text-blue-400/50">|</span>
-              <span className="flex items-center gap-1">✅ Onboarding completo incluido</span>
+              <span className="flex items-center gap-1">✅ 75€/mes mínimo 3 meses</span>
             </div>
           </div>
         </section>

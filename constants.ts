@@ -17,6 +17,18 @@ export const RECOVERY_CONVERSION = 0.15;
 // Full Pack first year: 1.990 setup + 12 x 215 monthly fee
 export const ESTIMATED_ANNUAL_INVESTMENT = 4570; 
 
+export const MARKETING_ENTRY_OFFER = {
+  name: 'Plan Marketing Studio 90 días',
+  setupLabel: 'Activación',
+  setupPrice: '290€',
+  monthlyPrice: '75€',
+  billingNote: 'al mes, compromiso mínimo 3 meses',
+  duration: '90 días',
+  minimumCommitment: '3 meses',
+  totalTrialPrice: '515€',
+  cta: 'Probar Marketing Studio 90 días'
+};
+
 export const PRICING_PLANS: PricingPlan[] = [
   {
     id: 'expertos-ia',
@@ -51,13 +63,13 @@ export const PRICING_PLANS: PricingPlan[] = [
     id: 'marketing-studio',
     name: 'Hear-O Marketing Studio',
     description: 'Marketing profesional "siempre encendido" sin dedicarle tiempo semanal. Fideliza, reactiva y capta automáticamente.',
-    setupPrice: '750€',
-    monthlyPrice: '99€',
-    annualMonthlyPrice: '79€', // 99 * 0.8 approx
-    highlight: 'Popular',
+    setupPrice: MARKETING_ENTRY_OFFER.setupPrice,
+    monthlyPrice: MARKETING_ENTRY_OFFER.monthlyPrice,
+    annualMonthlyPrice: MARKETING_ENTRY_OFFER.monthlyPrice,
+    highlight: 'Plan 90 días',
     popular: true,
-    amortizationTime: "Amortizado en 2 meses",
-    amortizationBenefit: "Reactiva pacientes dormidos automáticamente",
+    amortizationTime: "Prueba inicial 90 días",
+    amortizationBenefit: "Compromiso mínimo 3 meses",
     idealFor: [
       "No tienes tiempo para dedicarle al marketing semanalmente",
       "Quieres profesionalizar la imagen de tu centro",
@@ -72,6 +84,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       { text: 'Generador de Campañas y Publicaciones (IA)', included: true },
       { text: 'Panel de Acciones Automáticas (configurable)', included: true },
       { text: 'Prueba Auditiva Online (captación de leads)', included: true },
+      { text: 'Activación personalizada del centro', included: true },
       { text: 'Actualización mensual de base de datos', included: true },
       { text: 'Fideliza, Reactiva y Capta automáticamente', included: true },
       { text: 'Histórico de acciones realizadas', included: true },
@@ -145,7 +158,19 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "¿Realmente Marketing Studio funciona en automático o tengo que escribir yo los correos?",
-    answer: "Puedes configurarlo para que trabaje 100% en automático y olvidarte.\n\n• **Campañas Estándar (Fidelización):** Recordatorios de revisión, cumpleaños o fin de garantía se dejan programados en la implantación. El sistema los envía solos siempre.\n• **Promociones (Captación):** El sistema genera ideas proactivamente. Tú solo eliges la idea que te gusta, el público (ej: 'pacientes de más de 3 años') y el canal. Hear-O se encarga de redactar, diseñar y enviar."
+    answer: "Puedes configurarlo para que trabaje 100% en automático y olvidarte.\n\n• **Campañas Estándar (Fidelización):** Recordatorios de revisión, cumpleaños o fin de garantía se dejan programados en la activación. El sistema los envía solos siempre.\n• **Promociones (Captación):** El sistema genera ideas proactivamente. Tú solo eliges la idea que te gusta, el público (ej: 'pacientes de más de 3 años') y el canal. Hear-O se encarga de redactar, diseñar y enviar."
+  },
+  {
+    question: "¿Hear-O Marketing Studio sustituye a mi CRM?",
+    answer: "No. Tu CRM guarda contactos, citas e historial. **Hear-O Marketing Studio los activa** con campañas, comunicaciones, reactivaciones y captación de nuevos leads.\n\nLa idea no es obligarte a cambiar de sistema, sino añadir una capa comercial para que la base de datos trabaje más por el centro."
+  },
+  {
+    question: "¿Tengo que cambiar NOAH o conectar una API clínica?",
+    answer: "No para empezar con Marketing Studio. La activación parte de una carga inicial de datos y de una configuración sencilla del centro.\n\nLa integración clínica puede tener sentido más adelante, pero el plan de 90 días está pensado para arrancar sin depender de NOAH/HIMSA."
+  },
+  {
+    question: "¿Puedo probar Marketing Studio sin permanencia anual?",
+    answer: "Sí. El plan de entrada de Marketing Studio se plantea como una prueba inicial de **90 días**, con **290€ de activación** y **75€/mes**, con compromiso mínimo de 3 meses y sin permanencia anual.\n\nDurante ese periodo el objetivo es ver si el sistema ayuda a mantener comunicación, reactivar contactos y generar oportunidades comerciales."
   },
   {
     question: "¿El Calendario se sincroniza con NOAH?",
@@ -161,6 +186,6 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "¿Es difícil de usar? ¿Incluye formación?",
-    answer: "Todas las soluciones están diseñadas para ser usadas sin conocimientos técnicos. La pantalla te guía paso a paso.\n\nAdemás, la cuota de implantación incluye la configuración inicial completa (carga de datos, logos, precios) y una formación dedicada para ti y tu equipo. Te acompañamos en el arranque para asegurar que le sacas partido desde el primer día."
+    answer: "Todas las soluciones están diseñadas para ser usadas sin conocimientos técnicos. La pantalla te guía paso a paso.\n\nAdemás, la activación incluye la configuración inicial completa (carga de datos, logos, precios) y una formación dedicada para ti y tu equipo. Te acompañamos en el arranque para asegurar que le sacas partido desde el primer día."
   }
 ];

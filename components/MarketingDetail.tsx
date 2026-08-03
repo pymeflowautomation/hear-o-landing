@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { 
   Mail, Megaphone, Users, Calendar, 
-  BarChart3, Zap, Repeat, Heart, ChevronLeft, ChevronRight, Headphones, ClipboardCheck
+  BarChart3, Zap, Repeat, Heart, ChevronLeft, ChevronRight, Headphones, ClipboardCheck, CheckCircle2
 } from 'lucide-react';
 import Button from './Button';
 import LandingHeader from './LandingHeader';
@@ -12,6 +12,7 @@ import { modules } from '../seoContent';
 import Reveal from './Reveal';
 import ZoomableImage from './ZoomableImage';
 import ModulePricingBox from './ModulePricingBox';
+import { MARKETING_ENTRY_OFFER } from '../constants';
 
 interface MarketingDetailProps {
   onContact: () => void;
@@ -73,10 +74,10 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
               Marketing para <span className="text-blue-500">Centros Auditivos</span>: Automático y Profesional
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed">
-              La solución definitiva de <strong>Marketing Automático para Centros Auditivos</strong>. Fideliza, reactiva y capta sin dedicarle tiempo. Hear-O genera contenido y ejecuta acciones por ti.
+              Tu CRM guarda contactos. <strong>Hear-O Marketing Studio los activa</strong>. Fideliza, reactiva y capta sin dedicarle tiempo semanal.
             </p>
             <Button onClick={onContact} size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-none shadow-lg shadow-blue-500/20">
-              Empezar Ahora
+              Probar 90 días
             </Button>
           </div>
           <div className="lg:w-1/2">
@@ -88,6 +89,52 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
                   className="object-contain relative z-10"
                 />
              </div>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal className="container mx-auto px-6 lg:px-20 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 items-center rounded-3xl border border-blue-400/40 bg-gradient-to-br from-blue-500/20 via-slate-900 to-brand-orange/10 p-8 lg:p-10">
+          <div>
+            <div className="inline-block bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full font-bold text-sm mb-5">
+              Plan de entrada
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-5">{MARKETING_ENTRY_OFFER.name}</h2>
+            <p className="text-xl text-slate-300 leading-relaxed mb-6">
+              Ponemos en marcha Marketing Studio para que tu centro mantenga comunicación constante, reactive pacientes antiguos y capte nuevos leads con la Prueba Auditiva Online.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 text-slate-200">
+              {[
+                'No sustituye tu CRM actual',
+                'No exige cambiar NOAH',
+                'Activación personalizada incluida',
+                'Compromiso mínimo 3 meses'
+              ].map(item => (
+                <div key={item} className="flex gap-2 rounded-xl bg-slate-950/50 p-3">
+                  <CheckCircle2 className="text-green-400 shrink-0" size={20} />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-2xl border border-slate-700 bg-slate-950/80 p-6">
+            <div className="flex justify-between border-b border-slate-800 pb-4 mb-4">
+              <span className="text-slate-400">{MARKETING_ENTRY_OFFER.setupLabel}</span>
+              <span className="text-3xl font-bold text-white">{MARKETING_ENTRY_OFFER.setupPrice}</span>
+            </div>
+            <div className="flex justify-between mb-6">
+              <span className="text-slate-400">Cuota</span>
+              <div className="text-right">
+                <span className="text-4xl font-bold text-green-400">{MARKETING_ENTRY_OFFER.monthlyPrice}</span>
+                <span className="block text-xs text-slate-500">{MARKETING_ENTRY_OFFER.billingNote}</span>
+              </div>
+            </div>
+            <div className="rounded-xl border border-blue-400/30 bg-blue-500/10 p-4 text-sm text-slate-300 mb-6">
+              Prueba inicial de {MARKETING_ENTRY_OFFER.duration}: activación, configuración del centro, carga inicial y puesta en marcha.
+            </div>
+            <Button onClick={onContact} size="lg" className="w-full bg-white text-blue-900 hover:bg-slate-200 font-bold">
+              {MARKETING_ENTRY_OFFER.cta}
+            </Button>
           </div>
         </div>
       </Reveal>
@@ -363,7 +410,11 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
             </div>
             <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
                <h3 className="font-bold text-lg text-white mb-2">¿Necesito una base de datos perfecta?</h3>
-               <p className="text-slate-400">No. Se parte de lo que haya (NOAH) y se mantiene actualizada mensualmente con un proceso simple.</p>
+               <p className="text-slate-400">No. Se parte de una carga inicial de datos y se mantiene actualizada con un proceso simple. Para Marketing Studio no necesitas cambiar tu CRM ni conectar una API clínica.</p>
+            </div>
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+               <h3 className="font-bold text-lg text-white mb-2">¿Esto sustituye a mi CRM?</h3>
+               <p className="text-slate-400">No. Tu CRM guarda contactos. Hear-O Marketing Studio los activa con campañas, reactivación, captación y seguimiento comercial.</p>
             </div>
          </div>
       </section>
@@ -434,10 +485,10 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
          <div className="max-w-3xl mx-auto bg-blue-900/20 border border-blue-500/30 rounded-3xl p-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Marketing profesional para tu centro, sin contratar a nadie</h2>
             <p className="text-xl text-slate-300 mb-8">
-               Fideliza, reactiva y capta... sin dedicarle tiempo cada semana.
+              Activa pacientes y leads durante 90 días por {MARKETING_ENTRY_OFFER.setupPrice} de activación y {MARKETING_ENTRY_OFFER.monthlyPrice}/mes, con compromiso mínimo de 3 meses.
             </p>
             <Button onClick={onContact} size="lg" className="bg-white text-blue-900 hover:bg-slate-200 font-bold text-lg px-10">
-               Solicitar Información
+               {MARKETING_ENTRY_OFFER.cta}
             </Button>
          </div>
       </section>
