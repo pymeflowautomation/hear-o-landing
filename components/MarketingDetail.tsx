@@ -187,13 +187,13 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
             {/* Controls */}
              <button 
               onClick={() => scroll('left')} 
-              className="absolute -left-2 md:-left-8 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 p-3 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg backdrop-blur-sm border border-slate-700 opacity-100 md:opacity-0 md:group-hover:opacity-100"
+              className="absolute -left-2 md:-left-8 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 p-3 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg backdrop-blur-sm border border-slate-700 opacity-100"
             >
                 <ChevronLeft size={24} />
             </button>
             <button 
               onClick={() => scroll('right')} 
-              className="absolute -right-2 md:-right-8 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 p-3 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg backdrop-blur-sm border border-slate-700 opacity-100 md:opacity-0 md:group-hover:opacity-100"
+              className="absolute -right-2 md:-right-8 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 p-3 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg backdrop-blur-sm border border-slate-700 opacity-100"
             >
                 <ChevronRight size={24} />
             </button>
