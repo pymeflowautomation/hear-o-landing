@@ -36,7 +36,7 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
       desc: "Más de 10 tipos de envíos predefinidos, diseñados para tu centro auditivo y tu base de datos."
     },
     {
-      img: "/images/imagen-2-HMS.webp",
+      img: "/images/marketing_automatico_centros_auditivos.webp",
       title: "Configuración sencilla",
       desc: "Automático y programado al 100%, pero si quieres, toma el control: Activa o desactiva, configura frecuencia, canales..."
     },
@@ -46,9 +46,14 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
       desc: "Pide a Hear-O que te ayude con publicaciones o promociones. Tendrás: ideas con textos e imágenes. Tu sólo elige, segmenta y programa."
     },
     {
-      img: "/images/ejemplo-envio.webp",
+      img: "/images/redes_sociales_automaticas_con_ia_centros_auditivos.webp",
       title: "Contenidos generados con IA",
       desc: "Olvídate de escribir mails, de diseñar nada, deja que la IA trabaje por ti. Incansable: 24/7"
+    },
+    {
+      img: "/images/captar_pacientes_centro_auditivo_con_prueba_online.webp",
+      title: "Captación con Prueba Auditiva Online",
+      desc: "Atrae contactos interesados con una prueba online personalizada y activa después campañas de seguimiento."
     }
   ];
 
@@ -182,13 +187,13 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
             {/* Controls */}
              <button 
               onClick={() => scroll('left')} 
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 p-3 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg backdrop-blur-sm border border-slate-700 opacity-0 group-hover:opacity-100"
+              className="absolute -left-2 md:-left-8 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 p-3 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg backdrop-blur-sm border border-slate-700 opacity-100 md:opacity-0 md:group-hover:opacity-100"
             >
                 <ChevronLeft size={24} />
             </button>
             <button 
               onClick={() => scroll('right')} 
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 p-3 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg backdrop-blur-sm border border-slate-700 opacity-0 group-hover:opacity-100"
+              className="absolute -right-2 md:-right-8 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 p-3 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg backdrop-blur-sm border border-slate-700 opacity-100 md:opacity-0 md:group-hover:opacity-100"
             >
                 <ChevronRight size={24} />
             </button>
