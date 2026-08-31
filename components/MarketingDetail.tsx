@@ -83,8 +83,8 @@ const MarketingDetail: React.FC<MarketingDetailProps> = ({ onContact }) => {
           <div className="lg:w-1/2">
              <div className="relative flex items-center justify-center group">
                 <ZoomableImage 
-                  src="/images/marketing-automatico-para-centros-auditivos.webp" 
-                  alt="Software de Marketing para Centros Auditivos y Audiología" 
+                  src="/images/hero-marketing-ia-centros-auditivos.webp" 
+                  alt="Panel de Hear-O Marketing Studio con IA, campañas, segmentación, envíos y métricas" 
                   frameClassName="rounded-2xl"
                   className="object-contain relative z-10"
                 />
