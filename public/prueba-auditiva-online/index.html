@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <base href="/prueba-auditiva-online/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Auditivo Online Gratuito | Centro Auditivo</title>
+  <meta name="description"
+    content="Realiza nuestro test auditivo online gratuito en 5 minutos. Descubre tu estado auditivo con pruebas de pitidos y simulaciones de situaciones reales.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👂</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo" id="headerLogo">
+          <img src="./assets/logo-centro.png" alt="Logo" class="logo-img" id="logoImg">
+          <span class="logo-text" id="logoText">Centro Auditivo</span>
+        </div>
+        <nav class="nav">
+          <a href="#test" class="nav-link">Hacer Test</a>
+          <a href="#auto-test" class="nav-link">Auto-Test</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+        </nav>
+        <button class="btn btn-primary btn-small" id="headerCTA">Pedir Cita</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">✓ Test gratuito en 5 minutos</div>
+        <h1 class="hero-title" id="heroTitulo">¿Escuchas bien o crees que escuchas bien?</h1>
+        <p class="hero-subtitle" id="heroSubtitulo">Realiza nuestra prueba auditiva gratuita y descubre tu estado
+          auditivo con resultados instantáneos</p>
+
+        <div class="hero-options">
+          <a href="#test-online" class="hero-card hero-card-primary">
+            <div class="hero-card-icon">🎧</div>
+            <h3 class="hero-card-title" id="opcionTestOnline">Test Auditivo Online</h3>
+            <p class="hero-card-desc" id="opcionTestOnlineDesc">Prueba completa con sonidos y simulaciones de
+              situaciones reales</p>
+            <span class="hero-card-cta">Comenzar ahora →</span>
+          </a>
+
+          <a href="#auto-test" class="hero-card hero-card-secondary">
+            <div class="hero-card-icon">📋</div>
+            <h3 class="hero-card-title" id="opcionAutoTest">Auto-Test Rápido</h3>
+            <p class="hero-card-desc" id="opcionAutoTestDesc">Cuestionario de 4 preguntas sobre tu audición diaria</p>
+            <span class="hero-card-cta">Hacer cuestionario →</span>
+          </a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="trust-icon">🔒</span>
+            <span>100% Privado</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">⚡</span>
+            <span>Resultados inmediatos</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🏥</span>
+            <span>Validado por audiólogos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+          fill="white" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Test Online Section -->
+  <section id="test-online" class="section section-test">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Test Completo</span>
+        <h2 class="section-title">Evaluación Auditiva Online</h2>
+        <p class="section-subtitle">Este test evalúa tu capacidad auditiva mediante pitidos puros y simulaciones de
+          situaciones cotidianas. Recomendamos usar auriculares para mayor precisión.</p>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="test-progress" id="testProgress">
+        <div class="progress-steps">
+          <div class="progress-step active" data-step="1">
+            <div class="step-number">1</div>
+            <span class="step-label">Pitidos</span>
+          </div>
+          <div class="progress-step" data-step="2">
+            <div class="step-number">2</div>
+            <span class="step-label">Simulaciones</span>
+          </div>
+          <div class="progress-step" data-step="3">
+            <div class="step-number">3</div>
+            <span class="step-label">Palabras</span>
+          </div>
+          <div class="progress-step" data-step="4">
+            <div class="step-number">4</div>
+            <span class="step-label">Resultados</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 1: Pitidos -->
+      <div class="test-step active" id="step-pitidos">
+        <div class="test-card">
+          <div class="test-card-header">
+            <div class="test-icon">🔊</div>
+            <h3 class="test-card-title" id="pitidosTitulo">Test de Pitidos</h3>
+          </div>
+          <p class="test-instructions" id="pitidosInstrucciones">Ponte auriculares si los tienes disponibles. Escucharás
+            una serie de pitidos a diferentes frecuencias. Indica si escuchas cada sonido en cada oído.</p>
+
+          <div class="audio-warning">
+            <span class="warning-icon">⚠️</span>
+            <p>Sube el volumen de tu dispositivo al 50-70% antes de comenzar. Los sonidos pueden ser muy suaves.</p>
+          </div>
+
+          <div class="frecuencias-container">
+            <div class="frecuencia-item" data-frecuencia="500">
+              <div class="frecuencia-info">
+                <span class="frecuencia-hz">500 Hz</span>
+                <span class="frecuencia-desc">Graves - Voz masculina</span>
+              </div>
+              <div class="oidos-buttons">
+                <div class="oido-group">
+                  <span class="oido-label" id="pitidosOidoDerecho">Oído derecho</span>
+                  <div class="oido-actions">
+                    <button class="btn-play" data-oido="derecho" data-freq="500" title="Reproducir">
+                      <span class="play-icon">▶</span>
+                    </button>
+                    <label class="check-label">
+                      <input type="checkbox" class="check-hearing" data-oido="derecho" data-freq="500">
+                      <span class="check-text">Lo escucho</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="oido-group">
+                  <span class="oido-label" id="pitidosOidoIzquierdo">Oído izquierdo</span>
+                  <div class="oido-actions">
+                    <button class="btn-play" data-oido="izquierdo" data-freq="500" title="Reproducir">
+                      <span class="play-icon">▶</span>
+                    </button>
+                    <label class="check-label">
+                      <input type="checkbox" class="check-hearing" data-oido="izquierdo" data-freq="500">
+                      <span class="check-text">Lo escucho</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="frecuencia-item" data-frecuencia="1000">
+              <div class="frecuencia-info">
+                <span class="frecuencia-hz">1000 Hz</span>
+                <span class="frecuencia-desc">Medios - Voz femenina</span>
+              </div>
+              <div class="oidos-buttons">
+                <div class="oido-group">
+                  <span class="oido-label">Oído derecho</span>
+                  <div class="oido-actions">
+                    <button class="btn-play" data-oido="derecho" data-freq="1000" title="Reproducir">
+                      <span class="play-icon">▶</span>
+                    </button>
+                    <label class="check-label">
+                      <input type="checkbox" class="check-hearing" data-oido="derecho" data-freq="1000">
+                      <span class="check-text">Lo escucho</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="oido-group">
+                  <span class="oido-label">Oído izquierdo</span>
+                  <div class="oido-actions">
+                    <button class="btn-play" data-oido="izquierdo" data-freq="1000" title="Reproducir">
+                      <span class="play-icon">▶</span>
+                    </button>
+                    <label class="check-label">
+                      <input type="checkbox" class="check-hearing" data-oido="izquierdo" data-freq="1000">
+                      <span class="check-text">Lo escucho</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="frecuencia-item" data-frecuencia="2000">
+              <div class="frecuencia-info">
+                <span class="frecuencia-hz">2000 Hz</span>
+                <span class="frecuencia-desc">Agudos - Consonantes</span>
+              </div>
+              <div class="oidos-buttons">
+                <div class="oido-group">
+                  <span class="oido-label">Oído derecho</span>
+                  <div class="oido-actions">
+                    <button class="btn-play" data-oido="derecho" data-freq="2000" title="Reproducir">
+                      <span class="play-icon">▶</span>
+                    </button>
+                    <label class="check-label">
+                      <input type="checkbox" class="check-hearing" data-oido="derecho" data-freq="2000">
+                      <span class="check-text">Lo escucho</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="oido-group">
+                  <span class="oido-label">Oído izquierdo</span>
+                  <div class="oido-actions">
+                    <button class="btn-play" data-oido="izquierdo" data-freq="2000" title="Reproducir">
+                      <span class="play-icon">▶</span>
+                    </button>
+                    <label class="check-label">
+                      <input type="checkbox" class="check-hearing" data-oido="izquierdo" data-freq="2000">
+                      <span class="check-text">Lo escucho</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="frecuencia-item" data-frecuencia="4000">
+              <div class="frecuencia-info">
+                <span class="frecuencia-hz">4000 Hz</span>
+                <span class="frecuencia-desc">Muy agudos - Silbidos</span>
+              </div>
+              <div class="oidos-buttons">
+                <div class="oido-group">
+                  <span class="oido-label">Oído derecho</span>
+                  <div class="oido-actions">
+                    <button class="btn-play" data-oido="derecho" data-freq="4000" title="Reproducir">
+                      <span class="play-icon">▶</span>
+                    </button>
+                    <label class="check-label">
+                      <input type="checkbox" class="check-hearing" data-oido="derecho" data-freq="4000">
+                      <span class="check-text">Lo escucho</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="oido-group">
+                  <span class="oido-label">Oído izquierdo</span>
+                  <div class="oido-actions">
+                    <button class="btn-play" data-oido="izquierdo" data-freq="4000" title="Reproducir">
+                      <span class="play-icon">▶</span>
+                    </button>
+                    <label class="check-label">
+                      <input type="checkbox" class="check-hearing" data-oido="izquierdo" data-freq="4000">
+                      <span class="check-text">Lo escucho</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-actions">
+            <button class="btn btn-secondary" id="btnSkipPitidos">Omitir esta prueba</button>
+            <button class="btn btn-primary" id="btnContinuarSimulaciones" disabled>Continuar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Simulaciones -->
+      <div class="test-step" id="step-simulaciones">
+        <div class="test-card">
+          <div class="test-card-header">
+            <div class="test-icon">🎭</div>
+            <h3 class="test-card-title" id="simulacionTitulo">Simulaciones de situaciones reales</h3>
+          </div>
+          <p class="test-instructions" id="simulacionInstrucciones">Escucharás tres situaciones cotidianas. En cada una,
+            intenta entender lo que se dice. Después te preguntaremos sobre el contenido.</p>
+
+          <div class="simulaciones-container">
+            <!-- Simulación 1: Teléfono -->
+            <div class="simulacion-item" data-sim="telefono">
+              <div class="simulacion-header">
+                <span class="simulacion-icon">📞</span>
+                <div class="simulacion-info">
+                  <h4 class="simulacion-title">Llamada telefónica</h4>
+                  <p class="simulacion-desc">Simula una conversación por teléfono móvil</p>
+                </div>
+              </div>
+              <div class="simulacion-player">
+                <button class="btn-sim-play" data-sim="telefono">
+                  <span class="sim-play-icon">▶</span>
+                  <span class="sim-play-text">Escuchar llamada</span>
+                </button>
+                <div class="sim-status" id="status-telefono"></div>
+              </div>
+              <div class="sim-pregunta" id="pregunta-telefono" style="display: none;">
+                <p class="pregunta-text">¿De qué hablaba la conversación?</p>
+                <div class="respuestas-options">
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-telefono" value="paquete">
+                    <span>La entrega de un paquete</span>
+                  </label>
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-telefono" value="cita">
+                    <span>La entrega de una carta</span>
+                  </label>
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-telefono" value="trabajo">
+                    <span>La entrega de un regalo</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Simulación 2: Cafetería -->
+            <div class="simulacion-item" data-sim="cafeteria">
+              <div class="simulacion-header">
+                <span class="simulacion-icon">☕</span>
+                <div class="simulacion-info">
+                  <h4 class="simulacion-title">Conversación en cafetería</h4>
+                  <p class="simulacion-desc">Simula el ambiente ruidoso de una cafetería</p>
+                </div>
+              </div>
+              <div class="simulacion-player">
+                <button class="btn-sim-play" data-sim="cafeteria">
+                  <span class="sim-play-icon">▶</span>
+                  <span class="sim-play-text">Escuchar conversación</span>
+                </button>
+                <div class="sim-status" id="status-cafeteria"></div>
+              </div>
+              <div class="sim-pregunta" id="pregunta-cafeteria" style="display: none;">
+                <p class="pregunta-text">¿Qué pedía la persona?</p>
+                <div class="respuestas-options">
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-cafeteria" value="cafe">
+                    <span>Un café con leche y tostada</span>
+                  </label>
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-cafeteria" value="zumo">
+                    <span>Un café solo y tostada</span>
+                  </label>
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-cafeteria" value="agua">
+                    <span>Un café cortado y tostada</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Simulación 3: Aire libre -->
+            <div class="simulacion-item" data-sim="aire">
+              <div class="simulacion-header">
+                <span class="simulacion-icon">🌳</span>
+                <div class="simulacion-info">
+                  <h4 class="simulacion-title">Conversación al aire libre</h4>
+                  <p class="simulacion-desc">Simula una conversación en la calle con ruido de fondo</p>
+                </div>
+              </div>
+              <div class="simulacion-player">
+                <button class="btn-sim-play" data-sim="aire">
+                  <span class="sim-play-icon">▶</span>
+                  <span class="sim-play-text">Escuchar conversación</span>
+                </button>
+                <div class="sim-status" id="status-aire"></div>
+              </div>
+              <div class="sim-pregunta" id="pregunta-aire" style="display: none;">
+                <p class="pregunta-text">¿Dónde quedaban?</p>
+                <div class="respuestas-options">
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-aire" value="plaza">
+                    <span>En la plaza mayor</span>
+                  </label>
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-aire" value="casa">
+                    <span>En la casa mayor</span>
+                  </label>
+                  <label class="respuesta-option">
+                    <input type="radio" name="resp-aire" value="calle">
+                    <span>En la calle mayor</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-actions">
+            <button class="btn btn-secondary" id="btnVolverPitidos">← Volver</button>
+            <button class="btn btn-primary" id="btnContinuarPalabras" disabled>Continuar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Palabras Ambiguas -->
+      <div class="test-step" id="step-palabras">
+        <div class="test-card">
+          <div class="test-card-header">
+            <div class="test-icon">🗣️</div>
+            <h3 class="test-card-title" id="palabrasTitulo">Discriminación de sonidos</h3>
+          </div>
+          <p class="test-instructions" id="palabrasInstrucciones">Escucharás palabras que se parecen mucho entre sí.
+            Selecciona la palabra que crees haber oído. Esta prueba evalúa tu capacidad para distinguir fonemas
+            similares.</p>
+
+          <div class="palabras-container" id="palabrasContainer">
+            <!-- Las palabras se generan dinámicamente desde JS -->
+          </div>
+
+          <div class="test-actions">
+            <button class="btn btn-secondary" id="btnVolverSimulaciones">← Volver</button>
+            <button class="btn btn-primary" id="btnContinuarResultados" disabled>Ver resultados</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Formulario y Resultados -->
+      <div class="test-step" id="step-resultados">
+        <div class="test-card">
+          <div class="test-card-header">
+            <div class="test-icon">📊</div>
+            <h3 class="test-card-title" id="formularioTitulo">Resultados de tu test</h3>
+          </div>
+          <p class="test-instructions">Para ver tu resultado completo y recibir un informe detallado, introduce tus
+            datos:</p>
+
+          <form class="resultados-form" id="formResultados">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre" id="labelNombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Ej: María">
+              </div>
+              <div class="form-group">
+                <label for="apellidos" id="labelApellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" required placeholder="Ej: García">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email" id="labelEmail">Correo electrónico</label>
+                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+              </div>
+              <div class="form-group">
+                <label for="cp" id="labelCP">Código postal</label>
+                <input type="text" id="cp" name="cp" required placeholder="28001" pattern="[0-9]{5}">
+              </div>
+            </div>
+
+            <div class="form-group form-checkbox">
+              <label class="checkbox-label">
+                <input type="checkbox" id="privacidad" name="privacidad" required>
+                <span class="checkmark"></span>
+                <span id="textoPrivacidad">Acepto la política de privacidad y el tratamiento de mis datos</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large" id="btnVerResultado">
+              <span>Ver mi resultado</span>
+              <span class="btn-spinner" style="display: none;">⟳</span>
+            </button>
+          </form>
+
+          <!-- Resultado del test (aparece después del envío) -->
+          <div class="resultado-final" id="resultadoFinal" style="display: none;">
+            <div class="resultado-icon" id="resultadoIcon">✓</div>
+            <h4 class="resultado-title" id="resultadoTitulo">Tu audición parece estar en buen estado</h4>
+            <p class="resultado-desc" id="resultadoDesc">Basado en tus respuestas, tu capacidad auditiva se encuentra
+              dentro de parámetros normales. Recibirás un informe detallado en tu correo.</p>
+            <div
+              style="background-color: #f0f7ff; border-left: 4px solid #2563eb; padding: 15px; margin: 20px 0; border-radius: 4px; text-align: left;">
+              <p style="margin: 0; color: #1e40af; font-size: 0.95rem; line-height: 1.5;">
+                <strong>💡 Nota del sistema:</strong> Los datos que recojas con este Formulario llegarán a tu mail y se
+                añadirán automáticamente a tu Base de Datos como Leads, entrando así en las Acciones y campañas que
+                realices. ¡Consigue más pacientes!
+              </p>
+            </div>
+            <div class="resultado-stats" id="resultadoStats">
+              <div class="stat-item">
+                <span class="stat-value" id="statPitidos">100%</span>
+                <span class="stat-label">Pitidos detectados</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value" id="statSimulaciones">100%</span>
+                <span class="stat-label">Simulaciones acertadas</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value" id="statPalabras">100%</span>
+                <span class="stat-label">Palabras acertadas</span>
+              </div>
+            </div>
+
+            <div class="resultado-cta">
+              <button class="btn btn-primary" id="btnPedirCitaResultado">Pedir cita gratuita</button>
+              <p class="resultado-nota">Te contactaremos en 24-48 horas</p>
+            </div>
+
+            <!-- Modal Pedir Cita -->
+            <div id="modalCita" style="display: none; margin-top: 20px; padding: 20px; background-color: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; text-align: left;">
+              <h4 style="margin-top:0; color:#1e293b; font-size:1.1rem; font-weight:600; margin-bottom:15px;">¿Cómo prefieres que te contactemos?</h4>
+              
+              <div style="display: flex; gap: 20px; margin-bottom: 15px;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="radio" name="canalContacto" value="whatsapp" checked>
+                  <span>WhatsApp</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="radio" name="canalContacto" value="llamada">
+                  <span>Llamada telefónica</span>
+                </label>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 15px;">
+                <label for="telefonoCita" style="display:block; font-size:0.9rem; margin-bottom:5px; color:#475569;">Teléfono</label>
+                <input type="tel" id="telefonoCita" placeholder="+34 600 000 000" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem;">
+              </div>
+
+              <button id="btnConfirmarCita" class="btn btn-primary" style="width:100%;">Confirmar Cita</button>
+              <p id="msgCitaExito" style="display:none; color:#10b981; margin-top:10px; font-size:0.9rem; text-align:center;">¡Cita solicitada! Te contactaremos pronto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Auto-Test Section (Tally Forms) -->
+  <section id="auto-test" class="section section-autotest">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Versión Rápida</span>
+        <h2 class="section-title">Auto-Test Auditivo</h2>
+        <p class="section-subtitle">Prefieres un cuestionario rápido? Responde 4-5 preguntas sobre tu audición cotidiana
+          y obtén una primera valoración.</p>
+      </div>
+
+      <div class="tally-container">
+        <div class="tally-placeholder" id="tallyPlaceholder">
+          <div class="placeholder-icon">📋</div>
+          <h3>Formulario de Auto-Test</h3>
+          <p>El formulario de Tally Forms se mostrará aquí.</p>
+          <p class="placeholder-code">Configura la URL en <code>config.js</code> → <code>tally.urlIframe</code></p>
+        </div>
+        <!-- El iframe de Tally se insertará aquí vía JS -->
+        <iframe
+          id="tallyIframe"
+          data-tally-src="https://tally.so/embed/jaDk76?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          loading="lazy" width="100%" height="200" frameborder="0" marginheight="0" marginwidth="0"
+          title="Auto-Test Auditivo Centro"></iframe>
+        <script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s); }</script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="section section-info">
+    <div class="container">
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon">🩺</div>
+          <h3 class="info-title">¿Por qué hacerte un test?</h3>
+          <p class="info-text">La pérdida auditiva suele ser gradual. Muchas personas tardan años en darse cuenta. Un
+            test temprano puede marcar la diferencia en tu calidad de vida.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📈</div>
+          <h3 class="info-title">¿Qué mide este test?</h3>
+          <p class="info-text">Evaluamos tu capacidad para detectar diferentes frecuencias y entender el habla en
+            situaciones cotidianas con y sin ruido de fondo.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🏆</div>
+          <h3 class="info-title">¿Es fiable?</h3>
+          <p class="info-text">Este test es orientativo y no sustituye una evaluación profesional. Si detectas
+            dificultades, te recomendamos una revisión completa con uno de nuestros audiólogos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contacto" class="section section-contact">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2 class="contact-title">¿Necesitas ayuda?</h2>
+          <p class="contact-text">Nuestros audiólogos están disponibles para resolver tus dudas y programar una revisión
+            presencial gratuita.</p>
+
+          <div class="contact-details" id="contactDetails">
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <span id="contactDireccion">Calle Ejemplo, 123, Madrid</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <a href="tel:+34900000000" id="contactTelefono">+34 900 000 000</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <a href="mailto:info@centroaudiodemo.es" id="contactEmail">info@centroaudiodemo.es</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🕐</span>
+              <span id="contactHorario">Lunes a Viernes: 9:00 - 20:00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-cta">
+          <div class="cta-card">
+            <h3 class="cta-title">Revisión gratuita</h3>
+            <p class="cta-text">Audiometría tonal completa + análisis por audiólogo titulado</p>
+            <button class="btn btn-primary btn-large" id="btnPedirCita">Solicitar cita</button>
+            <p class="cta-note">Sin compromiso. 100% gratuita.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="footer-logo">👂</span>
+          <span class="footer-name" id="footerNombre">Centro Auditivo Demo</span>
+        </div>
+        <p class="footer-disclaimer" id="footerDisclaimer">Este test es orientativo y no sustituye una evaluación
+          profesional. Consulta siempre con un audiólogo titulado.</p>
+        <div class="footer-links">
+          <a href="#" id="linkPrivacidad">Política de privacidad</a>
+          <a href="#" id="linkLegal">Aviso legal</a>
+          <a href="#" id="linkCookies">Cookies</a>
+        </div>
+        <div class="footer-attribution">
+          <img src="./assets/logo-hear-o-pequeno2.png" alt="Hear-O Logo" class="hearo-logo">
+          <p><strong>Hear-O</strong> - IA y Automatizaciones para Centros Auditivos</p>
+        </div>
+        <p class="footer-copy">© 2025 <span id="footerCopyNombre">Centro Auditivo Demo</span>. Todos los derechos
+          reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
