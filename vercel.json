@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/prueba_auditica_online_para_centros_auditivos",
+      "destination": "/prueba_auditica_online_para_centros_auditivos/",
+      "permanent": false
+    },
+    {
       "source": "/guias/organizar-revisiones-garantias-renovaciones-audifonos",
       "destination": "/guias/ventas-renovacion-audifonos-centro-auditivo",
       "permanent": true
