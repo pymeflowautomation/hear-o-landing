@@ -450,11 +450,46 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
                 <div className={guide.extraImages?.some(image => image.afterSectionId === section.id && image.layout === 'right') ? 'grid gap-8 lg:grid-cols-[1fr_320px] lg:items-start' : ''}>
                   <div>
                     <h2 className="text-3xl font-bold mb-5">{section.title}</h2>
-                    <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
-                  {section.paragraphs.map(paragraph => (
-                    <p key={paragraph}>{renderParagraph(paragraph)}</p>
-                  ))}
-                </div>
+                    {section.id === 'opciones-adicionales-prueba-auditiva' ? (
+                      <>
+                        <p className="text-slate-300 text-lg leading-relaxed">{renderParagraph(section.paragraphs[0])}</p>
+                        <div className="mt-7 grid gap-4 md:grid-cols-3">
+                          {[
+                            {
+                              title: 'Integración en tu web actual',
+                              price: '200 € + IVA',
+                              text: section.paragraphs[1],
+                              className: 'border-brand-orange/40 bg-brand-orange/5'
+                            },
+                            {
+                              title: 'Mantenimiento opcional',
+                              price: '20 € + IVA / mes',
+                              text: section.paragraphs[2],
+                              className: 'border-blue-400/40 bg-blue-400/5'
+                            },
+                            {
+                              title: 'Automatizaciones y seguimiento',
+                              price: 'Bajo presupuesto',
+                              text: section.paragraphs[3],
+                              className: 'border-emerald-400/40 bg-emerald-400/5'
+                            }
+                          ].map(option => (
+                            <article key={option.title} className={`rounded-2xl border p-6 ${option.className}`}>
+                              <div className="mb-3 text-xs font-bold uppercase tracking-wider text-brand-orange">Opcional</div>
+                              <h3 className="mb-3 text-xl font-bold text-white">{option.title}</h3>
+                              <div className="mb-4 text-2xl font-bold text-white">{option.price}</div>
+                              <p className="text-base leading-relaxed text-slate-300">{renderParagraph(option.text)}</p>
+                            </article>
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
+                        {section.paragraphs.map(paragraph => (
+                          <p key={paragraph}>{renderParagraph(paragraph)}</p>
+                        ))}
+                      </div>
+                    )}
                     {section.bullets && (
                       <div className="mt-6 grid gap-3">
                         {section.bullets.map(bullet => (
