@@ -457,7 +457,7 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
           )}
 
           {guide.slug === 'prueba-auditiva-online-para-centros-auditivos' && renderPruebaAuditivaCta('Ver la prueba auditiva de Hear-O')}
-          {guide.slug === 'prueba-auditiva-online-convertir-visitas-oportunidades' && renderPruebaAuditivaLinksCta()}
+          {(guide.slug === 'prueba-auditiva-online-convertir-visitas-oportunidades' || guide.slug === '5-formas-captar-pacientes-prueba-auditiva-online') && renderPruebaAuditivaLinksCta()}
 
           {guide.extraImages?.filter(image => !image.afterSectionId).map(image => (
             <figure key={image.src} className="mb-10 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">

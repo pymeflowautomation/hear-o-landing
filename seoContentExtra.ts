@@ -888,6 +888,187 @@ export const guideEnhancements: Record<string, GuideExtra> = {
 
 export const newGuidePages = [
   {
+    slug: '5-formas-captar-pacientes-prueba-auditiva-online',
+    category: 'Captación',
+    title: '5 formas de captar pacientes para un centro auditivo con una Prueba Auditiva Online',
+    description: 'Descubre cinco formas de utilizar una Prueba Auditiva Online para captar pacientes desde la web, un centro óptico-auditivo, redes sociales, email y publicidad local.',
+    keyword: 'cómo captar pacientes para un centro auditivo',
+    answer: 'Un centro auditivo puede utilizar una Prueba Auditiva Online como puerta de entrada para captar pacientes desde su web, sus contenidos, una tablet en el establecimiento, las redes sociales, campañas de email y publicidad geolocalizada.',
+    modulePath: '/marketing-automatico-centros-auditivos',
+    moduleLabel: 'Ver Marketing Studio',
+    tips: [
+      'Crear una página propia para la prueba y trabajar su posicionamiento local.',
+      'Aprovechar el tráfico presencial de los centros óptico-auditivos con una tablet y unos cascos.',
+      'Convertir las publicaciones de redes sociales en invitaciones a participar.',
+      'Reactivar contactos antiguos mediante campañas de email segmentadas.',
+      'Utilizar campañas de publicidad geolocalizadas con la prueba como destino.'
+    ],
+    example: 'Un centro puede captar visitas desde Google con una página optimizada, invitar a realizar la prueba en una tablet dentro de la óptica, compartirla en redes y enviarla por email a pacientes antiguos. Cada canal genera una oportunidad distinta, pero todas llevan a una experiencia vinculada con el mismo centro.',
+    tableRows: [
+      ['Web y SEO local', 'Captar tráfico orgánico de personas que buscan información o una primera orientación auditiva.'],
+      ['Centro óptico-auditivo', 'Convertir una visita a la tienda en una conversación sobre el servicio de audiología.'],
+      ['Redes sociales', 'Transformar contenidos y retos de escucha en visitas a la prueba.'],
+      ['Email marketing', 'Reactivar pacientes, contactos y oportunidades que no avanzaron.'],
+      ['Publicidad geolocalizada', 'Llevar anuncios locales a una experiencia concreta que recoge contactos.']
+    ],
+    sections: [
+      {
+        id: 'web-seo-local-prueba-online',
+        title: '1. Integrar la Prueba Auditiva Online en tu web y trabajar el SEO local',
+        paragraphs: [
+          'La primera forma de captar pacientes es integrar nuestra Prueba Auditiva Online en la web del centro.',
+          'Puede aparecer como una sección propia dentro del menú, como una llamada a la acción en la página principal o como destino desde las páginas relacionadas con audiología.',
+          'La prueba puede convertirse en mucho más que una herramienta aislada. Si el centro trabaja bien el posicionamiento de su web, esa página puede captar tráfico orgánico de personas que buscan información o una primera orientación sobre su audición.',
+          'Para reforzar ese posicionamiento, la página puede apoyarse con contenidos sobre revisión auditiva, problemas para entender conversaciones, pérdida auditiva, audífonos y situaciones de escucha en la vida diaria.',
+          'El SEO local permite orientar la página a la zona geográfica del centro y trabajar búsquedas como “prueba auditiva online en Madrid”, “centro auditivo en Valencia” o “revisión auditiva en Sevilla”.',
+          'El objetivo no es conseguir visitas por conseguirlas. Es convertir ese tráfico en personas interesadas que puedan dejar sus datos y comenzar una conversación con el centro.'
+        ],
+        bullets: [
+          'Una página propia para la Prueba Auditiva Online.',
+          'Enlaces internos desde contenidos y servicios de audiología.',
+          'Contenido útil relacionado con las dudas reales de los pacientes.',
+          'Orientación local hacia la ciudad o zona de influencia del centro.'
+        ]
+      },
+      {
+        id: 'centro-optico-auditivo-tablet',
+        title: '2. Utilizarla en un centro óptico y auditivo con una tablet',
+        paragraphs: [
+          'Si tienes una óptica con gabinete audiológico, nuestra Prueba Auditiva Online puede convertirse en una herramienta sencilla para aprovechar las visitas a la tienda.',
+          'Una tablet y unos cascos permiten invitar a los clientes a poner a prueba su audición mientras esperan, visitan la óptica o terminan su compra.',
+          'La propuesta puede ser tan sencilla como: “¿Quieres poner a prueba tu audición?”. No hace falta plantearla como una consulta clínica ni como una venta directa.',
+          'Este uso ayuda a dar a conocer el servicio de audiología, detectar posibles pacientes, generar una base de datos y, en algunos casos, agendar directamente una revisión profesional.',
+          'También puede utilizarse con acompañantes. Una persona que entra en la óptica puede no necesitar una revisión, pero sí conocer a un familiar con dificultades para escuchar.'
+        ],
+        bullets: [
+          'Una experiencia sencilla con tablet y auriculares.',
+          'Una forma natural de presentar el gabinete audiológico.',
+          'Una oportunidad para captar datos y continuar la conversación.',
+          'Posibilidad de proponer una revisión profesional cuando tenga sentido.'
+        ]
+      },
+      {
+        id: 'redes-sociales-prueba-online',
+        title: '3. Convertir las redes sociales en un reto de escucha',
+        paragraphs: [
+          'Las redes sociales funcionan mejor cuando proponen una acción, no solo cuando publican información.',
+          'En lugar de compartir únicamente consejos sobre salud auditiva, el centro puede invitar a sus seguidores a participar en una experiencia: “¿Entiendes esta conversación?”, “Pon a prueba tu audición” o “¿Escucharías esta situación en una cafetería?”.',
+          'Nuestra Prueba Auditiva Online puede presentarse como un pequeño reto relacionado con situaciones que todo el mundo reconoce. Un vídeo corto, una story o una publicación pueden despertar curiosidad y llevar a la persona hasta la prueba.',
+          'Este formato ayuda a hablar de audición sin utilizar un tono médico o alarmista, e involucra también a familiares y acompañantes.',
+          'La publicación consigue atención, pero la prueba convierte esa atención en una acción concreta y en una posible oportunidad de contacto.'
+        ],
+        bullets: [
+          '“Pon a prueba tu audición”.',
+          '“¿Entiendes esta conversación?”.',
+          '“Reta a alguien de tu familia”.',
+          'Campañas especiales sobre reuniones, restaurantes o salud auditiva.'
+        ]
+      },
+      {
+        id: 'email-marketing-prueba-online',
+        title: '4. Enviar campañas de email a tu propia base de datos',
+        paragraphs: [
+          'Muchos centros auditivos tienen contactos que no han avanzado por diferentes motivos: pacientes que no llegaron a adaptarse, revisiones que quedaron pendientes, personas que pidieron información o leads que nunca reservaron una cita.',
+          'La Prueba Auditiva Online puede servir como motivo para volver a contactar con ellos.',
+          'En lugar de enviar un mensaje genérico diciendo “llámanos para pedir cita”, el centro puede ofrecer una acción concreta: “Hace tiempo que no revisas tu audición. Hemos preparado una prueba online para que puedas volver a ponerla a prueba desde casa”.',
+          'El mensaje puede segmentarse según el tipo de contacto. A un paciente no adaptado se le puede plantear como una nueva oportunidad; a un lead antiguo, como una primera aproximación; y a un paciente anterior, como parte de una campaña de revisión.',
+          'La prueba ofrece valor antes de pedir una cita y permite que el centro continúe el contacto con las personas que muestran interés.'
+        ],
+        bullets: [
+          'Pacientes que no llegaron a adaptarse.',
+          'Revisiones que no avanzaron.',
+          'Contactos que pidieron información.',
+          'Leads antiguos o personas que acompañaron a un familiar.',
+          'Campañas de revisión y reactivación.'
+        ]
+      },
+      {
+        id: 'publicidad-geolocalizada-prueba-online',
+        title: '5. Utilizarla como landing en campañas de publicidad local',
+        paragraphs: [
+          'La Prueba Auditiva Online también puede ser el destino de campañas de publicidad en Google, Facebook o Instagram.',
+          'En vez de enviar a todas las personas a la página principal del centro, el anuncio puede llevarlas directamente a una experiencia concreta y fácil de entender.',
+          'Las campañas pueden geolocalizarse por ciudad, código postal, radio alrededor del centro o zona de influencia comercial. Un anuncio puede dirigirse a personas cercanas con un mensaje como: “¿Vives en [ciudad]? Pon a prueba tu audición online”.',
+          'La landing de la prueba evita que el usuario tenga que navegar por toda la web para encontrar qué hacer. Puede comenzar la experiencia y dejar sus datos si quiere que el centro contacte con él.',
+          'Además, el centro puede medir cuántas personas llegan, cuántas empiezan la prueba y qué campañas generan más contactos. La publicidad lleva tráfico; la prueba convierte parte de ese tráfico en oportunidades.'
+        ],
+        bullets: [
+          'Campañas de búsqueda para personas que ya muestran intención.',
+          'Publicidad en redes sociales para despertar interés.',
+          'Segmentación por ciudad, código postal o radio de proximidad.',
+          'Una landing concreta en lugar de enviar tráfico a la página principal.',
+          'Medición de visitas, pruebas iniciadas y contactos captados.'
+        ]
+      },
+      {
+        id: 'experiencia-sonora-captacion',
+        title: 'La misma experiencia sonora en todos tus canales',
+        paragraphs: [
+          'Nuestra Prueba Auditiva Online no es un formulario de cinco preguntas. Incluye cuatro frecuencias —500, 1.000, 2.000 y 4.000 Hz—, simulaciones de escucha en diferentes entornos y una prueba final de logoaudiometría con ocho pares de palabras.',
+          'La persona escucha, participa y se implica en una experiencia relacionada con su audición. Esa experiencia puede ser el punto de unión entre la web, el centro físico, las redes, el email y la publicidad.',
+          'No sustituye una valoración audiológica profesional, pero sí puede ayudar a captar interés, generar contactos y abrir una conversación con el centro.'
+        ]
+      }
+    ],
+    visualBreak: {
+      title: 'La idea común',
+      text: 'Cada canal tiene una función diferente, pero todos pueden llevar a la misma experiencia: una Prueba Auditiva Online vinculada con tu centro.',
+      items: ['Atraer tráfico', 'Ofrecer una experiencia', 'Captar el contacto', 'Continuar la conversación']
+    },
+    visuals: {
+      ready: true,
+      image: {
+        src: `${visualBase}/5-formas-captar-pacientes-prueba-auditiva-online.webp`,
+        alt: 'Cinco formas de captar pacientes con una Prueba Auditiva Online',
+        prompt: 'Infografía sobre cinco formas de captar pacientes con una Prueba Auditiva Online.'
+      }
+    },
+    extraImages: [
+      {
+        src: `${visualBase}/prueba-auditiva-online-web-seo-local-centro-auditivo.webp`,
+        alt: 'Prueba Auditiva Online integrada en la web y el SEO local de un centro auditivo',
+        afterSectionId: 'web-seo-local-prueba-online',
+        caption: 'La web del centro puede convertir el tráfico orgánico local en oportunidades de contacto.',
+        layout: 'full'
+      },
+      {
+        src: `${visualBase}/prueba-auditiva-online-centro-optico-auditivo-tablet.webp`,
+        alt: 'Persona realizando una Prueba Auditiva Online en una tablet dentro de un centro óptico-auditivo',
+        afterSectionId: 'centro-optico-auditivo-tablet',
+        caption: 'Una tablet y unos cascos permiten activar conversaciones en el propio establecimiento.',
+        layout: 'full'
+      },
+      {
+        src: `${visualBase}/prueba-auditiva-online-redes-sociales-captar-pacientes.webp`,
+        alt: 'Campaña de redes sociales para captar pacientes con una Prueba Auditiva Online',
+        afterSectionId: 'redes-sociales-prueba-online',
+        caption: 'Las redes pueden convertir un reto de escucha en una visita a la prueba.',
+        layout: 'full'
+      },
+      {
+        src: `${visualBase}/prueba-auditiva-online-email-marketing-centro-auditivo.webp`,
+        alt: 'Campaña de email marketing para captar pacientes de un centro auditivo',
+        afterSectionId: 'email-marketing-prueba-online',
+        caption: 'El email permite reactivar pacientes, contactos y oportunidades que no avanzaron.',
+        layout: 'full'
+      },
+      {
+        src: `${visualBase}/prueba-auditiva-online-publicidad-geolocalizada-centro-auditivo.webp`,
+        alt: 'Campaña de publicidad geolocalizada para un centro auditivo con Prueba Auditiva Online',
+        afterSectionId: 'publicidad-geolocalizada-prueba-online',
+        caption: 'La publicidad local puede llevar a las personas cercanas directamente a una experiencia de captación.',
+        layout: 'full'
+      }
+    ],
+    faqs: [
+      ['¿Cómo puede captar pacientes una prueba auditiva online?', 'Puede convertir visitas de la web, redes sociales, campañas de email, publicidad local y tráfico presencial en oportunidades de contacto para el centro.'],
+      ['¿Puede utilizarse en un centro óptico-auditivo?', 'Sí. Una tablet y unos cascos permiten ofrecerla de forma sencilla a las personas que entran o esperan en el establecimiento.'],
+      ['¿Cómo ayuda el SEO local?', 'La prueba puede integrarse en una página propia de la web y posicionarse junto con contenidos y búsquedas relacionadas con el centro y su ciudad.'],
+      ['¿Se puede enviar a pacientes antiguos?', 'Sí. Puede utilizarse en campañas de reactivación para pacientes no adaptados, revisiones pendientes, leads antiguos y otros contactos.'],
+      ['¿La prueba sustituye una evaluación profesional?', 'No. Es una experiencia de captación y orientación inicial. La valoración audiológica profesional debe realizarse en el centro.']
+    ]
+  },
+  {
     slug: 'prueba-auditiva-online-para-centros-auditivos',
     category: 'Captación',
     title: 'Prueba Auditiva Online para tu centro: una nueva forma de captar pacientes',
