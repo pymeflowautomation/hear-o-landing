@@ -279,6 +279,19 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
     </section>
   );
 
+  const renderPruebaAuditivaCta = (label: string) => (
+    <div className="my-8 rounded-2xl border border-brand-orange/30 bg-brand-orange/10 p-5">
+      <a
+        href="https://hear-o.es/prueba-auditiva-online"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 rounded-xl bg-brand-orange px-5 py-3 font-bold text-white transition-colors hover:bg-orange-500"
+      >
+        {label} <ArrowRight size={18} />
+      </a>
+    </div>
+  );
+
   const renderExtraImage = (image: NonNullable<Guide['extraImages']>[number], className: string, captionClassName: string) => {
     const imageNode = (
       <img
@@ -419,6 +432,8 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
             </figure>
           )}
 
+          {guide.slug === 'prueba-auditiva-online-para-centros-auditivos' && renderPruebaAuditivaCta('Ver la prueba auditiva de Hear-O')}
+
           {guide.extraImages?.filter(image => !image.afterSectionId).map(image => (
             <figure key={image.src} className="mb-10 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
               <img
@@ -552,6 +567,9 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
               {guide.extraImages?.filter(image => image.afterSectionId === section.id && image.layout !== 'right' && image.layout !== 'third').map(image => (
                 renderExtraImage(image, 'mb-10 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900', 'border-t border-slate-800 px-5 py-4 text-sm leading-relaxed text-slate-400')
               ))}
+
+              {guide.slug === 'prueba-auditiva-online-para-centros-auditivos' && section.id === 'prueba-auditiva-centros-opticos-auditivos' && renderPruebaAuditivaCta('Probar la experiencia online')}
+              {guide.slug === 'prueba-auditiva-online-para-centros-auditivos' && section.id === 'que-incluye-prueba-auditiva-online' && renderPruebaAuditivaCta('Ver cómo es la prueba')}
 
               {index === hearOSectionIndex && renderHearOCta()}
             </React.Fragment>
