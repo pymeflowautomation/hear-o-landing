@@ -450,7 +450,40 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
                 <div className={guide.extraImages?.some(image => image.afterSectionId === section.id && image.layout === 'right') ? 'grid gap-8 lg:grid-cols-[1fr_320px] lg:items-start' : ''}>
                   <div>
                     <h2 className="text-3xl font-bold mb-5">{section.title}</h2>
-                    {section.id === 'opciones-adicionales-prueba-auditiva' ? (
+                    {section.id === 'precio-prueba-auditiva-online' ? (
+                      <>
+                        <p className="text-slate-300 text-lg leading-relaxed">{renderParagraph(section.paragraphs[0])}</p>
+                        <div className="mt-7 overflow-hidden rounded-3xl border border-brand-orange/50 bg-gradient-to-br from-brand-orange/20 via-slate-900 to-slate-950 shadow-2xl shadow-brand-orange/10">
+                          <div className="flex flex-col gap-8 p-7 md:flex-row md:items-center md:justify-between md:p-9">
+                            <div>
+                              <div className="mb-3 inline-flex rounded-full bg-brand-orange px-4 py-2 text-xs font-black uppercase tracking-wider text-white">Oferta de lanzamiento · ahorra un 25%</div>
+                              <div className="text-sm font-bold uppercase tracking-wider text-brand-orange">Prueba Auditiva Online para tu centro</div>
+                              <div className="mt-2 flex items-end gap-2">
+                                <span className="text-5xl font-black tracking-tight text-white">390 €</span>
+                                <span className="pb-2 text-slate-300">+ IVA</span>
+                              </div>
+                              <div className="mt-2 text-sm font-semibold text-slate-300">Pago único · oportunidad de lanzamiento</div>
+                            </div>
+                            <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-5 md:max-w-sm">
+                              <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-slate-400">Precio original</div>
+                              <div className="text-2xl font-bold text-slate-400 line-through">520 € + IVA</div>
+                              <p className="mt-4 text-base leading-relaxed text-slate-200">{renderParagraph(section.paragraphs[2])}</p>
+                            </div>
+                          </div>
+                          <div className="border-t border-white/10 bg-slate-950/40 px-7 py-6 md:px-9">
+                            <h3 className="mb-4 text-xl font-bold text-white">Qué incluye</h3>
+                            <div className="grid gap-3 md:grid-cols-2">
+                              {section.bullets?.map(bullet => (
+                                <p key={bullet} className="flex gap-3 text-base leading-relaxed text-slate-200">
+                                  <CheckCircle2 className="mt-1 shrink-0 text-green-400" />
+                                  {bullet}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ) : section.id === 'opciones-adicionales-prueba-auditiva' ? (
                       <>
                         <p className="text-slate-300 text-lg leading-relaxed">{renderParagraph(section.paragraphs[0])}</p>
                         <div className="mt-7 grid gap-4 md:grid-cols-3">
@@ -490,7 +523,7 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
                         ))}
                       </div>
                     )}
-                    {section.bullets && (
+                    {section.bullets && section.id !== 'precio-prueba-auditiva-online' && (
                       <div className="mt-6 grid gap-3">
                         {section.bullets.map(bullet => (
                           <p key={bullet} className="flex gap-3 text-slate-300 text-lg leading-relaxed">
