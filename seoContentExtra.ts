@@ -888,6 +888,190 @@ export const guideEnhancements: Record<string, GuideExtra> = {
 
 export const newGuidePages = [
   {
+    slug: 'prueba-auditiva-online-para-centros-auditivos',
+    category: 'Captación',
+    title: 'Prueba Auditiva Online para tu centro: una nueva forma de captar pacientes',
+    description: 'Descubre cómo captar pacientes para tu centro auditivo con una prueba auditiva online desde la web, redes sociales, email, publicidad o una tablet en el establecimiento.',
+    keyword: 'prueba auditiva online para centros auditivos',
+    answer: 'Nuestra prueba auditiva online ayuda a los centros auditivos a convertir visitas, publicaciones y campañas en oportunidades de contacto. El centro ofrece una experiencia sonora personalizada y recibe los datos de las personas interesadas para continuar la conversación.',
+    modulePath: '/marketing-automatico-centros-auditivos',
+    moduleLabel: 'Ver Marketing Studio',
+    tips: [
+      'Ofrecer una acción concreta en lugar de limitarse a pedir al usuario que contacte con el centro.',
+      'Utilizar la prueba con la imagen del centro para reforzar la confianza y el recuerdo de marca.',
+      'Aprovechar el tráfico de una óptica con gabinete audiológico mediante una tablet y unos cascos.',
+      'Mover la prueba desde la web, las redes sociales, el email y la publicidad online.',
+      'Usar el filtrado de normoyentes como beneficio añadido, no como sustituto de la valoración profesional.'
+    ],
+    example: 'Una óptica con gabinete audiológico puede colocar una tablet con unos cascos e invitar a sus clientes a poner a prueba su audición. La misma experiencia puede aparecer después en la web, en una publicación de redes o en una campaña de email para que más personas conozcan el servicio auditivo del centro.',
+    tableRows: [
+      ['Objetivo principal', 'Captar pacientes potenciales para el centro auditivo.'],
+      ['Dónde utilizarla', 'Web, redes sociales, email, publicidad online o tablet dentro del establecimiento.'],
+      ['Qué vive el usuario', 'Una experiencia sonora personalizada, no un formulario convencional.'],
+      ['Qué recibe el centro', 'Los datos de las personas que han mostrado interés para poder continuar la conversación.'],
+      ['Valor añadido', 'Orientar y priorizar la atención presencial cuando el centro decida utilizar ese filtro.']
+    ],
+    sections: [
+      {
+        id: 'como-captar-pacientes-centro-auditivo',
+        title: 'Cómo captar pacientes para un centro auditivo con una prueba auditiva online',
+        paragraphs: [
+          'Captar pacientes nuevos es una de las principales prioridades de cualquier centro auditivo.',
+          'Muchos centros tienen buenos profesionales, una atención de calidad y servicios interesantes, pero no siempre encuentran una forma sencilla de convertir una visita a la web, una publicación en redes sociales o una campaña de publicidad en una oportunidad real de contacto.',
+          'Nuestra prueba auditiva online ayuda precisamente en ese primer paso.',
+          'La prueba auditiva de Hear-O ofrece a las personas una experiencia sonora que pueden realizar desde su móvil, ordenador o tablet. Al terminar, pueden dejar sus datos para que el centro continúe la conversación.',
+          'No es solo una página informativa ni un formulario de contacto. Es una herramienta para captar pacientes potenciales.'
+        ]
+      },
+      {
+        id: 'prueba-auditiva-centros-opticos-auditivos',
+        title: 'Prueba Auditiva Online para centros ópticos y auditivos',
+        paragraphs: [
+          'Si tienes una óptica con gabinete audiológico, nuestra prueba auditiva online puede convertirse en una herramienta de captación muy atractiva para las personas que entran en tu establecimiento.',
+          'Con una tablet y unos cascos, puedes invitar a tus clientes a poner a prueba su audición mientras esperan, visitan la óptica o terminan su compra.',
+          'La propuesta puede ser tan sencilla como: “¿Quieres poner a prueba tu audición?”.',
+          'La persona participa en una experiencia diferente, descubre cómo responde su audición en distintas situaciones y conoce mejor los servicios auditivos del centro.',
+          'No hace falta plantearlo como una consulta clínica ni como una venta directa. Puede funcionar como una pequeña experiencia interactiva que inicia conversaciones con personas que quizá nunca entrarían preguntando directamente por una prueba auditiva o por unos audífonos.'
+        ]
+      },
+      {
+        id: 'captar-pacientes-web-redes-publicidad',
+        title: 'Cómo captar pacientes desde la web, las redes sociales y la publicidad',
+        paragraphs: [
+          'La prueba auditiva de Hear-O puede integrarse en los principales canales de captación de un centro auditivo.',
+          'La idea es sencilla: cada canal necesita una acción concreta. En lugar de limitarse a decir “contacta con nosotros”, el centro ofrece algo que la persona puede probar en ese momento.',
+          'La estrategia específica para cada canal puede desarrollarse después en contenidos independientes: cómo captar pacientes desde Instagram, cómo utilizar una prueba auditiva online en email marketing o cómo preparar una campaña de publicidad local para centros auditivos.'
+        ],
+        bullets: [
+          'En la web del centro, con el logotipo, el nombre y la imagen de la marca.',
+          'En publicaciones de redes sociales con mensajes como “Pon a prueba tu audición”.',
+          'En campañas de email para pacientes antiguos o nuevos contactos.',
+          'En anuncios de publicidad online y social ads.',
+          'En una tablet dentro del propio establecimiento.'
+        ]
+      },
+      {
+        id: 'que-incluye-prueba-auditiva-online',
+        title: 'Qué incluye nuestra prueba auditiva online',
+        paragraphs: [
+          'Nuestra prueba auditiva online no es el típico formulario de cinco preguntas.',
+          'La prueba auditiva de Hear-O incluye una experiencia sonora con cuatro frecuencias, simulaciones de escucha en diferentes entornos y una prueba final de logoaudiometría con ocho pares de palabras.',
+          'La persona no solo responde preguntas. Escucha, participa y se implica en una experiencia relacionada con su audición.',
+          'Esa participación convierte la curiosidad inicial en una oportunidad para que el centro pueda iniciar una conversación.'
+        ],
+        bullets: [
+          'Cuatro frecuencias: 500, 1.000, 2.000 y 4.000 Hz.',
+          'Simulaciones de habla y ruido en situaciones como conversaciones telefónicas, cafeterías, aire libre o viento.',
+          'Prueba final de logoaudiometría con ocho pares de palabras.'
+        ]
+      },
+      {
+        id: 'como-recibe-contactos-centro-auditivo',
+        title: 'Cómo recibe los contactos tu centro auditivo',
+        paragraphs: [
+          'Cuando una persona completa la experiencia y deja sus datos, el contacto llega directamente al correo del centro.',
+          'El equipo puede saber quién ha mostrado interés, ponerse en contacto y continuar la conversación de forma natural.',
+          'La persona no ha dejado sus datos después de ver únicamente un anuncio. Ha dedicado unos minutos a realizar una prueba auditiva online y ya ha dado un primer paso con el centro.',
+          'La prueba utiliza la identidad del propio establecimiento, por lo que el usuario reconoce en todo momento la marca con la que está interactuando.'
+        ]
+      },
+      {
+        id: 'filtrar-normoyentes-beneficio-anadido',
+        title: 'Filtrar normoyentes: un beneficio añadido',
+        paragraphs: [
+          'La captación de pacientes es el objetivo principal de nuestra prueba auditiva online.',
+          'Como beneficio adicional, el centro puede utilizarla para orientar mejor los contactos y detectar perfiles que parecen normoyentes antes de reservar una prueba presencial gratuita.',
+          'Esto puede ayudar a priorizar la agenda y evitar dedicar tiempo a personas que, en ese momento, probablemente no necesitan una valoración audiológica presencial.',
+          'La prueba no sustituye una evaluación profesional ni pretende emitir un diagnóstico. Es una herramienta de orientación y organización que el centro puede utilizar si considera que aporta valor a su proceso de atención.'
+        ]
+      },
+      {
+        id: 'precio-prueba-auditiva-online',
+        title: 'Precio de la Prueba Auditiva Online para tu centro',
+        paragraphs: [
+          'Actualmente puedes poner en marcha nuestra prueba auditiva online con una oferta de lanzamiento.',
+          'Oferta de lanzamiento: 390 € + IVA. Precio original: 520 € + IVA.',
+          'Es un pago único para empezar a captar pacientes potenciales con una herramienta concreta, adaptada a la imagen de tu centro.'
+        ],
+        bullets: [
+          'Landing personalizada para tu centro.',
+          'Adaptación del nombre, logotipo y mensajes.',
+          'Formulario de captación conectado.',
+          'Puesta en marcha de la prueba.',
+          'Instalación guiada.'
+        ]
+      },
+      {
+        id: 'opciones-adicionales-prueba-auditiva',
+        title: 'Opciones adicionales para integrar y ampliar la solución',
+        paragraphs: [
+          'La prueba auditiva online funciona por sí sola, pero puedes añadir otros servicios si quieres integrarla mejor en tu proceso comercial.',
+          'Integración en tu web actual: 200 € + IVA. Te entregamos un único archivo para que tu webmaster pueda integrarlo fácilmente. Si prefieres que lo hagamos nosotros, creamos el enlace en el menú de tu web y añadimos una sección CTA en la página principal. El total de landing más integración sería de 590 € + IVA.',
+          'Mantenimiento opcional: 20 € + IVA al mes o 18 € + IVA al mes con pago anual. Permite mantener la landing revisada y cuidada, comprobar que el formulario sigue funcionando correctamente y realizar pequeñas actualizaciones básicas cuando sean necesarias.',
+          'También podemos preparar, bajo presupuesto, respuestas automáticas, secuencias de tres a cinco emails, propuestas de cita, seguimiento e integración con Marketing Studio de Hear-O.'
+        ]
+      },
+      {
+        id: 'empezar-captar-pacientes-hear-o',
+        title: 'Empieza a captar pacientes con la prueba auditiva de Hear-O',
+        paragraphs: [
+          'No necesitas implantar una plataforma completa para empezar.',
+          'Puedes comenzar con una herramienta concreta para captar pacientes potenciales desde tu web, tus redes sociales, tus campañas o tu propio establecimiento.',
+          '¿Quieres saber cómo funcionaría en tu centro? Contacta directamente con Hear-O y te explicaremos cómo adaptar nuestra prueba auditiva online a tu imagen, tus canales de captación y la forma de trabajar de tu equipo.',
+          'Quiero información sobre la Prueba Auditiva Online para mi centro.'
+        ]
+      }
+    ],
+    visualBreak: {
+      title: 'La idea clave',
+      text: 'Nuestra prueba auditiva online convierte el interés en una oportunidad de contacto para tu centro. El filtrado de normoyentes es un beneficio añadido, no el objetivo principal.',
+      items: ['Web y campañas', 'Tablet en el centro', 'Lead para tu equipo', 'Filtro opcional']
+    },
+    visuals: {
+      ready: true,
+      infographic: {
+        src: `${visualBase}/prueba-auditiva-online-captar-clientes.webp`,
+        alt: 'Infografía sobre cómo captar pacientes con una prueba auditiva online para centros auditivos',
+        prompt: 'Infografía sobre captación de pacientes con una Prueba Auditiva Online de Hear-O.'
+      },
+      image: {
+        src: `${visualBase}/prueba-auditiva-online-para-centros-auditivos.webp`,
+        alt: 'Prueba auditiva online personalizada para un centro auditivo',
+        prompt: 'Captura de una prueba auditiva online personalizada con la imagen de un centro auditivo.'
+      }
+    },
+    extraImages: [
+      {
+        src: `${visualBase}/prueba-auditiva-online-4-frecuencias.webp`,
+        alt: 'Pantalla de la prueba auditiva online con cuatro frecuencias',
+        afterSectionId: 'que-incluye-prueba-auditiva-online',
+        caption: 'La prueba auditiva de Hear-O trabaja con cuatro frecuencias: 500, 1.000, 2.000 y 4.000 Hz.',
+        layout: 'third'
+      },
+      {
+        src: `${visualBase}/prueba-auditiva-online-simulacion-entornos-sonoros.webp`,
+        alt: 'Simulaciones de entornos sonoros dentro de una prueba auditiva online',
+        afterSectionId: 'que-incluye-prueba-auditiva-online',
+        caption: 'Simulaciones de escucha relacionadas con conversaciones telefónicas, cafeterías y otros entornos.',
+        layout: 'third'
+      },
+      {
+        src: `${visualBase}/prueba-auditiva-online-logoaudiometria-basica.webp`,
+        alt: 'Prueba de discriminación de palabras dentro de una prueba auditiva online',
+        afterSectionId: 'que-incluye-prueba-auditiva-online',
+        caption: 'Prueba final de discriminación de palabras con pares como casa/caza y rana/rama.',
+        layout: 'third'
+      }
+    ],
+    faqs: [
+      ['¿La prueba auditiva online sirve para captar pacientes?', 'Sí. Está diseñada para convertir visitas, publicaciones, campañas de email y anuncios online en oportunidades de contacto para el centro.'],
+      ['¿Puedo utilizarla en un centro óptico-auditivo?', 'Sí. Puedes utilizarla en una tablet con unos cascos para ofrecer una experiencia sencilla a las personas que entran en el establecimiento.'],
+      ['¿La prueba online sustituye una prueba auditiva presencial?', 'No. Ofrece una primera orientación y una experiencia de captación. No sustituye una evaluación audiológica profesional.'],
+      ['¿Los contactos llegan directamente a mi centro?', 'Sí. Los datos del contacto se envían al correo que indique el centro.'],
+      ['¿Puedo integrarla en mi web?', 'Sí. Puedes recibir el archivo para que lo integre tu webmaster o contratar la integración con Hear-O.']
+    ]
+  },
+  {
     slug: 'cerrar-mejor-venta-audifonos-sin-presionar',
     category: 'Ventas',
     title: 'Cómo cerrar mejor una venta de audífonos sin presionar',
