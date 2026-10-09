@@ -293,8 +293,12 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
   );
 
   const renderPruebaAuditivaLinksCta = () => (
-    <div className="my-8 rounded-2xl border border-brand-orange/30 bg-gradient-to-r from-brand-orange/10 to-blue-500/10 p-5">
-      <p className="mb-4 text-lg font-bold text-white">Conoce la Prueba Auditiva Online de Hear-O</p>
+    <div className="my-10 rounded-3xl border border-brand-orange/40 bg-gradient-to-br from-brand-orange/15 via-slate-900 to-blue-500/10 p-6 shadow-lg shadow-brand-orange/5 md:p-8">
+      <div className="max-w-2xl">
+        <div className="mb-2 text-sm font-bold uppercase tracking-wider text-brand-orange">Siguiente paso</div>
+        <p className="mb-3 text-2xl font-bold text-white">¿Quieres utilizarla para captar pacientes en tu centro?</p>
+        <p className="mb-6 text-lg leading-relaxed text-slate-300">Consulta cómo funciona la Prueba Auditiva Online de Hear-O o escríbenos y te contamos cómo encajarla en tu web, tus campañas o tu centro.</p>
+      </div>
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <a
           href="https://hear-o.es/prueba_auditica_online_para_centros_auditivos/"
@@ -302,16 +306,15 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-orange px-5 py-3 text-center font-bold text-white transition-colors hover:bg-orange-500"
         >
-          Ver la versión independiente <ArrowRight size={18} />
+          Ver más información <ArrowRight size={18} />
         </a>
-        <a
-          href="https://hear-o.es/prueba-auditiva-online"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 px-5 py-3 text-center font-bold text-white transition-colors hover:border-brand-orange"
+        <button
+          type="button"
+          onClick={onContact}
+          className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-500 px-5 py-3 text-center font-bold text-white transition-colors hover:border-brand-orange hover:bg-slate-800"
         >
-          Probar la experiencia <ArrowRight size={18} />
-        </a>
+          Escríbenos <ArrowRight size={18} />
+        </button>
       </div>
     </div>
   );
