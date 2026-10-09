@@ -1470,117 +1470,95 @@ export const newGuidePages = [
   {
     slug: 'prueba-auditiva-online-convertir-visitas-oportunidades',
     category: 'Captación',
-    title: 'Prueba Auditiva Online: cómo convertir visitas en oportunidades',
-    description: 'Cómo usar una Prueba Auditiva Online personalizada para captar leads, reforzar la imagen del centro óptico-auditivo y activar campañas con Hear-O Marketing Studio.',
-    keyword: 'prueba auditiva online centro óptico auditivo',
-    answer: 'Una Prueba Auditiva Online propia permite a un centro óptico-auditivo ofrecer una puerta de entrada sencilla, captar leads con su imagen de marca y activar después campañas de seguimiento dentro de Hear-O Marketing Studio.',
+    title: 'Marketing Studio + Prueba Auditiva Online: capta más pacientes para tu centro',
+    description: 'Marketing Studio reúne campañas, contenidos y acciones de captación para centros auditivos e incluye nuestra Prueba Auditiva Online para integrarla en tu centro y en tus acciones de marketing.',
+    keyword: 'Marketing Studio prueba auditiva online',
+    answer: 'Marketing Studio es una herramienta completa para crear campañas periódicas, generar contenidos y mantener acciones de marketing para tu centro auditivo. Además, incluye nuestra Prueba Auditiva Online para captar pacientes desde la web, redes, email, publicidad o una tablet dentro del establecimiento.',
     modulePath: '/marketing-automatico-centros-auditivos',
     moduleLabel: 'Ver Marketing Studio',
     tips: [
-      'Usar la prueba auditiva online como lead magnet propio del centro, con su imagen de marca.',
-      'Combinar una prueba auditiva en fases con un autotest de situaciones para captar perfiles diferentes.',
-      'Insertarla en la web, campañas de email, redes sociales, publicidad y WhatsApp.',
-      'Usarla también dentro del centro con una tablet y cascos para aprovechar el tráfico presencial.',
-      'Conectar cada lead con un flujo de seguimiento dentro de Hear-O Marketing Studio.'
+      'Mantener campañas periódicas para que el centro no dependa de acciones aisladas.',
+      'Generar contenidos y publicaciones relacionados con la salud auditiva y la captación.',
+      'Integrar la Prueba Auditiva Online en la web, redes sociales, email, publicidad o dentro del propio centro.',
+      'Usar una tablet con cascos en centros óptico-auditivos para activar conversaciones.',
+      'Conectar la captación con acciones posteriores de seguimiento dentro de Marketing Studio.'
     ],
-    example: 'Un centro óptico-auditivo puede enviar una campaña de email con una Prueba Auditiva Online, captar los datos de quienes la completan y activar después mensajes de seguimiento para ofrecer una revisión profesional en gabinete.',
+    example: 'Un centro óptico-auditivo puede utilizar Marketing Studio para preparar una campaña de captación, llevar a los usuarios a su Prueba Auditiva Online, recoger los datos de quienes muestran interés y continuar después la conversación con el equipo del centro.',
     tableRows: [
-      ['Sin prueba online', 'La visita web o el contacto curioso puede marcharse sin dejar datos.'],
-      ['Prueba con marca del centro', 'El usuario recibe una experiencia más profesional y asociada al propio centro.'],
-      ['Lead captado', 'El centro recoge datos útiles para seguimiento comercial y campañas.'],
-      ['Marketing Studio', 'El lead entra en un flujo de emails, promociones, recordatorios o contacto.'],
-      ['Resultado final', 'Más oportunidades para convertir visitas en pacientes reales.']
+      ['Marketing Studio', 'Campañas periódicas, generación de contenidos y acciones de marketing para el centro.'],
+      ['Prueba incluida', 'Una experiencia sonora personalizada para captar pacientes potenciales.'],
+      ['Versión independiente', 'La Prueba Auditiva Online también puede contratarse por separado.'],
+      ['Valor conjunto', 'Marketing Studio más la prueba online reúne captación, contenidos y seguimiento en una misma propuesta.'],
+      ['Resultado', 'Más oportunidades para convertir el interés en conversaciones y pacientes.']
     ],
     sections: [
       {
-        id: 'activo-propio-centro',
-        title: 'Por qué es tan interesante tener una Prueba Auditiva Online propia',
+        id: 'marketing-studio-captacion-prueba-online',
+        title: 'Marketing Studio: campañas, contenidos y una Prueba Auditiva Online incluida',
         paragraphs: [
-          'Para un centro óptico-auditivo, disponer de su propia Prueba Auditiva Online es mucho más que añadir una herramienta curiosa a la web.',
-          'Es una forma de ofrecer valor antes de la cita, captar datos de personas interesadas y reforzar una imagen más moderna y profesional del centro.',
-          'Además, si la prueba se presenta con la imagen de marca del centro, el usuario no siente que está usando una herramienta externa sin relación. Percibe que el propio centro le ofrece una primera orientación y una vía sencilla para pedir una revisión auditiva profesional.'
+          'Marketing Studio es una herramienta muy potente y completa para centros auditivos. Ayuda a planificar campañas periódicas, generar contenidos y mantener acciones de marketing sin depender de ideas aisladas o de publicar solo cuando queda tiempo.',
+          'Dentro de esa propuesta se incluye nuestra Prueba Auditiva Online: una experiencia sonora que puedes integrar en tu centro y utilizar en tus acciones de captación.',
+          'Así, Marketing Studio no solo te ayuda a comunicar. También te proporciona una puerta de entrada concreta para convertir el interés en contactos y oportunidades para tu centro.'
         ]
       },
       {
-        id: 'marketing-studio-prueba',
-        title: 'La Prueba Auditiva Online incluida en Hear-O Marketing Studio',
+        id: 'marketing-studio-prueba-incluida',
+        title: 'Marketing Studio + Prueba Auditiva Online: captación y seguimiento en una misma propuesta',
         paragraphs: [
-          'Hear-O Marketing Studio incluye una Prueba Auditiva Online pensada para captar leads y activar acciones de marketing posteriores.',
-          'La idea es sencilla: el centro ofrece una prueba atractiva y accesible; el usuario la completa; el centro recoge el lead; y después Marketing Studio permite trabajar esa oportunidad con campañas, emails, promociones o contacto comercial.',
-          'Así, la prueba no se queda en una acción aislada. Se convierte en la puerta de entrada a un flujo completo de captación y seguimiento.'
+          'La Prueba Auditiva Online puede aparecer en la web del centro, en redes sociales, en campañas de email, en anuncios de publicidad online o en una tablet con cascos dentro de un centro óptico-auditivo.',
+          'La persona realiza la experiencia, deja sus datos si quiere que el centro contacte con ella y el equipo obtiene una oportunidad que antes podía perderse.',
+          'Lo interesante de la combinación es que Marketing Studio permite continuar trabajando esa oportunidad con campañas, contenidos, emails, promociones y seguimiento.',
+          'El coste conjunto de Marketing Studio más la Prueba Auditiva Online resulta especialmente atractivo porque une una herramienta completa de marketing con una experiencia concreta de captación.'
         ]
       },
       {
         id: 'prueba-tres-fases',
         title: 'Prueba Auditiva Online en tres fases',
         paragraphs: [
-          'La primera modalidad es una Prueba Auditiva Online estructurada en tres fases. Esto la hace más completa que un simple cuestionario y permite generar una experiencia más interesante para el usuario.',
+          'La Prueba Auditiva Online incluida en Marketing Studio está estructurada en tres fases. Esto la hace más completa que un simple cuestionario y genera una experiencia más interesante para el usuario.',
           'Las tres fases trabajan diferentes aspectos de la audición: frecuencias, simulación de entornos y discriminación de habla con palabras.',
-          'No sustituye una prueba profesional en gabinete, pero sí ayuda a detectar interés, orientar al usuario y abrir una conversación con el centro.'
+          'No sustituye una prueba profesional en gabinete, pero sí ayuda a captar interés, orientar al usuario y abrir una conversación con el centro.'
         ],
         bullets: [
-          'Frecuencias: permite una primera aproximación a la percepción de sonidos en diferentes rangos.',
-          'Simulación de entornos: ayuda a que el usuario se identifique con situaciones cotidianas.',
-          'Discriminación de habla con palabras: acerca la prueba a un problema real, que no es solo oír, sino entender.'
+          'Frecuencias: una primera aproximación a la percepción de sonidos en diferentes rangos.',
+          'Simulación de entornos: situaciones cotidianas para que el usuario relacione la prueba con su vida real.',
+          'Discriminación de habla con palabras: una aproximación a un problema real, que no es solo oír, sino entender.'
         ]
       },
       {
         id: 'autotest-situaciones',
         title: 'Autotest auditivo de situaciones',
         paragraphs: [
-          'La segunda modalidad es un autotest de situaciones, basado en preguntas y respuestas.',
-          'Este formato es especialmente útil para usuarios que todavía no se ven preparados para hacer una prueba auditiva más técnica, pero sí reconocen dificultades en su día a día.',
-          'Preguntas sobre conversaciones, televisión, reuniones, ruido o cansancio auditivo ayudan a que la persona identifique señales y acepte mejor la recomendación de una revisión profesional.'
+          'Además de la Prueba Auditiva Online sonora, Marketing Studio puede incluir un autotest auditivo de situaciones basado en preguntas y respuestas.',
+          'Este formato resulta útil para las personas que todavía no se ven preparadas para hacer una prueba más técnica, pero sí reconocen dificultades en su día a día.',
+          'Las preguntas sobre conversaciones, televisión, reuniones, ruido o cansancio auditivo ayudan a identificar señales y facilitan que la persona valore una revisión profesional.'
         ]
       },
       {
-        id: 'casos-uso',
-        title: 'Casos de uso para captar más leads',
+        id: 'version-independiente-prueba-online',
+        title: 'La versión independiente de la Prueba Auditiva Online',
         paragraphs: [
-          'La Prueba Auditiva Online funciona mejor cuando no se limita a estar escondida en una página de la web. Debe moverse de forma activa por distintos canales.',
-          'Estos son algunos usos prácticos para centros auditivos y óptico-auditivos.'
+          'Si no necesitas todavía Marketing Studio y buscas únicamente una herramienta de captación, también puedes contratar la Prueba Auditiva Online de Hear-O de forma independiente.',
+          'La versión independiente tiene actualmente un precio de lanzamiento de 390 € + IVA, frente a un precio original de 520 € + IVA.',
+          'Incluye la landing personalizada, la adaptación del nombre y logotipo del centro, el formulario de captación conectado y la puesta en marcha de la prueba.',
+          'Puedes informarte sobre la versión independiente y probar la experiencia antes de decidir.'
         ],
-        bullets: [
-          'Enviarla en campañas de email marketing a pacientes, leads antiguos o contactos de la base de datos.',
-          'Insertarla en la página web como llamada a la acción principal para personas que aún no quieren pedir cita.',
-          'Moverla en redes sociales como contenido útil: “comprueba tu audición en unos minutos”.',
-          'Usarla en campañas de publicidad como oferta de entrada para captar usuarios interesados.',
-          'Enviarla por WhatsApp o email como cribado previo antes de una visita.',
-          'Usarla dentro del propio centro con una tablet y cascos, especialmente en ópticas con tráfico presencial.'
-        ]
-      },
-      {
-        id: 'flujo-captacion',
-        title: 'Qué ocurre al contratar Hear-O Marketing Studio',
-        paragraphs: [
-          'Con Hear-O Marketing Studio, la Prueba Auditiva Online no funciona como una acción aislada. Funciona como una puerta de entrada para captar leads que engordan la base de datos del centro y quedan incluidos en acciones posteriores de marketing.',
-          'El recorrido empieza con una campaña de mail, una publicación, un anuncio, un WhatsApp o un enlace desde la web. El usuario hace la prueba, rellena sus datos y el centro gana una oportunidad que antes probablemente se habría perdido.',
-          'Cuando el usuario pide cita, el centro puede contactarle, agendar una revisión auditiva, realizar la valoración profesional y avanzar hacia la adaptación y la conversión en paciente.',
-          'Cuando el usuario no pide cita, tampoco se pierde. Entra en la base de datos y queda disponible para recibir nuevas campañas de mail, promociones, recordatorios o contenidos hasta que vuelva a mostrar interés.',
-          'Ese es el beneficio real: no todos los leads convierten en el primer contacto, pero Hear-O permite seguir trabajando sobre ellos hasta que estén preparados para pedir cita.'
-        ],
-        bullets: [
-          'Campaña de mail o publicidad > el usuario hace la prueba > rellena sus datos.',
-          'Si pide cita > el centro contacta > agenda revisión > adaptación > conversión en paciente.',
-          'Si no pide cita > entra en base de datos > queda disponible para nuevas acciones.',
-          'Campañas de mail a leads > algunos piden cita y otros siguen dentro de la base de datos.',
-          'Resultado: el centro no solo capta contactos; crea una base de oportunidades que Marketing Studio sigue trabajando.'
-        ]
+
       },
       {
         id: 'imagen-profesional',
         title: 'Imagen más profesional para el centro',
         paragraphs: [
-          'Una prueba auditiva online con marca propia también mejora la percepción del centro.',
+          'Una Prueba Auditiva Online con la marca del centro también mejora la percepción del establecimiento.',
           'El usuario ve un centro más moderno, más accesible y mejor preparado para acompañarle antes incluso de la primera cita.',
           'Para ópticas que están incorporando audiología, este punto es especialmente importante: la prueba ayuda a dar visibilidad al gabinete y a presentar el servicio auditivo como una parte seria y bien integrada dentro del centro.'
         ]
       }
     ],
     visualBreak: {
-      title: 'Idea clave',
-      text: 'La Prueba Auditiva Online no es solo una prueba. Es una puerta de entrada para captar leads, reforzar marca y activar campañas dentro de Hear-O Marketing Studio.',
-      items: ['Marca propia', 'Captación de leads', 'Seguimiento', 'Más citas']
+      title: 'La combinación que importa',
+      text: 'Marketing Studio aporta la continuidad del marketing. La Prueba Auditiva Online aporta una experiencia concreta para captar pacientes. Juntas forman una propuesta especialmente potente para el centro.',
+      items: ['Campañas', 'Contenidos', 'Prueba online', 'Seguimiento']
     },
     extraImages: [
       {
@@ -1614,16 +1592,17 @@ export const newGuidePages = [
       {
         src: `${visualBase}/como_captar_leads_en_centro_auditivo.webp`,
         alt: 'Flujo de captación de leads en un centro auditivo con Prueba Auditiva Online y Hear-O Marketing Studio',
-        afterSectionId: 'flujo-captacion',
-        caption: 'Flujo de captación de leads con Prueba Auditiva Online: campaña, test, datos, cita o entrada en base de datos para nuevas campañas.',
+        afterSectionId: 'marketing-studio-prueba-incluida',
+        caption: 'La combinación de Marketing Studio y Prueba Auditiva Online convierte una acción de marketing en una oportunidad de contacto para el centro.',
         layout: 'full'
       }
     ],
     faqs: [
+      ['¿Qué incluye Marketing Studio?', 'Marketing Studio reúne campañas periódicas, generación de contenidos y acciones de marketing para centros auditivos. Además, incluye nuestra Prueba Auditiva Online.'],
+      ['¿La Prueba Auditiva Online está incluida en Marketing Studio?', 'Sí. La prueba forma parte de la propuesta de Marketing Studio y puede integrarse en el centro y en sus acciones de marketing.'],
+      ['¿Puedo contratar solo la Prueba Auditiva Online?', 'Sí. También existe una versión independiente con un precio de lanzamiento de 390 € + IVA.'],
       ['¿La Prueba Auditiva Online sustituye una prueba profesional?', 'No. Es una herramienta de captación y orientación inicial. La valoración profesional debe realizarse en el centro.'],
-      ['¿Puede llevar la imagen de marca del centro?', 'Sí. Lo interesante es que el usuario perciba la prueba como una herramienta propia del centro óptico-auditivo.'],
-      ['¿Para qué sirve captar el lead?', 'Sirve para poder hacer seguimiento, enviar campañas, ofrecer una revisión profesional y trabajar la oportunidad dentro de Marketing Studio.'],
-      ['¿Dónde puede usarse la prueba?', 'En la web, redes sociales, campañas de publicidad, email marketing, WhatsApp y también dentro del propio centro con una tablet y cascos.']
+      ['¿Dónde puede usarse la prueba?', 'En la web, redes sociales, campañas de publicidad, email marketing y también dentro del propio centro con una tablet y cascos.']
     ]
   },
   {

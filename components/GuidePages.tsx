@@ -292,6 +292,30 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
     </div>
   );
 
+  const renderPruebaAuditivaLinksCta = () => (
+    <div className="my-8 rounded-2xl border border-brand-orange/30 bg-gradient-to-r from-brand-orange/10 to-blue-500/10 p-5">
+      <p className="mb-4 text-lg font-bold text-white">Conoce la Prueba Auditiva Online de Hear-O</p>
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a
+          href="https://hear-o.es/prueba_auditica_online_para_centros_auditivos/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-orange px-5 py-3 text-center font-bold text-white transition-colors hover:bg-orange-500"
+        >
+          Ver la versión independiente <ArrowRight size={18} />
+        </a>
+        <a
+          href="https://hear-o.es/prueba-auditiva-online"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 px-5 py-3 text-center font-bold text-white transition-colors hover:border-brand-orange"
+        >
+          Probar la experiencia <ArrowRight size={18} />
+        </a>
+      </div>
+    </div>
+  );
+
   const renderExtraImage = (image: NonNullable<Guide['extraImages']>[number], className: string, captionClassName: string) => {
     const imageNode = (
       <img
@@ -433,6 +457,7 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
           )}
 
           {guide.slug === 'prueba-auditiva-online-para-centros-auditivos' && renderPruebaAuditivaCta('Ver la prueba auditiva de Hear-O')}
+          {guide.slug === 'prueba-auditiva-online-convertir-visitas-oportunidades' && renderPruebaAuditivaLinksCta()}
 
           {guide.extraImages?.filter(image => !image.afterSectionId).map(image => (
             <figure key={image.src} className="mb-10 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
