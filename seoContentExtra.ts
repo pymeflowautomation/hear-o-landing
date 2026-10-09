@@ -1508,7 +1508,7 @@ export const newGuidePages = [
           'La Prueba Auditiva Online puede aparecer en la web del centro, en redes sociales, en campañas de email, en anuncios de publicidad online o en una tablet con cascos dentro de un centro óptico-auditivo.',
           'La persona realiza la experiencia, deja sus datos si quiere que el centro contacte con ella y el equipo obtiene una oportunidad que antes podía perderse.',
           'Lo interesante de la combinación es que Marketing Studio permite continuar trabajando esa oportunidad con campañas, contenidos, emails, promociones y seguimiento.',
-          'El coste conjunto de Marketing Studio más la Prueba Auditiva Online resulta especialmente atractivo porque une una herramienta completa de marketing con una experiencia concreta de captación.'
+          'La Prueba Auditiva Online está incluida sin coste adicional dentro de Marketing Studio. Por eso, el valor conjunto resulta especialmente atractivo: une una herramienta completa de marketing con una experiencia concreta de captación.'
         ]
       },
       {
@@ -1599,7 +1599,7 @@ export const newGuidePages = [
     ],
     faqs: [
       ['¿Qué incluye Marketing Studio?', 'Marketing Studio reúne campañas periódicas, generación de contenidos y acciones de marketing para centros auditivos. Además, incluye nuestra Prueba Auditiva Online.'],
-      ['¿La Prueba Auditiva Online está incluida en Marketing Studio?', 'Sí. La prueba forma parte de la propuesta de Marketing Studio y puede integrarse en el centro y en sus acciones de marketing.'],
+      ['¿La Prueba Auditiva Online está incluida en Marketing Studio?', 'Sí. La prueba forma parte de la propuesta de Marketing Studio sin coste adicional y puede integrarse en el centro y en sus acciones de marketing.'],
       ['¿Puedo contratar solo la Prueba Auditiva Online?', 'Sí. También existe una versión independiente con un precio de lanzamiento de 390 € + IVA.'],
       ['¿La Prueba Auditiva Online sustituye una prueba profesional?', 'No. Es una herramienta de captación y orientación inicial. La valoración profesional debe realizarse en el centro.'],
       ['¿Dónde puede usarse la prueba?', 'En la web, redes sociales, campañas de publicidad, email marketing y también dentro del propio centro con una tablet y cascos.']
