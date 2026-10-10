@@ -105,6 +105,8 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
                 </p>
                 <a
                   href="https://hear-o.es/prueba_auditica_online_para_centros_auditivos/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 self-start font-bold text-sky-300 transition-colors hover:text-white"
                 >
                   Ver más <ArrowUpRight size={17} aria-hidden="true" />
@@ -121,6 +123,8 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
                 </p>
                 <Link
                   to="/anamnesis_digital_online_para_centros_auditivos"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 self-start font-bold text-brand-orange transition-colors hover:text-white"
                 >
                   Ver más <ArrowUpRight size={17} aria-hidden="true" />
