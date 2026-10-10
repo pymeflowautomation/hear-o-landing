@@ -11,6 +11,7 @@ import { GuideDetail, GuidesIndex } from './components/GuidePages';
 import AboutPage from './components/AboutPage';
 import NotFound from './components/NotFound';
 import Modal from './components/Modal';
+import AnamnesisDigitalOnlinePage from './components/AnamnesisDigitalOnlinePage';
 
 const App: React.FC = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -95,6 +96,10 @@ const App: React.FC = () => {
         <Route 
           path="/software-anamnesis-vender-mas-audifonos" 
           element={<AnamnesisDetail onContact={openModal} />} 
+        />
+        <Route
+          path="/anamnesis_digital_online_para_centros_auditivos"
+          element={<AnamnesisDigitalOnlinePage onContact={openModal} />}
         />
         <Route 
           path="/marketing-automatico-centros-auditivos" 

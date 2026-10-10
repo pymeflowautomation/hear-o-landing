@@ -21,6 +21,7 @@ import SeoJsonLd from './SeoJsonLd';
 import { guidePages, SITE_URL } from '../seoContent';
 import { newGuidePages } from '../seoContentExtra';
 import { MARKETING_ENTRY_OFFER } from '../constants';
+import { ArrowRight, ArrowUpRight, ClipboardList, Ear } from 'lucide-react';
 
 interface HomeProps {
   onContactClick: () => void;
@@ -82,6 +83,58 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
         <WhatIsHearO />
         <PainPoints />
         <HowItWorks onNavigate={onNavigate} />
+        <section className="relative overflow-hidden border-y border-slate-800 bg-[#07111f] px-4 py-20 md:py-24">
+          <div className="pointer-events-none absolute -right-36 -top-40 h-96 w-96 rounded-full bg-brand-blue/10 blur-3xl" />
+          <div className="container relative z-10 mx-auto">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-brand-orange">Soluciones digitales para tu centro</p>
+              <h2 className="mb-5 text-3xl font-bold text-white md:text-5xl">Herramientas para atraer y preparar mejor a cada paciente</h2>
+              <p className="text-lg leading-relaxed text-slate-400">
+                Descubre dos experiencias digitales de Hear-O: una abre la puerta a nuevos pacientes y la otra ayuda a que cada consulta llegue mejor preparada.
+              </p>
+            </div>
+
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
+              <article className="group flex h-full flex-col rounded-3xl border border-slate-700 bg-slate-900/70 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/60 hover:bg-slate-900 md:p-9">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-400/10 text-sky-300 transition-transform group-hover:scale-105">
+                  <Ear size={28} aria-hidden="true" />
+                </div>
+                <h3 className="mb-3 text-2xl font-bold text-white">Prueba Auditiva Online</h3>
+                <p className="mb-8 flex-1 leading-relaxed text-slate-400">
+                  Una experiencia sonora interactiva para atraer solicitudes, orientar al usuario y facilitar el siguiente paso hacia una revisión profesional en el centro.
+                </p>
+                <a
+                  href="https://hear-o.es/prueba_auditica_online_para_centros_auditivos/"
+                  className="inline-flex items-center gap-2 self-start font-bold text-sky-300 transition-colors hover:text-white"
+                >
+                  Ver más <ArrowUpRight size={17} aria-hidden="true" />
+                </a>
+              </article>
+
+              <article className="group flex h-full flex-col rounded-3xl border border-slate-700 bg-slate-900/70 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/60 hover:bg-slate-900 md:p-9">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange transition-transform group-hover:scale-105">
+                  <ClipboardList size={28} aria-hidden="true" />
+                </div>
+                <h3 className="mb-3 text-2xl font-bold text-white">Anamnesis Digital y Online</h3>
+                <p className="mb-8 flex-1 leading-relaxed text-slate-400">
+                  El paciente puede completar la anamnesis desde casa o con el profesional. Hear-O organiza sus respuestas y genera una orientación preliminar con IA para preparar mejor la consulta.
+                </p>
+                <Link
+                  to="/anamnesis_digital_online_para_centros_auditivos"
+                  className="inline-flex items-center gap-2 self-start font-bold text-brand-orange transition-colors hover:text-white"
+                >
+                  Ver más <ArrowUpRight size={17} aria-hidden="true" />
+                </Link>
+              </article>
+            </div>
+
+            <div className="mt-10 text-center">
+              <Button onClick={onContactClick} size="lg" className="px-8 py-4 shadow-xl shadow-brand-blue/20">
+                Quiero información para mi centro <ArrowRight className="ml-2" size={18} />
+              </Button>
+            </div>
+          </div>
+        </section>
         <FeaturesDetail />
         <PricingSummary />
         <RoiCalculator onContactClick={onContactClick} />
