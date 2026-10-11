@@ -161,8 +161,8 @@ const AnamnesisDigitalOnlinePage: React.FC<AnamnesisDigitalOnlinePageProps> = ({
             <div className="anamnesis-hero-visual anamnesis-hero-image-stage">
               <img
                 className="anamnesis-hero-main-image"
-                src={asset('anamnesis_online_con_apoyo_visual_para_centros_auditivos.webp')}
-                alt="Audiólogo guiando a una paciente con apoyo visual durante la anamnesis en un centro auditivo"
+                src={asset('anamnesis_online_con_apoyo_visual_para_centros_opticos-auditivos.webp')}
+                alt="Profesional acompaña a un paciente durante la anamnesis digital en un centro óptico-auditivo"
               />
               <article className="anamnesis-hero-benefit online-benefit">
                 <span className="anamnesis-note-icon benefit-icon-online"><Clock3 size={18} /></span>
