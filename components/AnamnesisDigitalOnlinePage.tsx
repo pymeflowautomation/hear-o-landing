@@ -399,9 +399,11 @@ const AnamnesisDigitalOnlinePage: React.FC<AnamnesisDigitalOnlinePageProps> = ({
                 <div className="anamnesis-price-main-detail"><del>612,50 €</del><span>pago único</span></div>
               </div>
               <div className="anamnesis-price-maintenance-title">Opcional: Mantenimiento mensual</div>
+              <div className="anamnesis-price-ai-included">Coste IA incluido</div>
               <div className="anamnesis-price-monthly"><strong>19 €/mes</strong></div>
               <div className="anamnesis-price-annual">O pago anual de <strong>204 €/año</strong> <span>(2 cuotas gratis)</span></div>
-              <p>Más IVA. La cuota es opcional y mantiene la aplicación operativa y cuidada.</p>
+              <p className="anamnesis-price-ai-note">Sin mantenimiento, el coste del uso de IA correrá a cargo del centro.</p>
+              <p>Precios más IVA. El mantenimiento es opcional y mantiene la aplicación operativa y cuidada.</p>
               <details className="anamnesis-maintenance-details">
                 <summary>¿Qué incluye el mantenimiento opcional?</summary>
                 <ul>
