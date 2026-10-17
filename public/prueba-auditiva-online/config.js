@@ -3,19 +3,11 @@
  * 
  * INSTRUCCIONES:
  * 1. Copia este archivo y modifica los valores según tu centro auditivo
- * 2. Todos los webhooks y datos de contacto se configuran aquí
+ * 2. Los datos del centro y del envío se configuran aquí
  * 3. No es necesario modificar ningún otro archivo
  */
 
 const CONFIG = {
-  // ==========================================
-  // SUPABASE CONFIGURATION
-  // ==========================================
-  supabase: {
-    url: "https://ddreenadyxpkgahvhmwm.supabase.co",
-    anonKey: "sb_publishable_5YTdXBLkfnOuG4I_S7_i4A_8pX00n6Y"
-  },
-
   // ==========================================
   // DATOS DEL CENTRO AUDITIVO
   // ==========================================
@@ -25,7 +17,7 @@ const CONFIG = {
     ciudad: "Madrid",
     codigoPostal: "28001",
     telefono: "+34 900 000 000",
-    email: "info@centroaudiodemo.es",
+    email: "info@pymeflow.es",
     urlWeb: "https://www.centroaudiodemo.es",
     horario: "Lunes a Viernes: 9:00 - 20:00",
     logo: "./assets/logo-centro.png", // Ruta al logo o URL
@@ -88,31 +80,13 @@ const CONFIG = {
   },
 
   // ==========================================
-  // WEBHOOKS PARA MAKE (INTEGROMAT)
-  // ==========================================
-  webhooks: {
-    // Webhook principal para enviar resultados del test
-    // Ejemplo: "https://hook.make.com/XXXXXXXXXXXXXXXX"
-    resultadoTest: "https://hook.make.com/YOUR_WEBHOOK_URL",
-
-    // Webhook para notificación de nuevo lead (opcional)
-    nuevoLead: "",
-
-    // Webhook para seguimiento (opcional)
-    seguimiento: "",
-  },
-
-  // ==========================================
-  // CONFIGURACIÓN DE EMAIL (PARA REFERENCIA)
+  // ENVÍO DE RESULTADOS (sin guardar sesiones)
+  // La clave de Resend se conserva en Supabase, nunca en esta web.
   // ==========================================
   email: {
-    // El sistema externo (Make) se encarga del envío
-    // Estos datos se incluyen en el JSON del webhook
-    asuntoResultado: "Resultados de tu test auditivo online",
-    remitenteNombre: "Centro Auditivo Demo",
-    remitenteEmail: "noreply@centroaudiodemo.es",
+    endpoint: "https://prtodzwkfgmcowbfpawb.supabase.co/functions/v1/send-test-result",
+    publicKey: "sb_publishable_VwWIl-RnGlnmVhP-Sf5S3w_1ImcxWC_",
   },
-
   // ==========================================
   // TEXTOS PERSONALIZABLES
   // ==========================================
@@ -154,11 +128,11 @@ const CONFIG = {
 
     // Resultados
     resultadoNormal: "Tu audición parece estar en buen estado",
-    resultadoNormalDesc: "Aunque el test online es orientativo, tus resultados indican una audición normal. Recuerda hacerte revisiones periódicas.",
+    resultadoNormalDesc: "Aunque esta prueba online es orientativa y no sustituye una evaluación profesional, tus respuestas no muestran señales destacadas de dificultad. Recuerda hacerte revisiones periódicas.",
     resultadoModerado: "Detectamos posibles dificultades auditivas",
-    resultadoModeradoDesc: "Tus resultados sugieren que podrías beneficiarte de una evaluación profesional. Te contactaremos para una revisión gratuita.",
+    resultadoModeradoDesc: "Tus respuestas sugieren que podría ser útil realizar una revisión auditiva profesional. El centro recibirá el resultado para poder orientarte.",
     resultadoPreocupante: "Recomendamos una revisión profesional",
-    resultadoPreocupanteDesc: "El test indica dificultades significativas en tu audición. Es importante que un audiólogo te evalúe lo antes posible.",
+    resultadoPreocupanteDesc: "Tus respuestas muestran señales que conviene revisar con un profesional. El centro recibirá el resultado para poder orientarte.",
     resultadoCTA: "Pedir cita gratuita",
 
     // Footer
@@ -176,7 +150,7 @@ const CONFIG = {
     maxIntentos: 3,
 
     // Guardar resultados en localStorage
-    guardarLocal: true,
+    guardarLocal: false,
 
     // Mostrar debug en consola
     debug: false,

@@ -433,10 +433,10 @@
             <div class="test-icon">📊</div>
             <h3 class="test-card-title" id="formularioTitulo">Resultados de tu test</h3>
           </div>
-          <p class="test-instructions">Para ver tu resultado completo y recibir un informe detallado, introduce tus
-            datos:</p>
+          <p class="test-instructions">Para enviar tu resultado orientativo al centro y mostrarte una valoración, introduce tus datos:</p>
 
           <form class="resultados-form" id="formResultados">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;">
             <div class="form-row">
               <div class="form-group">
                 <label for="nombre" id="labelNombre">Nombre</label>
@@ -478,13 +478,11 @@
             <div class="resultado-icon" id="resultadoIcon">✓</div>
             <h4 class="resultado-title" id="resultadoTitulo">Tu audición parece estar en buen estado</h4>
             <p class="resultado-desc" id="resultadoDesc">Basado en tus respuestas, tu capacidad auditiva se encuentra
-              dentro de parámetros normales. Recibirás un informe detallado en tu correo.</p>
+              dentro de parámetros normales. El resultado se enviará al centro auditivo para que pueda orientarte.</p>
             <div
               style="background-color: #f0f7ff; border-left: 4px solid #2563eb; padding: 15px; margin: 20px 0; border-radius: 4px; text-align: left;">
               <p style="margin: 0; color: #1e40af; font-size: 0.95rem; line-height: 1.5;">
-                <strong>💡 Nota del sistema:</strong> Los datos que recojas con este Formulario llegarán a tu mail y se
-                añadirán automáticamente a tu Base de Datos como Leads, entrando así en las Acciones y campañas que
-                realices. ¡Consigue más pacientes!
+                <strong>Tu privacidad:</strong> Con tu autorización, tus datos y el resultado de la prueba se envían por correo al centro para que pueda orientarte. Esta web no guarda una copia de la sesión.
               </p>
             </div>
             <div class="resultado-stats" id="resultadoStats">
@@ -657,7 +655,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="config.js"></script>
   <script src="app.js"></script>
 </body>
