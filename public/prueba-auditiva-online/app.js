@@ -8,6 +8,8 @@
 // ==========================================
 // ESTADO GLOBAL
 // ==========================================
+const TEST_SUBMISSION_ID = window.crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()) + '-' + Math.random().toString(36).slice(2);
+
 const AppState = {
   currentStep: 1,
   results: {
@@ -196,7 +198,7 @@ function applyCustomTexts() {
   setText('labelEmail', textos.formularioEmail);
   setText('labelCP', textos.formularioCP);
   setText('labelTelefono', textos.formularioTelefono);
-  setText('textoPrivacidad', textos.formularioPrivacidad);
+  applyPrivacyConsent(textos.formularioPrivacidad);
   
   // Resultados
   setText('resultadoTitulo', textos.resultadoNormal);
@@ -212,6 +214,29 @@ function setText(id, text) {
     const el = document.getElementById(id);
     if (el) el.textContent = text;
   }
+}
+
+function applyPrivacyConsent(text) {
+  const container = document.getElementById('textoPrivacidad');
+  if (!container) return;
+  container.replaceChildren(document.createTextNode(text || 'Acepto que mis respuestas y datos se envíen al centro auditivo. Mis datos no se venderán a terceros; el centro los utilizará exclusivamente para un seguimiento informativo relacionado con mi salud auditiva.'));
+  const links = [
+    ['Aviso legal', CONFIG.centro?.urlAvisoLegal],
+    ['Política de privacidad', CONFIG.centro?.urlPrivacidad]
+  ].filter(([, url]) => {
+    try { return new URL(url).protocol === 'https:'; } catch { return false; }
+  });
+  if (!links.length) return;
+  container.appendChild(document.createTextNode(' Consulta: '));
+  links.forEach(([label, url], index) => {
+    if (index) container.appendChild(document.createTextNode(' · '));
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    anchor.textContent = label;
+    container.appendChild(anchor);
+  });
 }
 
 function applyContactData() {
@@ -593,11 +618,12 @@ async function handleFormSubmit(e) {
   btn.disabled=true;if(spinner)spinner.style.display='inline';if(label)label.textContent='Enviando resultado…';
   const datos={nombre:form.nombre.value.trim(),apellidos:form.apellidos.value.trim(),email:form.email.value.trim(),
     codigoPostal:form.cp.value.trim(),fecha:new Date().toISOString(),resultados:calculateResults(),
+    consentimiento:document.getElementById('privacidad')?.checked===true,envioResumenPaciente:true,submissionId:TEST_SUBMISSION_ID,centroTelefono:CONFIG.centro?.telefono||'',
     centro:CONFIG.centro?.nombre||'Centro Auditivo'};
   AppState.datosUsuario=datos;
   try {
     await enviarAlCentro('test-result',datos,form.website?.value||'');
-    mostrarResultado(datos.resultados);form.style.display='none';
+    mostrarResultado(datos.resultados,datos.email);form.style.display='none';
     document.getElementById('resultadoFinal').style.display='block';
     showNotification('Resultado enviado al centro correctamente','success');
   } catch(error) {
@@ -696,10 +722,35 @@ function calculateResults() {
     resultados.global.nivel = 'preocupante';
   }
   
+  const frecuencias = CONFIG.test?.frecuencias || [500, 1000, 2000, 4000];
+  const tonos = [];
+  frecuencias.forEach(frecuencia => {
+    ['derecho', 'izquierdo'].forEach(oido => {
+      const respuestas = AppState.results.pitidos[oido] || {};
+      const tieneRespuesta = Object.prototype.hasOwnProperty.call(respuestas, String(frecuencia));
+      tonos.push({ frecuencia: Number(frecuencia), oido, detectado: tieneRespuesta ? Boolean(respuestas[String(frecuencia)]) : null });
+    });
+  });
+
+  const simulacionesMeta = {
+    telefono: { nombre: 'Llamada telefónica', pregunta: '¿De qué hablaba la conversación?', correcta: 'paquete', opciones: { paquete: 'La entrega de un paquete', cita: 'La entrega de una carta', trabajo: 'La entrega de un regalo' } },
+    cafeteria: { nombre: 'Conversación en cafetería', pregunta: '¿Qué pedía la persona?', correcta: 'cafe', opciones: { cafe: 'Un café con leche y tostada', zumo: 'Un café solo y tostada', agua: 'Un café cortado y tostada' } },
+    aire: { nombre: 'Conversación al aire libre', pregunta: '¿Dónde quedaban?', correcta: 'plaza', opciones: { plaza: 'En la plaza mayor', casa: 'En la casa mayor', calle: 'En la calle mayor' } }
+  };
+  const simulacionesDetalle = Object.entries(simulacionesMeta).map(([id, meta]) => {
+    const seleccionada = AppState.results.simulaciones[id] || null;
+    return { nombre: meta.nombre, pregunta: meta.pregunta, respuesta: meta.opciones[seleccionada] || 'Sin respuesta', correcta: meta.opciones[meta.correcta], acierto: seleccionada ? seleccionada === meta.correcta : null };
+  });
+  const palabrasDetalle = (AppState.palabrasData || []).map((item, index) => {
+    const reproducida = item.esCorrecta ? item.correcta : item.alternativa;
+    const seleccionada = AppState.results.palabras[item.id] || null;
+    return { numero: index + 1, reproducida, respuesta: seleccionada || 'Sin respuesta', acierto: seleccionada ? seleccionada === reproducida : null };
+  });
+  resultados.detalle = { pitidos: tonos, simulaciones: simulacionesDetalle, palabras: palabrasDetalle };
   return resultados;
 }
 
-function mostrarResultado(resultados) {
+function mostrarResultado(resultados, emailPaciente) {
   // Actualizar estadísticas
   setText('statPitidos', `${resultados.pitidos.porcentaje}%`);
   setText('statSimulaciones', `${resultados.simulaciones.porcentaje}%`);
@@ -732,6 +783,7 @@ function mostrarResultado(resultados) {
   
   setText('resultadoTitulo', titulos[resultados.global.nivel]);
   setText('resultadoDesc', descripciones[resultados.global.nivel]);
+  setText('resultadoEnvioConfirmacion', `También hemos enviado el resumen de la prueba a ${emailPaciente || 'tu correo electrónico'}.`);
 }
 
 async function enviarAlCentro(tipo,datos,campoTrampa='') {
@@ -740,7 +792,7 @@ async function enviarAlCentro(tipo,datos,campoTrampa='') {
     body:JSON.stringify({tipo,destinatario:CONFIG.centro.email,centro:CONFIG.centro.nombre||'Centro Auditivo',
       paciente:{nombre:datos.nombre,apellidos:datos.apellidos,email:datos.email,codigoPostal:datos.codigoPostal,
         telefono:datos.telefono||'',canalContacto:datos.canalContacto||''},
-      fecha:datos.fecha,resultados:datos.resultados,website:campoTrampa})});
+      consentimiento:datos.consentimiento===true,envioResumenPaciente:datos.envioResumenPaciente===true,submissionId:datos.submissionId||'',centroTelefono:datos.centroTelefono||'',fecha:datos.fecha,resultados:datos.resultados,website:campoTrampa})});
   const result=await response.json().catch(()=>({}));
   if(!response.ok)throw new Error(result.error||`Error de envío: ${response.status}`);
   return result;

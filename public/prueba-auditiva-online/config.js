@@ -113,7 +113,7 @@ const CONFIG = {
     formularioEmail: "Correo electrónico",
     formularioCP: "Código postal",
     formularioTelefono: "Teléfono (opcional)",
-    formularioPrivacidad: "Acepto la política de privacidad y el tratamiento de mis datos",
+    formularioPrivacidad: "Acepto que mis respuestas y datos se envíen al centro auditivo para recibir esta orientación. Mis datos no se venderán a terceros; el centro los utilizará exclusivamente para enviarme información y realizar un seguimiento informativo relacionado con mi salud auditiva.",
     formularioCTA: "Ver mi resultado",
 
     // Resultados
