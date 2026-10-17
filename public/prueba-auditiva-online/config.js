@@ -85,7 +85,7 @@ const CONFIG = {
   // ==========================================
   email: {
     endpoint: "https://prtodzwkfgmcowbfpawb.supabase.co/functions/v1/send-test-result",
-    publicKey: "sb_publishable_5YTdXBLkfnOuG4I_S7_i4A_8pX00n6Y",
+    publicKey: "sb_publishable_VwWIl-RnGlnmVhP-Sf5S3w_1ImcxWC_",
   },
   // ==========================================
   // TEXTOS PERSONALIZABLES
