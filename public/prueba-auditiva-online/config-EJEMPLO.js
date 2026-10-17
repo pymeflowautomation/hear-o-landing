@@ -1,8 +1,8 @@
 /**
  * CONFIGURACIÓN DE EJEMPLO - CENTRO AUDITIVO REAL
  * 
- * Este es un ejemplo de configuración para un centro auditivo real.
- * Copia este contenido a config.js y adapta los valores.
+ * Copia este archivo a config.js y adapta los datos del centro.
+ * La clave privada de Resend nunca se escribe aquí.
  */
 
 const CONFIG = {
@@ -72,28 +72,13 @@ const CONFIG = {
   },
 
   // ==========================================
-  // WEBHOOKS PARA MAKE (INTEGROMAT)
-  // ==========================================
-  webhooks: {
-    // Crea un webhook en Make.com:
-    // 1. Nuevo escenario → Webhook → Custom webhook
-    // 2. Copia la URL y pégala aquí
-    resultadoTest: "https://hook.make.com/abc123def456",
-    
-    // Webhooks adicionales (opcionales)
-    nuevoLead: "",
-    seguimiento: "",
-  },
-
-  // ==========================================
-  // CONFIGURACIÓN DE EMAIL
+  // ENVÍO DE RESULTADOS (sin guardar sesiones)
+  // La clave de Resend se conserva en Supabase, nunca en esta web.
   // ==========================================
   email: {
-    asuntoResultado: "Resultados de tu test auditivo - AudioSalud Madrid",
-    remitenteNombre: "AudioSalud Madrid",
-    remitenteEmail: "noreply@audiosaludmadrid.es",
+    endpoint: "https://TU-PROYECTO.supabase.co/functions/v1/send-test-result",
+    publicKey: "sb_publishable_TU_CLAVE_PUBLICA",
   },
-
   // ==========================================
   // TEXTOS PERSONALIZABLES
   // ==========================================
@@ -157,7 +142,7 @@ const CONFIG = {
   tecnico: {
     delayEntreSonidos: 1500,
     maxIntentos: 3,
-    guardarLocal: true,
+    guardarLocal: false,
     debug: false,
   }
 };
