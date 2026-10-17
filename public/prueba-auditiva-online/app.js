@@ -2,14 +2,12 @@
  * LEAD MAGNET AUDIOLÓGICO - APP.JS
  * 
  * Aplicación completa para test auditivo online
- * Incluye: Web Audio API, Speech Synthesis, gestión de test, webhooks
+ * Incluye: Web Audio API, Speech Synthesis y gestión de test
  */
 
 // ==========================================
 // ESTADO GLOBAL
 // ==========================================
-let supabaseCliente = null;
-
 const AppState = {
   currentStep: 1,
   results: {
@@ -48,10 +46,8 @@ function initApp() {
   // Cargar Tally Forms si está configurado
   loadTallyForm();
   
-  // Inicializar Supabase si está disponible
-  if (CONFIG.supabase && CONFIG.supabase.url && window.supabase) {
-    supabaseCliente = window.supabase.createClient(CONFIG.supabase.url, CONFIG.supabase.anonKey);
-  }
+  // La sesión solo permanece en memoria mientras el paciente usa esta página.
+  localStorage.removeItem('testAuditivo_resultado');
   
   // Debug
   if (CONFIG.tecnico?.debug) {
@@ -591,102 +587,42 @@ function updateProgress(step) {
 }
 
 // ==========================================
-// FORMULARIO Y WEBHOOK
+// FORMULARIO Y ENVÍO AL CENTRO
 // ==========================================
 async function handleFormSubmit(e) {
   e.preventDefault();
-  
-  const form = e.target;
-  const btn = form.querySelector('button[type="submit"]');
-  const spinner = btn.querySelector('.btn-spinner');
-  
-  // Mostrar loading
-  btn.disabled = true;
-  if (spinner) spinner.style.display = 'inline';
-  
-  // Recopilar datos
-  const datos = {
-    nombre: form.nombre.value,
-    apellidos: form.apellidos.value,
-    email: form.email.value,
-    codigoPostal: form.cp.value,
-    fecha: new Date().toISOString(),
-    resultados: calculateResults(),
-    userAgent: navigator.userAgent,
-    centro: CONFIG.centro?.nombre || 'Centro Auditivo'
-  };
-  
-  AppState.datosUsuario = datos;
-  
-  // Guardar en localStorage si está configurado
-  if (CONFIG.tecnico?.guardarLocal) {
-    localStorage.setItem('testAuditivo_resultado', JSON.stringify(datos));
-  }
-  
-  // Guardar en Supabase - Fase 1
-  if (supabaseCliente) {
-    try {
-      const { data, error } = await supabaseCliente.from('contactos').insert([{
-        nombre: datos.nombre,
-        apellidos: datos.apellidos,
-        email: datos.email,
-        codigo_postal: datos.codigoPostal,
-        tipo: 'lead',
-        estado_lead: null,
-        respuestas_lead: datos.resultados
-      }]).select();
-      
-      if (error) throw error;
-      if (data && data.length > 0) {
-        AppState.contactoId = data[0].id;
-      }
-    } catch (err) {
-      console.error("Error guardando lead en Supabase:", err);
-    }
-  }
-
-  // Enviar webhook
+  const form=e.target,btn=form.querySelector('button[type="submit"]');
+  const spinner=btn.querySelector('.btn-spinner'),label=btn.querySelector('span:first-child');
+  btn.disabled=true;if(spinner)spinner.style.display='inline';if(label)label.textContent='Enviando resultado…';
+  const datos={nombre:form.nombre.value.trim(),apellidos:form.apellidos.value.trim(),email:form.email.value.trim(),
+    codigoPostal:form.cp.value.trim(),fecha:new Date().toISOString(),resultados:calculateResults(),
+    centro:CONFIG.centro?.nombre||'Centro Auditivo'};
+  AppState.datosUsuario=datos;
   try {
-    await enviarWebhook(datos);
-    showNotification('Resultados enviados correctamente', 'success');
-  } catch (error) {
-    console.error('Error enviando webhook:', error);
-    // Continuar igualmente, no bloquear al usuario
-  }
-  
-  // Mostrar resultado
-  mostrarResultado(datos.resultados);
-  
-  // Ocultar formulario, mostrar resultado
-  form.style.display = 'none';
-  document.getElementById('resultadoFinal').style.display = 'block';
+    await enviarAlCentro('test-result',datos,form.website?.value||'');
+    mostrarResultado(datos.resultados);form.style.display='none';
+    document.getElementById('resultadoFinal').style.display='block';
+    showNotification('Resultado enviado al centro correctamente','success');
+  } catch(error) {
+    console.error('Error enviando resultado al centro:',error);
+    showNotification('No se pudo enviar. Comprueba tu conexión e inténtalo de nuevo.','error');
+    btn.disabled=false;if(label)label.textContent='Ver mi resultado';
+  } finally {if(spinner)spinner.style.display='none';}
 }
-
 async function handleConfirmarCita() {
-  const telefono = document.getElementById('telefonoCita').value;
-  if (!telefono) return alert("Por favor, introduce tu teléfono");
-  
-  const canal = document.querySelector('input[name="canalContacto"]:checked').value;
-  const btn = document.getElementById('btnConfirmarCita');
-  btn.textContent = "Guardando...";
-  btn.disabled = true;
-
-  if (supabaseCliente && AppState.datosUsuario && AppState.datosUsuario.email) {
-    try {
-      const { error } = await supabaseCliente.from('contactos').update({
-        telefono: telefono,
-        canal_contacto_preferido: canal,
-        estado_lead: 'quiere_cita'
-      }).eq('email', AppState.datosUsuario.email);
-      
-      if (error) console.error("Error detallado de Supabase:", error);
-    } catch (error) {
-      console.error("Error al actualizar la cita en Supabase:", error);
-    }
+  const telefono=document.getElementById('telefonoCita').value.trim();
+  if(!telefono)return alert('Por favor, introduce tu teléfono');
+  if(!AppState.datosUsuario){showNotification('Vuelve a completar la prueba para solicitar una cita.','error');return;}
+  const canal=document.querySelector('input[name="canalContacto"]:checked')?.value||'whatsapp';
+  const btn=document.getElementById('btnConfirmarCita');btn.textContent='Enviando…';btn.disabled=true;
+  try {
+    await enviarAlCentro('appointment-request',{...AppState.datosUsuario,telefono,canalContacto:canal});
+    document.getElementById('msgCitaExito').style.display='block';btn.style.display='none';
+  } catch(error) {
+    console.error('Error enviando solicitud de cita:',error);
+    showNotification('No se pudo enviar la solicitud. Inténtalo de nuevo.','error');
+    btn.textContent='Confirmar Cita';btn.disabled=false;
   }
-
-  document.getElementById('msgCitaExito').style.display = 'block';
-  btn.style.display = 'none';
 }
 
 function calculateResults() {
@@ -801,47 +737,18 @@ function mostrarResultado(resultados) {
   setText('resultadoDesc', descripciones[resultados.global.nivel]);
 }
 
-async function enviarWebhook(datos) {
-  const webhookUrl = CONFIG.webhooks?.resultadoTest;
-  
-  if (!webhookUrl) {
-    console.warn('No hay webhook configurado');
-    return;
-  }
-  
-  const payload = {
-    evento: 'test_auditivo_completado',
-    timestamp: new Date().toISOString(),
-    centro: CONFIG.centro?.nombre,
-    datosUsuario: {
-      nombre: datos.nombre,
-      email: datos.email,
-      codigoPostal: datos.codigoPostal,
-      telefono: datos.telefono
-    },
-    resultados: datos.resultados,
-    metadata: {
-      userAgent: datos.userAgent,
-      url: window.location.href
-    }
-  };
-  
-  const response = await fetch(webhookUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload)
-  });
-  
-  if (!response.ok) {
-    throw new Error(`Webhook error: ${response.status}`);
-  }
-  
-  return response;
+async function enviarAlCentro(tipo,datos,campoTrampa='') {
+  if(!CONFIG.email?.endpoint||!CONFIG.email?.publicKey||!CONFIG.centro?.email)throw new Error('Falta configurar el envío o el email del centro.');
+  const response=await fetch(CONFIG.email.endpoint,{method:'POST',headers:{'Content-Type':'application/json','apikey':CONFIG.email.publicKey},
+    body:JSON.stringify({tipo,destinatario:CONFIG.centro.email,centro:CONFIG.centro.nombre||'Centro Auditivo',
+      paciente:{nombre:datos.nombre,apellidos:datos.apellidos,email:datos.email,codigoPostal:datos.codigoPostal,
+        telefono:datos.telefono||'',canalContacto:datos.canalContacto||''},
+      fecha:datos.fecha,resultados:datos.resultados,website:campoTrampa})});
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok)throw new Error(result.error||`Error de envío: ${response.status}`);
+  return result;
 }
 
-// ==========================================
 // TALLY FORMS
 // ==========================================
 function loadTallyForm() {
