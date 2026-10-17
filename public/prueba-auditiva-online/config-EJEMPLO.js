@@ -17,6 +17,8 @@ const CONFIG = {
     telefono: "+34 917 123 456",
     email: "info@audiosaludmadrid.es",
     urlWeb: "https://www.audiosaludmadrid.es",
+    urlAvisoLegal: "https://www.audiosaludmadrid.es/aviso-legal",
+    urlPrivacidad: "https://www.audiosaludmadrid.es/politica-de-privacidad",
     horario: "Lunes a Viernes: 9:00 - 20:00 | Sábados: 10:00 - 14:00",
     logo: "https://www.audiosaludmadrid.es/logo.png",
     colorPrimario: "#0066cc",
