@@ -20,6 +20,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="autotest.css">
 </head>
 
 <body>
@@ -62,7 +63,7 @@
           <a href="#auto-test" class="hero-card hero-card-secondary">
             <div class="hero-card-icon">📋</div>
             <h3 class="hero-card-title" id="opcionAutoTest">Auto-Test Rápido</h3>
-            <p class="hero-card-desc" id="opcionAutoTestDesc">Cuestionario de 4 preguntas sobre tu audición diaria</p>
+            <p class="hero-card-desc" id="opcionAutoTestDesc">Cuestionario de 7 preguntas sobre tu audición diaria</p>
             <span class="hero-card-cta">Hacer cuestionario →</span>
           </a>
         </div>
@@ -534,31 +535,15 @@
     </div>
   </section>
 
-  <!-- Auto-Test Section (Tally Forms) -->
+  <!-- Auto-Test nativo -->
   <section id="auto-test" class="section section-autotest">
     <div class="container">
       <div class="section-header">
-        <span class="section-badge">Versión Rápida</span>
-        <h2 class="section-title">Auto-Test Auditivo</h2>
-        <p class="section-subtitle">Prefieres un cuestionario rápido? Responde 4-5 preguntas sobre tu audición cotidiana
-          y obtén una primera valoración.</p>
+        <span class="section-badge">Auto-test · 3 minutos</span>
+        <h2 class="section-title">¿Cómo va tu audición en el día a día?</h2>
+        <p class="section-subtitle">Responde a siete situaciones cotidianas y recibe una orientación inicial. No sustituye una revisión auditiva profesional.</p>
       </div>
-
-      <div class="tally-container">
-        <div class="tally-placeholder" id="tallyPlaceholder">
-          <div class="placeholder-icon">📋</div>
-          <h3>Formulario de Auto-Test</h3>
-          <p>El formulario de Tally Forms se mostrará aquí.</p>
-          <p class="placeholder-code">Configura la URL en <code>config.js</code> → <code>tally.urlIframe</code></p>
-        </div>
-        <!-- El iframe de Tally se insertará aquí vía JS -->
-        <iframe
-          id="tallyIframe"
-          data-tally-src="https://tally.so/embed/jaDk76?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-          loading="lazy" width="100%" height="200" frameborder="0" marginheight="0" marginwidth="0"
-          title="Auto-Test Auditivo Centro"></iframe>
-        <script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s); }</script>
-      </div>
+      <div id="autotestApp" class="autotest-container" aria-live="polite"></div>
     </div>
   </section>
 
@@ -657,6 +642,7 @@
   <!-- Scripts -->
   <script src="config.js"></script>
   <script src="app.js"></script>
+  <script src="autotest.js"></script>
 </body>
 
 </html>

@@ -1087,55 +1087,15 @@ input, textarea, select {
 }
 
 /* ==========================================
-   AUTO-TEST / TALLY
+   AUTO-TEST NATIVO
    ========================================== */
 .section-autotest {
   background: var(--color-gray-50);
 }
 
-.tally-container {
-  max-width: 800px;
+.autotest-container {
+  max-width: 900px;
   margin: 0 auto;
-}
-
-.tally-placeholder {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: var(--color-white);
-  border: 2px dashed var(--color-gray-300);
-  border-radius: var(--radius-xl);
-}
-
-.placeholder-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
-
-.tally-placeholder h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-gray-700);
-  margin-bottom: 0.5rem;
-}
-
-.tally-placeholder p {
-  font-size: 0.9375rem;
-  color: var(--color-gray-500);
-  margin-bottom: 0.5rem;
-}
-
-.placeholder-code {
-  font-family: monospace;
-  font-size: 0.875rem !important;
-  color: var(--color-primary) !important;
-  background: #eff6ff;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  display: inline-block;
-}
-
-.tally-placeholder code {
-  font-weight: 600;
 }
 
 /* ==========================================
@@ -1517,15 +1477,3 @@ input, textarea, select {
   color: var(--color-white);
 }
 
-/* Busca esto y actualízalo con estas 4 líneas nuevas */
-.tally-container {
-  width: 100%;
-  margin: 0 auto;
-  max-width: 900px; /* Limita el ancho para que se vea mejor */
-  
-  /* CAMBIOS SOLICITADOS */
-  background-color: #ffffff; /* Fondo blanco */
-  padding: 20px;            /* Espacio interno para que el iframe no toque los bordes */
-  border-radius: 12px;      /* Bordes redondeados */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}

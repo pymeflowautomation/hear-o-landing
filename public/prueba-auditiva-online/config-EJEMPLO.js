@@ -17,6 +17,8 @@ const CONFIG = {
     telefono: "+34 917 123 456",
     email: "info@audiosaludmadrid.es",
     urlWeb: "https://www.audiosaludmadrid.es",
+    urlAvisoLegal: "https://www.audiosaludmadrid.es/aviso-legal",
+    urlPrivacidad: "https://www.audiosaludmadrid.es/politica-de-privacidad",
     horario: "Lunes a Viernes: 9:00 - 20:00 | Sábados: 10:00 - 14:00",
     logo: "https://www.audiosaludmadrid.es/logo.png",
     colorPrimario: "#0066cc",
@@ -62,16 +64,6 @@ const CONFIG = {
   },
 
   // ==========================================
-  // INTEGRACIÓN CON TALLY FORMS (AUTO-TEST)
-  // ==========================================
-  tally: {
-    // Crea tu formulario en https://tally.so
-    // Ve a Share → Embed → Iframe y copia la URL
-    urlIframe: "https://tally.so/embed/wQJ0X7",
-    alturaIframe: 800,
-  },
-
-  // ==========================================
   // ENVÍO DE RESULTADOS (sin guardar sesiones)
   // La clave de Resend se conserva en Supabase, nunca en esta web.
   // ==========================================
@@ -93,7 +85,7 @@ const CONFIG = {
     opcionTestOnline: "Test Auditivo Online",
     opcionTestOnlineDesc: "Prueba completa con sonidos y simulaciones de situaciones reales",
     opcionAutoTest: "Auto-Test Rápido",
-    opcionAutoTestDesc: "Cuestionario de 4 preguntas sobre tu audición diaria",
+    opcionAutoTestDesc: "Cuestionario de 7 preguntas sobre tu audición diaria",
     
     // Pitidos
     pitidosTitulo: "Test de Pitidos",

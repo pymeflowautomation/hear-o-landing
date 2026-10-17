@@ -19,6 +19,8 @@ const CONFIG = {
     telefono: "+34 900 000 000",
     email: "info@pymeflow.es",
     urlWeb: "https://www.centroaudiodemo.es",
+    urlPrivacidad: "https://pymeflow.es/politica-de-privacidad/",
+    urlAvisoLegal: "https://pymeflow.es/aviso-legal/", // URL del aviso legal del centro
     horario: "Lunes a Viernes: 9:00 - 20:00",
     logo: "./assets/logo-centro.png", // Ruta al logo o URL
     colorPrimario: "#2563eb", // Azul principal
@@ -68,18 +70,6 @@ const CONFIG = {
   },
 
   // ==========================================
-  // INTEGRACIÓN CON TALLY FORMS (AUTO-TEST)
-  // ==========================================
-  tally: {
-    // URL del formulario de Tally para embeber
-    // Ejemplo: "https://tally.so/embed/wQJ0X7"
-    urlIframe: "https://tally.so/embed/J9RDDY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1",
-
-    // Altura del iframe en píxeles
-    alturaIframe: 800,
-  },
-
-  // ==========================================
   // ENVÍO DE RESULTADOS (sin guardar sesiones)
   // La clave de Resend se conserva en Supabase, nunca en esta web.
   // ==========================================
@@ -101,7 +91,7 @@ const CONFIG = {
     opcionTestOnline: "Test Auditivo Online",
     opcionTestOnlineDesc: "Prueba completa con sonidos y simulaciones",
     opcionAutoTest: "Auto-Test Rápido",
-    opcionAutoTestDesc: "Cuestionario de 4 preguntas",
+    opcionAutoTestDesc: "Cuestionario de 7 preguntas",
 
     // Test de pitidos
     pitidosTitulo: "Test de Pitidos",

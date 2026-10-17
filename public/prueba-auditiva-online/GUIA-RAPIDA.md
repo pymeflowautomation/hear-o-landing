@@ -7,6 +7,6 @@
    - `RESEND_ALLOWED_RECIPIENTS`: la dirección del centro, igual a `CONFIG.centro.email`.
 4. El remitente está configurado como `Hear-O <info@info.hear-o.es>`; debe estar verificado en Resend.
 5. No añadas la clave de Resend a `config.js`. La página y la función usan una clave pública de Supabase; no da acceso a la clave privada de correo.
-6. Tally sigue configurándose desde `CONFIG.tally`.
+6. Si el centro tiene una política de privacidad propia, añade su URL en `CONFIG.centro.urlPrivacidad`.
 
 Si cambias el email del centro, actualiza también la lista autorizada en Supabase. Más detalle en [ENVIO-CORREO.md](./ENVIO-CORREO.md).
