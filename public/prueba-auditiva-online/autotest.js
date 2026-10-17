@@ -50,7 +50,13 @@
   }
 
   function details() {
-    const policy = CONFIG.centro && CONFIG.centro.urlPrivacidad ? '<a href="' + esc(CONFIG.centro.urlPrivacidad) + '" target="_blank" rel="noopener noreferrer">Leer la política de privacidad</a>.' : "";
+    const legalUrl = String(CONFIG.centro && CONFIG.centro.urlAvisoLegal || "").trim();
+    const privacyUrl = String(CONFIG.centro && CONFIG.centro.urlPrivacidad || "").trim();
+    const legalLinks = [
+      /^https?:\/\//i.test(legalUrl) ? '<a href="' + esc(legalUrl) + '" target="_blank" rel="noopener noreferrer">Aviso legal</a>' : "",
+      /^https?:\/\//i.test(privacyUrl) ? '<a href="' + esc(privacyUrl) + '" target="_blank" rel="noopener noreferrer">Política de privacidad</a>' : ""
+    ].filter(Boolean);
+    const policy = legalLinks.length ? " Consulta: " + legalLinks.join(" · ") + "." : "";
     root.innerHTML = '<article class="autotest-card autotest-details"><div class="autotest-progress"><div class="autotest-progress-top"><span>Test completado</span><span>Datos y resultado</span></div><div class="autotest-progress-track"><span style="width:100%"></span></div></div><span class="autotest-kicker">Ya terminamos</span><h3>Recibe tu orientación auditiva</h3><p class="autotest-lead">Déjanos tus datos para mostrarte el resultado y enviarte por correo una breve guía de salud auditiva.</p><p class="autotest-muted">No te enviaremos mensajes continuamente. Tus respuestas y datos se remitirán al centro para que pueda orientarte.</p><form id="autotestDetailsForm" class="autotest-form"><div class="autotest-fields"><div class="form-group"><label for="autoNombre">Tu nombre <span aria-hidden="true">*</span></label><input id="autoNombre" name="nombre" autocomplete="given-name" required maxlength="100" placeholder="Ej.: María"></div><div class="form-group"><label for="autoApellidos">Apellidos</label><input id="autoApellidos" name="apellidos" autocomplete="family-name" maxlength="120" placeholder="Opcional"></div><div class="form-group"><label for="autoEmail">Tu email <span aria-hidden="true">*</span></label><input id="autoEmail" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="tu@email.com"></div><div class="form-group"><label for="autoEdad">Edad <span aria-hidden="true">*</span></label><input id="autoEdad" name="edad" type="number" min="0" max="120" inputmode="numeric" required placeholder="Tu edad"></div></div><label class="autotest-consent"><input type="checkbox" name="consentimiento" required><span>Acepto que mis respuestas y datos se envíen por correo al centro auditivo para recibir esta orientación y que puedan gestionar, si lo solicito, una evaluación auditiva. ' +
       policy + '</span></label><div class="autotest-honeypot" aria-hidden="true"><label for="autoWebsite">No rellenar</label><input id="autoWebsite" name="website" tabindex="-1" autocomplete="off"></div><p class="autotest-error" id="autotestDetailsError" role="alert"></p><div class="autotest-actions"><button class="btn btn-secondary" type="button" data-action="back-to-question">← Revisar respuestas</button><button class="btn btn-primary btn-large" id="autotestSubmit" type="submit">Ver mi resultado <span aria-hidden="true">→</span></button></div></form></article>';
     document.getElementById("autotestDetailsForm").addEventListener("submit", submitDetails);
@@ -82,6 +88,7 @@
     if (!CONFIG.email || !CONFIG.email.endpoint || !CONFIG.email.publicKey || !CONFIG.centro || !CONFIG.centro.email) throw new Error("El envío no está disponible en este momento.");
     const payload = {
       tipo: tipo, destinatario: CONFIG.centro.email, centro: CONFIG.centro.nombre || "Centro Auditivo",
+      centroTelefono: CONFIG.centro.telefono || "",
       paciente: patient, fecha: new Date().toISOString(),
       autotest: tipo === "autotest-result" ? { consentimiento: true, submissionId: submissionId, respuestas: answers.map((value, i) => ({ respuesta: value === true, pregunta: questions[i].prompt })), website: document.getElementById("autoWebsite") && document.getElementById("autoWebsite").value || "" } : undefined,
       resultados: { autoTest: { score: outcome && outcome.score, nivel: outcome ? copyFor(outcome.score).level : "" } }
