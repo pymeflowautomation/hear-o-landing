@@ -17,7 +17,7 @@ const CONFIG = {
     ciudad: "Madrid",
     codigoPostal: "28001",
     telefono: "+34 900 000 000",
-    email: "info@centroaudiodemo.es",
+    email: "info@pymeflow.es",
     urlWeb: "https://www.centroaudiodemo.es",
     horario: "Lunes a Viernes: 9:00 - 20:00",
     logo: "./assets/logo-centro.png", // Ruta al logo o URL
