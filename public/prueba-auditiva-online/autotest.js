@@ -25,7 +25,7 @@
       image: "assets/autotest/autotest-7.jpg", alt: "Dos personas conversan en voz baja." }
   ];
   const answers = Array(7).fill(null);
-  let index = -1, outcome = null, patient = null;
+  let index = -1, outcome = null, patient = null, advanceTimer = null;
   const submissionId = window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + "-" + Math.random().toString(36).slice(2);
   const esc = value => String(value == null ? "" : value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
@@ -38,7 +38,7 @@
 
   function question() {
     const q = questions[index], chosen = answers[index], pct = Math.round((index + 1) / 7 * 100);
-    root.innerHTML = '<article class="autotest-card autotest-question"><div class="autotest-progress" aria-label="Pregunta ' + (index + 1) + ' de 7"><div class="autotest-progress-top"><span>Pregunta ' +
+    root.innerHTML = '<article class="autotest-card autotest-question"><button class="autotest-back-arrow" type="button" data-action="back" aria-label="' + (index === 0 ? "Volver al inicio" : "Pregunta anterior") + '">←</button><div class="autotest-progress" aria-label="Pregunta ' + (index + 1) + ' de 7"><div class="autotest-progress-top"><span>Pregunta ' +
       (index + 1) + ' de 7</span><span>' + pct + '%</span></div><div class="autotest-progress-track"><span style="width:' + pct +
       '%"></span></div></div><div class="autotest-question-layout"><div class="autotest-question-copy"><span class="autotest-kicker">Situación ' +
       (index + 1) + '</span><h3>' + esc(q.prompt) + '</h3><p>' + esc(q.intro) +
@@ -46,9 +46,7 @@
       '<label class="autotest-option ' + (chosen === true ? "selected" : "") + '"><input type="radio" name="autotest-answer" value="yes" ' + (chosen === true ? "checked" : "") +
       '><span class="autotest-option-mark" aria-hidden="true">✓</span><span>Sí</span></label><label class="autotest-option ' +
       (chosen === false ? "selected" : "") + '"><input type="radio" name="autotest-answer" value="no" ' + (chosen === false ? "checked" : "") +
-      '><span class="autotest-option-mark" aria-hidden="true">—</span><span>No</span></label></fieldset><p class="autotest-error" id="autotestQuestionError" role="alert"></p><div class="autotest-actions"><button class="btn btn-secondary" type="button" data-action="back">' +
-      (index === 0 ? "Volver al inicio" : "← Anterior") + '</button><button class="btn btn-primary" type="button" data-action="next">' +
-      (index === 6 ? "Continuar →" : "Siguiente →") + "</button></div></article>";
+      '><span class="autotest-option-mark" aria-hidden="true">—</span><span>No</span></label></fieldset></article>';
   }
 
   function details() {
@@ -125,15 +123,7 @@
     if (!button) return;
     switch (button.dataset.action) {
       case "start": index = 0; question(); break;
-      case "back": if (index <= 0) intro(); else { index--; question(); } break;
-      case "next": {
-        const selected = root.querySelector('input[name="autotest-answer"]:checked');
-        if (!selected) { document.getElementById("autotestQuestionError").textContent = "Selecciona Sí o No para continuar."; break; }
-        answers[index] = selected.value === "yes";
-        if (index < 6) { index++; question(); } else details();
-        root.scrollIntoView({ behavior: "smooth", block: "start" });
-        break;
-      }
+      case "back": if (advanceTimer !== null) { window.clearTimeout(advanceTimer); advanceTimer = null; } if (index <= 0) intro(); else { index--; question(); } break;
       case "back-to-question": index = 6; question(); root.scrollIntoView({ behavior: "smooth", block: "start" }); break;
       case "appointment-yes": {
         button.hidden = true;
@@ -147,9 +137,22 @@
   });
   root.addEventListener("change", event => {
     if (event.target.matches('input[name="autotest-answer"]')) {
-      answers[index] = event.target.value === "yes";
+      const answeredIndex = index;
+      answers[answeredIndex] = event.target.value === "yes";
       root.querySelectorAll(".autotest-option").forEach(el => el.classList.remove("selected"));
       event.target.closest(".autotest-option").classList.add("selected");
+      if (advanceTimer !== null) window.clearTimeout(advanceTimer);
+      advanceTimer = window.setTimeout(() => {
+        if (index !== answeredIndex) return;
+        advanceTimer = null;
+        if (index < questions.length - 1) {
+          index++;
+          question();
+        } else {
+          details();
+        }
+        root.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 180);
     }
   });
   intro();
