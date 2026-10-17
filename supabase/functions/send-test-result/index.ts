@@ -20,6 +20,17 @@ const cors = (origin: string) => ({
 const emailOk = (v: unknown): v is string =>
   typeof v === "string" && v.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
+function formatDateEs(value: unknown) {
+  let parsed = typeof value === "string" ? new Date(value) : new Date();
+  if (Number.isNaN(parsed.getTime())) parsed = new Date();
+  const parts = new Intl.DateTimeFormat("es-ES", {
+    timeZone: "Europe/Madrid", day: "2-digit", month: "2-digit", year: "numeric",
+    hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+  }).formatToParts(parsed);
+  const part = (type: string) => parts.find(item => item.type === type)?.value ?? "";
+  return part("day") + "-" + part("month") + "-" + part("year") + " " + part("hour") + ":" + part("minute");
+}
+
 function throttled(ip: string) {
   const now = Date.now();
   const recent = (attempts.get(ip) ?? []).filter(t => now - t < windowMs);
@@ -85,11 +96,24 @@ async function sendAutotestResult(body: any, apiKey: string, allowed: string[], 
     return reply({ error: "Faltan datos o el consentimiento no es válido." }, 400, headers);
   }
 
+  const centerPhone = typeof body.centroTelefono === "string" ? body.centroTelefono.trim().slice(0, 40) : "";
+  const centerPhoneHref = centerPhone.replace(/[^0-9+]/g, "");
+  const patientContactHtml =
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:24px 0;background:#f0f7fb;border:1px solid #cfe3ef"><tr><td style="padding:20px">' +
+    '<h2 style="font-size:19px;line-height:1.4;margin:0 0 8px;color:#102b46">¿Quieres salir de dudas?</h2>' +
+    '<p style="margin:0 0 12px;line-height:1.6">Una revisión auditiva profesional puede ayudarte a conocer mejor tu audición y resolver tus dudas. Contacta con el centro para dar el siguiente paso:</p>' +
+    '<p style="margin:6px 0"><strong>Teléfono:</strong> ' + (centerPhone ? '<a href="tel:' + esc(centerPhoneHref) + '" style="color:#1769aa;text-decoration:underline">' + esc(centerPhone) + '</a>' : "Consulta con el centro") + '</p>' +
+    '<p style="margin:6px 0"><strong>Email:</strong> <a href="mailto:' + esc(to) + '" style="color:#1769aa;text-decoration:underline">' + esc(to) + '</a></p>' +
+    '</td></tr></table>';
+  const centerFollowupHtml =
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:22px 0;background:#fff8e8;border:1px solid #f1d79a"><tr><td style="padding:16px 18px;color:#624b19;line-height:1.55">' +
+    '<strong>Siguiente paso recomendado:</strong> Guarda este contacto en tu base de datos respetando el consentimiento otorgado. Si también ha aceptado comunicaciones comerciales, programa un seguimiento ocasional con una propuesta de revisión auditiva.' +
+    '</td></tr></table>';
   const name = (p.nombre.trim().slice(0, 100) + " " + p.apellidos.trim().slice(0, 120)).trim();
   const patientEmail = p.email.trim().slice(0, 254);
   const score = test.respuestas.filter((item: any) => item.respuesta === true).length;
   const outcome = autoResult(score);
-  const date = typeof body.fecha === "string" ? body.fecha.slice(0, 40) : new Date().toISOString();
+  const date = formatDateEs(body.fecha);
   const answersHtml = autoQuestions.map((question, index) =>
     "<tr><td style=\"padding:9px 10px;border-bottom:1px solid #e2e8f0;color:#334155\">" + esc(question) +
     "</td><td style=\"padding:9px 10px;border-bottom:1px solid #e2e8f0;text-align:right;font-weight:bold;color:#102b46\">" +
@@ -105,7 +129,7 @@ async function sendAutotestResult(body: any, apiKey: string, allowed: string[], 
     esc(outcome.text) + "</p><p style=\"margin:12px 0 0;font-weight:bold\">Respuestas afirmativas: " + score + " de 7</p></div>" +
     "<h2 style=\"font-size:18px;margin:24px 0 8px\">Una guía sencilla para cuidar tu audición</h2><ul style=\"line-height:1.7;padding-left:20px\">" +
     "<li>Si notas cambios o dificultades, coméntalos con un profesional de audiología.</li><li>Evita exponerte durante mucho tiempo a sonidos intensos y utiliza protección cuando sea necesario.</li>" +
-    "<li>Una revisión auditiva profesional puede aclarar cualquier duda.</li></ul><p style=\"margin-top:24px;color:#64748b;font-size:12px;line-height:1.5\">Este autotest es orientativo y no constituye un diagnóstico ni sustituye una evaluación auditiva profesional.</p>" +
+    "<li>Una revisión auditiva profesional puede aclarar cualquier duda.</li></ul>" + patientContactHtml + "<p style=\"margin-top:24px;color:#64748b;font-size:12px;line-height:1.5\">Este autotest es orientativo y no constituye un diagnóstico ni sustituye una evaluación auditiva profesional.</p>" +
     "<p style=\"margin-top:22px\">Un saludo,<br><strong>" + esc(center) + "</strong></p></td></tr></table></td></tr></table></body></html>";
   const centerHtml = "<!doctype html><html lang=\"es\"><body style=\"margin:0;background:#f3f6f8;font-family:Arial,Helvetica,sans-serif;color:#102b46\">" +
     "<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f3f6f8;padding:24px 10px\"><tr><td align=\"center\">" +
@@ -116,22 +140,23 @@ async function sendAutotestResult(body: any, apiKey: string, allowed: string[], 
     "</p><p><strong>Email:</strong> " + esc(patientEmail) + "</p><p><strong>Edad:</strong> " + age + "</p><p><strong>Fecha:</strong> " + esc(date) +
     "</p><h2 style=\"font-size:18px;margin:24px 0 8px\">Resultado orientativo: " + score + " de 7 respuestas afirmativas</h2><p><strong>" + esc(outcome.level) +
     ".</strong> " + esc(outcome.text) + "</p><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collapse\">" +
-    answersHtml + "</table><p style=\"margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5\">Autotest orientativo; no constituye diagnóstico ni sustituye evaluación profesional.</p></td></tr></table></td></tr></table></body></html>";
+    answersHtml + "</table>" + centerFollowupHtml + "<p style=\"margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5\">Autotest orientativo; no constituye diagnóstico ni sustituye evaluación profesional.</p></td></tr></table></td></tr></table></body></html>";
 
   const batch = [
     {
       from: "Hear-O <info@info.hear-o.es>", to: [patientEmail], reply_to: to,
       subject: "Tu orientación auditiva · " + center, html: patientHtml,
       text: "Hola, " + p.nombre.trim() + ".\n\n" + outcome.level + "\n" + outcome.title + "\n" + outcome.text +
-        "\n\nRespuestas afirmativas: " + score + " de 7.\n\nEste autotest es orientativo y no sustituye una evaluación auditiva profesional.\n\nUn saludo, " + center
+        "\n\nRespuestas afirmativas: " + score + " de 7.\n\n¿Quieres salir de dudas? Contacta con " + center + " para solicitar una revisión auditiva profesional.\nTeléfono: " + (centerPhone || "consulta con el centro") + "\nEmail: " + to +
+        "\n\nEste autotest es orientativo y no sustituye una evaluación auditiva profesional.\n\nUn saludo, " + center
     },
     {
       from: "Hear-O <info@info.hear-o.es>", to: [to], reply_to: patientEmail,
       subject: "Nuevo resultado de autotest · " + center + " · " + name, html: centerHtml,
       text: "Nuevo resultado de autotest auditivo\nPaciente: " + name + "\nEmail: " + patientEmail + "\nEdad: " + age +
-        "\nResultado orientativo: " + score + " de 7. " + outcome.level + "\n\n" +
+        "\nFecha: " + date + "\nResultado orientativo: " + score + " de 7. " + outcome.level + "\n\n" +
         autoQuestions.map((question, index) => (index + 1) + ". " + question + " — " + (test.respuestas[index].respuesta ? "Sí" : "No")).join("\n") +
-        "\n\nAutotest orientativo; no constituye diagnóstico."
+        "\n\nSiguiente paso recomendado: guarda este contacto respetando el consentimiento otorgado. Si ha aceptado comunicaciones comerciales, programa un seguimiento ocasional con una propuesta de revisión auditiva.\n\nAutotest orientativo; no constituye diagnóstico."
     }
   ];
   try {
@@ -192,7 +217,7 @@ Deno.serve(async (req: Request) => {
   const name = `${p.nombre.trim().slice(0,100)} ${p.apellidos.trim().slice(0,120)}`.trim();
   const patientEmail = p.email.trim().slice(0,254);
   const postal = typeof p.codigoPostal === "string" ? p.codigoPostal.slice(0,20) : "";
-  const date = typeof body.fecha === "string" ? body.fecha.slice(0,40) : new Date().toISOString();
+  const date = formatDateEs(body.fecha);
   const cita = tipo === "appointment-request";
   const subject = cita ? `Solicitud de cita · ${centro} · ${name}` : `Resultados de prueba auditiva · ${centro} · ${name}`;
   const more = cita
