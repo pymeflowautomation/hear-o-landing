@@ -43,9 +43,6 @@ function initApp() {
   // Generar palabras ambiguas dinámicamente
   generatePalabrasAmbiguas();
   
-  // Cargar Tally Forms si está configurado
-  loadTallyForm();
-  
   // La sesión solo permanece en memoria mientras el paciente usa esta página.
   localStorage.removeItem('testAuditivo_resultado');
   
@@ -747,36 +744,6 @@ async function enviarAlCentro(tipo,datos,campoTrampa='') {
   const result=await response.json().catch(()=>({}));
   if(!response.ok)throw new Error(result.error||`Error de envío: ${response.status}`);
   return result;
-}
-
-// TALLY FORMS
-// ==========================================
-function loadTallyForm() {
-  const tallyUrl = CONFIG.tally?.urlIframe;
-  const iframe = document.getElementById('tallyIframe');
-  const placeholder = document.getElementById('tallyPlaceholder');
-  
-  if (!tallyUrl || !iframe || !placeholder) return;
-  
-  // Si hay URL configurada (no es la de ejemplo)
-  if (tallyUrl && !tallyUrl.includes('YOUR_FORM_ID')) {
-    // Actualizamos tanto el data-tally-src (para el script oficial) como el src (por si acaso)
-    iframe.setAttribute('data-tally-src', tallyUrl);
-    iframe.src = tallyUrl;
-    
-    iframe.style.display = 'block';
-    placeholder.style.display = 'none';
-    
-    // Ajustar altura si está configurada
-    if (CONFIG.tally?.alturaIframe) {
-      iframe.height = CONFIG.tally.alturaIframe;
-    }
-
-    // Si el script de Tally ya se cargó, forzamos recarga del embed
-    if (typeof Tally !== 'undefined') {
-      Tally.loadEmbeds();
-    }
-  }
 }
 
 // ==========================================
