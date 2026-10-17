@@ -20,6 +20,7 @@ const CONFIG = {
     email: "info@pymeflow.es",
     urlWeb: "https://www.centroaudiodemo.es",
     urlPrivacidad: "",
+    urlAvisoLegal: "", // URL del aviso legal del centro
     horario: "Lunes a Viernes: 9:00 - 20:00",
     logo: "./assets/logo-centro.png", // Ruta al logo o URL
     colorPrimario: "#2563eb", // Azul principal
