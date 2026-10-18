@@ -391,6 +391,26 @@ function initEventListeners() {
   document.getElementById('modalCita')?.addEventListener('click', event => { if (event.target === event.currentTarget) closeAppointmentModal(); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && document.getElementById('modalCita')?.getAttribute('aria-hidden') === 'false') closeAppointmentModal(); });
   
+  const menuButton = document.getElementById('mobileMenuToggle');
+  const primaryNav = document.getElementById('primaryNav');
+  const headerContent = document.querySelector('.header-content');
+  const setMobileMenu = open => {
+    if (!menuButton || !primaryNav || !headerContent) return;
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    menuButton.textContent = open ? '×' : '☰';
+    headerContent.classList.toggle('mobile-nav-open', open);
+  };
+  menuButton?.addEventListener('click', () => {
+    setMobileMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+  });
+  primaryNav?.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => setMobileMenu(false));
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setMobileMenu(false);
+  });
+
   // Smooth scroll para enlaces
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', handleSmoothScroll);
