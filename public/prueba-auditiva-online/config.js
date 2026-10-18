@@ -26,8 +26,8 @@ const CONFIG = {
     logo: "./assets/logo-centro.png", // Ruta al logo o URL
     logo_visible: true, // Mostrar el logo en la cabecera
     nombre_visible: true, // Mostrar el nombre del centro junto al logo
-    lema: "", // Lema opcional del centro
-    lema_visible: false, // Mostrar el lema debajo del nombre y el logo
+    lema: "Esto es el Lema del centro", // Lema opcional del centro
+    lema_visible: true, // Mostrar el lema debajo del nombre y el logo
     colorPrimario: "#2563eb", // Azul principal
     colorSecundario: "#1e40af", // Azul oscuro
     colorAcento: "#10b981", // Verde éxito
