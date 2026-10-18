@@ -241,11 +241,28 @@ function applyPrivacyConsent(text) {
 
 function applyContactData() {
   const centro = CONFIG.centro || {};
-  
-  // Logo
-  setText('logoText', centro.nombre);
-  setText('footerNombre', centro.nombre);
+  const logoVisible = centro.logo_visible !== false;
+  const nombreVisible = centro.nombre_visible !== false;
+  const lemaVisible = centro.lema_visible === true && Boolean(centro.lema);
+  const logoSrc = centro.logo || './assets/logo-centro.png';
+  const logoImage = document.getElementById('logoImg');
+  const footerLogoImage = document.getElementById('footerLogoImg');
+  const logoName = document.getElementById('logoText');
+  const tagline = document.getElementById('logoTagline');
+  [logoImage, footerLogoImage].forEach(image => {
+    if (image) { image.src = logoSrc; image.alt = centro.nombre ? 'Logo de ' + centro.nombre : 'Logo del centro'; }
+  });
+  if (logoImage) logoImage.hidden = !logoVisible;
+  if (logoName) { logoName.textContent = centro.nombre || ''; logoName.hidden = !nombreVisible; }
+  if (tagline) { tagline.textContent = centro.lema || ''; tagline.hidden = !lemaVisible; }
+  setText('footerNombre', centro.nombre || '');
   setText('footerCopyNombre', centro.nombre);
+  setExternalLink('headerLogo', centro.urlWeb, true);
+  setExternalLink('footerBrand', centro.urlWeb, true);
+  setExternalLink('linkWebCentro', centro.urlWeb, true);
+  setExternalLink('linkPrivacidad', centro.urlPrivacidad);
+  setExternalLink('linkLegal', centro.urlAvisoLegal);
+  setExternalLink('linkCookies', centro.urlCookies);
   
   // Contacto
   setText('contactDireccion', `${centro.direccion}, ${centro.ciudad}`);
@@ -263,12 +280,19 @@ function applyContactData() {
   }
   
   setText('contactHorario', centro.horario);
-  const websiteLink = document.getElementById('linkWebCentro');
-  if (websiteLink) {
-    try { const url = new URL(centro.urlWeb || ''); if (['http:', 'https:'].includes(url.protocol)) websiteLink.href = url.href; else websiteLink.hidden = true; }
-    catch { websiteLink.hidden = true; }
-  }
   setText('appointmentCenterName', centro.nombre);
+}
+
+function setExternalLink(id, value, openInNewTab = false) {
+  const element = document.getElementById(id);
+  if (!element) return;
+  try {
+    const url = new URL(value || '');
+    if (!['http:', 'https:'].includes(url.protocol)) throw new Error('URL no válida');
+    element.href = url.href;
+    element.hidden = false;
+    if (openInNewTab) { element.target = '_blank'; element.rel = 'noopener noreferrer'; }
+  } catch { element.hidden = true; }
 }
 
 // ==========================================
