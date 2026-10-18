@@ -28,10 +28,13 @@
   <header class="header">
     <div class="container">
       <div class="header-content">
-        <div class="logo" id="headerLogo">
-          <img src="./assets/logo-centro.png" alt="Logo" class="logo-img" id="logoImg">
-          <span class="logo-text" id="logoText">Centro Auditivo</span>
-        </div>
+        <a class="logo" id="headerLogo" href="#" aria-label="Ir a la web del centro">
+          <img src="./assets/logo-centro.png" alt="" class="logo-img" id="logoImg">
+          <span class="brand-copy">
+            <span class="logo-text" id="logoText">Centro Auditivo</span>
+            <span class="logo-tagline" id="logoTagline" hidden></span>
+          </span>
+        </a>
         <nav class="nav">
           <a href="#test" class="nav-link">Hacer Test</a>
           <a href="#auto-test" class="nav-link">Auto-Test</a>
@@ -614,22 +617,22 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <div class="footer-brand">
-          <span class="footer-logo">👂</span>
+        <a class="footer-brand" id="footerBrand" href="#" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/logo-centro.png" alt="" class="footer-center-logo" id="footerLogoImg">
           <span class="footer-name" id="footerNombre">Centro Auditivo Demo</span>
-        </div>
+        </a>
         <p class="footer-disclaimer" id="footerDisclaimer">Este test es orientativo y no sustituye una evaluación
           profesional. Consulta siempre con un audiólogo titulado.</p>
-        <button type="button" class="btn btn-primary btn-small footer-appointment-cta" id="footerCTA">Pedir cita</button>
         <div class="footer-links">
-          <a href="#" id="linkPrivacidad">Política de privacidad</a>
-          <a href="#" id="linkLegal">Aviso legal</a>
-          <a href="#" id="linkCookies">Cookies</a>
+          <a href="#" id="linkPrivacidad" target="_blank" rel="noopener noreferrer">Política de privacidad</a>
+          <a href="#" id="linkLegal" target="_blank" rel="noopener noreferrer">Aviso legal</a>
+          <a href="#" id="linkCookies" target="_blank" rel="noopener noreferrer">Política de cookies</a>
         </div>
-        <div class="footer-attribution">
-          <img src="./assets/logo-hear-o-pequeno2.png" alt="Hear-O Logo" class="hearo-logo">
+        <hr class="footer-attribution-divider">
+        <a class="footer-attribution" href="https://hear-o.es" target="_blank" rel="noopener noreferrer" aria-label="Conoce Hear-O">
+          <img src="./assets/logo-hear-o-pequeno2.png" alt="Hear-O" class="hearo-logo">
           <p><strong>Hear-O</strong> - IA y Automatizaciones para Centros Auditivos</p>
-        </div>
+        </a>
         <p class="footer-copy">© 2025 <span id="footerCopyNombre">Centro Auditivo Demo</span>. Todos los derechos
           reservados.</p>
       </div>
