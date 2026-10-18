@@ -12,13 +12,13 @@ const CONFIG = {
   // DATOS DEL CENTRO AUDITIVO
   // ==========================================
   centro: {
-    nombre: "Centro Auditivo Demo",
-    direccion: "Calle Ejemplo, 123",
+    nombre: "Centro Demostración",
+    direccion: "Calle Sin Salida, 123",
     ciudad: "Madrid",
-    codigoPostal: "28001",
-    telefono: "+34 900 000 000",
+    codigoPostal: "28290",
+    telefono: "+34 900 000 111",
     email: "info@pymeflow.es",
-    urlWeb: "https://www.centroaudiodemo.es",
+    urlWeb: "https://www.pymeflow.es",
     urlPrivacidad: "https://pymeflow.es/politica-de-privacidad/",
     urlCookies: "https://pymeflow.es/politica-de-cookies/",
     urlAvisoLegal: "https://pymeflow.es/aviso-legal/", // URL del aviso legal del centro
