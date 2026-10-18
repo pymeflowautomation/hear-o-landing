@@ -51,6 +51,86 @@ function resultsHtml(r: any) {
   ).join("")}</table>`;
 }
 
+const pctText = value => value == null ? "—" : String(value) + "%";
+
+function soundBreakdownHtml(r: any) {
+  const details = r?.detalle || {};
+  const rows = [];
+  const ears = { derecho: "Derecho", izquierdo: "Izquierdo" };
+  (Array.isArray(details.pitidos) ? details.pitidos : []).forEach((item: any) => {
+    const state = item.detectado === true ? "Detectado" : item.detectado === false ? "No detectado" : "Sin respuesta";
+    rows.push(`<tr><td>${esc(item.frecuencia)} Hz · oído ${esc(ears[item.oido] || "—")}</td><td>${state}</td></tr>`);
+  });
+  const toneRows = rows.length ? rows.join("") : '<tr><td colspan="2">Detalle no disponible</td></tr>';
+  const simulationRows = (Array.isArray(details.simulaciones) ? details.simulaciones : []).map((item: any) => {
+    const status = item.acierto === true ? "Acierto" : item.acierto === false ? "Respuesta incorrecta" : "Sin respuesta";
+    return `<tr><td>${esc(item.nombre)}<br><span style="color:#64748b">${esc(item.pregunta)}</span></td><td>${esc(item.respuesta)}<br><strong>${status}</strong>${item.acierto === false ? '<br><span style="color:#64748b">Respuesta correcta: ' + esc(item.correcta) + '</span>' : ''}</td></tr>`;
+  }).join("") || '<tr><td colspan="2">Detalle no disponible</td></tr>';
+  const wordRows = (Array.isArray(details.palabras) ? details.palabras : []).map((item: any) => {
+    const status = item.acierto === true ? "Acierto" : item.acierto === false ? "Respuesta incorrecta" : "Sin respuesta";
+    return `<tr><td>Palabra ${esc(item.numero)} · sonido reproducido: ${esc(item.reproducida)}</td><td>${esc(item.respuesta)}<br><strong>${status}</strong>${item.acierto === false ? '<br><span style="color:#64748b">La palabra reproducida era: ' + esc(item.reproducida) + '</span>' : ''}</td></tr>`;
+  }).join("") || '<tr><td colspan="2">Detalle no disponible</td></tr>';
+  const table = (title: string, body: string) => `<h3 style="font-size:16px;margin:22px 0 8px;color:#102b46">${title}</h3><table role="presentation" width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;font-size:14px">${body}</table>`;
+  return table("Tonos · detectados / no detectados", toneRows) +
+    table("Simulaciones · aciertos y respuestas", simulationRows) +
+    table("Palabras · aciertos y respuestas", wordRows);
+}
+
+function soundBreakdownText(r: any) {
+  const details = r?.detalle || {};
+  const tones = (Array.isArray(details.pitidos) ? details.pitidos : []).map((item: any) =>
+    `Tono ${item.frecuencia} Hz, oído ${item.oido}: ${item.detectado === true ? "detectado" : item.detectado === false ? "no detectado" : "sin respuesta"}`);
+  const simulations = (Array.isArray(details.simulaciones) ? details.simulaciones : []).map((item: any) =>
+    `${item.nombre}: ${item.respuesta} — ${item.acierto === true ? "acierto" : item.acierto === false ? "respuesta incorrecta (correcta: " + item.correcta + ")" : "sin respuesta"}`);
+  const words = (Array.isArray(details.palabras) ? details.palabras : []).map((item: any) =>
+    `Palabra ${item.numero}: reproducida “${item.reproducida}”; seleccionada “${item.respuesta}” — ${item.acierto === true ? "acierto" : item.acierto === false ? "incorrecta" : "sin respuesta"}`);
+  return [...tones, ...simulations, ...words].join("\n") || "Detalle de respuestas no disponible.";
+}
+
+
+function soundOutcome(r: any) {
+  const level = String(r?.global?.nivel ?? "").toLowerCase();
+  const outcomes: Record<string, { title: string; description: string }> = {
+    normal: {
+      title: "Tu prueba no muestra señales destacadas de dificultad auditiva",
+      description: "Tus respuestas se sitúan dentro del rango esperado en esta prueba orientativa. Mantén tus revisiones periódicas y consulta si notas algún cambio en tu audición."
+    },
+    moderado: {
+      title: "Detectamos posibles dificultades auditivas",
+      description: "Algunas de tus respuestas sugieren que podría ser útil realizar una revisión auditiva profesional. El centro recibirá el resultado y podrá orientarte sobre el siguiente paso."
+    },
+    preocupante: {
+      title: "Te recomendamos una revisión auditiva profesional",
+      description: "Tus respuestas muestran señales que merece la pena comentar con un profesional. Contacta con el centro para recibir orientación y valorar una evaluación auditiva completa."
+    }
+  };
+  return outcomes[level] || {
+    title: "Este resultado es orientativo",
+    description: "El resultado no permite establecer un diagnóstico. Si tienes dudas o notas cambios, consulta con un profesional de audiología."
+  };
+}
+
+const centerMarketingText = [
+  "¿Quieres hacer crecer tu centro? ¿Captar más pacientes, convertir mejor y optimizar tu agenda?",
+  "Conoce las soluciones Hear-O:",
+  "• Marketing Studio: campañas para captar, fidelizar y reactivar pacientes — https://hear-o.es/marketing-automatico-centros-auditivos",
+  "• Asistente IA de Anamnesis: guía la conversación y ayuda a argumentar mejor — https://hear-o.es/software-anamnesis-vender-mas-audifonos",
+  "• Agenda Inteligente: organiza citas y automatiza recordatorios — https://hear-o.es/crm-calendario-centros-auditivos",
+  "• Anamnesis Digital: recoge información antes de la consulta y envía el dossier — https://hear-o.es/anamnesis_digital_online_para_centros_auditivos"
+].join("\n");
+
+const centerMarketingHtml =
+  '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:28px 0 0;background:#102b46;color:#ffffff;border-collapse:collapse"><tr><td style="padding:20px 22px;color:#ffffff;font-family:Arial,Helvetica,sans-serif">' +
+  '<p style="margin:0 0 6px;color:#ffffff;font-size:18px;line-height:1.4;font-weight:bold">¿Quieres hacer crecer tu centro?</p>' +
+  '<p style="margin:0 0 16px;color:#d9e8f5;font-size:14px;line-height:1.6">Capta más pacientes, convierte mejor y optimiza tu agenda con Hear-O.</p>' +
+  '<p style="margin:0 0 10px;color:#ffb547;font-size:13px;line-height:1.4;font-weight:bold">CONOCE LAS SOLUCIONES HEAR-O</p>' +
+  '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse">' +
+  '<tr><td style="padding:7px 0;border-top:1px solid #38536d;font-size:14px;line-height:1.5"><a href="https://hear-o.es/marketing-automatico-centros-auditivos" style="color:#ffffff;font-weight:bold;text-decoration:underline">Marketing Studio</a><span style="color:#d9e8f5"> · Campañas para captar, fidelizar y reactivar pacientes.</span></td></tr>' +
+  '<tr><td style="padding:7px 0;border-top:1px solid #38536d;font-size:14px;line-height:1.5"><a href="https://hear-o.es/software-anamnesis-vender-mas-audifonos" style="color:#ffffff;font-weight:bold;text-decoration:underline">Asistente IA de Anamnesis</a><span style="color:#d9e8f5"> · Guía la conversación y ayuda a explicar y argumentar mejor.</span></td></tr>' +
+  '<tr><td style="padding:7px 0;border-top:1px solid #38536d;font-size:14px;line-height:1.5"><a href="https://hear-o.es/crm-calendario-centros-auditivos" style="color:#ffffff;font-weight:bold;text-decoration:underline">Agenda Inteligente</a><span style="color:#d9e8f5"> · Organiza citas y automatiza recordatorios para reducir ausencias.</span></td></tr>' +
+  '<tr><td style="padding:7px 0;border-top:1px solid #38536d;font-size:14px;line-height:1.5"><a href="https://hear-o.es/anamnesis_digital_online_para_centros_auditivos" style="color:#ffffff;font-weight:bold;text-decoration:underline">Anamnesis Digital</a><span style="color:#d9e8f5"> · Recoge información antes de la consulta y envía el dossier.</span></td></tr>' +
+  '</table><p style="margin:16px 0 0;color:#b8cde0;font-size:12px;line-height:1.5">Hear-O · Tecnología y acompañamiento para centros auditivos</p></td></tr></table>';
+
 
 const autoQuestions = [
   "¿Necesitas que te repitan las cosas con frecuencia? ¿Quizás oyes, pero no entiendes?",
@@ -140,7 +220,7 @@ async function sendAutotestResult(body: any, apiKey: string, allowed: string[], 
     "</p><p><strong>Email:</strong> " + esc(patientEmail) + "</p><p><strong>Edad:</strong> " + age + "</p><p><strong>Fecha:</strong> " + esc(date) +
     "</p><h2 style=\"font-size:18px;margin:24px 0 8px\">Resultado orientativo: " + score + " de 7 respuestas afirmativas</h2><p><strong>" + esc(outcome.level) +
     ".</strong> " + esc(outcome.text) + "</p><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collapse\">" +
-    answersHtml + "</table>" + centerFollowupHtml + "<p style=\"margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5\">Autotest orientativo; no constituye diagnóstico ni sustituye evaluación profesional.</p></td></tr></table></td></tr></table></body></html>";
+    answersHtml + "</table>" + centerFollowupHtml + "<p style=\"margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5\">Autotest orientativo; no constituye diagnóstico ni sustituye evaluación profesional.</p>" + centerMarketingHtml + "</td></tr></table></td></tr></table></body></html>";
 
   const batch = [
     {
@@ -156,7 +236,7 @@ async function sendAutotestResult(body: any, apiKey: string, allowed: string[], 
       text: "Nuevo resultado de autotest auditivo\nPaciente: " + name + "\nEmail: " + patientEmail + "\nEdad: " + age +
         "\nFecha: " + date + "\nResultado orientativo: " + score + " de 7. " + outcome.level + "\n\n" +
         autoQuestions.map((question, index) => (index + 1) + ". " + question + " — " + (test.respuestas[index].respuesta ? "Sí" : "No")).join("\n") +
-        "\n\nSiguiente paso recomendado: guarda este contacto respetando el consentimiento otorgado. Si ha aceptado comunicaciones comerciales, programa un seguimiento ocasional con una propuesta de revisión auditiva.\n\nAutotest orientativo; no constituye diagnóstico."
+        "\n\nSiguiente paso recomendado: guarda este contacto respetando el consentimiento otorgado. Si ha aceptado comunicaciones comerciales, programa un seguimiento ocasional con una propuesta de revisión auditiva.\n\nAutotest orientativo; no constituye diagnóstico.\n\n" + centerMarketingText
     }
   ];
   try {
@@ -210,7 +290,8 @@ Deno.serve(async (req: Request) => {
   const to = typeof body?.destinatario === "string" ? body.destinatario.trim().toLowerCase() : "";
   const p = body?.paciente;
   if (!["test-result","appointment-request"].includes(tipo) || !centro || !emailOk(to) || !allowed.includes(to) ||
-      !p || typeof p !== "object" || typeof p.nombre !== "string" || typeof p.apellidos !== "string" || !emailOk(p.email)) {
+      !p || typeof p !== "object" || typeof p.nombre !== "string" || typeof p.apellidos !== "string" || !emailOk(p.email) ||
+      (tipo === "test-result" && body.envioResumenPaciente === true && body.consentimiento !== true)) {
     return reply({error:"Faltan datos o el destinatario no está autorizado."},400,headers);
   }
 
@@ -218,11 +299,25 @@ Deno.serve(async (req: Request) => {
   const patientEmail = p.email.trim().slice(0,254);
   const postal = typeof p.codigoPostal === "string" ? p.codigoPostal.slice(0,20) : "";
   const date = formatDateEs(body.fecha);
+  const centerPhone = typeof body.centroTelefono === "string" ? body.centroTelefono.trim().slice(0, 40) : "";
+  const centerPhoneHref = centerPhone.replace(/[^0-9+]/g, "");
   const cita = tipo === "appointment-request";
   const subject = cita ? `Solicitud de cita · ${centro} · ${name}` : `Resultados de prueba auditiva · ${centro} · ${name}`;
+  const centerFollowupHtml = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:22px 0;background:#fff8e8;border:1px solid #f1d79a"><tr><td style="padding:16px 18px;color:#624b19;line-height:1.55"><strong>Siguiente paso recomendado:</strong> Guarda este contacto en tu base de datos y, respetando el consentimiento otorgado y la normativa aplicable, programa acciones de seguimiento o campañas de email relevantes. Puedes ofrecerle una revisión auditiva profesional.</td></tr></table>`;
+  const centerFollowupText = "Siguiente paso recomendado: guarda este contacto en tu base de datos y, respetando el consentimiento otorgado y la normativa aplicable, programa acciones de seguimiento o campañas de email relevantes. Puedes ofrecerle una revisión auditiva profesional.";
   const more = cita
     ? `<p><strong>Teléfono:</strong> ${esc(p.telefono || "No indicado")}</p><p><strong>Canal preferido:</strong> ${esc(p.canalContacto || "No indicado")}</p>`
-    : `<h2 style="font-size:18px;color:#102b46;margin:24px 0 12px">Resultados orientativos</h2>${resultsHtml(body.resultados)}`;
+    : `<h2 style="font-size:18px;color:#102b46;margin:24px 0 12px">Resultados orientativos</h2>${resultsHtml(body.resultados)}<h2 style="font-size:18px;color:#102b46;margin:24px 0 12px">Detalle de respuestas</h2>${soundBreakdownHtml(body.resultados)}${centerFollowupHtml}`;
+  const patientContactHtml = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:24px 0;background:#f0f7fb;border:1px solid #cfe3ef"><tr><td style="padding:20px"><h2 style="font-size:19px;line-height:1.4;margin:0 0 8px;color:#102b46">¿Quieres reservar una revisión?</h2><p style="margin:0 0 12px;line-height:1.6">Contacta directamente con ${esc(centro)} para resolver tus dudas y concertar una valoración auditiva profesional.</p><p style="margin:6px 0"><strong>Teléfono:</strong> ${centerPhone ? '<a href="tel:' + esc(centerPhoneHref) + '" style="color:#1769aa">' + esc(centerPhone) + '</a>' : "Consulta con el centro"}</p><p style="margin:6px 0"><strong>Email:</strong> <a href="mailto:${esc(to)}" style="color:#1769aa">${esc(to)}</a></p></td></tr></table>`;
+  const resultSummaryText = [
+    `Resultado global: ${pctText(body.resultados?.global?.porcentaje)} · ${body.resultados?.global?.nivel || "sin clasificar"}`,
+    `Tonos detectados: ${pctText(body.resultados?.pitidos?.porcentaje)}`,
+    `Comprensión en simulaciones: ${pctText(body.resultados?.simulaciones?.porcentaje)}`,
+    `Discriminación de palabras: ${pctText(body.resultados?.palabras?.porcentaje)}`
+  ].join("\n");
+  const patientHtml = `<!doctype html><html lang="es"><body style="margin:0;background:#f3f6f8;font-family:Arial,Helvetica,sans-serif;color:#102b46"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f6f8;padding:24px 10px"><tr><td align="center"><table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;background:#fff;border:1px solid #dbe4ec"><tr><td style="padding:30px"><div style="font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#2876a8;font-weight:bold">${esc(centro)}</div><h1 style="font-size:24px;line-height:1.3;margin:12px 0;color:#102b46">Resumen de tu prueba auditiva</h1><p>Hola, ${esc(p.nombre)}. Gracias por realizar la prueba.</p><p style="line-height:1.6">Este resultado es orientativo y no sustituye una evaluación auditiva profesional.</p><h2 style="font-size:18px;margin:22px 0 8px">Tus porcentajes</h2>${resultsHtml(body.resultados)}<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:20px 0;background:#eff6ff;border:1px solid #cfe3ef"><tr><td style="padding:18px 20px"><h2 style="font-size:18px;line-height:1.4;margin:0 0 8px;color:#102b46">${esc(soundOutcome(body.resultados).title)}</h2><p style="margin:0;color:#334155;line-height:1.65">${esc(soundOutcome(body.resultados).description)}</p></td></tr></table>${patientContactHtml}<p style="margin-top:24px;color:#64748b;font-size:12px;line-height:1.5">La prueba online no constituye un diagnóstico. Si tienes dudas o notas dificultades, consulta con un profesional de audiología.</p><p style="margin-top:22px">Un saludo,<br><strong>${esc(centro)}</strong></p></td></tr></table></td></tr></table></body></html>`;
+  const patientText = `Hola, ${p.nombre}. Gracias por realizar la prueba auditiva.\n\nTus porcentajes:\n${resultSummaryText}\n\n${soundOutcome(body.resultados).title}\n${soundOutcome(body.resultados).description}\n\nEste resultado es orientativo y no sustituye una evaluación profesional.\n\n¿Quieres reservar una revisión? Contacta con ${centro}.\nTeléfono: ${centerPhone || "Consulta con el centro"}\nEmail: ${to}\n\nUn saludo, ${centro}`;
+
   const html = `<!doctype html><html lang="es"><body style="margin:0;background:#f3f6f8;font-family:Arial,Helvetica,sans-serif;color:#102b46">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f6f8;padding:24px 10px"><tr><td align="center">
       <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;background:#fff;border:1px solid #dbe4ec">
@@ -232,16 +327,30 @@ Deno.serve(async (req: Request) => {
         <tr><td style="padding:12px 30px 30px"><h2 style="font-size:18px;color:#102b46;margin:8px 0 12px">Datos de contacto</h2>
           <p style="margin:5px 0"><strong>Paciente:</strong> ${esc(name)}</p><p style="margin:5px 0"><strong>Email:</strong> ${esc(patientEmail)}</p>
           <p style="margin:5px 0"><strong>Código postal:</strong> ${esc(postal || "No indicado")}</p><p style="margin:5px 0"><strong>Fecha:</strong> ${esc(date)}</p>
-          ${more}<p style="margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5">Prueba orientativa; no sustituye una evaluación auditiva profesional.</p></td></tr>
+          ${more}<p style="margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5">Prueba orientativa; no sustituye una evaluación auditiva profesional.</p>${centerMarketingHtml}</td></tr>
       </table></td></tr></table></body></html>`;
   const text = [subject,`Paciente: ${name}`,`Email: ${patientEmail}`,`Código postal: ${postal || "No indicado"}`,`Fecha: ${date}`,
-    cita ? `Teléfono: ${p.telefono || "No indicado"} · Canal: ${p.canalContacto || "No indicado"}` : `Resultado global: ${body.resultados?.global?.porcentaje ?? "—"}% (${body.resultados?.global?.nivel ?? "sin clasificar"})`,
-    "La prueba es orientativa y no sustituye una evaluación profesional."].join("\n");
+    cita ? `Teléfono: ${p.telefono || "No indicado"} · Canal: ${p.canalContacto || "No indicado"}` :
+      `Resultado global: ${pctText(body.resultados?.global?.porcentaje)} (${body.resultados?.global?.nivel ?? "sin clasificar"})`,
+    cita ? "" : `Porcentajes:\n${resultSummaryText}\n\nDetalle de respuestas:\n${soundBreakdownText(body.resultados)}\n\n${centerFollowupText}`,
+    "La prueba es orientativa y no sustituye una evaluación profesional.", centerMarketingText].filter(Boolean).join("\n");
 
+  const centerEmail = { from:"Hear-O <info@info.hear-o.es>", to:[to], reply_to:patientEmail, subject, html, text };
+  const sendPatientCopy = !cita && body.envioResumenPaciente === true;
+  const emailBatch = sendPatientCopy ? [
+    centerEmail,
+    { from:"Hear-O <info@info.hear-o.es>", to:[patientEmail], reply_to:to,
+      subject:`Tu resumen de la prueba auditiva · ${centro}`, html:patientHtml, text:patientText }
+  ] : [centerEmail];
+  const submissionId = typeof body.submissionId === "string" && /^[A-Za-z0-9_-]{10,80}$/.test(body.submissionId)
+    ? body.submissionId : crypto.randomUUID();
   try {
-    const sent = await fetch("https://api.resend.com/emails", {
-      method:"POST", headers:{"Authorization":`Bearer ${apiKey}`,"Content-Type":"application/json"},
-      body:JSON.stringify({from:"Hear-O <info@info.hear-o.es>",to:[to],reply_to:patientEmail,subject,html,text})
+    const useBatch = sendPatientCopy;
+    const sent = await fetch(useBatch ? "https://api.resend.com/emails/batch" : "https://api.resend.com/emails", {
+      method:"POST",
+      headers:{"Authorization":`Bearer ${apiKey}`,"Content-Type":"application/json",
+        ...(useBatch ? {"Idempotency-Key":"sound-test-" + submissionId} : {})},
+      body:JSON.stringify(useBatch ? emailBatch : centerEmail)
     });
     const sentBody = await sent.json().catch(()=>({}));
     if (!sent.ok) {
