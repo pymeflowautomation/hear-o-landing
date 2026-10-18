@@ -1477,3 +1477,21 @@ input, textarea, select {
   color: var(--color-white);
 }
 
+
+
+.appointment-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;overflow-y:auto;padding:1rem;background:rgba(8,27,48,.72)}
+.appointment-modal[aria-hidden="false"]{display:flex}.appointment-modal-open{overflow:hidden}
+.appointment-dialog{position:relative;width:min(100%,560px);max-height:min(90vh,820px);overflow-y:auto;padding:2rem;border:1px solid #dbe4ec;border-radius:1.25rem;background:#fff;color:#102b46;box-shadow:0 24px 70px rgba(0,0,0,.24)}
+.appointment-dialog h2{margin:0 2.5rem .5rem 0;color:#102b46;font-size:1.7rem;line-height:1.2}
+.appointment-eyebrow{margin-bottom:.5rem;color:var(--color-primary);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.appointment-intro{margin:0 0 1.25rem;color:#526579;line-height:1.55}
+.appointment-close{position:absolute;top:.8rem;right:.9rem;width:2.5rem;height:2.5rem;border:0;border-radius:50%;background:#f1f5f9;color:#102b46;font-size:1.6rem;cursor:pointer}
+.appointment-field{margin:0 0 1rem}.appointment-field label{display:block;margin-bottom:.4rem;color:#334155;font-size:.9rem;font-weight:600}
+.appointment-field input,.appointment-field textarea{box-sizing:border-box;width:100%;padding:.75rem .85rem;border:1px solid #cbd5e1;border-radius:.65rem;background:#fff;color:#102b46;font:inherit}
+.appointment-field textarea{min-height:110px;resize:vertical}
+.appointment-field input:focus,.appointment-field textarea:focus{outline:3px solid rgba(37,99,235,.18);border-color:var(--color-primary)}
+.appointment-privacy{margin:0 0 1rem;color:#64748b;font-size:.8rem;line-height:1.5}.appointment-submit{width:100%}
+.appointment-success{padding:1.25rem;border:1px solid #a7e4c2;border-radius:.9rem;background:#effbf4;color:#155a36}
+.appointment-success h3{margin:0 0 .4rem;font-size:1.2rem}.appointment-success p{margin:0 0 1rem;line-height:1.55}
+.footer-appointment-cta{margin:0 auto .5rem}
+@media(max-width:600px){.appointment-modal{align-items:flex-start;padding:.6rem}.appointment-dialog{margin:auto 0;max-height:calc(100vh - 1.2rem);padding:1.35rem;border-radius:1rem}.appointment-dialog h2{font-size:1.45rem}}

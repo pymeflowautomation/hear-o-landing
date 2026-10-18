@@ -35,7 +35,7 @@
         <nav class="nav">
           <a href="#test" class="nav-link">Hacer Test</a>
           <a href="#auto-test" class="nav-link">Auto-Test</a>
-          <a href="#contacto" class="nav-link">Contacto</a>
+          <a href="https://hear-o.es" id="linkWebCentro" class="nav-link" target="_blank" rel="noopener noreferrer">Volver a la web</a>
         </nav>
         <button class="btn btn-primary btn-small" id="headerCTA">Pedir Cita</button>
       </div>
@@ -506,29 +506,7 @@
               <p class="resultado-nota">Te contactaremos en 24-48 horas</p>
             </div>
 
-            <!-- Modal Pedir Cita -->
-            <div id="modalCita" style="display: none; margin-top: 20px; padding: 20px; background-color: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; text-align: left;">
-              <h4 style="margin-top:0; color:#1e293b; font-size:1.1rem; font-weight:600; margin-bottom:15px;">¿Cómo prefieres que te contactemos?</h4>
-              
-              <div style="display: flex; gap: 20px; margin-bottom: 15px;">
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                  <input type="radio" name="canalContacto" value="whatsapp" checked>
-                  <span>WhatsApp</span>
-                </label>
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                  <input type="radio" name="canalContacto" value="llamada">
-                  <span>Llamada telefónica</span>
-                </label>
-              </div>
 
-              <div class="form-group" style="margin-bottom: 15px;">
-                <label for="telefonoCita" style="display:block; font-size:0.9rem; margin-bottom:5px; color:#475569;">Teléfono</label>
-                <input type="tel" id="telefonoCita" placeholder="+34 600 000 000" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem;">
-              </div>
-
-              <button id="btnConfirmarCita" class="btn btn-primary" style="width:100%;">Confirmar Cita</button>
-              <p id="msgCitaExito" style="display:none; color:#10b981; margin-top:10px; font-size:0.9rem; text-align:center;">¡Cita solicitada! Te contactaremos pronto.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -614,6 +592,24 @@
     </div>
   </section>
 
+  <div class="appointment-modal" id="modalCita" aria-hidden="true">
+    <div class="appointment-dialog" role="dialog" aria-modal="true" aria-labelledby="appointmentTitle">
+      <button type="button" class="appointment-close" data-close-appointment aria-label="Cerrar ventana">×</button>
+      <div class="appointment-eyebrow" id="appointmentCenterName">Centro Auditivo</div>
+      <h2 id="appointmentTitle">Solicita tu cita</h2>
+      <p class="appointment-intro">Déjanos tus datos y el centro se pondrá en contacto contigo lo antes posible.</p>
+      <form id="appointmentRequestForm">
+        <div class="appointment-field"><label for="appointmentName">Nombre completo</label><input id="appointmentName" name="nombreCompleto" type="text" autocomplete="name" maxlength="220" required></div>
+        <div class="appointment-field"><label for="appointmentEmail">Correo electrónico</label><input id="appointmentEmail" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+        <div class="appointment-field"><label for="appointmentPhone">Teléfono</label><input id="appointmentPhone" name="telefono" type="tel" autocomplete="tel" maxlength="40" required></div>
+        <div class="appointment-field"><label for="appointmentMessage">Mensaje</label><textarea id="appointmentMessage" name="mensaje" rows="4" maxlength="3000" required></textarea></div>
+        <p class="appointment-privacy">Tus datos se enviarán al centro para gestionar esta solicitud. No recibirás un correo automático.</p>
+        <button class="btn btn-primary appointment-submit" id="btnConfirmarCita" type="submit">Enviar solicitud</button>
+      </form>
+      <div id="msgCitaExito" class="appointment-success" role="status" aria-live="polite" hidden><h3>Solicitud enviada correctamente</h3><p>El centro se pondrá en contacto contigo lo antes posible.</p><button type="button" class="btn btn-secondary" data-close-appointment>Cerrar</button></div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -624,6 +620,7 @@
         </div>
         <p class="footer-disclaimer" id="footerDisclaimer">Este test es orientativo y no sustituye una evaluación
           profesional. Consulta siempre con un audiólogo titulado.</p>
+        <button type="button" class="btn btn-primary btn-small footer-appointment-cta" id="footerCTA">Pedir cita</button>
         <div class="footer-links">
           <a href="#" id="linkPrivacidad">Política de privacidad</a>
           <a href="#" id="linkLegal">Aviso legal</a>

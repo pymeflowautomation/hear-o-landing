@@ -305,8 +305,9 @@ Deno.serve(async (req: Request) => {
   const subject = cita ? `Solicitud de cita · ${centro} · ${name}` : `Resultados de prueba auditiva · ${centro} · ${name}`;
   const centerFollowupHtml = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:22px 0;background:#fff8e8;border:1px solid #f1d79a"><tr><td style="padding:16px 18px;color:#624b19;line-height:1.55"><strong>Siguiente paso recomendado:</strong> Guarda este contacto en tu base de datos y, respetando el consentimiento otorgado y la normativa aplicable, programa acciones de seguimiento o campañas de email relevantes. Puedes ofrecerle una revisión auditiva profesional.</td></tr></table>`;
   const centerFollowupText = "Siguiente paso recomendado: guarda este contacto en tu base de datos y, respetando el consentimiento otorgado y la normativa aplicable, programa acciones de seguimiento o campañas de email relevantes. Puedes ofrecerle una revisión auditiva profesional.";
+  const appointmentMessage = typeof p.mensaje === "string" ? p.mensaje.trim().slice(0, 3000) : "";
   const more = cita
-    ? `<p><strong>Teléfono:</strong> ${esc(p.telefono || "No indicado")}</p><p><strong>Canal preferido:</strong> ${esc(p.canalContacto || "No indicado")}</p>`
+    ? `<p><strong>Teléfono:</strong> ${esc(p.telefono || "No indicado")}</p><p><strong>Canal preferido:</strong> ${esc(p.canalContacto || "No indicado")}</p><h2 style="font-size:18px;color:#102b46;margin:24px 0 8px">Mensaje</h2><div style="padding:16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;color:#334155;line-height:1.65;white-space:pre-wrap">${esc(appointmentMessage || "Sin mensaje adicional.")}</div>`
     : `<h2 style="font-size:18px;color:#102b46;margin:24px 0 12px">Resultados orientativos</h2>${resultsHtml(body.resultados)}<h2 style="font-size:18px;color:#102b46;margin:24px 0 12px">Detalle de respuestas</h2>${soundBreakdownHtml(body.resultados)}${centerFollowupHtml}`;
   const patientContactHtml = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:24px 0;background:#f0f7fb;border:1px solid #cfe3ef"><tr><td style="padding:20px"><h2 style="font-size:19px;line-height:1.4;margin:0 0 8px;color:#102b46">¿Quieres reservar una revisión?</h2><p style="margin:0 0 12px;line-height:1.6">Contacta directamente con ${esc(centro)} para resolver tus dudas y concertar una valoración auditiva profesional.</p><p style="margin:6px 0"><strong>Teléfono:</strong> ${centerPhone ? '<a href="tel:' + esc(centerPhoneHref) + '" style="color:#1769aa">' + esc(centerPhone) + '</a>' : "Consulta con el centro"}</p><p style="margin:6px 0"><strong>Email:</strong> <a href="mailto:${esc(to)}" style="color:#1769aa">${esc(to)}</a></p></td></tr></table>`;
   const resultSummaryText = [
@@ -330,7 +331,7 @@ Deno.serve(async (req: Request) => {
           ${more}<p style="margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5">Prueba orientativa; no sustituye una evaluación auditiva profesional.</p>${centerMarketingHtml}</td></tr>
       </table></td></tr></table></body></html>`;
   const text = [subject,`Paciente: ${name}`,`Email: ${patientEmail}`,`Código postal: ${postal || "No indicado"}`,`Fecha: ${date}`,
-    cita ? `Teléfono: ${p.telefono || "No indicado"} · Canal: ${p.canalContacto || "No indicado"}` :
+    cita ? `Teléfono: ${p.telefono || "No indicado"} · Canal: ${p.canalContacto || "No indicado"}\\n\\nMensaje:\\n${appointmentMessage || "Sin mensaje adicional."}` :
       `Resultado global: ${pctText(body.resultados?.global?.porcentaje)} (${body.resultados?.global?.nivel ?? "sin clasificar"})`,
     cita ? "" : `Porcentajes:\n${resultSummaryText}\n\nDetalle de respuestas:\n${soundBreakdownText(body.resultados)}\n\n${centerFollowupText}`,
     "La prueba es orientativa y no sustituye una evaluación profesional.", centerMarketingText].filter(Boolean).join("\n");

@@ -263,12 +263,12 @@ function applyContactData() {
   }
   
   setText('contactHorario', centro.horario);
-  
-  // Header CTA
-  const headerCTA = document.getElementById('headerCTA');
-  if (headerCTA && centro.telefono) {
-    headerCTA.onclick = () => window.location.href = `tel:${centro.telefono.replace(/\s/g, '')}`;
+  const websiteLink = document.getElementById('linkWebCentro');
+  if (websiteLink) {
+    try { const url = new URL(centro.urlWeb || ''); if (['http:', 'https:'].includes(url.protocol)) websiteLink.href = url.href; else websiteLink.hidden = true; }
+    catch { websiteLink.hidden = true; }
   }
+  setText('appointmentCenterName', centro.nombre);
 }
 
 // ==========================================
@@ -361,15 +361,11 @@ function initEventListeners() {
   // Formulario de resultados
   document.getElementById('formResultados')?.addEventListener('submit', handleFormSubmit);
   
-  // Botón pedir cita del resultado y confirmación
-  document.getElementById('btnPedirCitaResultado')?.addEventListener('click', () => {
-    document.getElementById('modalCita').style.display = 'block';
-    document.getElementById('btnPedirCitaResultado').style.display = 'none';
-  });
-  document.getElementById('btnConfirmarCita')?.addEventListener('click', handleConfirmarCita);
-
-  // Botón pedir cita general
-  document.getElementById('btnPedirCita')?.addEventListener('click', handlePedirCita);
+  ['headerCTA', 'btnPedirCita', 'btnPedirCitaResultado', 'footerCTA'].forEach(id => document.getElementById(id)?.addEventListener('click', openAppointmentModal));
+  document.getElementById('appointmentRequestForm')?.addEventListener('submit', handleAppointmentRequest);
+  document.querySelectorAll('[data-close-appointment]').forEach(button => button.addEventListener('click', closeAppointmentModal));
+  document.getElementById('modalCita')?.addEventListener('click', event => { if (event.target === event.currentTarget) closeAppointmentModal(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && document.getElementById('modalCita')?.getAttribute('aria-hidden') === 'false') closeAppointmentModal(); });
   
   // Smooth scroll para enlaces
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -632,19 +628,32 @@ async function handleFormSubmit(e) {
     btn.disabled=false;if(label)label.textContent='Ver mi resultado';
   } finally {if(spinner)spinner.style.display='none';}
 }
-async function handleConfirmarCita() {
-  const telefono=document.getElementById('telefonoCita').value.trim();
-  if(!telefono)return alert('Por favor, introduce tu teléfono');
-  if(!AppState.datosUsuario){showNotification('Vuelve a completar la prueba para solicitar una cita.','error');return;}
-  const canal=document.querySelector('input[name="canalContacto"]:checked')?.value||'whatsapp';
-  const btn=document.getElementById('btnConfirmarCita');btn.textContent='Enviando…';btn.disabled=true;
+async function openAppointmentModal() {
+  const modal=document.getElementById('modalCita'), form=document.getElementById('appointmentRequestForm'), success=document.getElementById('msgCitaExito');
+  if(!modal||!form||!success)return;
+  form.reset();form.style.display='block';success.hidden=true;success.style.display='none';
+  const button=document.getElementById('btnConfirmarCita');if(button){button.disabled=false;button.textContent='Enviar solicitud';}
+  modal.style.display='flex';modal.setAttribute('aria-hidden','false');document.body.classList.add('appointment-modal-open');
+  window.setTimeout(()=>document.getElementById('appointmentName')?.focus(),0);
+}
+function closeAppointmentModal() {
+  const modal=document.getElementById('modalCita');if(!modal)return;
+  modal.style.display='none';modal.setAttribute('aria-hidden','true');document.body.classList.remove('appointment-modal-open');
+}
+async function handleAppointmentRequest(event) {
+  event.preventDefault();
+  const form=event.currentTarget;
+  const fullName=form.elements.namedItem('nombreCompleto').value.trim(), email=form.elements.namedItem('email').value.trim();
+  const telefono=form.elements.namedItem('telefono').value.trim(), mensaje=form.elements.namedItem('mensaje').value.trim();
+  if(!fullName||!email||!telefono||!mensaje){showNotification('Completa todos los campos para enviar tu solicitud.','error');return;}
+  const parts=fullName.split(/\s+/), button=document.getElementById('btnConfirmarCita');
+  button.disabled=true;button.textContent='Enviando…';
   try {
-    await enviarAlCentro('appointment-request',{...AppState.datosUsuario,telefono,canalContacto:canal});
-    document.getElementById('msgCitaExito').style.display='block';btn.style.display='none';
+    await enviarAlCentro('appointment-request',{nombre:parts.shift()||fullName,apellidos:parts.join(' '),email,telefono,canalContacto:'Formulario web',mensaje,fecha:new Date().toISOString(),consentimiento:true,envioResumenPaciente:false});
+    form.style.display='none';const success=document.getElementById('msgCitaExito');success.hidden=false;success.style.display='block';
   } catch(error) {
-    console.error('Error enviando solicitud de cita:',error);
-    showNotification('No se pudo enviar la solicitud. Inténtalo de nuevo.','error');
-    btn.textContent='Confirmar Cita';btn.disabled=false;
+    console.error('Error enviando solicitud de cita:',error);showNotification('No se pudo enviar la solicitud. Inténtalo de nuevo.','error');
+    button.disabled=false;button.textContent='Enviar solicitud';
   }
 }
 
@@ -791,7 +800,7 @@ async function enviarAlCentro(tipo,datos,campoTrampa='') {
   const response=await fetch(CONFIG.email.endpoint,{method:'POST',headers:{'Content-Type':'application/json','apikey':CONFIG.email.publicKey},
     body:JSON.stringify({tipo,destinatario:CONFIG.centro.email,centro:CONFIG.centro.nombre||'Centro Auditivo',
       paciente:{nombre:datos.nombre,apellidos:datos.apellidos,email:datos.email,codigoPostal:datos.codigoPostal,
-        telefono:datos.telefono||'',canalContacto:datos.canalContacto||''},
+        telefono:datos.telefono||'',canalContacto:datos.canalContacto||'',mensaje:datos.mensaje||''},
       consentimiento:datos.consentimiento===true,envioResumenPaciente:datos.envioResumenPaciente===true,submissionId:datos.submissionId||'',centroTelefono:datos.centroTelefono||'',fecha:datos.fecha,resultados:datos.resultados,website:campoTrampa})});
   const result=await response.json().catch(()=>({}));
   if(!response.ok)throw new Error(result.error||`Error de envío: ${response.status}`);
