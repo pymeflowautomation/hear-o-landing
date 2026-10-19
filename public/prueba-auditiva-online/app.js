@@ -159,6 +159,12 @@ function loadConfiguration() {
   if (CONFIG.centro?.colorAcento) {
     document.documentElement.style.setProperty('--color-accent', CONFIG.centro.colorAcento);
   }
+  if (CONFIG.centro?.fondo1) {
+    document.documentElement.style.setProperty('--color-background-hero', CONFIG.centro.fondo1);
+  }
+  if (CONFIG.centro?.fondo2) {
+    document.documentElement.style.setProperty('--color-background-contact', CONFIG.centro.fondo2);
+  }
   
   // Aplicar textos personalizados
   applyCustomTexts();

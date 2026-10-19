@@ -30,7 +30,9 @@ const CONFIG = {
     lema_visible: true, // Mostrar el lema debajo del nombre y el logo
     colorPrimario: "#2563eb", // Azul principal
     colorSecundario: "#1e40af", // Azul oscuro
-    colorAcento: "#10b981", // Verde éxito
+    colorAcento: "#10b981"
+    fondo1: "#eff6ff", // Fondo de la sección principal (hero), con degradado suave
+    fondo2: "#1e3a5f", // Fondo de la sección de contacto, con degradado, // Verde éxito
   },
 
   // ==========================================
