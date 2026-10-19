@@ -89,6 +89,7 @@
     const payload = {
       tipo: tipo, destinatario: CONFIG.centro.email, centro: CONFIG.centro.nombre || "Centro Auditivo",
       centroTelefono: CONFIG.centro.telefono || "",
+      consentimiento: true,
       paciente: patient, fecha: new Date().toISOString(),
       autotest: tipo === "autotest-result" ? { consentimiento: true, submissionId: submissionId, respuestas: answers.map((value, i) => ({ respuesta: value === true, pregunta: questions[i].prompt })), website: document.getElementById("autoWebsite") && document.getElementById("autoWebsite").value || "" } : undefined,
       resultados: { autoTest: { score: outcome && outcome.score, nivel: outcome ? copyFor(outcome.score).level : "" } }

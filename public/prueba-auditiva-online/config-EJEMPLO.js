@@ -59,8 +59,9 @@ const CONFIG = {
     },
     
     // Umbrales de evaluación
-    umbralNormal: 70,
-    umbralPreocupante: 40,
+    umbralNormal: 80,
+    umbralAreaModerado: 70,
+    umbralPreocupante: 55,
   },
 
   // ==========================================

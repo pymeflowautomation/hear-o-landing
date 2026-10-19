@@ -269,6 +269,7 @@ function applyContactData() {
   setExternalLink('linkPrivacidad', centro.urlPrivacidad);
   setExternalLink('linkLegal', centro.urlAvisoLegal);
   setExternalLink('linkCookies', centro.urlCookies);
+  applyAppointmentLegalLinks(centro);
   
   // Contacto
   setText('contactDireccion', `${centro.direccion}, ${centro.ciudad}`);
@@ -287,6 +288,31 @@ function applyContactData() {
   
   setText('contactHorario', centro.horario);
   setText('appointmentCenterName', centro.nombre);
+}
+
+function applyAppointmentLegalLinks(centro) {
+  const container = document.getElementById('appointmentLegalLinks');
+  if (!container) return;
+  const links = [
+    ['Política de privacidad', centro.urlPrivacidad],
+    ['Aviso legal', centro.urlAvisoLegal],
+    ['Política de cookies', centro.urlCookies]
+  ].filter(([, value]) => {
+    try { return new URL(value || '').protocol === 'https:'; } catch { return false; }
+  });
+  container.replaceChildren();
+  if (!links.length) { container.hidden = true; return; }
+  container.hidden = false;
+  container.appendChild(document.createTextNode('Consulta: '));
+  links.forEach(([label, url], index) => {
+    if (index) container.appendChild(document.createTextNode(' · '));
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    anchor.textContent = label;
+    container.appendChild(anchor);
+  });
 }
 
 function setExternalLink(id, value, openInNewTab = false) {
@@ -695,16 +721,51 @@ async function handleAppointmentRequest(event) {
   const form=event.currentTarget;
   const fullName=form.elements.namedItem('nombreCompleto').value.trim(), email=form.elements.namedItem('email').value.trim();
   const telefono=form.elements.namedItem('telefono').value.trim(), mensaje=form.elements.namedItem('mensaje').value.trim();
-  if(!fullName||!email||!telefono||!mensaje){showNotification('Completa todos los campos para enviar tu solicitud.','error');return;}
+  const canalContacto=form.elements.namedItem('canalContacto').value||'';
+  const consentimiento=form.elements.namedItem('consentimiento').checked===true;
+  if(!fullName||!email||!telefono||!mensaje||!consentimiento){showNotification('Completa los campos y acepta el aviso de privacidad para enviar tu solicitud.','error');return;}
   const parts=fullName.split(/\s+/), button=document.getElementById('btnConfirmarCita');
   button.disabled=true;button.textContent='Enviando…';
   try {
-    await enviarAlCentro('appointment-request',{nombre:parts.shift()||fullName,apellidos:parts.join(' '),email,telefono,canalContacto:'Formulario web',mensaje,fecha:new Date().toISOString(),consentimiento:true,envioResumenPaciente:false});
+    await enviarAlCentro('appointment-request',{nombre:parts.shift()||fullName,apellidos:parts.join(' '),email,telefono,canalContacto,mensaje,consentimiento,envioResumenPaciente:false});
     form.style.display='none';const success=document.getElementById('msgCitaExito');success.hidden=false;success.style.display='block';
   } catch(error) {
     console.error('Error enviando solicitud de cita:',error);showNotification('No se pudo enviar la solicitud. Inténtalo de nuevo.','error');
     button.disabled=false;button.textContent='Enviar solicitud';
   }
+}
+
+function clasificarResultadoAuditivo(resultados) {
+  const areas = [
+    { key: 'pitidos', nombre: 'Detección de tonos', detalle: 'En esta parte se comprobó si detectabas pitidos en distintas frecuencias y en cada oído.' },
+    { key: 'simulaciones', nombre: 'Comprensión en simulaciones', detalle: 'Esta parte orienta sobre cómo comprendes conversaciones en situaciones cotidianas.' },
+    { key: 'palabras', nombre: 'Discriminación de palabras', detalle: 'Esta parte comprueba si distingues palabras de sonido parecido.' }
+  ].map(area => ({ ...area, porcentaje: Number(resultados[area.key]?.porcentaje ?? 0) }));
+  const umbralBueno = CONFIG.test?.umbralNormal ?? 80;
+  const umbralArea = CONFIG.test?.umbralAreaModerado ?? 70;
+  const umbralPreocupante = CONFIG.test?.umbralPreocupante ?? 55;
+  const porDebajoDeArea = areas.filter(area => area.porcentaje < umbralArea);
+  const muyBajas = areas.filter(area => area.porcentaje < umbralPreocupante);
+  const global = Number(resultados.global?.porcentaje ?? 0);
+
+  let nivel = 'moderado';
+  if (muyBajas.length > 0) nivel = 'preocupante';
+  else if (global > umbralBueno && porDebajoDeArea.length === 0) nivel = 'normal';
+
+  let descripcion;
+  if (nivel === 'normal') {
+    descripcion = `El resultado global es ${global}% y las tres partes alcanzan al menos el ${umbralArea}%. Es un resultado favorable en esta prueba orientativa; aun así, se recomienda una revisión auditiva periódica por prevención.`;
+  } else if (porDebajoDeArea.length > 0) {
+    const motivos = porDebajoDeArea.map(area => `${area.nombre} (${area.porcentaje}%): ${area.detalle}`).join(' ');
+    const gravedad = nivel === 'preocupante'
+      ? `Al menos una parte está por debajo del ${umbralPreocupante}%. `
+      : `Una o más partes están por debajo del ${umbralArea}%. `;
+    descripcion = `${gravedad}${motivos} Te recomendamos una revisión auditiva profesional. Esta prueba es orientativa y no constituye un diagnóstico.`;
+  } else {
+    descripcion = `El resultado global es ${global}%, por lo que no supera el ${umbralBueno}% necesario para considerarlo favorable, aunque cada parte alcanza el ${umbralArea}%. Te recomendamos una revisión auditiva para comprobarlo. Esta prueba es orientativa y no constituye un diagnóstico.`;
+  }
+
+  return { nivel, descripcion };
 }
 
 function calculateResults() {
@@ -769,17 +830,7 @@ function calculateResults() {
     resultados.palabras.porcentaje * pesoPalabras
   );
   
-  // Determinar nivel
-  const umbralNormal = CONFIG.test?.umbralNormal || 70;
-  const umbralPreocupante = CONFIG.test?.umbralPreocupante || 40;
-  
-  if (resultados.global.porcentaje >= umbralNormal) {
-    resultados.global.nivel = 'normal';
-  } else if (resultados.global.porcentaje >= umbralPreocupante) {
-    resultados.global.nivel = 'moderado';
-  } else {
-    resultados.global.nivel = 'preocupante';
-  }
+  resultados.global.nivel = clasificarResultadoAuditivo(resultados).nivel;
   
   const frecuencias = CONFIG.test?.frecuencias || [500, 1000, 2000, 4000];
   const tonos = [];
@@ -829,9 +880,9 @@ function mostrarResultado(resultados, emailPaciente) {
   };
   
   const descripciones = {
-    normal: CONFIG.textos?.resultadoNormalDesc || 'Basado en tus respuestas, tu capacidad auditiva se encuentra dentro de parámetros normales.',
-    moderado: CONFIG.textos?.resultadoModeradoDesc || 'Tus resultados sugieren que podrías beneficiarte de una evaluación profesional.',
-    preocupante: CONFIG.textos?.resultadoPreocupanteDesc || 'El test indica dificultades significativas en tu audición. Es importante que un audiólogo te evalúe.'
+    normal: CONFIG.textos?.resultadoNormalDesc || 'Resultado favorable en esta prueba orientativa. Se recomienda una revisión periódica por prevención.',
+    moderado: clasificarResultadoAuditivo(resultados).descripcion,
+    preocupante: clasificarResultadoAuditivo(resultados).descripcion
   };
   
   const iconoEl = document.getElementById('resultadoIcon');
@@ -861,11 +912,13 @@ async function enviarAlCentro(tipo,datos,campoTrampa='') {
 // UTILIDADES
 // ==========================================
 function handleSmoothScroll(e) {
+  const href = e.currentTarget.getAttribute('href');
+  if (e.currentTarget.matches('#primaryNav a[href="#test-online"]')) return;
+  if (!href || !href.startsWith('#')) return;
+  const target = document.getElementById(decodeURIComponent(href.slice(1)));
+  if (!target) return;
   e.preventDefault();
-  const target = document.querySelector(e.currentTarget.getAttribute('href'));
-  if (target) {
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function handlePedirCita() {

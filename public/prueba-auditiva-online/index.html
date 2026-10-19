@@ -37,7 +37,7 @@
         </a>
         <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menú" aria-controls="primaryNav" aria-expanded="false">☰</button>
         <nav class="nav" id="primaryNav" aria-label="Navegación principal">
-          <a href="#test" class="nav-link">Hacer Test</a>
+          <a href="#test-online" class="nav-link">Hacer Test</a>
           <a href="#auto-test" class="nav-link">Auto-Test</a>
           <a href="https://hear-o.es" id="linkWebCentro" class="nav-link" target="_blank" rel="noopener noreferrer">Volver a la web</a>
         </nav>
@@ -605,9 +605,18 @@
       <form id="appointmentRequestForm">
         <div class="appointment-field"><label for="appointmentName">Nombre completo</label><input id="appointmentName" name="nombreCompleto" type="text" autocomplete="name" maxlength="220" required></div>
         <div class="appointment-field"><label for="appointmentEmail">Correo electrónico</label><input id="appointmentEmail" name="email" type="email" autocomplete="email" maxlength="254" required></div>
-        <div class="appointment-field"><label for="appointmentPhone">Teléfono</label><input id="appointmentPhone" name="telefono" type="tel" autocomplete="tel" maxlength="40" required></div>
+        <div class="appointment-contact-row">
+          <div class="appointment-field"><label for="appointmentPhone">Teléfono</label><input id="appointmentPhone" name="telefono" type="tel" autocomplete="tel" maxlength="40" required></div>
+          <fieldset class="appointment-field appointment-channel"><legend>¿Cómo prefieres que te contacten? <span>(opcional)</span></legend><label><input type="radio" name="canalContacto" value="Llamada"> Llamada</label><label><input type="radio" name="canalContacto" value="WhatsApp"> WhatsApp</label></fieldset>
+        </div>
         <div class="appointment-field"><label for="appointmentMessage">Mensaje</label><textarea id="appointmentMessage" name="mensaje" rows="4" maxlength="3000" required></textarea></div>
-        <p class="appointment-privacy">Tus datos se enviarán al centro para gestionar esta solicitud. No recibirás un correo automático.</p>
+        <div class="appointment-consent">
+          <input id="appointmentConsent" name="consentimiento" type="checkbox" value="yes" required>
+          <div>
+            <label for="appointmentConsent">Autorizo al centro a tratar mis datos para gestionar esta solicitud y realizar un seguimiento informativo sobre mi salud auditiva. Mis datos no se venderán a terceros.</label>
+            <p class="appointment-legal-links" id="appointmentLegalLinks" hidden></p>
+          </div>
+        </div>
         <button class="btn btn-primary appointment-submit" id="btnConfirmarCita" type="submit">Enviar solicitud</button>
       </form>
       <div id="msgCitaExito" class="appointment-success" role="status" aria-live="polite" hidden><h3>Solicitud enviada correctamente</h3><p>El centro se pondrá en contacto contigo lo antes posible.</p><button type="button" class="btn btn-secondary" data-close-appointment>Cerrar</button></div>

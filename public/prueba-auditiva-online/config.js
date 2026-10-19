@@ -30,7 +30,7 @@ const CONFIG = {
     lema_visible: true, // Mostrar el lema debajo del nombre y el logo
     colorPrimario: "#2563eb", // Azul principal
     colorSecundario: "#1e40af", // Azul oscuro
-    colorAcento: "#10b981"
+    colorAcento: "#10b981",
     fondo1: "#eff6ff", // Fondo de la sección principal (hero), con degradado suave
     fondo2: "#1e3a5f", // Fondo de la sección de contacto, con degradado, // Verde éxito
   },
@@ -69,11 +69,10 @@ const CONFIG = {
       aire: "Nos vemos a las cinco en la plaza mayor"
     },
 
-    // Umbral de acierto para considerar resultado normal (%)
-    umbralNormal: 70,
-
-    // Umbral de acierto para considerar resultado preocupante (%)
-    umbralPreocupante: 40,
+    // El global debe superar este valor y cada área debe llegar al mínimo indicado para considerarse favorable.
+    umbralNormal: 80,
+    umbralAreaModerado: 70,
+    umbralPreocupante: 55,
   },
 
   // ==========================================
@@ -124,10 +123,10 @@ const CONFIG = {
     formularioCTA: "Ver mi resultado",
 
     // Resultados
-    resultadoNormal: "Tu audición parece estar en buen estado",
-    resultadoNormalDesc: "Aunque esta prueba online es orientativa y no sustituye una evaluación profesional, tus respuestas no muestran señales destacadas de dificultad. Recuerda hacerte revisiones periódicas.",
-    resultadoModerado: "Detectamos posibles dificultades auditivas",
-    resultadoModeradoDesc: "Tus respuestas sugieren que podría ser útil realizar una revisión auditiva profesional. El centro recibirá el resultado para poder orientarte.",
+    resultadoNormal: "Resultado favorable en esta prueba orientativa",
+    resultadoNormalDesc: "El resultado global supera el 80% y ninguna de las áreas queda por debajo del 70%. Aun así, se recomienda una revisión periódica por prevención.",
+    resultadoModerado: "Conviene revisar algunos aspectos de tu audición",
+    resultadoModeradoDesc: "Una o más áreas de la prueba han quedado por debajo del 70%. El resultado indica qué aspectos conviene comentar en una revisión auditiva profesional.",
     resultadoPreocupante: "Recomendamos una revisión profesional",
     resultadoPreocupanteDesc: "Tus respuestas muestran señales que conviene revisar con un profesional. El centro recibirá el resultado para poder orientarte.",
     resultadoCTA: "Pedir cita gratuita",
