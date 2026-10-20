@@ -207,6 +207,7 @@ async function sendAutotestResult(body: any, apiKey: string, allowed: string[], 
     '</td></tr></table>';
   const name = (p.nombre.trim().slice(0, 100) + " " + p.apellidos.trim().slice(0, 120)).trim();
   const patientEmail = p.email.trim().slice(0, 254);
+  const postal = typeof p.codigoPostal === "string" ? p.codigoPostal.trim().slice(0, 20) : "";
   const score = test.respuestas.filter((item: any) => item.respuesta === true).length;
   const outcome = autoResult(score);
   const date = formatDateEs(body.fecha);
@@ -233,7 +234,7 @@ async function sendAutotestResult(body: any, apiKey: string, allowed: string[], 
     "<tr><td style=\"padding:28px 30px 12px\"><div style=\"font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#2876a8;font-weight:bold\">" + esc(center) +
     "</div><h1 style=\"font-size:24px;line-height:1.3;margin:12px 0;color:#102b46\">Nuevo resultado de autotest auditivo</h1><p style=\"line-height:1.6;color:#475569\">La persona ha autorizado el envío de sus respuestas para recibir orientación.</p></td></tr>" +
     "<tr><td style=\"padding:12px 30px 30px\"><h2 style=\"font-size:18px;margin:8px 0 12px\">Datos de contacto</h2><p><strong>Nombre:</strong> " + esc(name) +
-    "</p><p><strong>Email:</strong> " + esc(patientEmail) + "</p><p><strong>Edad:</strong> " + age + "</p><p><strong>Fecha:</strong> " + esc(date) +
+    "</p><p><strong>Email:</strong> " + esc(patientEmail) + "</p>" + (postal ? "<p><strong>Código postal:</strong> " + esc(postal) + "</p>" : "") + "<p><strong>Edad:</strong> " + age + "</p><p><strong>Fecha:</strong> " + esc(date) +
     "</p><h2 style=\"font-size:18px;margin:24px 0 8px\">Resultado orientativo: " + score + " de 7 respuestas afirmativas</h2><p><strong>" + esc(outcome.level) +
     ".</strong> " + esc(outcome.text) + "</p><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collapse\">" +
     answersHtml + "</table>" + centerFollowupHtml + "<p style=\"margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5\">Autotest orientativo; no constituye diagnóstico ni sustituye evaluación profesional.</p>" + centerMarketingHtml + "</td></tr></table></td></tr></table></body></html>";
@@ -249,7 +250,7 @@ async function sendAutotestResult(body: any, apiKey: string, allowed: string[], 
     {
       from: "Hear-O <info@info.hear-o.es>", to: [to], reply_to: patientEmail,
       subject: "Nuevo resultado de autotest · " + center + " · " + name, html: centerHtml,
-      text: "Nuevo resultado de autotest auditivo\nPaciente: " + name + "\nEmail: " + patientEmail + "\nEdad: " + age +
+      text: "Nuevo resultado de autotest auditivo\nPaciente: " + name + "\nEmail: " + patientEmail + (postal ? "\nCódigo postal: " + postal : "") + "\nEdad: " + age +
         "\nFecha: " + date + "\nResultado orientativo: " + score + " de 7. " + outcome.level + "\n\n" +
         autoQuestions.map((question, index) => (index + 1) + ". " + question + " — " + (test.respuestas[index].respuesta ? "Sí" : "No")).join("\n") +
         "\n\nSiguiente paso recomendado: guarda este contacto respetando el consentimiento otorgado. Si ha aceptado comunicaciones comerciales, programa un seguimiento ocasional con una propuesta de revisión auditiva.\n\nAutotest orientativo; no constituye diagnóstico.\n\n" + centerMarketingText
@@ -348,17 +349,17 @@ Deno.serve(async (req: Request) => {
       <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;background:#fff;border:1px solid #dbe4ec">
         <tr><td style="padding:28px 30px 12px"><div style="font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#2876a8;font-weight:bold">${esc(centro)}</div>
           <h1 style="font-size:24px;line-height:1.3;margin:12px 0;color:#102b46">${cita ? "Solicitud de cita" : "Resultado de prueba auditiva online"}</h1>
-          <p style="font-size:15px;line-height:1.6;margin:0;color:#475569">Se ha recibido información de una prueba auditiva orientativa.</p></td></tr>
+          <p style="font-size:15px;line-height:1.6;margin:0;color:#475569">${cita ? "Se ha recibido una solicitud de cita para una prueba auditiva." : "Se ha recibido información de una prueba auditiva orientativa."}</p></td></tr>
         <tr><td style="padding:12px 30px 30px"><h2 style="font-size:18px;color:#102b46;margin:8px 0 12px">Datos de contacto</h2>
           <p style="margin:5px 0"><strong>Paciente:</strong> ${esc(name)}</p><p style="margin:5px 0"><strong>Email:</strong> ${esc(patientEmail)}</p>
           ${cita ? "" : `<p style="margin:5px 0"><strong>Código postal:</strong> ${esc(postal || "No indicado")}</p><p style="margin:5px 0"><strong>Fecha:</strong> ${esc(date)}</p>`}
-          ${more}<p style="margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5">Prueba orientativa; no sustituye una evaluación auditiva profesional.</p>${centerMarketingHtml}</td></tr>
+          ${more}${cita ? "" : '<p style="margin:24px 0 0;color:#64748b;font-size:12px;line-height:1.5">Prueba orientativa; no sustituye una evaluación auditiva profesional.</p>'}${centerMarketingHtml}</td></tr>
       </table></td></tr></table></body></html>`;
   const text = [subject,`Paciente: ${name}`,`Email: ${patientEmail}`,cita ? "" : `Código postal: ${postal || "No indicado"}`,cita ? "" : `Fecha: ${date}`,
     cita ? `Teléfono: ${p.telefono || "No indicado"} · Canal: ${p.canalContacto || "No indicado"}\\n\\nMensaje:\\n${appointmentMessage || "Sin mensaje adicional."}` :
       `Resultado global: ${pctText(body.resultados?.global?.porcentaje)} (${outcome.level})`,
     cita ? "" : `Porcentajes:\n${resultSummaryText}\n\n${outcome.title}\n${outcome.description}\n\nDetalle de respuestas:\n${soundBreakdownText(body.resultados)}\n\n${centerFollowupText}`,
-    "La prueba es orientativa y no sustituye una evaluación profesional.", centerMarketingText].filter(Boolean).join("\n");
+    cita ? "" : "La prueba es orientativa y no sustituye una evaluación profesional.", centerMarketingText].filter(Boolean).join("\n");
 
   const centerEmail = { from:"Hear-O <info@info.hear-o.es>", to:[to], reply_to:patientEmail, subject, html, text };
   const sendPatientCopy = !cita && body.envioResumenPaciente === true;

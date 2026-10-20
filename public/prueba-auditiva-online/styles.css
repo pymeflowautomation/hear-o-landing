@@ -447,6 +447,7 @@ input, textarea, select {
    ========================================== */
 .test-step {
   display: none;
+  scroll-margin-top: 112px;
 }
 
 .test-step.active {

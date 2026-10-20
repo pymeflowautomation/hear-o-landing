@@ -1,4 +1,4 @@
-.autotest-container { max-width: 900px; margin: 0 auto; }
+.autotest-container { max-width: 900px; margin: 0 auto; scroll-margin-top: 112px; }
 .autotest-card {
   background: var(--color-white);
   border: 1px solid var(--color-gray-200);
@@ -58,6 +58,9 @@
 .autotest-error { color:#b42318; font-size:.92rem; min-height:1.25rem; margin:.25rem 0 !important; }
 .autotest-form { margin-top:1.5rem; }
 .autotest-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.autotest-details-fields { grid-template-columns:repeat(6,minmax(0,1fr)); }
+.autotest-details-fields .form-group:nth-child(-n+2) { grid-column:span 3; }
+.autotest-details-fields .form-group:nth-child(n+3) { grid-column:span 2; }
 .autotest-form .form-group { margin:0; }
 .autotest-form .form-group label, .autotest-channel legend { display:block; font-weight:600; color:var(--color-gray-700); margin-bottom:.4rem; }
 .autotest-form .form-group input:not([type=radio]) { width:100%; min-height:48px; padding:.7rem .8rem; border:1px solid var(--color-gray-300); border-radius:var(--radius); font:inherit; }
@@ -94,6 +97,7 @@
   .autotest-actions { flex-direction:column-reverse; align-items:stretch; }
   .autotest-actions .btn { width:100%; }
   .autotest-fields { grid-template-columns:1fr; }
+  .autotest-details-fields .form-group { grid-column:1 / -1; }
   .autotest-result-score { flex-direction:column; align-items:center; gap:.2rem; }
   .autotest-appointment { padding:1rem; }
   .autotest-choice-actions { flex-direction:column; }
