@@ -133,7 +133,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onContact }) => {
               <div className="text-brand-orange text-sm font-bold uppercase tracking-wider mb-4">Equipo y experiencia</div>
               <h2 className="text-3xl md:text-5xl font-bold mb-6">Hear-O nace desde dentro del sector audiológico</h2>
               <div className="space-y-4 text-lg text-slate-300 leading-relaxed">
-                <p>Hear-O está impulsado por profesionales con muchos años de experiencia trabajando con centros auditivos, equipos, procesos comerciales, pacientes y necesidades reales del día a día.</p>
+                <p>Hear-O está impulsado por profesionales con más de 10 años de experiencia en el sector audiológico, trabajando con centros auditivos, equipos, procesos comerciales, pacientes y necesidades reales del día a día.</p>
                 <p>Esa experiencia nos permitió ver algo importante: muchos centros no necesitaban “otro software más”, sino un sistema que resolviera problemas muy concretos que se repetían una y otra vez.</p>
                 <p>Por eso Hear-O combina conocimiento del sector, automatización, IA y acompañamiento en la implantación. La tecnología importa, pero solo tiene sentido si ayuda al centro a trabajar mejor y vender más sin perder trato humano.</p>
               </div>
