@@ -137,6 +137,15 @@ const Home: React.FC<HomeProps> = ({ onContactClick, onNavigate }) => {
                 Quiero información para mi centro <ArrowRight className="ml-2" size={18} />
               </Button>
             </div>
+            <div className="mx-auto mt-12 flex max-w-4xl flex-col items-center justify-between gap-5 rounded-2xl border border-slate-700 bg-slate-950/70 p-6 text-left sm:flex-row md:px-8">
+              <div>
+                <p className="mb-1 text-sm font-bold text-brand-orange">¿Quieres saber qué está frenando las visitas?</p>
+                <p className="m-0 text-sm leading-relaxed text-slate-400">Analiza el marketing, la visibilidad y la captación de tu centro auditivo.</p>
+              </div>
+              <Link to="/auditor-ia-centros-auditivos" className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-brand-orange px-5 py-3 font-bold text-white transition hover:bg-orange-500">
+                Auditar mi centro <ArrowRight size={17} />
+              </Link>
+            </div>
           </div>
         </section>
         <FeaturesDetail />

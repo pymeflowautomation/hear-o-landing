@@ -12,6 +12,7 @@ import AboutPage from './components/AboutPage';
 import NotFound from './components/NotFound';
 import Modal from './components/Modal';
 import AnamnesisDigitalOnlinePage from './components/AnamnesisDigitalOnlinePage';
+import AuditorLanding from './components/AuditorLanding';
 
 const App: React.FC = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -100,6 +101,10 @@ const App: React.FC = () => {
         <Route
           path="/anamnesis_digital_online_para_centros_auditivos"
           element={<AnamnesisDigitalOnlinePage onContact={openModal} />}
+        />
+        <Route
+          path="/auditor-ia-centros-auditivos"
+          element={<AuditorLanding />}
         />
         <Route 
           path="/marketing-automatico-centros-auditivos" 
