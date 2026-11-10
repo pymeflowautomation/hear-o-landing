@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import {
-  ArrowDown, ArrowLeft, ArrowRight, BarChart3, Check, ChevronDown, HelpCircle,
+  ArrowDown, ArrowLeft, ArrowRight, BarChart3, Check, ChevronDown, Download, HelpCircle,
   Compass, FileCheck2, MapPin, ShieldCheck, Sparkles, Store, TrendingUp,
 } from 'lucide-react';
 import './AuditorLanding.css';
@@ -11,7 +11,7 @@ type Answer = string | string[];
 type FormAnswers = Record<string, Answer>;
 type AuditorPreview = {
   center: { name: string; type: string; town: string; province: string; postalCode: string };
-  generatedAt: string; executiveSummary: string; painRead: string;
+  generatedAt: string; executiveSummary: string;
   topActions: { title: string; why: string; firstStep: string; timeframe: string }[];
   nextStep: string;
 };
@@ -26,7 +26,7 @@ const steps = [
 ];
 
 const painOptions = ['Pocas primeras visitas', 'Audiología tiene poca visibilidad', 'Cuesta convertir consultas en adaptaciones', 'Hay ausencias o poco seguimiento', 'Falta tiempo o método en el equipo', 'Me cuesta identificar la causa principal'];
-const actionOptions = ['Carteles, escaparate o materiales en el centro', 'Acciones locales o colaboraciones', 'Web, SEO local o Perfil de Empresa en Google', 'Publicaciones en redes sociales', 'Publicidad o promociones', 'Campañas de email, SMS o WhatsApp', 'Ninguna'];
+const actionOptions = ['Renovamos cada 2–3 meses los carteles exteriores e interiores', 'Publicamos artículos en el blog de la web', 'Publicamos en redes sociales', 'Hacemos publicidad digital', 'Hacemos publicidad física', 'Enviamos campañas regulares de email o SMS', 'Ninguna de las anteriores'];
 const sourceOptions = ['Personas que pasan por la zona', 'Recomendaciones de pacientes', 'Google, mapas o web', 'Redes sociales o anuncios', 'Colaboradores profesionales', 'Pacientes anteriores', 'Aún no tenemos primeras visitas'];
 const metricOptions = ['Sí: revisamos consultas y visitas generadas y decidimos qué mantener o cambiar', 'A veces, pero sin una revisión periódica', 'Miramos alcance o interacciones, pero no las consultas o visitas que generan', 'No solemos revisar ni registrar el resultado de las acciones'];
 const analysisMessages = [
@@ -46,10 +46,10 @@ const featuredProducts = [
 ];
 
 function ChoiceGroup({
-  label, value, options, onChange, multiple = false, optional = true, required = false, maxSelections,
+  label, value, options, onChange, multiple = false, optional = true, required = false, maxSelections, hint,
 }: {
   label: string; value?: Answer; options: string[]; onChange: (value: Answer) => void;
-  multiple?: boolean; optional?: boolean; required?: boolean; maxSelections?: number;
+  multiple?: boolean; optional?: boolean; required?: boolean; maxSelections?: number; hint?: string;
 }) {
   const selected = Array.isArray(value) ? value : value ? [value] : [];
   const toggle = (option: string) => {
@@ -57,11 +57,12 @@ function ChoiceGroup({
     const without = selected.filter((item) => item !== option);
     if (!selected.includes(option) && maxSelections && selected.length >= maxSelections) return;
     const next = selected.includes(option) ? without : [...without, option];
-    const exclusiveOptions = ['Ninguna', 'No hay un proceso común que incluya estas etapas'];
+    const exclusiveOptions = ['Ninguna', 'Ninguna de las anteriores', 'No hay un proceso común que incluya estas etapas'];
     onChange(exclusiveOptions.includes(option) ? (selected.includes(option) ? [] : [option]) : next.filter((item) => !exclusiveOptions.includes(item)));
   };
   return <fieldset className="auditor-fieldset">
     <legend>{label}{(required || optional) && <span className={required ? 'auditor-required' : 'auditor-optional'}>{required ? 'Obligatoria' : 'Opcional'}</span>}</legend>
+    {hint && <p className="auditor-hint">{hint}</p>}
     <div className="auditor-choice-grid">
       {options.map((option) => <button key={option} type="button" className={`auditor-choice ${selected.includes(option) ? 'is-selected' : ''}`} aria-pressed={selected.includes(option)} onClick={() => toggle(option)}>
         <span className="auditor-choice-mark">{selected.includes(option) && <Check size={14} />}</span><span>{option}</span>
@@ -92,6 +93,8 @@ const AuditorLanding: React.FC = () => {
   const [previewReady, setPreviewReady] = useState(false);
   const [report, setReport] = useState<AuditorPreview | null>(null);
   const [deliveryMessage, setDeliveryMessage] = useState('');
+  const [emailSent, setEmailSent] = useState(false);
+  const [pdfDownload, setPdfDownload] = useState<{ filename: string; base64: string } | null>(null);
   const [leadName, setLeadName] = useState('');
   const [leadEmail, setLeadEmail] = useState('');
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
@@ -110,6 +113,20 @@ const AuditorLanding: React.FC = () => {
   const setValue = (key: string, next: Answer) => setAnswers((current) => ({ ...current, [key]: next }));
   const stringValue = (key: string) => typeof value(key) === 'string' ? value(key) as string : '';
   const listValue = (key: string) => Array.isArray(value(key)) ? value(key) as string[] : stringValue(key) ? [stringValue(key)] : [];
+  const downloadReport = () => {
+    if (!pdfDownload) return;
+    const binary = window.atob(pdfDownload.base64);
+    const bytes = new Uint8Array(binary.length);
+    for (let index = 0; index < binary.length; index++) bytes[index] = binary.charCodeAt(index);
+    const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = pdfDownload.filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
   const isOptical = stringValue('centerType') === 'Óptica con audiología';
   const start = () => { setShowAuditor(true); setTimeout(() => document.getElementById('auditor-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60); };
   const next = () => {
@@ -129,13 +146,15 @@ const AuditorLanding: React.FC = () => {
     if (!leadName.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail) || !privacyAccepted) {
       setError('Indica tu nombre, un email válido y acepta la información de privacidad para recibir el informe.'); return;
     }
-    setBusy(true); setBusySeconds(0); setFeaturedProductIndex(0); setError('');
+    setBusy(true); setBusySeconds(0); setFeaturedProductIndex(0); setError(''); setPdfDownload(null);
     try {
       const response = await fetch('/api/auditor/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ answers, lead: { name: leadName.trim(), email: leadEmail.trim(), privacyAccepted } }) });
       const result = await response.json();
       if (!response.ok) throw new Error(result?.error || 'No hemos podido preparar el análisis. Inténtalo de nuevo.');
       if (!result?.preview) throw new Error('No hemos podido preparar el informe. Inténtalo de nuevo.');
       setReport(result.preview);
+      setPdfDownload(result.download?.filename && result.download?.base64 ? result.download : null);
+      setEmailSent(result.delivery?.customerEmailSent === true);
       setDeliveryMessage(result.delivery?.message || 'El informe completo se enviará a tu correo.');
       setTimeout(() => document.getElementById('auditor-report-result')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
     } catch (problem) {
@@ -147,21 +166,21 @@ const AuditorLanding: React.FC = () => {
     ['¿Sirve para una óptica con gabinete auditivo?', 'Sí. El análisis tiene en cuenta si la óptica está aprovechando su tráfico, su equipo y su base de contactos para dar visibilidad a audiología, sin asumir que todos sus clientes son candidatos.'],
     ['¿Y para un centro auditivo independiente?', 'También. En ese caso el foco se pone en cómo atraer visitas desde Google, la web, las recomendaciones, los colaboradores y las acciones locales.'],
     ['¿El informe me obliga a contratar Hear-O?', 'No. Recibirás recomendaciones prácticas para tu centro. Si una solución de Hear-O encaja de verdad con una oportunidad detectada, te explicaremos cómo podría ayudarte.'],
-    ['¿La estimación de personas con dificultades auditivas equivale a clientes?', 'No. Es una estimación demográfica basada en estadísticas publicadas y edades de la población. No mide diagnósticos locales, demanda activa, ventas ni ingresos que el centro haya perdido.'],
+    ['¿La estimación de personas con dificultades auditivas equivale a clientes?', 'No. Es una proyección orientativa del 10% sobre una cifra de población consultada. No mide diagnósticos locales, demanda activa, ventas ni ingresos que el centro haya perdido.'],
   ];
 
   return <main className="auditor-page">
     <Helmet>
-      <title>Audita gratis tu centro auditivo: más visitas y ventas | Hear-O</title>
-      <meta name="description" content="Analiza gratis la visibilidad, el marketing y la captación de tu centro auditivo. Descubre qué frena las visitas y recibe acciones concretas para mejorar." />
+      <title>Auditoría de marketing para centros auditivos | Hear-O</title>
+      <meta name="description" content="Audita gratis la captación y el marketing de tu centro auditivo. La IA analiza tu situación y te entrega un diagnóstico claro con acciones prácticas para atraer más pacientes." />
       <meta name="keywords" content="auditoría de marketing para centros auditivos, auditor marketing audiología, captar pacientes centro auditivo, marketing local audiología, diagnóstico centro auditivo" />
-      <link rel="canonical" href="https://hear-o.es/auditor-ia-centros-auditivos" />
-      <meta property="og:title" content="Audita gratis tu centro auditivo | Hear-O" />
-      <meta property="og:description" content="Descubre qué frena la captación de pacientes y qué acciones pueden ayudarte a conseguir más visitas y vender más audífonos." />
-      <meta property="og:url" content="https://hear-o.es/auditor-ia-centros-auditivos" />
+      <link rel="canonical" href="https://hear-o.es/auditoria-marketing-centros-auditivos" />
+      <meta property="og:title" content="Auditoría de marketing para centros auditivos | Hear-O" />
+      <meta property="og:description" content="Un diagnóstico personalizado, apoyado por IA, para detectar qué frena la captación de tu centro auditivo y qué acciones puedes poner en marcha." />
+      <meta property="og:url" content="https://hear-o.es/auditoria-marketing-centros-auditivos" />
       <meta property="og:type" content="website" />
       <script type="application/ld+json">{JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Auditor de marketing para centros auditivos Hear-O', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: 'Herramienta online de análisis de marketing, visibilidad y captación para centros auditivos.', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, provider: { '@type': 'Organization', name: 'Hear-O', url: 'https://hear-o.es' }, inLanguage: 'es-ES', isAccessibleForFree: true,
+        '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Auditoría de marketing para centros auditivos Hear-O', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: 'Auditoría online gratuita apoyada por IA para analizar marketing, visibilidad y captación de centros auditivos y proponer acciones prácticas.', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, provider: { '@type': 'Organization', name: 'Hear-O', url: 'https://hear-o.es' }, inLanguage: 'es-ES', isAccessibleForFree: true,
       })}</script>
     </Helmet>
 
@@ -173,9 +192,9 @@ const AuditorLanding: React.FC = () => {
 
     <section className="auditor-hero"><div className="auditor-container auditor-hero-grid">
       <div className="auditor-hero-copy">
-        <div className="auditor-eyebrow"><span></span> AUDITORÍA GRATUITA PARA CENTROS AUDITIVOS</div>
+        <div className="auditor-eyebrow"><span></span> DIAGNÓSTICO PROFESIONAL · APOYADO POR IA · GRATIS</div>
         <h1>Audita tu centro auditivo <em>gratis</em></h1>
-        <p className="auditor-hero-lead">Descubre qué está frenando la captación y qué puedes hacer para conseguir más visitas y vender más audífonos. Recibirás un diagnóstico de tu centro, tu presencia local y tus acciones de marketing, con prioridades claras para mejorar.</p>
+        <p className="auditor-hero-lead">No es un test genérico ni una puntuación automática. La IA analiza lo que nos cuentas sobre tu centro, su presencia física y digital y, cuando hay información fiable, el contexto de su zona. Recibirás un diagnóstico de los problemas que pueden estar frenando las visitas, por qué conviene resolverlos y qué acciones prácticas puedes empezar a aplicar desde el primer día.</p>
         <div className="auditor-hero-actions"><button className="auditor-primary" onClick={start}>Empezar mi auditoría <ArrowRight size={18} /></button><span><ShieldCheck size={16} /> Gratis · Sin tarjeta · Empieza sin registrarte</span></div>
         <div className="auditor-proof-row"><div><strong>Detecta qué te frena</strong><small>Captación y conversión</small></div><i></i><div><strong>Prioriza acciones</strong><small>Físicas y digitales</small></div><i></i><div><strong>Mejora con criterio</strong><small>Soluciones si encajan</small></div></div>
       </div>
@@ -213,7 +232,7 @@ const AuditorLanding: React.FC = () => {
       <div className="auditor-method-note"><ShieldCheck size={19} /><p>Separamos lo que nos cuentas de lo que observamos o estimamos. Si falta información fiable, te lo diremos; no inventaremos cifras ni resultados.</p></div>
     </div></section>
 
-    <section className="auditor-insight-spotlight"><div className="auditor-container auditor-spotlight-grid"><div className="auditor-spotlight-copy"><span className="auditor-kicker">MERCADO POTENCIAL, CON CONTEXTO</span><h2>Tu localidad importa. Y también <em>lo que hay alrededor.</em></h2><p>En municipios grandes, la lectura puede centrarse en la localidad. En poblaciones pequeñas, también conviene valorar el área a la que la gente se desplaza para comprar o acudir a servicios.</p><p>Cuando haya datos de edad disponibles, el informe puede ofrecer una estimación poblacional de personas que podrían declarar dificultades auditivas. Es contexto para planificar, no una cifra de pacientes o ventas garantizadas.</p><button className="auditor-text-link" onClick={start}>Analiza mi zona <ArrowRight size={16} /></button></div><div className="auditor-zone-card"><div className="auditor-zone-header"><MapPin size={18} /><span>LECTURA TERRITORIAL</span><small>según población y datos disponibles</small></div><div className="auditor-zone-main"><span className="auditor-zone-dot"></span><div><b>Localidad principal</b><small>Área de análisis prioritaria</small></div><strong>1</strong></div><div className="auditor-zone-connector"></div><div className="auditor-zone-secondary"><span className="auditor-zone-ring"></span><div><b>Entorno próximo</b><small>Relevante en poblaciones pequeñas</small></div><span className="auditor-zone-tag">AMPLIACIÓN</span></div><div className="auditor-zone-disclaimer">La zona ampliada se identifica por separado. No convierte a toda su población en clientes potenciales.</div></div></div></section>
+    <section className="auditor-insight-spotlight"><div className="auditor-container auditor-spotlight-grid"><div className="auditor-spotlight-copy"><span className="auditor-kicker">MERCADO POTENCIAL, CON CONTEXTO</span><h2>Tu localidad importa. Y también <em>lo que hay alrededor.</em></h2><p>En municipios grandes, la lectura puede centrarse en la localidad. En poblaciones pequeñas, también conviene valorar el área a la que la gente se desplaza para comprar o acudir a servicios.</p><p>Con una cifra fiable de población, el informe aplicará una proyección orientativa del 10% de personas con posibles dificultades auditivas. Es contexto para planificar, no una cifra de pacientes o ventas garantizadas.</p><button className="auditor-text-link" onClick={start}>Analiza mi zona <ArrowRight size={16} /></button></div><div className="auditor-zone-card"><div className="auditor-zone-header"><MapPin size={18} /><span>LECTURA TERRITORIAL</span><small>según población y datos disponibles</small></div><div className="auditor-zone-main"><span className="auditor-zone-dot"></span><div><b>Localidad principal</b><small>Área de análisis prioritaria</small></div><strong>1</strong></div><div className="auditor-zone-connector"></div><div className="auditor-zone-secondary"><span className="auditor-zone-ring"></span><div><b>Entorno próximo</b><small>Relevante en poblaciones pequeñas</small></div><span className="auditor-zone-tag">AMPLIACIÓN</span></div><div className="auditor-zone-disclaimer">La zona ampliada se identifica por separado. No convierte a toda su población en clientes potenciales.</div></div></div></section>
 
     <section className="auditor-why auditor-section"><div className="auditor-container auditor-two-col"><div><span className="auditor-kicker">DEL PROBLEMA A LA ACCIÓN</span><h2>Diagnóstico útil. Pasos claros. <em>Soluciones cuando encajan.</em></h2><p className="auditor-why-lead">No basta con decirte que hay que mejorar. El informe explica qué hacer, por qué es prioritario y cómo comprobar si funciona.</p></div><div className="auditor-why-list"><div><b>01</b><p><strong>Entiendes qué te está frenando</strong> Conectamos las respuestas y señales disponibles con el impacto que pueden tener en las visitas y las ventas.</p></div><div><b>02</b><p><strong>Sabes por dónde empezar</strong> Recibes acciones aplicables para tu equipo, organizadas según su prioridad.</p></div><div><b>03</b><p><strong>Haces más fácil ponerlo en marcha</strong> Si una solución de Hear-O encaja con el problema detectado, te contamos cómo puede ayudarte.</p></div></div></div></section>
 
@@ -221,7 +240,9 @@ const AuditorLanding: React.FC = () => {
 
     <section className="auditor-faq auditor-section"><div className="auditor-container auditor-faq-grid"><div><span className="auditor-kicker">PREGUNTAS FRECUENTES</span><h2>Antes de empezar</h2><p>Lo importante, explicado con claridad.</p></div><div className="auditor-faq-list">{faqs.map(([question, answer], index) => <article key={question} className={`auditor-faq-item ${faqOpen === index ? 'open' : ''}`}><button onClick={() => setFaqOpen(faqOpen === index ? null : index)} aria-expanded={faqOpen === index}><span>{question}</span><ChevronDown size={18} /></button>{faqOpen === index && <p>{answer}</p>}</article>)}</div></div></section>
 
-    {showAuditor && <section className="auditor-form-section" id="auditor-form"><div className="auditor-container auditor-form-layout">
+    {showAuditor && <section className="auditor-form-section" id="auditor-form"><div className="auditor-container">
+      <div className="auditor-form-intro"><span className="auditor-form-intro-icon"><ShieldCheck size={21} /></span><div><span className="auditor-form-intro-kicker">ANTES DE EMPEZAR</span><h2>La sinceridad es la base de una buena auditoría</h2><p>Responde con objetividad, pensando en lo que ocurre de verdad en tu centro. No buscamos respuestas perfectas: necesitamos entender tu situación para detectar oportunidades reales. Contesta todas las preguntas que puedas; cuanto más completa sea la información, más útil y ajustado será el diagnóstico. Te llevará unos minutos y te ayudará a decidir qué mejorar.</p></div></div>
+      <div className="auditor-form-layout">
       <aside className="auditor-form-aside"><span className="auditor-kicker">TU DIAGNÓSTICO</span><h2>Empecemos por <em>tu centro.</em></h2><p>Responde las preguntas marcadas como obligatorias. El resto puedes dejarlo en blanco si no tienes el dato.</p><div className="auditor-form-privacy"><ShieldCheck size={17} /><span>No incluyas datos clínicos ni información identificable de pacientes.</span></div><div className="auditor-form-help"><HelpCircle size={16} /><span>Al final te pediremos nombre y email para generar y enviarte el informe.</span></div></aside>
       <div className="auditor-form-card">
         <div className="auditor-form-progress-top"><span>Auditoría guiada <b>· Paso {step + 1} de {steps.length}</b></span><span>{progress}%</span></div>
@@ -246,10 +267,11 @@ const AuditorLanding: React.FC = () => {
 
         {step === 2 && <div className="auditor-questions">
           {isOptical ? <>
-            <ChoiceGroup label="¿Qué texto aparece en el rótulo principal del local?" value={value('exteriorSignage')} options={['«Audiología» o «Centro Auditivo» aparece escrito junto al nombre del centro, en tamaño visible', 'Aparece escrito, pero en letra pequeña o en una línea secundaria', 'Solo aparece un icono o dibujo de una oreja', 'No aparece ninguna referencia a audiología']} onChange={(v) => setValue('exteriorSignage', v)} />
-            <ChoiceGroup label="Aproximadamente, ¿qué parte del escaparate ocupa la audiología?" value={value('storefront')} options={['No hay referencias a audiología', 'Solo un cartel pequeño o 1–2 audífonos (menos de 1/4)', 'Entre 1/4 y 1/3 del escaparate', 'Un tercio o más del escaparate', 'El centro no tiene escaparate']} required onChange={(v) => setValue('storefront', v)} />
-            <ChoiceGroup label="Desde recepción y las zonas de paso de la óptica, ¿qué elementos de audiología están a la vista? Elige todos los que correspondan." value={value('interior')} options={['Una placa o rótulo que identifica el gabinete', 'Un expositor pequeño o muestrario de hasta cinco audífonos', 'Material que explica el servicio y cómo pedir información o cita', 'Una zona de audiología identificable antes de entrar al gabinete', 'Ninguna']} multiple maxSelections={4} onChange={(v) => setValue('interior', v)} />
-            <ChoiceGroup label="¿Cómo se informa de audiología a los clientes de óptica?" value={value('referrals')} options={['El equipo sigue una pauta para mencionarla cuando procede', 'Se comenta, pero sin una pauta común', 'Solo si el cliente pregunta', 'No forma parte habitual de la atención en óptica']} onChange={(v) => setValue('referrals', v)} />
+            <ChoiceGroup label="¿Qué visibilidad tiene la audiología en el rótulo principal?" value={value('exteriorSignage')} options={['El rótulo dice «Centro óptico y auditivo» en un tamaño claramente visible', 'Hay un texto adicional que menciona audiología, con menor presencia que óptica', 'La referencia está, pero resulta poco evidente', 'No aparece o pasa inadvertida']} onChange={(v) => setValue('exteriorSignage', v)} />
+            <ChoiceGroup label="Aproximadamente, ¿qué porcentaje del escaparate ocupa la audiología?" hint="Piensa en lo que alcanza a ver y entender un peatón desde la calle, no solo quien se detiene frente al escaparate." value={value('storefront')} options={['Menos del 10%', 'Entre el 10% y el 20%', 'Entre el 21% y el 29%', 'Alrededor del 30%', 'Más del 30%', 'El centro no tiene escaparate']} required onChange={(v) => setValue('storefront', v)} />
+            <ChoiceGroup label="Cuando un cliente entra en el centro, ¿ve de forma clara que ofrecéis audiología? Elige todas las opciones que correspondan." value={value('interior')} options={['Hay información clara y destacada justo a la entrada', 'En el mostrador tenemos un cartel y folletos', 'Hay rótulos o carteles por la tienda', 'La zona de exposición es visible y destaca', 'Ninguna de las anteriores']} multiple maxSelections={4} onChange={(v) => setValue('interior', v)} />
+            <ChoiceGroup label="¿Cómo se informa de audiología a los clientes de óptica? Elige todas las opciones que correspondan." value={value('referrals')} options={['Se entrega un folleto a cada cliente atendido', 'El equipo suele mencionarlo', 'Se propone una pequeña prueba rápida de audición', 'En todas las revisiones ópticas se ofrece una prueba rápida de audición', 'Ninguna de las anteriores']} multiple maxSelections={4} onChange={(v) => setValue('referrals', v)} />
+            <ChoiceGroup label="¿Os ocurre que algún cliente aparece con audífonos de otro centro o descubre sorprendido que también ofrecéis audiología?" value={value('opticalAwarenessCheck')} options={['Sí, de vez en cuando ocurre', 'No, no nos pasa']} onChange={(v) => setValue('opticalAwarenessCheck', v)} />
           </> : <>
             <ChoiceGroup label="¿Cuál es vuestra principal fuente de captación de primeras visitas? Puedes elegir varias." value={value('sources')} options={sourceOptions} multiple required onChange={(v) => setValue('sources', v)} />
             <ChoiceGroup label="¿Cuántos contactos hay aproximadamente en vuestra base?" value={value('databaseSize')} options={['0', '1–100', '101–300', '301–1.000', 'Más de 1.000']} onChange={(v) => setValue('databaseSize', v)} />
@@ -275,7 +297,7 @@ const AuditorLanding: React.FC = () => {
           <ChoiceGroup label="¿Qué proporción de citas quedó vacía por ausencia sin aviso?" value={value('noShow')} options={['0–5%', '6–10%', '11–20%', 'Más del 20%', 'No lo medimos']} onChange={(v) => setValue('noShow', v)} />
           <div className="auditor-field-row"><TextField label="Citas previstas el último mes" value={stringValue('scheduledAppointments')} onChange={(v) => setValue('scheduledAppointments', v.replace(/\D/g, ''))} placeholder="Ej. 40" optional /><TextField label="Ausencias sin aviso" value={stringValue('missedAppointments')} onChange={(v) => setValue('missedAppointments', v.replace(/\D/g, ''))} placeholder="Ej. 4" optional /></div>
           <ChoiceGroup label="¿Cómo recordáis y confirmáis las citas?" value={value('reminders')} options={['Aviso automático y confirmación', 'Aviso automático sin confirmación', 'Llamadas o mensajes manuales', 'De forma irregular', 'No enviamos recordatorios']} onChange={(v) => setValue('reminders', v)} />
-          <ChoiceGroup label="¿Qué pasos forman parte del proceso habitual de atención y adaptación? Elige todos los que correspondan." value={value('teamProcess')} options={['El paciente pasa primero por la sala de espera', 'Se le ofrecen folletos con información auditiva', 'La anamnesis es un test en una hoja', 'La anamnesis es un diálogo argumentado', 'Tenemos definido el recorrido de pruebas', 'Adaptamos las pruebas a cada caso', 'Explicamos el resultado de las pruebas', 'Entregamos un informe final al paciente', 'Explicamos el proceso de adaptación y los primeros meses']} multiple maxSelections={9} onChange={(v) => setValue('teamProcess', v)} />
+          <ChoiceGroup label="¿Qué pasos forman parte del proceso habitual de atención y adaptación? Elige todos los que correspondan." value={value('teamProcess')} options={['El paciente pasa primero por la sala de espera', 'Se le ofrecen folletos con información auditiva', 'Tenemos una anamnesis establecida con un test de respuestas fijas', 'La anamnesis está organizada, pero es un diálogo natural', 'Tenemos definido un recorrido estándar de pruebas auditivas', 'Adaptamos las pruebas auditivas a cada caso', 'Explicamos el resultado de las pruebas', 'Entregamos un informe final al paciente', 'Explicamos el proceso de adaptación y los primeros meses']} multiple maxSelections={9} onChange={(v) => setValue('teamProcess', v)} />
           <ChoiceGroup label="¿Qué nivel profesional y comercial tiene el equipo?" value={value('teamConfidence')} options={['Nivel profesional alto, pero nivel comercial bajo', 'Buen nivel profesional y comercial', 'Algo inexpertos e inseguros', 'Variable: depende del profesional']} required onChange={(v) => setValue('teamConfidence', v)} />
         </div>}
 
@@ -290,12 +312,13 @@ const AuditorLanding: React.FC = () => {
         <div className="auditor-form-actions">{step > 0 && <button className="auditor-back" onClick={() => { setStep((current) => current - 1); setError(''); }}><ArrowLeft size={16} /> Anterior</button>}<button className="auditor-primary" onClick={next} disabled={busy}>{busy ? <><span className="auditor-spinner"></span> Preparando el análisis…</> : step === steps.length - 1 ? <>Ver mi diagnóstico <ArrowRight size={16} /></> : <>Continuar <ArrowRight size={16} /></>}</button></div>
         <p className="auditor-form-footnote">La descarga del informe no supone suscribirte a comunicaciones comerciales.</p>
       </div>
+      </div>
     </div></section>}
 
     {previewReady && !report && <section className="auditor-preview-section" id="auditor-preview"><div className="auditor-container auditor-preview-card">
       <div className="auditor-preview-label"><Sparkles size={16} /> ÚLTIMO PASO · ENTREGA DEL INFORME</div>
       <h2>Recibe el diagnóstico de tu centro</h2>
-      <p className="auditor-preview-summary">Cuando envíes tus datos, analizaremos tus respuestas y mostraremos aquí una primera lectura con las prioridades principales. También enviaremos el informe completo en PDF al correo que indiques.</p>
+      <p className="auditor-preview-summary">Cuando envíes tus datos, analizaremos tus respuestas y mostraremos aquí una primera lectura con las prioridades principales. Podrás descargar el PDF completo y también lo enviaremos al correo que indiques.</p>
       <div className="auditor-preview-unlock">
         {busy ? <div className="auditor-analysis-progress" role="status" aria-live="polite" aria-atomic="true">
           <div className="auditor-analysis-icon"><Sparkles size={23} /></div>
@@ -320,10 +343,11 @@ const AuditorLanding: React.FC = () => {
     {report && <section className="auditor-report-result auditor-section" id="auditor-report-result"><div className="auditor-container">
       <article className="auditor-preview-report">
         <header className="auditor-report-cover"><div className="auditor-report-brand"><img src="/images/logo-hear-o-naranja.webp" alt="Hear-O" /><span>PRIMERA LECTURA · DIAGNÓSTICO</span></div><p>Marketing y captación de audiología</p><h2>{report.center.name || 'Tu centro auditivo'}</h2><div>{[report.center.town, report.center.province].filter(Boolean).join(', ')}{report.center.postalCode ? ` · CP ${report.center.postalCode}` : ''}</div><small>Generado el {new Date(report.generatedAt).toLocaleDateString('es-ES')}</small></header>
-        <section className="auditor-report-section auditor-report-executive"><span className="auditor-kicker">RESUMEN INICIAL</span><p className="auditor-report-summary">{report.executiveSummary}</p><div className="auditor-report-pain"><b>El reto que has señalado</b><p>{report.painRead}</p></div></section>
+        <section className="auditor-report-section auditor-report-executive"><span className="auditor-kicker">RESUMEN INICIAL</span><p className="auditor-report-summary">{report.executiveSummary}</p></section>
         <section className="auditor-report-section"><span className="auditor-kicker">DOS PRIORIDADES PARA EMPEZAR</span><div className="auditor-preview-actions">{report.topActions.map((action, i) => <article key={`${action.title}-${i}`}><span>0{i + 1}</span><div><h3>{action.title}</h3><p>{action.why}</p>{action.firstStep && <small><b>Primer paso:</b> {action.firstStep}</small>}<small><b>Plazo orientativo:</b> {action.timeframe}</small></div></article>)}</div></section>
         {report.nextStep && <section className="auditor-report-section"><span className="auditor-kicker">SIGUIENTE PASO</span><p className="auditor-report-paragraph">{report.nextStep}</p></section>}
-        <div className="auditor-report-delivery-success"><FileCheck2 size={18} /><span>{deliveryMessage}</span></div>
+        <div className={`auditor-report-delivery-success${emailSent ? '' : ' auditor-report-delivery-warning'}`}><FileCheck2 size={18} /><span>{deliveryMessage}</span></div>
+        {pdfDownload && <div className="auditor-report-download"><button type="button" className="auditor-primary" onClick={downloadReport}><Download size={18} /> Descargar informe completo en PDF</button></div>}
         <p className="auditor-preview-summary">Te hemos mostrado la conclusión inicial y las primeras prioridades. El PDF incluye el análisis del mercado y la competencia, los problemas conectados, un plan práctico por fases y las soluciones Hear-O que encajan con tu caso.</p>
       </article>
     </div></section>}

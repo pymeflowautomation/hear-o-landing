@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/auditor-ia-centros-auditivos",
+      "destination": "/auditoria-marketing-centros-auditivos",
+      "permanent": true
+    },
+    {
       "source": "/prueba_auditica_online_para_centros_auditivos",
       "destination": "/prueba_auditica_online_para_centros_auditivos/",
       "permanent": false

@@ -4,7 +4,15 @@ import { loadEnv } from 'vite';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const auditorAnalyze = require('./api/auditor/analyze.js');
+const auditorAnalyzePath = require.resolve('./api/auditor/analyze.js');
+const auditorDirectory = auditorAnalyzePath.slice(0, auditorAnalyzePath.lastIndexOf('analyze.js'));
+
+function loadAuditorAnalyze() {
+  for (const modulePath of Object.keys(require.cache)) {
+    if (modulePath.startsWith(auditorDirectory)) delete require.cache[modulePath];
+  }
+  return require(auditorAnalyzePath);
+}
 
 export default defineConfig({
   plugins: [react(), {
@@ -18,7 +26,7 @@ export default defineConfig({
     configureServer(server) {
       server.middlewares.use('/api/auditor/analyze', (request, response, next) => {
         if (request.method !== 'POST') return next();
-        auditorAnalyze(request, response).catch(next);
+        loadAuditorAnalyze()(request, response).catch(next);
       });
     }
   }]

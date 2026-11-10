@@ -103,7 +103,7 @@ const App: React.FC = () => {
           element={<AnamnesisDigitalOnlinePage onContact={openModal} />}
         />
         <Route
-          path="/auditor-ia-centros-auditivos"
+          path="/auditoria-marketing-centros-auditivos"
           element={<AuditorLanding />}
         />
         <Route 

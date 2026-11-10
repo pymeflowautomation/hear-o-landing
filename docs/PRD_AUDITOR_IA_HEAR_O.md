@@ -4,7 +4,7 @@
 **Estado:** definición de producto preparada para diseño y desarrollo. Esta entrega contiene documentación; no implica implementación ni publicación.  
 **Marca:** Hear-O · **Mercado inicial:** España · **Idioma:** español.  
 **Nombre público propuesto:** Auditor-IA para centros auditivos.  
-**Página propuesta:** `https://hear-o.es/auditor-ia-centros-auditivos`.
+**Página propuesta:** `https://hear-o.es/auditoria-marketing-centros-auditivos`.
 
 ## 1. Decisión de producto y objetivo
 

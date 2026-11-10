@@ -1,5 +1,7 @@
 node_modules/
 dist/
+tmp/
+output/
 .env
 .env.local
 apuntes ventas audiologia/
