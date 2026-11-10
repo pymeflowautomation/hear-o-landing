@@ -1,4 +1,10 @@
 {
+  "functions": {
+    "api/auditor/analyze.js": {
+      "maxDuration": 240,
+      "includeFiles": "{node_modules/pdfkit/js/standard-fonts/**,public/images/logo-hear-o-pequeno2.png}"
+    }
+  },
   "redirects": [
     {
       "source": "/auditor-ia-centros-auditivos",
