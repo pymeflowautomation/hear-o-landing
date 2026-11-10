@@ -126,7 +126,10 @@
 .auditor-consent a{color:#a84b00;font-weight:750;text-decoration:underline;text-underline-offset:2px}
 .auditor-report-delivery-note{margin:0;color:#637987;font-size:13px;line-height:1.55}
 .auditor-preview-report{max-width:900px;margin:0 auto;background:#fff;border:1px solid #e3eaee;border-radius:20px;box-shadow:0 22px 65px rgba(11,42,61,.09);overflow:hidden}
-.auditor-preview-report .auditor-report-cover{border-radius:0}
+.auditor-preview-report .auditor-report-cover{padding:46px 38px 39px;border-radius:0}
+.auditor-preview-report .auditor-report-brand{gap:20px}
+.auditor-preview-report .auditor-report-brand span{text-align:right}
+.auditor-preview-report .auditor-report-cover h2{overflow-wrap:anywhere}
 .auditor-preview-report .auditor-report-section{padding:28px 38px;border-bottom:1px solid #e9eef1}
 .auditor-preview-report .auditor-report-summary{font-size:18px;line-height:1.7}
 .auditor-preview-actions{display:grid;gap:14px;margin-top:18px}
@@ -140,7 +143,7 @@
 .auditor-report-download{margin:16px 38px 22px}
 .auditor-report-download .auditor-primary{min-height:52px;font-size:15px}
 .auditor-preview-report>.auditor-preview-summary{margin:10px 38px 28px;color:#637987;font-size:14px;line-height:1.6}
-@media(max-width:740px){.auditor-preview-report .auditor-report-section{padding:22px 20px}.auditor-report-delivery-success{margin:18px 20px 8px}.auditor-report-download{margin:16px 20px 22px}.auditor-report-download .auditor-primary{width:100%}.auditor-preview-report>.auditor-preview-summary{margin:10px 20px 22px}.auditor-preview-actions article{grid-template-columns:34px 1fr;gap:10px;padding:14px}.auditor-preview-actions article>span{width:32px;height:32px}}
+@media(max-width:740px){.auditor-preview-report .auditor-report-cover{padding:28px 20px}.auditor-preview-report .auditor-report-section{padding:22px 20px}.auditor-report-delivery-success{margin:18px 20px 8px}.auditor-report-download{margin:16px 20px 22px}.auditor-report-download .auditor-primary{width:100%}.auditor-preview-report>.auditor-preview-summary{margin:10px 20px 22px}.auditor-preview-actions article{grid-template-columns:34px 1fr;gap:10px;padding:14px}.auditor-preview-actions article>span{width:32px;height:32px}}
 .auditor-analysis-progress{display:grid;justify-items:center;gap:13px;padding:28px 24px 24px;border:1px solid #e4edf0;border-radius:16px;background:linear-gradient(150deg,#f8fbfc,#fff);text-align:center}
 .auditor-analysis-icon{display:grid;place-items:center;width:58px;height:58px;border:1px solid #ffe0c1;border-radius:18px;background:#fff3e7;color:#c36512;animation:auditor-analysis-float 2.6s ease-in-out infinite}
 .auditor-analysis-kicker{color:#a95305;font-size:11px;font-weight:850;letter-spacing:.12em}
