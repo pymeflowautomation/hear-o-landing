@@ -3093,6 +3093,116 @@ export const newGuidePages = [
       ['¿Qué herramientas son más útiles para empezar?', 'Canva para diseño, una herramienta de email como Brevo o MailerLite y una IA como ChatGPT o Claude para borradores.'],
       ['¿Qué aporta Hear-O frente a usar herramientas sueltas?', 'Hear-O Marketing Studio busca unir campañas, promociones, lead magnets y seguimiento en un sistema pensado para centros auditivos.']
     ]
+  },
+  {
+    slug: 'por-que-no-llegan-pacientes-centro-auditivo',
+    category: 'Captación',
+    title: '¿Por qué no llegan pacientes a mi centro auditivo? 7 puntos que revisar',
+    description: 'Si tu centro auditivo recibe pocas primeras visitas, revisa la visibilidad, Google, la web, la base de contactos, el marketing, la agenda y la atención antes de invertir más.',
+    keyword: 'por qué no llegan pacientes a mi centro auditivo',
+    answer: 'Cuando llegan pocas primeras visitas, el problema puede estar en que la audiología apenas se ve, el centro no aparece en búsquedas locales, la web no invita a pedir cita o las acciones de marketing son esporádicas. Si las visitas llegan pero no terminan en adaptaciones, hay que revisar la atención, la explicación y el seguimiento. El primer paso es localizar dónde se pierde la oportunidad.',
+    modulePath: '/auditoria-marketing-centros-auditivos',
+    moduleLabel: 'Auditar mi centro gratis',
+    tips: [
+      'Separa las primeras visitas de las adaptaciones: son problemas diferentes y necesitan soluciones diferentes.',
+      'Pide a alguien ajeno al centro que mire el escaparate desde la otra acera y diga qué servicios entiende que ofrecéis.',
+      'Busca “centro auditivo” y el nombre de tu localidad y revisa si tu web y tu Perfil de Empresa en Google explican bien la audiología.',
+      'Anota durante un mes de dónde procede cada nueva consulta y cuántas terminan en visita.',
+      'Si tienes una óptica, revisa si su tráfico y sus contactos conocen de verdad el servicio auditivo.'
+    ],
+    example: 'Imagina una óptica con gabinete auditivo que recibe muchas visitas de óptica, pero solo dos consultas auditivas por semana. Tiene una pequeña referencia a audiología en el rótulo, una página genérica dentro de la web de su central y una lista única de contactos. Antes de aumentar el gasto en anuncios, conviene hacer visible la audiología en el local, crear una presencia web local propia y organizar mensajes periódicos para quienes ya conocen el centro. Si las consultas aumentan pero las adaptaciones no, el siguiente análisis será la atención y el seguimiento.',
+    tableRows: [
+      ['Pocas primeras visitas', 'Revisar visibilidad en la calle, búsquedas locales, web y acciones de captación.'],
+      ['Visitas que no acuden', 'Revisar confirmaciones, recordatorios y claridad de la cita.'],
+      ['Consultas sin adaptación', 'Revisar conversación inicial, explicación de pruebas, recomendación y seguimiento.'],
+      ['Clientes de óptica que desconocen audiología', 'Revisar escaparate, interior, comunicación del equipo y contactos existentes.']
+    ],
+    sections: [
+      {
+        id: 'donde-se-pierden-las-oportunidades',
+        title: 'Primero, distingue dónde se pierden las oportunidades',
+        paragraphs: [
+          '“No llegan pacientes” puede describir situaciones distintas. Hay centros que apenas reciben consultas nuevas. Otros reciben solicitudes, pero tienen ausencias. Y otros realizan pruebas auditivas sin que suficientes pacientes continúen hacia una adaptación. Mezclar estos problemas lleva a invertir tiempo y dinero en el lugar equivocado.',
+          'Revisa el recorrido completo: personas que descubren el centro, contactos que piden información, citas reservadas, visitas que acuden, pruebas realizadas y adaptaciones. No necesitas un cuadro complicado para empezar; basta con registrar cada etapa de forma constante y observar dónde cae el número.',
+          'La auditoría de Hear-O parte de esta distinción. Sus recomendaciones cambian según el tipo de centro, el principal problema que describes y la información que aportas.'
+        ]
+      },
+      {
+        id: 'visibilidad-fisica-audiologia',
+        title: '1. ¿Se entiende desde la calle que ofreces audiología?',
+        paragraphs: [
+          'En una óptica con gabinete, tener una oreja pequeña en el rótulo o dos audífonos en una esquina del escaparate no garantiza que un peatón entienda que puede revisar allí su audición. Observa el local desde la otra acera: ¿se lee el servicio con claridad?, ¿ocupa un espacio visible?, ¿aparece también al entrar?',
+          'Si el centro se dedica solo a audiología, la pregunta cambia: ¿la fachada explica qué haces y transmite confianza a quien aún no te conoce? La presencia física debe ayudar a reconocer el servicio antes de que alguien se detenga a preguntar.',
+          'Una acción inicial es mostrar a una persona que no trabaje contigo una foto de la fachada durante unos segundos y preguntarle qué servicios recuerda. Su respuesta suele ser más útil que la impresión del propio equipo.'
+        ]
+      },
+      {
+        id: 'google-busquedas-locales',
+        title: '2. ¿Te encuentran cuando buscan un centro auditivo en tu zona?',
+        paragraphs: [
+          'Un vecino puede pasar por tu calle, pero muchos pacientes o familiares empezarán buscando un centro auditivo en Google. Comprueba si el Perfil de Empresa de tu sede menciona claramente audiología, muestra datos correctos, fotos actuales y una forma sencilla de contactar.',
+          'Mira también la web como la vería alguien que busca una prueba auditiva o audífonos en tu localidad. Si solo existe una ficha dentro de la web de una cadena, o si la audiología está escondida en una página general de óptica, tendrás menos espacio para explicar tu propuesta y trabajar las búsquedas locales.',
+          'La primera mejora puede ser una página clara del servicio auditivo vinculada a tu localidad, con el equipo, el proceso de atención, preguntas frecuentes y una llamada visible a pedir cita. No prometas una posición concreta en Google: el objetivo es facilitar que te encuentren y entiendan por qué elegirte.'
+        ]
+      },
+      {
+        id: 'web-convierte-visitas',
+        title: '3. ¿Tu web convierte el interés en una consulta?',
+        paragraphs: [
+          'Aparecer en Google sirve de poco si, al entrar en la web, el visitante no sabe qué hacer. Revisa desde el móvil si encuentra rápidamente el servicio, la localidad, el teléfono, la forma de solicitar una cita y una explicación comprensible de lo que ocurrirá en la primera visita.',
+          'La web también debe responder a dudas que frenan la decisión: quién atenderá al paciente, cuánto dura la valoración, cómo se explican los resultados y qué ocurre después. La confianza se construye antes de entrar en el gabinete.',
+          'Si anuncias una prueba auditiva online, explica su alcance con claridad y ofrece una continuación adecuada con el equipo. Es una puerta de entrada, no una sustitución de la evaluación profesional.'
+        ]
+      },
+      {
+        id: 'base-contactos-optica',
+        title: '4. ¿Estás aprovechando a quienes ya conocen tu centro?',
+        paragraphs: [
+          'Una óptica tiene una ventaja que un gabinete independiente no siempre posee: personas que ya entran en el local y una relación previa con sus clientes. Pero esa ventaja no produce consultas auditivas por sí sola. El equipo debe saber presentar el servicio con naturalidad y la audiología debe ser visible dentro del centro.',
+          'La base de contactos también puede estar dormida. Conviene distinguir pacientes auditivos, personas interesadas y clientes de óptica, revisar los permisos de comunicación y preparar mensajes útiles para cada grupo. Un único envío aislado no crea una relación; hace falta cierta continuidad.',
+          'Un centro exclusivamente auditivo puede aplicar el mismo principio a sus pacientes anteriores y personas que consultaron sin avanzar. Las revisiones, el cuidado auditivo y el seguimiento son motivos para mantener el contacto cuando corresponda.'
+        ]
+      },
+      {
+        id: 'marketing-constante-medible',
+        title: '5. ¿Haces marketing con continuidad y sabes qué funciona?',
+        paragraphs: [
+          'Cambiar un cartel una vez o publicar varias veces en redes durante una semana puede dar visibilidad puntual, pero no permite aprender qué atrae consultas. Define pocas acciones que el centro pueda sostener: presencia local, contenido útil, colaboración con negocios o profesionales cercanos y comunicación con contactos que hayan aceptado recibirla.',
+          'Después registra el resultado que importa: consultas, citas y visitas que llegaron de cada acción. Las visualizaciones o los “me gusta” pueden aportar contexto, pero no sustituyen la pregunta de cuántas personas terminaron contactando con el centro.',
+          'Si hoy nadie se ocupa del marketing, empieza asignando a una persona la revisión mensual de lo que se hizo y de las consultas generadas. La regularidad y la lectura de resultados valen más que acumular canales sin seguimiento.'
+        ]
+      },
+      {
+        id: 'citas-y-atencion',
+        title: '6 y 7. ¿Se presentan a la cita y entienden el valor de la adaptación?',
+        paragraphs: [
+          'Si hay citas reservadas que quedan vacías, revisa cuándo se envía el recordatorio, si el paciente confirma y si comprende para qué sirve la visita. Una agenda llena de reservas no equivale a una agenda llena de personas atendidas.',
+          'Cuando las personas sí acuden, observa el proceso completo: sala de espera, conversación inicial, pruebas adecuadas al caso, explicación de resultados y recomendación. Una anamnesis entendida como mero formulario puede dejar fuera los problemas cotidianos que ayudan a explicar por qué una solución puede ser útil.',
+          'La recomendación debe conectar las necesidades del paciente con las prestaciones de cada opción y dejar claro cómo será la prueba de adaptación y el seguimiento de los primeros meses. Si el equipo tiene dudas comerciales o técnicas, identifica en qué etapa aparecen y trabaja esa etapa concreta.'
+        ]
+      },
+      {
+        id: 'plan-primer-mes',
+        title: 'Qué hacer durante el primer mes',
+        paragraphs: [
+          'No intentes cambiarlo todo a la vez. La primera semana, anota el recorrido de cada nueva consulta y revisa la fachada, la web y Google como si no conocieras el centro. La segunda, elige el punto más claro de pérdida de oportunidades y una mejora que puedas poner en marcha. Durante las semanas siguientes, registra el efecto y decide si debes ampliar la acción o corregirla.',
+          'En un centro mixto con pocas primeras visitas, visibilidad física y presencia local suelen merecer una revisión conjunta. En un gabinete independiente, la captación desde búsquedas, recomendaciones y colaboraciones locales puede tener más peso. Si el problema aparece después de la primera consulta, dirige la atención al proceso comercial y al seguimiento.',
+          'El Auditor de Hear-O te ayuda a ordenar esta lectura con preguntas sobre tu centro, sus acciones y su entorno. Recibirás un diagnóstico orientativo y propuestas aplicables; las soluciones Hear-O aparecerán solo cuando tengan relación con un problema detectado.'
+        ]
+      }
+    ],
+    visualBreak: {
+      title: 'La pregunta que cambia el diagnóstico',
+      text: '¿Faltan personas interesadas, se pierden citas o las consultas no avanzan? Cada respuesta apunta a un trabajo distinto.',
+      items: ['Visibilidad', 'Primeras visitas', 'Asistencia', 'Adaptaciones']
+    },
+    faqs: [
+      ['¿Por qué mi óptica no recibe consultas de audiología si tiene muchos clientes?', 'Puede que los clientes no identifiquen el servicio auditivo, que el equipo no lo mencione con naturalidad o que la comunicación con los contactos de óptica no incluya audiología. Conviene revisar cada punto antes de atribuirlo a falta de demanda.'],
+      ['¿Hace falta invertir en publicidad para captar pacientes?', 'No siempre. Antes conviene revisar visibilidad física, Perfil de Empresa en Google, web, base de contactos y seguimiento. La publicidad tiene más sentido cuando ya sabes cómo convertir una consulta en cita y medir su resultado.'],
+      ['¿Qué debo revisar si recibo consultas, pero vendo pocos audífonos?', 'Revisa la asistencia a citas y el recorrido de atención: anamnesis, explicación de pruebas, recomendación, prueba de adaptación y seguimiento. Localizar la etapa exacta ayuda a mejorar sin presionar al paciente.'],
+      ['¿Sirve el Auditor para un centro solo auditivo?', 'Sí. El formulario distingue entre centros exclusivamente auditivos y ópticas con audiología, y adapta la lectura de captación y visibilidad a cada caso.'],
+      ['¿Qué recibiré al auditar mi centro?', 'Un informe orientativo basado en tus respuestas y en la información pública disponible: diagnóstico, prioridades y acciones prácticas. Podrás verlo en la web y recibir el PDF por correo.']
+    ]
   }
 ];
 

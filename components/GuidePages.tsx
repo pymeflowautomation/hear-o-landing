@@ -201,6 +201,7 @@ export const GuidesIndex: React.FC<GuideProps> = ({ onContact }) => {
 export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
   const { slug } = useParams();
   const guide = allGuidePages.find(item => item.slug === slug);
+  const isAuditorGuide = slug === 'por-que-no-llegan-pacientes-centro-auditivo';
   const [expandedImage, setExpandedImage] = useState<NonNullable<Guide['extraImages']>[number] | null>(null);
 
   if (!guide) {
@@ -277,6 +278,17 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
         })}
       </div>
     </section>
+  );
+
+  const renderAuditorCta = (title: string, description: string) => (
+    <aside className="mb-10 rounded-3xl border border-brand-orange/40 bg-gradient-to-br from-brand-orange/15 via-slate-900 to-blue-500/10 p-7 md:p-9">
+      <div className="mb-3 text-sm font-bold uppercase tracking-wider text-brand-orange">Auditoría gratuita · Hear-O</div>
+      <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">{title}</h2>
+      <p className="mb-6 max-w-2xl text-lg leading-relaxed text-slate-300">{description}</p>
+      <Link to="/auditoria-marketing-centros-auditivos" className="inline-flex items-center gap-2 rounded-xl bg-brand-orange px-6 py-4 font-bold text-slate-950 transition-colors hover:bg-orange-400">
+        Auditar mi centro gratis <ArrowRight size={18} />
+      </Link>
+    </aside>
   );
 
   const renderPruebaAuditivaCta = (label: string) => (
@@ -448,6 +460,14 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
             <p className="text-slate-200 text-lg leading-relaxed">{guide.answer}</p>
           </section>
 
+          {isAuditorGuide && renderAuditorCta('Descubre dónde pierde oportunidades tu centro', 'Responde unas preguntas sobre tu centro y recibe un diagnóstico personalizado con prioridades y acciones prácticas para conseguir más visitas.')}
+          {guide.slug === 'captar-mas-pacientes-centro-auditivo' && (
+            <div className="mb-10 rounded-2xl border border-brand-orange/30 bg-slate-900 p-6">
+              <p className="mb-3 text-lg leading-relaxed text-slate-300">Antes de elegir nuevas acciones, conviene saber qué está frenando hoy la captación de tu centro.</p>
+              <Link to="/auditoria-marketing-centros-auditivos" className="inline-flex items-center gap-2 font-bold text-brand-orange hover:text-orange-300">Audita gratis tu centro auditivo <ArrowRight size={18} /></Link>
+            </div>
+          )}
+
           {guide.visuals?.ready && guide.visuals.infographic && (
             <figure className="mb-10 overflow-hidden rounded-3xl border border-brand-orange/30 bg-slate-900">
               <img
@@ -599,11 +619,12 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
               {guide.slug === 'prueba-auditiva-online-para-centros-auditivos' && section.id === 'prueba-auditiva-centros-opticos-auditivos' && renderPruebaAuditivaCta('Probar la experiencia online')}
               {guide.slug === 'prueba-auditiva-online-para-centros-auditivos' && section.id === 'que-incluye-prueba-auditiva-online' && renderPruebaAuditivaCta('Ver cómo es la prueba')}
 
-              {index === hearOSectionIndex && renderHearOCta()}
+              {isAuditorGuide && index === 3 && renderAuditorCta('Lleva estas preguntas a tu caso real', 'El Auditor analiza tus respuestas, la presencia pública disponible y el contexto local para ayudarte a decidir qué mejorar primero.')}
+              {!isAuditorGuide && index === hearOSectionIndex && renderHearOCta()}
             </React.Fragment>
           ))}
 
-          {hearOSectionIndex === -1 && (
+          {!isAuditorGuide && hearOSectionIndex === -1 && (
             guide.slug === '5-formas-captar-pacientes-prueba-auditiva-online'
               ? renderPruebaAuditivaLinksCta()
               : renderHearOCta()
@@ -654,7 +675,7 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
           </section>
 
           <section id="comparativa" className="mb-10">
-            <h2 className="text-3xl font-bold mb-5">Tabla sencilla</h2>
+            <h2 className="text-3xl font-bold mb-5">{isAuditorGuide ? 'Qué revisar según el síntoma' : 'Tabla sencilla'}</h2>
             <div className="overflow-hidden rounded-2xl border border-slate-800">
               {guide.tableRows.map(([label, value]) => (
                 <div key={label} className="grid sm:grid-cols-[220px_1fr] border-b border-slate-800 last:border-b-0 bg-slate-900">
@@ -664,6 +685,8 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
               ))}
             </div>
           </section>
+
+          {isAuditorGuide && <p className="mb-10 text-lg leading-relaxed text-slate-300">Si ya sabes dónde se pierde la oportunidad, continúa con nuestra <Link to="/guias/captar-mas-pacientes-centro-auditivo" className="font-bold text-brand-orange hover:text-orange-300">guía para captar más pacientes en un centro óptico y auditivo</Link>. Si aún tienes dudas sobre la causa, empieza por la auditoría.</p>}
 
           <section id="faq" className="mb-12">
             <h2 className="text-3xl font-bold mb-5">Preguntas frecuentes</h2>
@@ -677,14 +700,14 @@ export const GuideDetail: React.FC<GuideProps> = ({ onContact }) => {
             </div>
           </section>
 
-          <section className="bg-gradient-to-br from-brand-orange/20 to-blue-500/10 border border-brand-orange/30 rounded-3xl p-8">
+          {isAuditorGuide ? renderAuditorCta('Da el siguiente paso con una auditoría de tu centro', 'En pocos minutos podrás ordenar los problemas de captación, visibilidad y atención de tu centro. Verás una primera lectura en la web y recibirás el informe completo en PDF.') : <section className="bg-gradient-to-br from-brand-orange/20 to-blue-500/10 border border-brand-orange/30 rounded-3xl p-8">
             <div className="text-sm text-brand-orange font-bold uppercase tracking-wider mb-2">Cómo ayuda Hear-O</div>
             <h2 className="text-3xl font-bold mb-3">{FULL_PACK.name}</h2>
             <p className="text-slate-300 mb-6">Hear-O combina CRM, IA, automatizaciones, marketing, calendario y anamnesis asistida con personalización para cada centro auditivo.</p>
             <Link to={guide.modulePath} className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-4 font-bold text-slate-950 hover:bg-slate-200 transition-colors">
               {guide.moduleLabel} <ArrowRight size={18} />
             </Link>
-          </section>
+          </section>}
         </article>
       </main>
       <Footer />
