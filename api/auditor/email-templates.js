@@ -1,4 +1,4 @@
-const LOGO_URL = 'https://hear-o.es/images/logo-hear-o-pequeno2.webp';
+const LOGO_URL = 'https://hear-o.es/images/logo-hear-o-pequeno2.png';
 const NAVY = '#13243B';
 const ORANGE = '#F58220';
 const MUTED = '#596779';
@@ -14,7 +14,7 @@ function shell({ preheader, eyebrow, title, content, footer = true }) {
     <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:600px;background:#FFFFFF;border-radius:14px;overflow:hidden">
       <tr><td style="background:${NAVY};padding:22px 30px;border-bottom:5px solid ${ORANGE}">
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr>
-          <td width="40" valign="middle"><img src="${LOGO_URL}" width="34" height="30" alt="" style="display:block;width:34px;height:30px;border:0"></td>
+          <td width="50" valign="middle"><img src="${LOGO_URL}" width="42" height="30" alt="Hear-O" style="display:block;width:42px;height:30px;border:0"></td>
           <td valign="middle" style="font-size:20px;font-weight:700;letter-spacing:-.3px;color:#FFFFFF">Hear-O</td>
           <td align="right" valign="middle" style="font-size:10px;line-height:1.4;font-weight:700;letter-spacing:1px;color:#F9A45B">${escapeHtml(eyebrow.toUpperCase())}</td>
         </tr></table>
