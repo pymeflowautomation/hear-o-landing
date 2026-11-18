@@ -13,6 +13,7 @@ import NotFound from './components/NotFound';
 import Modal from './components/Modal';
 import AnamnesisDigitalOnlinePage from './components/AnamnesisDigitalOnlinePage';
 import AuditorLanding from './components/AuditorLanding';
+import CollaborationPage from './components/CollaborationPage';
 
 const App: React.FC = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -126,6 +127,10 @@ const App: React.FC = () => {
           path="/precios" 
           element={<PricingPage onContact={openModal} onNavigate={handleNavigate} />} 
         />
+        <Route
+          path="/colabora"
+          element={<CollaborationPage onContact={openModal} />}
+        />
         <Route 
           path="/sobre-hear-o" 
           element={<AboutPage onContact={openModal} />} 
@@ -144,7 +149,7 @@ const App: React.FC = () => {
       <Modal 
         isOpen={isContactModalOpen} 
         onClose={closeModal}
-        title="Cuéntanos tu caso:"
+        title="Cu�ntanos tu caso:"
       >
         <div className="w-full min-h-[568px] bg-transparent">
            <div className="flex flex-col items-center justify-start min-h-[568px] text-center">
@@ -168,3 +173,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
