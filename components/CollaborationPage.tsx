@@ -26,28 +26,32 @@ const CollaborationPage: React.FC<CollaborationPageProps> = ({ onContact }) => {
   const [quantities, setQuantities] = useState<Record<string, number>>(
     Object.fromEntries(products.map((product) => [product.id, product.defaultQuantity])),
   );
-  const [selectedMonth, setSelectedMonth] = useState(12);
 
   const projection = useMemo(() => {
-    const salesThisMonth = products.reduce(
-      (total, product) => total + (quantities[product.id] ?? 0) * (product.initial + product.recurring),
+    const fixedCommissionPerMonth = products.reduce(
+      (total, product) => total + (quantities[product.id] ?? 0) * product.initial,
       0,
     );
-    const recurringPerGroup = products.reduce(
+    const subscriptionCommissionPerCohort = products.reduce(
       (total, product) => total + (quantities[product.id] ?? 0) * product.recurring,
       0,
     );
-    const recurringFromPreviousMonths = recurringPerGroup * (selectedMonth - 1);
+    const monthlyPlan = Array.from({ length: 12 }, (_, index) => {
+      const month = index + 1;
+      const fixedCommission = fixedCommissionPerMonth;
+      const subscriptionCommission = subscriptionCommissionPerCohort * month;
+      return { month, fixedCommission, subscriptionCommission, total: fixedCommission + subscriptionCommission };
+    });
+    const fixedAnnualTotal = fixedCommissionPerMonth * 12;
+    const subscriptionAnnualTotal = subscriptionCommissionPerCohort * 78;
     return {
-      salesThisMonth,
-      recurringPerGroup,
-      recurringFromPreviousMonths,
-      totalThisMonth: salesThisMonth + recurringFromPreviousMonths,
-      annualTotal: salesThisMonth * 12 + recurringPerGroup * 66,
-      recurringAtYearEnd: recurringPerGroup * 12,
+      monthlyPlan,
+      fixedAnnualTotal,
+      subscriptionAnnualTotal,
+      annualTotal: fixedAnnualTotal + subscriptionAnnualTotal,
       totalSolutions: products.reduce((total, product) => total + (quantities[product.id] ?? 0), 0),
     };
-  }, [quantities, selectedMonth]);
+  }, [quantities]);
 
   const changeQuantity = (id: string, value: number) => {
     setQuantities((current) => ({ ...current, [id]: Math.max(0, Math.min(999, Math.floor(value) || 0)) }));
@@ -127,7 +131,7 @@ const CollaborationPage: React.FC<CollaborationPageProps> = ({ onContact }) => {
             <div className="mb-8 max-w-3xl">
               <div className="text-sm font-bold uppercase tracking-[0.17em] text-blue-300">Ejemplo y proyección</div>
               <h2 className="mt-2 text-3xl font-bold md:text-4xl">Calcula tus comisiones</h2>
-              <p className="mt-3 leading-relaxed text-slate-300">Ajusta cuántas ventas haces al mes y elige un mes para ver cómo se acumulan las comisiones recurrentes. El ejemplo empieza con la combinación de referencia.</p>
+              <p className="mt-3 leading-relaxed text-slate-300">Ajusta cuántas ventas haces cada mes para ver la proyección. El ejemplo empieza con la combinación de referencia.</p>
             </div>
 
             <div className="grid gap-7 lg:grid-cols-[0.92fr_1.08fr]">
@@ -169,61 +173,52 @@ const CollaborationPage: React.FC<CollaborationPageProps> = ({ onContact }) => {
                   })}
                 </div>
 
-                <div className="mt-5 border-t border-slate-700 pt-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <label htmlFor="projection-month" className="font-semibold text-slate-200">Consultar mes</label>
-                    <span className="rounded-lg bg-blue-400/10 px-3 py-1.5 font-bold text-blue-200">Mes {selectedMonth} de 12</span>
-                  </div>
-                  <input
-                    id="projection-month"
-                    type="range"
-                    min={1}
-                    max={12}
-                    step={1}
-                    value={selectedMonth}
-                    onChange={(event) => setSelectedMonth(Number(event.target.value))}
-                    className="mt-4 w-full accent-blue-400"
-                  />
-                  <div className="flex justify-between text-xs text-slate-500"><span>Mes 1</span><span>Mes 12</span></div>
-                </div>
               </div>
 
-              <div>
-                <div className="mb-4 text-sm font-bold uppercase tracking-[0.15em] text-slate-400">Ingresos estimados en el mes {selectedMonth}</div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-slate-700 bg-slate-950/70 p-5">
-                    <div className="text-sm text-slate-400">Por las ventas de este mes</div>
-                    <div className="mt-2 text-2xl font-bold text-white">{money(projection.salesThisMonth)}</div>
-                    <div className="mt-1 text-xs text-slate-500">Altas y primeras cuotas</div>
-                  </div>
-                  <div className="rounded-2xl border border-green-400/25 bg-green-400/5 p-5">
-                    <div className="text-sm text-slate-300">Recurrente automático de meses anteriores</div>
-                    <div className="mt-2 text-2xl font-bold text-green-300">{money(projection.recurringFromPreviousMonths)}</div>
-                    <div className="mt-1 text-xs text-slate-500">Suscripciones ya activas</div>
-                  </div>
+              <div className="min-w-0">
+                <div className="mb-4">
+                  <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-blue-300">Plan a 12 meses</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-300">Si mantienes esa distribución de ventas durante 12 meses, te detallamos lo que ganarías cada mes.</p>
                 </div>
-                <div className="mt-3 flex items-end justify-between gap-4 rounded-2xl border border-orange-300/30 bg-orange-400/10 p-5 md:p-6">
-                  <div><div className="font-bold text-orange-100">Total estimado en el mes {selectedMonth}</div><div className="mt-1 text-sm text-slate-400">Ventas nuevas + comisiones recurrentes</div></div>
-                  <div className="shrink-0 text-3xl font-extrabold text-orange-300">{money(projection.totalThisMonth)}</div>
+                <div className="overflow-x-auto rounded-2xl border border-slate-700 bg-slate-950/70">
+                  <table className="w-full min-w-[540px] text-left text-sm">
+                    <thead className="bg-slate-800/80 text-xs font-bold uppercase tracking-wide text-slate-400">
+                      <tr>
+                        <th className="px-4 py-3">Mes</th>
+                        <th className="px-4 py-3 text-right">Comisiones fijas</th>
+                        <th className="px-4 py-3 text-right">Comisiones por suscripciones</th>
+                        <th className="px-4 py-3 text-right">Total del mes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {projection.monthlyPlan.map((month) => (
+                        <tr key={month.month} className="border-t border-slate-800">
+                          <th scope="row" className="px-4 py-3 font-medium text-slate-300">Mes {month.month}</th>
+                          <td className="px-4 py-3 text-right text-slate-300">{money(month.fixedCommission)}</td>
+                          <td className="px-4 py-3 text-right text-green-300">{money(month.subscriptionCommission)}</td>
+                          <td className="px-4 py-3 text-right font-bold text-white">{money(month.total)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-slate-700 bg-slate-950/70 p-5 md:p-6">
-                  <div className="text-sm font-bold uppercase tracking-[0.15em] text-blue-300">Si repites estas ventas cada mes</div>
-                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <div className="text-sm text-slate-400">Comisiones acumuladas en 12 meses</div>
-                      <div className="mt-1 text-3xl font-extrabold text-white">{money(projection.annualTotal)}</div>
-                      <div className="mt-1 text-xs text-slate-500">Ventas del año + cuotas posteriores</div>
+                <div className="mt-5">
+                  <h4 className="mb-3 text-sm font-bold uppercase tracking-[0.15em] text-slate-400">Totales anuales</h4>
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    <div className="rounded-xl border border-slate-700 bg-slate-950/70 p-4">
+                      <div className="text-xs text-slate-400">Comisiones fijas</div>
+                      <div className="mt-1 text-xl font-bold text-white">{money(projection.fixedAnnualTotal)}</div>
                     </div>
-                    <div className="sm:border-l sm:border-slate-800 sm:pl-5">
-                      <div className="text-sm text-slate-400">Ingreso recurrente mensual al cierre del mes 12</div>
-                      <div className="mt-1 text-3xl font-extrabold text-green-300">{money(projection.recurringAtYearEnd)}<span className="text-base font-semibold"> / mes</span></div>
-                      <div className="mt-1 text-xs text-slate-500">Se mantiene mientras sigan pagando</div>
+                    <div className="rounded-xl border border-green-400/25 bg-green-400/5 p-4">
+                      <div className="text-xs text-slate-400">Comisiones por suscripciones</div>
+                      <div className="mt-1 text-xl font-bold text-green-300">{money(projection.subscriptionAnnualTotal)}</div>
+                    </div>
+                    <div className="rounded-xl border border-orange-300/30 bg-orange-400/10 p-4">
+                      <div className="text-xs text-orange-100">Total en 12 meses</div>
+                      <div className="mt-1 text-xl font-extrabold text-orange-300">{money(projection.annualTotal)}</div>
                     </div>
                   </div>
-                  <p className="mt-5 border-t border-slate-800 pt-4 text-sm leading-relaxed text-slate-400">
-                    Cada nuevo mes se suman las suscripciones vendidas en los meses anteriores. Por eso, al llegar al mes 12, parte de tus ingresos llega automáticamente de clientes que ya captaste.
-                  </p>
                 </div>
               </div>
             </div>
