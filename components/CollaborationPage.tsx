@@ -93,9 +93,37 @@ const CollaborationPage: React.FC<CollaborationPageProps> = ({ onContact }) => {
             <h2 className="text-2xl font-bold md:text-3xl">¿Cuánto ganas por cada venta?</h2>
             <p className="mt-2 text-slate-400">La comisión por alta se paga una vez; en las suscripciones se añade la comisión mensual durante el primer año.</p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="hidden overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/80 md:block">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[680px] text-left">
+                <thead className="bg-slate-800/80 text-xs font-bold uppercase tracking-wide text-slate-400">
+                  <tr>
+                    <th className="px-5 py-4 md:px-7">Producto o servicio</th>
+                    <th className="px-5 py-4">Tipo</th>
+                    <th className="px-5 py-4 text-right">Por alta</th>
+                    <th className="px-5 py-4 text-right">Comisión mensual</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product) => (
+                    <tr key={product.id} className="border-t border-slate-800">
+                      <th scope="row" className="px-5 py-4 font-medium text-slate-200 md:px-7">{product.name}</th>
+                      <td className="px-5 py-4">
+                        <span className={"rounded-full px-2.5 py-1 text-xs font-semibold " + (product.type === "Pago único" ? "bg-blue-400/10 text-blue-200" : "bg-orange-400/10 text-orange-300")}>
+                          {product.type}
+                        </span>
+                      </td>
+                      <td className="px-5 py-4 text-right font-bold text-white">{money(product.initial)}</td>
+                      <td className="px-5 py-4 text-right font-semibold text-slate-300">{product.recurring > 0 ? money(product.recurring) + " / mes" : "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 md:hidden">
             {products.map((product) => (
-              <article key={product.id} className="rounded-2xl border border-slate-700 bg-slate-900/80 p-4 sm:p-5">
+              <article key={product.id} className="rounded-2xl border border-slate-700 bg-slate-900/80 p-4">
                 <div className="flex flex-wrap items-start justify-between gap-2">
                   <h3 className="font-semibold leading-snug text-slate-100">{product.name}</h3>
                   <span className={"shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold " + (product.type === "Pago único" ? "bg-blue-400/10 text-blue-200" : "bg-orange-400/10 text-orange-300")}>
@@ -174,7 +202,29 @@ const CollaborationPage: React.FC<CollaborationPageProps> = ({ onContact }) => {
                   <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-blue-300">Plan a 12 meses</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-300">Si mantienes esa distribución de ventas durante 12 meses, te detallamos lo que ganarías cada mes.</p>
                 </div>
-                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                <div className="hidden overflow-x-auto rounded-2xl border border-slate-700 bg-slate-950/70 md:block">
+                  <table className="w-full min-w-[540px] text-left text-sm">
+                    <thead className="bg-slate-800/80 text-xs font-bold uppercase tracking-wide text-slate-400">
+                      <tr>
+                        <th className="px-4 py-3">Mes</th>
+                        <th className="px-4 py-3 text-right">Comisiones fijas</th>
+                        <th className="px-4 py-3 text-right">Comisiones por suscripciones</th>
+                        <th className="px-4 py-3 text-right">Total del mes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {projection.monthlyPlan.map((month) => (
+                        <tr key={month.month} className="border-t border-slate-800">
+                          <th scope="row" className="px-4 py-3 font-medium text-slate-300">Mes {month.month}</th>
+                          <td className="px-4 py-3 text-right text-slate-300">{money(month.fixedCommission)}</td>
+                          <td className="px-4 py-3 text-right text-green-300">{money(month.subscriptionCommission)}</td>
+                          <td className="px-4 py-3 text-right font-bold text-white">{money(month.total)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 md:hidden">
                   {projection.monthlyPlan.map((month) => (
                     <article key={month.month} className="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
                       <div className="flex items-start justify-between gap-3">
